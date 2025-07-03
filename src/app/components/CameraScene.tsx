@@ -116,7 +116,7 @@ export default function CameraScene() {
     <div id="scroll-container" className="overflow-hidden">
       {/* 👆 You can adjust the height for how long you want to scroll */}
       <div className="absolute px-auto transform  text-center z-10 pointer-events-none w-[100%]">
-        <h1 ref={headingRef} className="text-white font-bold text-[66px] opacity-0 translate-y-16">
+        <h1 ref={headingRef} className="text-white font-bold xl:text-[80px] opacity-0 translate-y-16">
           Ahead of What’s Ahead
         </h1>
         <p ref={subheadingRef} className="text-[#ABABAB] text-[28px] opacity-0 translate-y-16">

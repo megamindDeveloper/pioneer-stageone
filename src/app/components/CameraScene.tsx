@@ -47,7 +47,8 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
       const timer = setTimeout(() => {
         const ctx = gsap.context(() => {
           const tl = gsap.timeline({
-            defaults: { ease: "power2.out", duration: 5 },
+            defaults: { ease: "slow(0.7, 0.7, false)", duration: 6 }
+
           });
           const isMobile = window.innerWidth <= 768;
           const scale = isMobile ? 50 : 80;
@@ -65,7 +66,7 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
         });
 
         return () => ctx.revert();
-      }, 1500); // Delay of 3 seconds
+      }, 2000); // Delay of 3 seconds
 
       // ✅ Cleanup timer on unmount
       return () => clearTimeout(timer);
@@ -92,13 +93,13 @@ export default function CameraScene() {
       // Delay text animation until model animation finishes
       const timer = setTimeout(() => {
         const tl = gsap.timeline();
-        tl.fromTo(headingRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }).fromTo(
+        tl.fromTo(headingRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 3.5, ease: "power2.out" }).fromTo(
           subheadingRef.current,
           { opacity: 0, y: 60 },
           { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
-          "-=0.8" // start slightly earlier
+          "-=1.8" // start slightly earlier
         );
-      }, 2000); // model animation takes ~8s + 1s delay = start at 9s
+      }, 2500); // model animation takes ~8s + 1s delay = start at 9s
 
       return () => clearTimeout(timer);
     }

@@ -19,18 +19,44 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
   const [showDot, setShowDot] = useState(true);
   const [visible, setVisible] = useState(true);
   const [isProgressDone, setIsProgressDone] = useState(false);
+  const [stage, setStage] = useState<"loading" | "contentOut" | "fadeOut">("loading");
+  const infoRef = useRef<HTMLDivElement>(null);
+  const contentGroupRef = useRef<HTMLDivElement>(null);
 
   // Update loading progress state
   useEffect(() => {
-    const val = Math.floor(loadingProgress);
-    setProgress(val);
-    if (val >= 100) setIsProgressDone(true);
+    let rafId: number;
+  
+    const animateProgress = () => {
+      setProgress((prev) => {
+        const target = Math.floor(loadingProgress);
+        const delta = target - prev;
+  
+        if (delta <= 0) return prev;
+  
+        const increment = Math.ceil(delta / 10); // you can tune this for smoother/faster
+        const next = prev + increment;
+  
+        if (next >= 100) {
+          setIsProgressDone(true);
+          return 100;
+        }
+  
+        rafId = requestAnimationFrame(animateProgress);
+        return next;
+      });
+    };
+  
+    animateProgress();
+  
+    return () => cancelAnimationFrame(rafId);
   }, [loadingProgress]);
+  
 
   // Blinking dot
   useEffect(() => {
     const dotBlink = setInterval(() => {
-      setShowDot(prev => !prev);
+      setShowDot((prev) => !prev);
     }, 1000);
     return () => clearInterval(dotBlink);
   }, []);
@@ -85,12 +111,26 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
   // Fade out when ready
   useEffect(() => {
     if (isModelReady && isProgressDone) {
-      gsap.to(containerRef.current, {
+      // Phase 1: Remove content (progress + border) first
+      setStage("contentOut");
+
+      const contentOutTimeline = gsap.timeline();
+
+      contentOutTimeline.to(contentGroupRef.current, {
         opacity: 0,
         duration: 1,
         ease: "power2.out",
-        onComplete: () => setVisible(false),
+        onComplete: () => {
+          setStage("fadeOut");
+          gsap.to(containerRef.current, {
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out",
+            onComplete: () => setVisible(false),
+          });
+        },
       });
+      
     }
   }, [isModelReady, isProgressDone]);
 
@@ -99,23 +139,21 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 bg-black z-50 flex items-center justify-center text-white font-mono select-none transition-opacity"
+      className="fixed inset-0 bg-[#0D0D0D] z-50 flex items-center justify-center text-white font-mono select-none transition-opacity"
     >
-      <div className="relative w-full h-full">
-        {/* FPS & Resolution Info */}
+      <div className="relative w-full h-full" ref={contentGroupRef}>
+        {/* FPS & Timer Info */}
         <div className="absolute top-16 left-16 text-gray-400 leading-tight">
           <p>{fps}fps</p>
           <p>{resolution}</p>
         </div>
         <div className="absolute top-16 right-16 flex flex-row text-gray-400 leading-tight gap-2 items-center">
-          <div
-            className={`w-3 h-3 rounded-full ${showDot ? "bg-[#e8a451]" : "bg-transparent"} transition duration-300`}
-          />
+          <div className={`w-3 h-3 rounded-full ${showDot ? "bg-[#e8a451]" : "bg-transparent"} transition duration-300`} />
           <p>{timer}</p>
         </div>
 
         {/* Border Corners */}
-        <div ref={cornersRef} className="absolute inset-0 pointer-events-none opacity-0">
+        <div ref={cornersRef} className="absolute inset-0 pointer-events-none opacity-100">
           <div className="absolute top-8 left-8 w-10 h-px bg-gray-500" />
           <div className="absolute top-8 left-8 h-10 w-px bg-gray-500" />
           <div className="absolute top-8 right-8 w-10 h-px bg-gray-500" />
@@ -128,9 +166,10 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
 
         {/* Center Loading */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div ref={centerRef} className="text-[20px] tracking-widest opacity-0 p-20">
+          <div ref={centerRef} className="text-[20px] tracking-widest opacity-100 p-20">
             {progress}%
           </div>
+
           <div ref={cornerRef} className="absolute inset-0 pointer-events-none opacity-0">
             <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-gray-700" />
             <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-gray-700" />

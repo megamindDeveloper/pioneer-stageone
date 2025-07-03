@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
 import FadeLoader from "./Loader";
+import Navbar from "./Navbar";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,11 +47,12 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
       const timer = setTimeout(() => {
         const ctx = gsap.context(() => {
           const tl = gsap.timeline({
-            defaults: { ease: "expo.out", duration: 8 },
+            defaults: { ease: "power2.out", duration: 5 },
           });
-
+          const isMobile = window.innerWidth <= 768;
+          const scale = isMobile ? 50 : 80;
           tl.to(group.current!.position, { x: 0, y: 1, z: 0.5 }, 0)
-            .to(group.current!.scale, { x: 80, y: 80, z: 80 }, 0)
+            .to(group.current!.scale, { x: scale, y: scale, z: scale }, 0)
             .to(
               group.current!.rotation,
               {
@@ -63,7 +65,7 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
         });
 
         return () => ctx.revert();
-      }, 310); // Delay of 3 seconds
+      }, 1500); // Delay of 3 seconds
 
       // ✅ Cleanup timer on unmount
       return () => clearTimeout(timer);
@@ -76,7 +78,6 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
     </group>
   );
 }
-
 
 /**
  * ✅ CameraScene
@@ -97,7 +98,7 @@ export default function CameraScene() {
           { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
           "-=0.8" // start slightly earlier
         );
-      }, 1500); // model animation takes ~8s + 1s delay = start at 9s
+      }, 2000); // model animation takes ~8s + 1s delay = start at 9s
 
       return () => clearTimeout(timer);
     }
@@ -113,41 +114,46 @@ export default function CameraScene() {
   }, []);
 
   return (
-    <div id="scroll-container" className="overflow-hidden">
-      {/* 👆 You can adjust the height for how long you want to scroll */}
-      <div className="absolute px-auto transform  text-center z-10 pointer-events-none w-[100%]">
-        <h1 ref={headingRef} className="text-white font-bold xl:text-[80px] opacity-0 translate-y-16">
-          Ahead of What’s Ahead
-        </h1>
-        <p ref={subheadingRef} className="text-[#ABABAB] text-[28px] opacity-0 translate-y-16">
-          Discover Pioneer’s Smart Dashcam Range
-        </p>
-      </div>
-
-      <div>
-      {!isModelReady && <FadeLoader isModelReady={isModelReady} />
-    }
+    <>
+      {/* Loader sits on top */}
+      {showLoader && <FadeLoader isModelReady={isModelReady} />}
+  
+      <div id="scroll-container" className="relative overflow-hidden bg-gradient-to-t">
+        <Navbar />
+  
+        {/* Headings and content */}
+        <div className="absolute w-full text-center z-10 pointer-events-none">
+          <h1 ref={headingRef} className="text-white font-bold text-[48px] xl:text-[80px] md:text-[64px] opacity-0 translate-y-16">
+            Ahead of What’s Ahead
+          </h1>
+          <p ref={subheadingRef} className="text-[#ABABAB] text-[28px] xl:text-[56px] md:text-[48px] opacity-0 translate-y-16">
+            Discover Pioneer’s Smart Dashcam Range
+          </p>
+        </div>
+  
+        {/* 3D Scene */}
         <Canvas
-          camera={{ position: [0, 1, 18], fov: 40, near: 0.1, far: 1000 }}
+          camera={{ position: [0, 1, 18], fov: 40 }}
           style={{
-            background: "#0D0D0D",
             width: "100vw",
             height: "100vh",
             position: "sticky",
             top: 0,
           }}
+       
           shadows
         >
-          <Suspense fallback={false}>
-            <CameraModel onModelReady={() => setIsModelReady(true)} />
+          <Suspense  fallback={false}>
+            <CameraModel  onModelReady={() => setIsModelReady(true)} />
             <group rotation={[4, 2, 0]}>
-              <Environment files="/hdri/studio_small_06_2k.hdr" background={false} blur={100} />
+              <Environment files="/hdri/studio_small_06_2k.hdr"  background={false} blur={100} />
             </group>
           </Suspense>
         </Canvas>
       </div>
-    </div>
+    </>
   );
+  
 }
 
 useGLTF.preload("/models/VREC-Z820DC_New_TEST09.glb");

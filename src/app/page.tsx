@@ -18,14 +18,12 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="w-full h-full bg-gradient-to-b from-[#0D0D0D] to-transparent">
       <Head>
         <title>Opal C1 Clone</title>
       </Head>
-      <section>
-        <Navbar />
-        <CameraScene />
-      </section>
-    </>
+
+      <CameraScene />
+    </div>
   );
 }

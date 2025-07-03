@@ -2,12 +2,15 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useProgress } from "@react-three/drei";
 
 export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const centerRef = useRef<HTMLDivElement>(null);
   const cornersRef = useRef<HTMLDivElement>(null);
   const cornerRef = useRef<HTMLDivElement>(null);
+
+  const { progress: loadingProgress } = useProgress();
 
   const [progress, setProgress] = useState(0);
   const [resolution, setResolution] = useState("0x0");
@@ -17,15 +20,22 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
   const [visible, setVisible] = useState(true);
   const [isProgressDone, setIsProgressDone] = useState(false);
 
+  // Update loading progress state
+  useEffect(() => {
+    const val = Math.floor(loadingProgress);
+    setProgress(val);
+    if (val >= 100) setIsProgressDone(true);
+  }, [loadingProgress]);
+
   // Blinking dot
   useEffect(() => {
     const dotBlink = setInterval(() => {
       setShowDot(prev => !prev);
-    }, 500);
+    }, 1000);
     return () => clearInterval(dotBlink);
   }, []);
 
-  // Main animation effect
+  // Main animation and performance UI
   useEffect(() => {
     const start = performance.now();
 
@@ -37,14 +47,14 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
       setTimer(`00:${minutes}:${seconds}`);
     }, 1000);
 
-    // Resolution update
+    // Resolution
     const updateResolution = () => {
       setResolution(`${window.innerWidth}x${window.innerHeight}`);
     };
     updateResolution();
     window.addEventListener("resize", updateResolution);
 
-    // FPS measurement
+    // FPS
     let frames = 0;
     let lastSecond = Math.floor(performance.now() / 1000);
     const measureFPS = (now: number) => {
@@ -59,34 +69,20 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
     };
     requestAnimationFrame(measureFPS);
 
-    // GSAP intro animation
+    // GSAP entrance animation
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
     tl.fromTo(centerRef.current, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1 });
     tl.fromTo(cornersRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.5");
     tl.fromTo(cornerRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.5");
 
-    // Counter animation
-    const counter = { val: 0 };
-    gsap.to(counter, {
-      val: 100,
-      duration: 2.5,
-      ease: "power2.inOut",
-      onUpdate: () => {
-        const val = Math.floor(counter.val);
-        setProgress(val);
-        if (val === 100) setIsProgressDone(true);
-      },
-    });
-
     return () => {
       tl.kill();
-      gsap.killTweensOf(counter);
       clearInterval(timerInterval);
       window.removeEventListener("resize", updateResolution);
     };
   }, []);
 
-  // Fade out when both model is ready and progress hits 100%
+  // Fade out when ready
   useEffect(() => {
     if (isModelReady && isProgressDone) {
       gsap.to(containerRef.current, {
@@ -120,16 +116,12 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
 
         {/* Border Corners */}
         <div ref={cornersRef} className="absolute inset-0 pointer-events-none opacity-0">
-          {/* Top Left */}
           <div className="absolute top-8 left-8 w-10 h-px bg-gray-500" />
           <div className="absolute top-8 left-8 h-10 w-px bg-gray-500" />
-          {/* Top Right */}
           <div className="absolute top-8 right-8 w-10 h-px bg-gray-500" />
           <div className="absolute top-8 right-8 h-10 w-px bg-gray-500" />
-          {/* Bottom Left */}
           <div className="absolute bottom-8 left-8 w-10 h-px bg-gray-500" />
           <div className="absolute bottom-8 left-8 h-10 w-px bg-gray-500" />
-          {/* Bottom Right */}
           <div className="absolute bottom-8 right-8 w-10 h-px bg-gray-500" />
           <div className="absolute bottom-8 right-8 h-10 w-px bg-gray-500" />
         </div>

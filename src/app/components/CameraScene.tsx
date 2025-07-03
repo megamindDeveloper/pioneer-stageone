@@ -6,6 +6,7 @@ import { Environment, useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
+import FadeLoader from "./Loader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,7 +63,7 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
         });
 
         return () => ctx.revert();
-      }, 1000); // Delay of 3 seconds
+      }, 310); // Delay of 3 seconds
 
       // ✅ Cleanup timer on unmount
       return () => clearTimeout(timer);
@@ -76,36 +77,56 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
   );
 }
 
-function Lights() {
-  return (
-    <>
-      <ambientLight intensity={0.3} color={"#ffffff"} />
-      <directionalLight
-        intensity={2.5}
-        color={"#ffffff"}
-        position={[10, 10, 10]}
-        castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-      />
-    </>
-  );
-}
 
 /**
  * ✅ CameraScene
  */
 export default function CameraScene() {
   const [isModelReady, setIsModelReady] = useState(false);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subheadingRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (isModelReady) {
+      // Delay text animation until model animation finishes
+      const timer = setTimeout(() => {
+        const tl = gsap.timeline();
+        tl.fromTo(headingRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }).fromTo(
+          subheadingRef.current,
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
+          "-=0.8" // start slightly earlier
+        );
+      }, 1500); // model animation takes ~8s + 1s delay = start at 9s
+
+      return () => clearTimeout(timer);
+    }
+  }, [isModelReady]);
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 5000); // ⏳ Delay for 5 seconds for design purposes
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div id="scroll-container" className="overflow-hidden">
       {/* 👆 You can adjust the height for how long you want to scroll */}
-      <div>
-
-        <h1></h1>
+      <div className="absolute px-auto transform  text-center z-10 pointer-events-none w-[100%]">
+        <h1 ref={headingRef} className="text-white font-bold text-[66px] opacity-0 translate-y-16">
+          Ahead of What’s Ahead
+        </h1>
+        <p ref={subheadingRef} className="text-[#ABABAB] text-[28px] opacity-0 translate-y-16">
+          Discover Pioneer’s Smart Dashcam Range
+        </p>
       </div>
+
       <div>
+      {!isModelReady && <FadeLoader isModelReady={isModelReady} />
+    }
         <Canvas
           camera={{ position: [0, 1, 18], fov: 40, near: 0.1, far: 1000 }}
           style={{
@@ -117,7 +138,7 @@ export default function CameraScene() {
           }}
           shadows
         >
-          <Suspense fallback={null}>
+          <Suspense fallback={false}>
             <CameraModel onModelReady={() => setIsModelReady(true)} />
             <group rotation={[4, 2, 0]}>
               <Environment files="/hdri/studio_small_06_2k.hdr" background={false} blur={100} />

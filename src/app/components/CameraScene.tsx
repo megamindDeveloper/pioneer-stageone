@@ -52,7 +52,7 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
           });
           const isMobile = window.innerWidth <= 768;
           const scale = isMobile ? 50 : 120;
-          tl.to(group.current!.position, { x: -1, y: 0, z: 0.5 }, 0)
+          tl.to(group.current!.position, { x: -1, y: -0.5, z: 0.5 }, 0)
             .to(group.current!.scale, { x: scale, y: scale, z: scale }, 0)
             .to(
               group.current!.rotation,
@@ -66,7 +66,7 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
         });
 
         return () => ctx.revert();
-      }, 2000); // Delay of 3 seconds
+      }, 1800); // Delay of 3 seconds
 
       // ✅ Cleanup timer on unmount
       return () => clearTimeout(timer);
@@ -169,7 +169,7 @@ export default function CameraScene() {
             </Suspense>
           </Canvas>
         </div>
-        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-60 z-20 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D] to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-44 z-20 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D] to-transparent" />
       </div>
     </>
   );

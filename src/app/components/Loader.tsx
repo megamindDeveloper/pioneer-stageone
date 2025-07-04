@@ -3,7 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useProgress } from "@react-three/drei";
-
+import Image from "next/image";
+import image from '../../../public/logo/image.png'
 export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const centerRef = useRef<HTMLDivElement>(null);
@@ -94,23 +95,26 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
         <div className="absolute top-16 left-16 text-gray-400 leading-tight">
           <p>{resolution}</p>
         </div>
+        <div className="absolute top-24 left-16 text-gray-400 leading-tight">
+         <Image src={image} alt="logo" className="w-32"/>
+        </div>
 
         {/* Top Right Timer */}
         <div className="absolute top-16 right-16 flex gap-2 items-center text-gray-400 leading-tight">
-          <div className={`w-3 h-3 rounded-full ${showDot ? "bg-[#e8a451]" : "bg-transparent"} transition`} />
+          <div className={`w-3 h-3 rounded-full ${showDot ? "bg-[#AD2239]" : "bg-transparent"} transition`} />
           <p>{timer}</p>
         </div>
 
         {/* Border Corners */}
         <div ref={cornersRef} className="absolute inset-0 pointer-events-none opacity-100">
-          <div className="absolute top-8 left-8 w-10 h-px bg-gray-500" />
-          <div className="absolute top-8 left-8 h-10 w-px bg-gray-500" />
-          <div className="absolute top-8 right-8 w-10 h-px bg-gray-500" />
-          <div className="absolute top-8 right-8 h-10 w-px bg-gray-500" />
-          <div className="absolute bottom-8 left-8 w-10 h-px bg-gray-500" />
-          <div className="absolute bottom-8 left-8 h-10 w-px bg-gray-500" />
-          <div className="absolute bottom-8 right-8 w-10 h-px bg-gray-500" />
-          <div className="absolute bottom-8 right-8 h-10 w-px bg-gray-500" />
+          <div className="absolute top-8 left-8 w-10 h-px bg-[#AD2239]" />
+          <div className="absolute top-8 left-8 h-10 w-px bg-[#AD2239]" />
+          <div className="absolute top-8 right-8 w-10 h-px bg-[#AD2239]" />
+          <div className="absolute top-8 right-8 h-10 w-px bg-[#AD2239]" />
+          <div className="absolute bottom-8 left-8 w-10 h-px bg-[#AD2239]" />
+          <div className="absolute bottom-8 left-8 h-10 w-px bg-[#AD2239]" />
+          <div className="absolute bottom-8 right-8 w-10 h-px bg-[#AD2239]" />
+          <div className="absolute bottom-8 right-8 h-10 w-px bg-[#AD2239]" />
         </div>
 
         {/* Center Loading % */}
@@ -120,10 +124,10 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
           </div>
 
           <div ref={cornerRef} className="absolute inset-0 pointer-events-none opacity-0">
-            <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-gray-700" />
-            <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-gray-700" />
-            <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-gray-700" />
-            <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-gray-700" />
+            <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#AD2239]" />
+            <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-[#AD2239]" />
+            <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[#AD2239]" />
+            <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#AD2239]" />
           </div>
         </div>
       </div>

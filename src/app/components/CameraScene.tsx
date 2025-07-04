@@ -169,7 +169,7 @@ export default function CameraScene() {
             </Suspense>
           </Canvas>
         </div>
-        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-44 z-20 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D] to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-72 z-20 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D] to-transparent" />
       </div>
     </>
   );

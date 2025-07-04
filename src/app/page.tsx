@@ -24,6 +24,8 @@ export default function Home() {
       </Head>
 
       <CameraScene />
+
+
     </div>
   );
 }

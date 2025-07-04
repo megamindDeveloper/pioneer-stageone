@@ -9,114 +9,63 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
   const centerRef = useRef<HTMLDivElement>(null);
   const cornersRef = useRef<HTMLDivElement>(null);
   const cornerRef = useRef<HTMLDivElement>(null);
-
-  const { progress: loadingProgress } = useProgress();
-
-  const [progress, setProgress] = useState(0);
-  const [resolution, setResolution] = useState("0x0");
-  const [timer, setTimer] = useState("00:00:00");
-  const [fps, setFps] = useState(0);
-  const [showDot, setShowDot] = useState(true);
-  const [visible, setVisible] = useState(true);
-  const [isProgressDone, setIsProgressDone] = useState(false);
-  const [stage, setStage] = useState<"loading" | "contentOut" | "fadeOut">("loading");
-  const infoRef = useRef<HTMLDivElement>(null);
   const contentGroupRef = useRef<HTMLDivElement>(null);
 
-  // Update loading progress state
-  useEffect(() => {
-    let rafId: number;
-  
-    const animateProgress = () => {
-      setProgress((prev) => {
-        const target = Math.floor(loadingProgress);
-        const delta = target - prev;
-  
-        if (delta <= 0) return prev;
-  
-        const increment = Math.ceil(delta / 10); // you can tune this for smoother/faster
-        const next = prev + increment;
-  
-        if (next >= 100) {
-          setIsProgressDone(true);
-          return 100;
-        }
-  
-        rafId = requestAnimationFrame(animateProgress);
-        return next;
-      });
-    };
-  
-    animateProgress();
-  
-    return () => cancelAnimationFrame(rafId);
-  }, [loadingProgress]);
-  
+  const { progress, loaded, total } = useProgress();
+
+  const [visible, setVisible] = useState(true);
+  const [showDot, setShowDot] = useState(true);
+  const [resolution, setResolution] = useState("0x0");
+  const [timer, setTimer] = useState("00:00:00");
+
+  const [stage, setStage] = useState<"loading" | "contentOut" | "fadeOut">("loading");
 
   // Blinking dot
   useEffect(() => {
-    const dotBlink = setInterval(() => {
-      setShowDot((prev) => !prev);
-    }, 1000);
-    return () => clearInterval(dotBlink);
+    const interval = setInterval(() => setShowDot((prev) => !prev), 1000);
+    return () => clearInterval(interval);
   }, []);
 
-  // Main animation and performance UI
+  // Timer & resolution
   useEffect(() => {
     const start = performance.now();
 
-    // Timer
     const timerInterval = setInterval(() => {
       const elapsed = Math.floor((performance.now() - start) / 1000);
-      const minutes = String(Math.floor(elapsed / 60)).padStart(2, "0");
-      const seconds = String(elapsed % 60).padStart(2, "0");
-      setTimer(`00:${minutes}:${seconds}`);
+      const min = String(Math.floor(elapsed / 60)).padStart(2, "0");
+      const sec = String(elapsed % 60).padStart(2, "0");
+      setTimer(`00:${min}:${sec}`);
     }, 1000);
 
-    // Resolution
     const updateResolution = () => {
       setResolution(`${window.innerWidth}x${window.innerHeight}`);
     };
     updateResolution();
     window.addEventListener("resize", updateResolution);
 
-    // FPS
-    let frames = 0;
-    let lastSecond = Math.floor(performance.now() / 1000);
-    const measureFPS = (now: number) => {
-      frames++;
-      const currentSecond = Math.floor(now / 1000);
-      if (currentSecond !== lastSecond) {
-        setFps(frames);
-        frames = 0;
-        lastSecond = currentSecond;
-      }
-      requestAnimationFrame(measureFPS);
-    };
-    requestAnimationFrame(measureFPS);
-
-    // GSAP entrance animation
-    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-    tl.fromTo(centerRef.current, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1 });
-    tl.fromTo(cornersRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.5");
-    tl.fromTo(cornerRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.5");
-
     return () => {
-      tl.kill();
       clearInterval(timerInterval);
       window.removeEventListener("resize", updateResolution);
     };
   }, []);
 
-  // Fade out when ready
+  // Entrance animation
   useEffect(() => {
-    if (isModelReady && isProgressDone) {
-      // Phase 1: Remove content (progress + border) first
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    tl.fromTo(centerRef.current, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 1 });
+    tl.fromTo(cornersRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.5");
+    tl.fromTo(cornerRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.5");
+    return () => tl.kill();
+  }, []);
+
+  // ✅ Fade out when assets + model are ready
+  useEffect(() => {
+    const assetsLoaded = loaded === total;
+    if (assetsLoaded && isModelReady && stage === "loading") {
       setStage("contentOut");
 
-      const contentOutTimeline = gsap.timeline();
-
-      contentOutTimeline.to(contentGroupRef.current, {
+      const tl = gsap.timeline();
+      tl.to(contentGroupRef.current, {
         opacity: 0,
         duration: 1,
         ease: "power2.out",
@@ -130,9 +79,8 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
           });
         },
       });
-      
     }
-  }, [isModelReady, isProgressDone]);
+  }, [loaded, total, isModelReady, stage]);
 
   if (!visible) return null;
 
@@ -141,14 +89,15 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
       ref={containerRef}
       className="fixed inset-0 bg-[#0D0D0D] z-50 flex items-center justify-center text-white font-mono select-none transition-opacity"
     >
-      <div className="relative w-full h-full" ref={contentGroupRef}>
-        {/* FPS & Timer Info */}
+      <div ref={contentGroupRef} className="relative w-full h-full">
+        {/* Top Left Info */}
         <div className="absolute top-16 left-16 text-gray-400 leading-tight">
-          <p>{fps}fps</p>
           <p>{resolution}</p>
         </div>
-        <div className="absolute top-16 right-16 flex flex-row text-gray-400 leading-tight gap-2 items-center">
-          <div className={`w-3 h-3 rounded-full ${showDot ? "bg-[#e8a451]" : "bg-transparent"} transition duration-300`} />
+
+        {/* Top Right Timer */}
+        <div className="absolute top-16 right-16 flex gap-2 items-center text-gray-400 leading-tight">
+          <div className={`w-3 h-3 rounded-full ${showDot ? "bg-[#e8a451]" : "bg-transparent"} transition`} />
           <p>{timer}</p>
         </div>
 
@@ -164,10 +113,10 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
           <div className="absolute bottom-8 right-8 h-10 w-px bg-gray-500" />
         </div>
 
-        {/* Center Loading */}
+        {/* Center Loading % */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div ref={centerRef} className="text-[20px] tracking-widest opacity-100 p-20">
-            {progress}%
+            {Math.round(progress)}%
           </div>
 
           <div ref={cornerRef} className="absolute inset-0 pointer-events-none opacity-0">

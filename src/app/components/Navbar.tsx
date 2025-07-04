@@ -3,8 +3,8 @@ import React from 'react'
 import image from '../../../public/logo/image.png'
 const Navbar = () => {
   return (
-    <div className='flex justify-center mb-12'>
-        <Image src={image} alt="logo" className='w-80 py-12'/>
+    <div className='flex justify-center mb-1'>
+        <Image src={image} alt="logo" className=' xl:w-80 lg:w-52 py-12'/>
     </div>
   )
 }

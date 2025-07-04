@@ -138,13 +138,13 @@ export default function CameraScene() {
         <div className="absolute w-full text-center z-10 pointer-events-none">
           <h1
             ref={headingRef}
-            className="text-white font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-medium text-[48px] xl:text-[76px] md:text-[56px] opacity-0 translate-y-16"
+            className="text-white font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-medium text-[48px] xl:text-[76px] lg:text-[52px]  opacity-0 translate-y-16"
           >
             Ahead of What’s Ahead
           </h1>
           <p
             ref={subheadingRef}
-            className="text-[#ABABAB] font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-normal text-[28px] xl:text-[28px] md:text-[28px] opacity-0 translate-y-16"
+            className="text-[#ABABAB] font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-normal text-[28px] xl:text-[28px] lg:text-[24px]  md:text-[28px] opacity-0 translate-y-16"
           >
             Discover Pioneer’s Smart Dashcam Range
           </p>
@@ -169,7 +169,7 @@ export default function CameraScene() {
             </Suspense>
           </Canvas>
         </div>
-        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-96 z-20 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D] to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-60 z-20 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D] to-transparent" />
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import { Typography } from "@/components/CommonComponents/Typography/Typography";
 import Image from "next/image";
 import React from "react";
 
@@ -42,10 +43,10 @@ const features = [
 
 export default function ProductComparisonTable() {
   return (
-    <section className="b text-white px-4 md:px-8 py-20 max-w-7xl  xl:max-w-[90%] mx-auto">
+    <section className="b text-white px-4 md:px-8 py-20 max-w-6xl  xl:max-w-[90%] mx-auto mt-20">
       <div className="max-w-7xl mx-auto text-center mb-16">
-        <h2 className="text-2xl md:text-4xl font-semibold mb-2">Which One’s Built for You?</h2>
-        <p className="text-gray-400 text-sm md:text-base">Compare the key features across each model</p>
+        <Typography variant="h2" className="!font-medium mb-2">Which One’s Built for You?</Typography>
+        <p className="text-[#ABABAB]/80 text-sm md:text-base">Compare the key features across each model</p>
       </div>
 
       <div className="overflow-x-auto">
@@ -55,7 +56,7 @@ export default function ProductComparisonTable() {
           {products.map((product, i) => (
             <div key={i} className="text-center space-y-4">
               <Image src={product.image} alt={product.name} width={120} height={80} className="mx-auto w-40 h-30 object-contain" />
-              <h3 className="text-sm font-semibold">{product.name}</h3>
+              <h3 className="text-[15px] font-semibold">{product.name}</h3>
               <div className="flex flex-col items-center">
                 <a href={product.link} className="text-[#AD2239] text-sm  mb-1 font-extrabold">
                   Learn More &gt;

@@ -21,12 +21,12 @@ type Variant =
 const variantClasses: Record<Variant, string> = {
   h1: "text-[48px] xl:text-[76px] lg:text-[52px] font-bold",
   h2: "text-3xl md:text-4xl font-semibold",
-  h3: "text-2xl md:text-3xl lg:text-[40px] font-semibold",
-  h4: "text-[28px] xl:text-[28px] lg:text-[24px]  md:text-[28px] font-semibold",
+  h3: "text-[24px]  md:text-[32px] font-semibold",
+  h4: "text-[19px] md:text-[17px] lg2:text-[21px]   font-semibold",
   subtitle: "text-lg font-medium text-white/80",
-  body: "text-base text-white/90",
+  body: "text-base lg:text-[28px] md:text-base text-white",
   caption: "text-sm text-white/60",
-  label: "text-xs uppercase tracking-wide text-white/50",
+  label: "text-[16px] xl:text-lg font-normal text-[#DFDFDF]  mb-4 whitespace-pre-line",
 };
 
 type TypographyProps<T extends ElementType> = {

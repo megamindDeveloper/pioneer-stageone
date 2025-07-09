@@ -4,11 +4,19 @@ import VRECH320SC from "../../CommonComponents/models/VRECH320SC";
 import VRECH120SC from "../../CommonComponents/models/VRECH120SC";
 import DashcamCard from "./DashcamCard";
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
+import { useResponsiveScale } from "@/hooks/useResponsiveScale";
 
 export default function DashcamShowcase() {
+  const scaleZ820DC = useResponsiveScale(
+    [0.6, 0.6, 0.6],  // xl
+    [0.4, 0.5, 0.5],  // lg
+    [0.45, 0.45, 0.45],  // md
+    [0.4, 0.4, 0.4],  // sm
+    [0.35, 0.35, 0.35]   // xs
+  );
   return (
-    <section className="relative min-h-screen py-12 px-4 ">
-      <Typography variant="h3" className="text-center text-white mb-10">Discover Pioneer's Smart Dashcam Range</Typography>
+    <section className="relative min-h-screen py-12 px-4 mt-12">
+     <Typography variant="h2" className="!font-medium mb-2 text-center text-white pb-24">Discover Pioneer's Smart Dashcam Range</Typography>
 
       {/* Grid container with relative positioning */}
       <div className="relative max-w-7xl xl:max-w-[90%] mx-auto h-[100vh]">
@@ -28,8 +36,8 @@ export default function DashcamShowcase() {
               Dash Cam with Night Vision AI`}
               
             features={["4K Resolution\nFront Camera", "Full HD\nRear Camera", "Intelligent\nNight Vision AI", "WDR & HDR\nRecording", "ADAS\nAlerts"]}
-            defaultScale={[0.6, 0.6, 0.6]}
-            hoveredScale={[0.6, 0.6, 0.6]}
+            defaultScale={scaleZ820DC}
+            hoveredScale={scaleZ820DC}
             defaultPosition={[0, 0.6, 0]}
             hoveredPosition={[0.9, 0.6, 0]}
             defaultRotation={[-0.2, 0, 0]}

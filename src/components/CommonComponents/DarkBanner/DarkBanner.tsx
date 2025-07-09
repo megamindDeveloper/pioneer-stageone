@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Typography } from "../Typography/Typography";
 
 interface DarkBannerProps {
   title: string;
@@ -55,15 +56,15 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
         transition={{ duration: 0.4 }}
         className="flex-1 z-20"
       >
-        <h2 className="text-2xl md:text-3xl font-medium lg:text-5xl mb-3 whitespace-pre-line">
+        <h2 className="!text-[42px] font-medium lg:text-5xl mb-3 whitespace-pre-line">
           {title}
         </h2>
-        <p className="text-sm md:text-base xl:text-lg font-normal text-[#DFDFDF] mb-4 whitespace-pre-line">
+        <Typography variant="label">
           {description}
-        </p>
+        </Typography>
         <Link href={buttonLink}>
           <p className="bg-white text-black text-sm font-bold px-4 py-2 mt-16 rounded hover:bg-gray-200 transition inline-block w-fit">
-            {buttonLabel}
+            Learn More
           </p>
         </Link>
       </motion.div>

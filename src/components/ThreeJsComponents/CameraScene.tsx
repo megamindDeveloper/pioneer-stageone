@@ -6,11 +6,8 @@ import { Environment, useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
-import FadeLoader from "../CommonComponents/Loader";
 import Navbar from "../CommonComponents/Navbar";
 import { useProgress } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
-import { ObjectLoader } from "three";
 import { Typography } from "../CommonComponents/Typography/Typography";
 
 gsap.registerPlugin(ScrollTrigger);

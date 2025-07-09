@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { Typography } from '../Typography/Typography';
 
 interface OverlayCardProps {
   image: string;
@@ -36,9 +37,9 @@ export const OverlayCard: React.FC<OverlayCardProps> = ({ image, title, descript
         <h3 className="text-2xl md:text-3xl font-medium lg:text-4xl mb-3 whitespace-pre-line">
           {title}
         </h3>
-        <p className="text-sm md:text-base xl:text-lg font-normal text-[#DFDFDF] mb-4 whitespace-pre-line">
+        <Typography variant="label">
           {description}
-        </p>
+        </Typography>
       </div>
     </motion.div>
   );

@@ -92,10 +92,10 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
     >
       <div ref={contentGroupRef} className="relative w-full h-full">
         {/* Top Left Info */}
-        <div className="absolute top-16 left-16 text-gray-400 leading-tight">
+        <div className="absolute top-24 left-16 text-gray-400 leading-tight">
           <p>{resolution}</p>
         </div>
-        <div className="absolute top-24 left-16 text-gray-400 leading-tight">
+        <div className="absolute top-16 left-16 text-gray-400 leading-tight">
          <Image src={image} alt="logo" className="w-32"/>
         </div>
 

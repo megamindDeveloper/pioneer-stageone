@@ -5,6 +5,7 @@ import { useRef, useState, useEffect, JSX } from "react";
 import { ObjectLoader, Group, Vector3, Euler } from "three";
 import { motion } from "framer-motion";
 import { Environment } from "@react-three/drei";
+import { Typography } from "@/components/CommonComponents/Typography/Typography";
 
 // ✅ 3D Group wrapper to use useFrame inside Canvas
 const AnimatedModel = ({
@@ -136,7 +137,7 @@ const DashcamCard = ({
         >
           <div className="flex flex-col justify-center items-center gap-2">
             <motion.h3
-              className="text-xl font-medium text-[36px] font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+              className="font-medium text-base lg:text-[28px] font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
               initial={{ opacity: 0, y: 10 }}
               animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -166,9 +167,9 @@ const DashcamCard = ({
         transition={{ duration: 0.3 }}
         className="absolute bottom-24 left-1/2 -translate-x-1/2"
       >
-        <p className="text-white xl:text-[28px] md:text-base text-center font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-medium">
+        <Typography variant="body" className="text-white  text-center font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-medium">
           {title}
-        </p>
+        </Typography>
       </motion.div>
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 grid grid-cols-5 w-full text-center gap-4 text-[#ABABAB] px-12">

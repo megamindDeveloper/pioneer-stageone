@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import image from "../../../public/logo/image.png";
 const quickLinks = [
   "Dashcam Manual",
   "Software & Firmware",
@@ -16,10 +16,10 @@ const navLinks = ["Our Products", "Our History", "Pioneer Global", "Contact Us"]
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-[#660000] to-transparent text-white pt-12 pb-6 px-4 mt-32">
-      <div className="max-w-7xl xl:max-w-[90%] mx-auto w-full">
+    <footer className="bg-gradient-to-t from-[#AD2239] via- to-transparent text-white pt-24 pb-6 px-4 mt-32">
+      <div className="max-w-7xl  mx-auto w-full">
         {/* Top Links */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-sm md:text-base text-white/90 mb-12 text-center sm:text-left">
+        <div className="pl-20 grid grid-cols-2 sm:grid-cols-4 gap-6 !text-sm md:text-base text-white/90 mb-12 lg:mb-32 text-justify sm:text-left font-medium ">
           {quickLinks.map((link, i) => (
             <Link href="#" key={i} className="hover:text-white transition">
               {link}
@@ -28,21 +28,20 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/20 my-4" />
 
         {/* Middle Section */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-center text-sm md:text-base gap-6">
           {/* Logo & Nav Links */}
-          <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex flex-col md:flex-row md:items-center  gap-6">
             <Image
-              src="/logo-white.svg" // ⬅️ Replace with your actual white logo
+              src={image} // ⬅️ Replace with your actual white logo
               alt="Pioneer"
-              width={100}
+              width={200}
               height={40}
             />
-            <div className="flex gap-4 flex-wrap text-white/80">
+            <div className="flex gap-4 flex-wrap text-white/80 justify-center items-center pt-3">
               {navLinks.map((link, i) => (
-                <Link href="#" key={i} className="hover:text-white transition">
+                <Link href="#" key={i} className="hover:text-white transition !text-sm">
                   {link}
                 </Link>
               ))}
@@ -50,22 +49,21 @@ export default function Footer() {
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-4 justify-center md:justify-end">
+          <div className="flex gap-1 justify-center md:justify-end">
             <Link href="#" aria-label="Instagram">
-              <Image src="/icons/instagram.svg" alt="Instagram" width={20} height={20} />
+              <Image src="/svgs/instagram.svg" alt="Instagram" width={20} height={20} />
             </Link>
             <Link href="#" aria-label="Other">
-              <Image src="/icons/other.svg" alt="Other Icon" width={20} height={20} />
+              <Image src="/svgs/meta.svg" alt="Other Icon" width={20} height={20} />
             </Link>
           </div>
         </div>
+        <div className="border-t border-white/20 my-4" />
 
         {/* Bottom */}
         <div className="text-center text-xs text-white/60 mt-6">
-          <p>© 2025 Pioneer Gulf FZE. All Rights Reserved</p>
-          <p className="mt-1">
-            Powered by <span className="text-white">Megamind Advertising Private Limited</span>
-          </p>
+          <strong className="text-white/90">© 2025 Pioneer Gulf FZE. All Rights Reserved</strong>
+          <p className="mt-1">Powered by Megamind Advertising Private Limited</p>
         </div>
       </div>
     </footer>

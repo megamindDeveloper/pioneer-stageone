@@ -8,6 +8,7 @@ import { SideImageCard } from "@/components/CommonComponents/SideImageCard/SideI
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useInView } from "framer-motion";
+import { Typography } from "@/components/CommonComponents/Typography/Typography";
 
 gsap.registerPlugin(ScrollTrigger);
 type Tab = {
@@ -110,8 +111,8 @@ export default function ProductDetails() {
   const isInView = useInView(sectionRef, { margin: "-10px", once: false });
 
   return (
-    <section className="relative min-h-screen py-12 px-4 text-white max-w-7xl xl:max-w-[90%] mx-auto">
-      <h2 className="text-center text-2xl md:text-3xl font-semibold mb-4">What Matters Most When You Drive?</h2>
+    <section className="relative min-h-screen py-12 px-4 text-white max-w-6xl xl:max-w-[90%] mt-20  mx-auto">
+       <Typography variant="h2" className="!font-medium mb-2 text-center text-white ">What Matters Most When You Drive?</Typography>
       <h4 className="text-center text-lg md:text-2xl font-medium mb-10">Choose features for your drive</h4>
 
       {/* Tabs */}
@@ -122,7 +123,7 @@ export default function ProductDetails() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-6 py-4 font-medium transition-colors duration-300 border-b-2 border-transparent relative ${
-                activeTab === tab.id ? "text-white" : "text-gray-400 hover:text-gray-200"
+                activeTab === tab.id ? "text-white" : "text-white"
               }`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -137,7 +138,7 @@ export default function ProductDetails() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="text-sm text-white mt-1"
+                      className="text-sm text-[#ABABAB]/80 mt-1"
                     >
                       {tab.model}
                     </motion.div>
@@ -149,7 +150,7 @@ export default function ProductDetails() {
               {activeTab === tab.id && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
                   transition={{
                     type: "spring",
                     stiffness: 400,
@@ -170,7 +171,7 @@ export default function ProductDetails() {
             <DarkBanner {...currentContent.banner} />
           </AnimatePresence>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
           <OverlayCard {...currentContent.overlay} />
           <SideImageCard {...currentContent.sideCard} />
         </div>
@@ -182,13 +183,13 @@ export default function ProductDetails() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed bottom-8 left-1/2 flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-semibold px-6 py-3 rounded-full shadow-xl hover:bg-gray-200 transition-all text-sm md:text-base lg:text-[32px]"
+            className="fixed bottom-8 left-1/2 flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-semibold px-6 py-3 rounded-full shadow-xl hover:bg-gray-200 transition-all text-sm md:text-base lg:text-[17px]"
             href={currentContent.banner.buttonLink}
           >
             Explore the {tabs.find((t) => t.id === activeTab)?.model} Now{" "}
             <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.1875" y="0.317383" width="42.6269" height="42.4082" rx="21.2041" fill="#4F4C4C" />
-              <path d="M19.1875 26.7256L23.8145 21.5215L19.1875 16.3174" stroke="white" stroke-width="4" stroke-linecap="round" />
+              <path d="M19.1875 26.7256L23.8145 21.5215L19.1875 16.3174" stroke="white" strokeWidth="4" strokeLinecap="round" />
             </svg>
           </motion.a>
         )}

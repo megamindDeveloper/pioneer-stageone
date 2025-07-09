@@ -14,13 +14,13 @@ const features = [
   {
     id: "control",
     title: "Control That Goes Beyond the Camera",
-    content: `With intuitive controls and app connectivity, you stay in charge—before, during, and after the drive.`,
+    content: `With the Pioneer ZenVue app, you can instantly view, download, and share your footage, turning your smartphone into a seamless command center for your dashcam.`,
     image: "/featureImages/feature2.png",
   },
   {
     id: "conditions",
     title: "Built for Real-World Conditions",
-    content: `Rugged and reliable, these dashcams are tested for heat, vibration, and unexpected bumps.`,
+    content: `With STARVIS night vision, GPS, ADAS and 24/7 parking protection, Pioneer dashcams deliver clear footage, smart safety and all-round confidence in one seamless system.`,
     image: "/featureImages/feature3.png",
   },
 ];
@@ -31,7 +31,7 @@ export default function FeatureAccordion() {
   const currentFeature = features.find((f) => f.id === activeId);
 
   return (
-    <section className="bg-black text-white p-8 md:p-12 rounded-3xl max-w-7xl xl:max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <section className="bg-black text-white p-8 md:p-12 rounded-3xl max-w-6xl  mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-20">
       {/* Accordion Content */}
       <div>
         {features.map((feature) => {
@@ -54,7 +54,11 @@ export default function FeatureAccordion() {
                       –
                     </motion.span>
                   ) : (
-                    "+"
+                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="15.8203" y1="0.380859" x2="15.8203" y2="30.3809" stroke="#E2E2E2" strokeWidth="3"/>
+                    <line x1="30.5703" y1="15.6309" x2="0.570312" y2="15.6309" stroke="#E2E2E2" strokeWidth="3"/>
+                    </svg>
+                    
                   )}
                 </span>
               </div>

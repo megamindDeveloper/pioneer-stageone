@@ -1,0 +1,98 @@
+{
+	"metadata": {
+	  "version": 4.7,
+	  "type": "Object",
+	  "generator": "Object3D.toJSON"
+	},
+	"object": {
+	  "uuid": "root-uuid",
+	  "type": "Scene",
+	  "name": "CombinedLights",
+	  "children": [
+		{
+		  "uuid": "c1424272-4dd7-4870-9c75-afaca7ba1488",
+		  "type": "SpotLight",
+		  "name": "SpotLight",
+		  "layers": 1,
+		  "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,1.1541942149135487,0.01404974217605659,2.2134617831635683,1],
+		  "up": [0,1,0],
+		  "color": 16777215,
+		  "intensity": 5,
+		  "distance": 13.48,
+		  "angle": 0.3141592653589793,
+		  "decay": 2.7,
+		  "penumbra": 0,
+		  "shadow": {
+			"camera": {
+			  "uuid": "bdd02eb5-cdaf-4cc3-9d41-15d975e334a1",
+			  "type": "PerspectiveCamera",
+			  "layers": 1,
+			  "up": [0,1,0],
+			  "fov": 50,
+			  "zoom": 1,
+			  "near": 0.5,
+			  "far": 500,
+			  "focus": 10,
+			  "aspect": 1,
+			  "filmGauge": 35,
+			  "filmOffset": 0
+			}
+		  },
+		  "target": "233f93b6-bb51-42e0-9988-3f7b146e2791"
+		},
+		{
+		  "uuid": "29bb5e3e-2e03-4ea1-acf8-aee92d97e5df",
+		  "type": "DirectionalLight",
+		  "name": "DirectionalLight",
+		  "layers": 1,
+		  "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-0.021679019925040843,1.6925336598757825,0,1],
+		  "up": [0,1,0],
+		  "color": 16777215,
+		  "intensity": 5,
+		  "shadow": {
+			"camera": {
+			  "uuid": "76d6d9d7-af94-466c-9ca0-fed5d0ef2d51",
+			  "type": "OrthographicCamera",
+			  "layers": 1,
+			  "up": [0,1,0],
+			  "zoom": 1,
+			  "left": -5,
+			  "right": 5,
+			  "top": 5,
+			  "bottom": -5,
+			  "near": 0.5,
+			  "far": 500
+			}
+		  },
+		  "target": "93f53afc-acbe-4d75-8c93-2d0f32578de3"
+		},
+		{
+		  "uuid": "1c56115b-3a07-4c77-b46a-8b765cc5d0af",
+		  "type": "DirectionalLight",
+		  "name": "DirectionalLight",
+		  "layers": 1,
+		  "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-3.5999504292889766,1.8334732940331722,-2.428083523204304,1],
+		  "up": [0,1,0],
+		  "color": 16777215,
+		  "intensity": 5,
+		  "shadow": {
+			"camera": {
+			  "uuid": "eb2a00ff-5b18-47e5-8829-83becf16043c",
+			  "type": "OrthographicCamera",
+			  "layers": 1,
+			  "up": [0,1,0],
+			  "zoom": 1,
+			  "left": -5,
+			  "right": 5,
+			  "top": 5,
+			  "bottom": -5,
+			  "near": 0.5,
+			  "far": 500
+			}
+		  },
+		  "target": "ac851c0f-76a4-41f5-90e8-6abdf8560334"
+		}
+	  ]
+	}
+  }
+  

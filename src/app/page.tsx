@@ -3,8 +3,13 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useEffect } from "react";
 import gsap from "gsap";
-import Navbar from "../app/components/Navbar";
-const CameraScene = dynamic(() => import("./components/CameraScene"), {
+import DashcamShowcase from "../components/MainPageComponents/DashcamShowcase/DashcamShowcase";
+
+import ProductDetials from "../components/MainPageComponents/ProductDetailPage/ProductDetials";
+import ProductComparisonTable from "@/components/MainPageComponents/ProductComparisonTable/ProductComparisonTable";
+import FeatureAccordion from "@/components/MainPageComponents/FeatureAccordion/FeatureAccordion";
+import Footer from "@/components/CommonComponents/Footer";
+const CameraScene = dynamic(() => import("../components/ThreeJsComponents/CameraScene"), {
   ssr: false,
 });
 
@@ -24,8 +29,12 @@ export default function Home() {
       </Head>
 
       <CameraScene />
-
-
+      <DashcamShowcase />
+      <ProductDetials />
+      <ProductComparisonTable />
+      <FeatureAccordion/>
+      <Footer/>
+      {/* <CameraScenetest/> */}
     </div>
   );
 }

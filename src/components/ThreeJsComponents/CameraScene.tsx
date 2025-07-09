@@ -6,9 +6,12 @@ import { Environment, useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
-import FadeLoader from "./Loader";
-import Navbar from "./Navbar";
+import FadeLoader from "../CommonComponents/Loader";
+import Navbar from "../CommonComponents/Navbar";
 import { useProgress } from "@react-three/drei";
+import { useLoader } from "@react-three/fiber";
+import { ObjectLoader } from "three";
+import { Typography } from "../CommonComponents/Typography/Typography";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,8 +23,16 @@ const degToRad = (degrees: number) => degrees * (Math.PI / 180);
 /**
  * ✅ CameraModel
  */
+
+function DirectionalLightFromJson({ url }: { url: string }) {
+  const light = useLoader(ObjectLoader, url);
+
+  // Optional: ensure only light gets added (e.g., no helper meshes)
+  return <primitive object={light} />;
+}
+
 function CameraModel({ onModelReady }: { onModelReady: () => void }) {
-  const { scene } = useGLTF("/models/VREC-Z820DC_New_TEST09.glb");
+  const { scene } = useGLTF("/models/VREC-Z820DC_LOW POLY1.glb");
   const group = useRef<THREE.Group>(null);
 
   useEffect(() => {
@@ -136,18 +147,16 @@ export default function CameraScene() {
 
         {/* Headings and content */}
         <div className="absolute w-full text-center z-10 pointer-events-none">
-          <h1
-            ref={headingRef}
-            className="text-white font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-medium text-[48px] xl:text-[76px] lg:text-[52px]  opacity-0 translate-y-16"
-          >
+          <Typography variant="h1" ref={headingRef} className="text-white  font-medium   opacity-0 translate-y-16">
             Ahead of What’s Ahead
-          </h1>
-          <p
+          </Typography>
+          <Typography
+            variant="h4"
             ref={subheadingRef}
-            className="text-[#ABABAB] font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-normal text-[28px] xl:text-[28px] lg:text-[24px]  md:text-[28px] opacity-0 translate-y-16"
+            className="text-[#ABABAB]  !font-normal  opacity-0 translate-y-16"
           >
             Discover Pioneer’s Smart Dashcam Range
-          </p>
+          </Typography>
         </div>
         <div ref={canvasRef} className="opacity-0 transition-opacity">
           {/* 3D Scene */}
@@ -163,9 +172,10 @@ export default function CameraScene() {
           >
             <Suspense fallback={false}>
               <CameraModel onModelReady={() => setIsModelReady(true)} />
-              <group rotation={[4, 2, 0]}>
-                <Environment files="/hdri/studio_small_06_2k.hdr" background={false} blur={100} />
-              </group>
+              <Environment
+                files="/hdri/07.hdr"
+                background={false} // Keep dark background
+              />
             </Suspense>
           </Canvas>
         </div>
@@ -175,4 +185,4 @@ export default function CameraScene() {
   );
 }
 
-useGLTF.preload("/models/VREC-Z820DC_New_TEST09.glb");
+useGLTF.preload("/models/VREC-Z820DC_LOW POLY1.glb");

@@ -138,7 +138,7 @@ export default function CameraScene() {
   return (
     <>
       {/* Loader sits on top */}
-      {showLoader && <FadeLoader isModelReady={isModelReady} />}
+  {/* <FadeLoader isModelReady={isModelReady} /> */}
 
       <div id="scroll-container" className="relative overflow-hidden bg-gradient-to-t">
         <div ref={navbarRef} className="opacity-0">

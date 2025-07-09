@@ -22,7 +22,7 @@ export default function Home() {
         </div>
       )}
       <div className="w-full h-full bg-gradient-to-b from-[#0D0D0D] to-transparent">
-        <CameraScene />
+        <CameraScene onModelReady={() => setModelReady(true)} />
         <DashcamShowcase />
         <ProductDetials />
         <ProductComparisonTable />

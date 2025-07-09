@@ -24,13 +24,6 @@ const degToRad = (degrees: number) => degrees * (Math.PI / 180);
  * ✅ CameraModel
  */
 
-function DirectionalLightFromJson({ url }: { url: string }) {
-  const light = useLoader(ObjectLoader, url);
-
-  // Optional: ensure only light gets added (e.g., no helper meshes)
-  return <primitive object={light} />;
-}
-
 function CameraModel({ onModelReady }: { onModelReady: () => void }) {
   const { scene } = useGLTF("/models/VREC-Z820DC_LOW POLY1.glb");
   const group = useRef<THREE.Group>(null);
@@ -94,7 +87,7 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
 /**
  * ✅ CameraScene
  */
-export default function CameraScene() {
+export default function CameraScene({ onModelReady }: { onModelReady: () => void }) {
   const [isModelReady, setIsModelReady] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subheadingRef = useRef<HTMLParagraphElement>(null);
@@ -102,6 +95,7 @@ export default function CameraScene() {
 
   useEffect(() => {
     if (isModelReady) {
+      onModelReady()
       // Delay text animation until model animation finishes
       const timer = setTimeout(() => {
         const tl = gsap.timeline();
@@ -138,7 +132,7 @@ export default function CameraScene() {
   return (
     <>
       {/* Loader sits on top */}
-  {/* <FadeLoader isModelReady={isModelReady} /> */}
+      {/* <FadeLoader isModelReady={isModelReady} /> */}
 
       <div id="scroll-container" className="relative overflow-hidden bg-gradient-to-t">
         <div ref={navbarRef} className="opacity-0">
@@ -150,11 +144,7 @@ export default function CameraScene() {
           <Typography variant="h1" ref={headingRef} className="text-white  font-medium   opacity-0 translate-y-16">
             Ahead of What’s Ahead
           </Typography>
-          <Typography
-            variant="h4"
-            ref={subheadingRef}
-            className="text-[#ABABAB]  !font-normal  opacity-0 translate-y-16"
-          >
+          <Typography variant="h4" ref={subheadingRef} className="text-[#ABABAB]  !font-normal  opacity-0 translate-y-16">
             Discover Pioneer’s Smart Dashcam Range
           </Typography>
         </div>

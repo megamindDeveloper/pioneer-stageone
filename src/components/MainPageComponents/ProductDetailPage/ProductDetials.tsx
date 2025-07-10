@@ -130,7 +130,7 @@ export default function ProductDetails() {
             <motion.button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-4 font-medium transition-colors duration-300 border-b-2 border-transparent relative ${
+              className={`px-6 py-4 font-medium transition-colors duration-300 border-b-2 border-transparent cursor-pointer relative ${
                 activeTab === tab.id ? "text-white" : "text-white"
               }`}
               whileHover={{ scale: 1.02 }}

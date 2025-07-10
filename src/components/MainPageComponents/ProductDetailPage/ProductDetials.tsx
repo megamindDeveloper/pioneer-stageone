@@ -29,7 +29,7 @@ const contentMap = {
     banner: {
       title: "Hard to see on unlit roads?",
       description: `Ever missed something on a dark road or under harsh headlights?\nThe AI night vision picks up details clearly, even in low light or \nrainy evening drives.`,
-      imageSrc: "/modelImages/VREC-Z820DC/Image1.png",
+      imageSrc: "/modelImages/VREC-Z820DC/image1.png",
       buttonLabel: "Learn More",
       buttonLink: "/products/night-vision-dashcam",
       imageWidth: 700,

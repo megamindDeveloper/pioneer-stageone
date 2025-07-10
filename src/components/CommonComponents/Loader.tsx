@@ -27,21 +27,17 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
     return () => clearInterval(interval);
   }, []);
 
-  // Timer & resolution
   useEffect(() => {
-    let elapsedSeconds = 0;
+    const startTime = Date.now();
   
     const interval = setInterval(() => {
-      elapsedSeconds += 1;
-      const hours = String(Math.floor(elapsedSeconds / 3600)).padStart(2, "0");
-      const minutes = String(Math.floor((elapsedSeconds % 3600) / 60)).padStart(2, "0");
-      const seconds = String(elapsedSeconds % 60).padStart(2, "0");
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const hours = String(Math.floor(elapsed / 3600)).padStart(2, "0");
+      const minutes = String(Math.floor((elapsed % 3600) / 60)).padStart(2, "0");
+      const seconds = String(elapsed % 60).padStart(2, "0");
   
       setTimer(`${hours}:${minutes}:${seconds}`);
     }, 1000);
-  
-    // Set initial time immediately without delay
-    setTimer("00:00:00");
   
     return () => clearInterval(interval);
   }, []);

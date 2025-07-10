@@ -45,7 +45,9 @@ export default function ProductComparisonTable() {
   return (
     <section className="b text-white px-4 md:px-8 py-20 max-w-6xl  xl:max-w-[90%] mx-auto mt-20">
       <div className="max-w-7xl mx-auto text-center mb-16">
-        <Typography variant="h2" className="!font-medium mb-2">Which One’s Built for You?</Typography>
+        <Typography variant="h2" className="!font-medium mb-2">
+          Which One’s Built for You?
+        </Typography>
         <p className="text-[#ABABAB]/80 text-sm md:text-base">Compare the key features across each model</p>
       </div>
 
@@ -55,10 +57,17 @@ export default function ProductComparisonTable() {
           <div />
           {products.map((product, i) => (
             <div key={i} className="text-center space-y-4">
-              <Image src={product.image} alt={product.name} width={120} height={80} className="mx-auto w-40 h-30 object-contain" />
+              <div className="relative w-40 h-28 mx-auto">
+                {/* Gradient Overlay */}
+            
+
+                {/* Product Image */}
+                <Image src={product.image} alt={product.name} fill className="object-contain w-full h-full relative z-0" />
+              </div>
+
               <h3 className="text-[15px] font-semibold">{product.name}</h3>
               <div className="flex flex-col items-center">
-                <a href={product.link} className="text-[#AD2239] text-sm  mb-1 font-extrabold">
+                <a href={product.link} className="text-[#AD2239] text-xs  mb-1 font-extrabold">
                   Learn More &gt;
                 </a>
                 <div className="my-6 w-[70%] h-[1px] bg-[#4B4B4B]/80" />
@@ -68,7 +77,7 @@ export default function ProductComparisonTable() {
           {/* Feature Rows */}
           {features.map((feature, rowIndex) => (
             <React.Fragment key={feature}>
-              <div className="py-6  text-[20px] font-extrabold">{feature}</div>
+              <div className="py-6  text-[20px] font-bold">{feature}</div>
               {products.map((product, colIndex) => (
                 <div key={colIndex} className="py-6  text-sm text-center text-[#ABABAB] whitespace-pre-line">
                   {product.features[rowIndex]}

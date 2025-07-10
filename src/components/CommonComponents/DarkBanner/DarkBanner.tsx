@@ -13,7 +13,9 @@ interface DarkBannerProps {
   buttonLink: string;
   className?: string;
   imageWidth?: number;
+  imagePositionClass?: string; // ✅ new
 }
+
 
 const DarkBanner: React.FC<DarkBannerProps> = ({
   title,
@@ -24,10 +26,11 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
   buttonLink,
   className,
   imageWidth = 800,
+  imagePositionClass = "bottom-0 left-[48%]"
 }) => {
   return (
     <section
-      className={`relative bg-black h-[380px] text-white bottom-0 rounded-xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 ${className}`}
+      className={`relative bg-black py-4 mt-0  pl-12 text-white bottom-0 rounded-xl  flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 ${className}`}
     >
       {/* Image */}
       <motion.div
@@ -36,7 +39,7 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.4 }}
-        className="absolute bottom-0 left-1/2 z-10"
+        className={`absolute z-10 ${imagePositionClass}`} 
       >
         <Image
           src={imageSrc}
@@ -56,7 +59,7 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
         transition={{ duration: 0.4 }}
         className="flex-1 z-20"
       >
-        <h2 className="!text-[42px] font-medium lg:text-5xl mb-3 whitespace-pre-line">
+        <h2 className="!font-medium text-[41px] leading-12 whitespace-pre-line">
           {title}
         </h2>
         <Typography variant="label">

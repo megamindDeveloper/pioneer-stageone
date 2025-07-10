@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 
 type Vector3 = [number, number, number];
 
-export function useResponsiveScale(
+export function useResponsivePosition(
   xl: Vector3,
   lg: Vector3,
   md: Vector3,
   sm: Vector3,
   xs: Vector3
 ): Vector3 {
-  const [scale, setScale] = useState<Vector3>(xl);
+  const [position, setPosition] = useState<Vector3>(xl);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width >= 1280) setScale(xl);
-      else if (width >= 1024) setScale(lg);
-      else if (width >= 768) setScale(md);
-      else if (width >= 640) setScale(sm);
-      else setScale(xs);
+      if (width >= 1280) setPosition(xl);
+      else if (width >= 1024) setPosition(lg);
+      else if (width >= 768) setPosition(md);
+      else if (width >= 640) setPosition(sm);
+      else setPosition(xs);
     };
 
     handleResize();
@@ -26,5 +26,5 @@ export function useResponsiveScale(
     return () => window.removeEventListener("resize", handleResize);
   }, [xl, lg, md, sm, xs]);
 
-  return scale;
+  return position;
 }

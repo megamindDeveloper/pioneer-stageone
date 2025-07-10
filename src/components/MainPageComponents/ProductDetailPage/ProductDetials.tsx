@@ -33,6 +33,7 @@ const contentMap = {
       buttonLabel: "Learn More",
       buttonLink: "/products/night-vision-dashcam",
       imageWidth: 700,
+      imagePositionClass: "bottom-0 left-[50%] right-6" 
     },
     overlay: {
       image: "/modelImages/VREC-Z820DC/image2.png",
@@ -52,6 +53,7 @@ const contentMap = {
       imageSrc: "/modelImages/VREC-H520DC/image1.png",
       buttonLabel: "Explore",
       buttonLink: "/products/wide-display",
+      imagePositionClass: "bottom-0 left-[42%]" 
     },
     overlay: {
       image: "/modelImages/VREC-H520DC/image2.png",
@@ -71,6 +73,7 @@ const contentMap = {
       imageSrc: "/modelImages/VREC-H320SC/Image1.png",
       buttonLabel: "See How",
       buttonLink: "/products/gps-dashcam",
+      imagePositionClass: "bottom-0 left-[42%]" 
     },
     overlay: {
       image: "/modelImages/VREC-H320SC/image2.png",
@@ -90,16 +93,19 @@ const contentMap = {
       imageSrc: "/modelImages/VREC-H120SC/image1.png",
       buttonLabel: "Check It Out",
       buttonLink: "/products/compact-dashcam",
+      imagePositionClass: "bottom-0 left-[40%]" 
     },
     overlay: {
       image: "/modelImages/VREC-H120SC/image2.png",
       title: `Not a tech \nperson?`,
       description: `Quick setup and app-based \ncontrol make it beginner-friendly \nfrom day one.`,
+      imageClassName:"w-[100%]  h-[100%] mt-2"
     },
     sideCard: {
       image: "/modelImages/VREC-H120SC/image3.png",
       title: "Ever wish your \n footage looked\n sharper?",
       description: `1.5K recording gives you \nsharper footage without the bulk\n of bigger cams.`,
+      imageClassName:"w-[90%]  h-[80%]"
     },
   },
 };
@@ -112,8 +118,10 @@ export default function ProductDetails() {
 
   return (
     <section className="relative min-h-screen py-12 px-4 text-white max-w-6xl xl:max-w-[90%] mt-20  mx-auto">
-       <Typography variant="h2" className="!font-medium mb-2 text-center text-white ">What Matters Most When You Drive?</Typography>
-      <h4 className="text-center text-lg md:text-2xl font-medium mb-10">Choose features for your drive</h4>
+      <Typography variant="h2" className="!font-medium mb-2 text-center text-white ">
+        What Matters Most When You Drive?
+      </Typography>
+      <h4 className="text-center text-lg md:text-[18px] text-[#ABABAB]/80 !font-normal mb-10">Choose features for your drive</h4>
 
       {/* Tabs */}
       <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-44">
@@ -171,9 +179,33 @@ export default function ProductDetails() {
             <DarkBanner {...currentContent.banner} />
           </AnimatePresence>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-          <OverlayCard {...currentContent.overlay} />
-          <SideImageCard {...currentContent.sideCard} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          {(() => {
+            const currentModel = tabs.find((t) => t.id === activeTab)?.model;
+
+            if (currentModel === "VREC-H520DC") {
+              return (
+                <>
+                  <SideImageCard {...currentContent.sideCard} />
+                  <OverlayCard {...currentContent.overlay} />
+                </>
+              );
+            } else if (currentModel === "VREC-H120SC") {
+              return (
+                <>
+                  <SideImageCard {...currentContent.overlay} />
+                  <SideImageCard {...currentContent.sideCard} />
+                </>
+              );
+            }
+
+            return (
+              <>
+                <OverlayCard {...currentContent.overlay} />
+                <SideImageCard {...currentContent.sideCard} />
+              </>
+            );
+          })()}
         </div>
       </div>
       <AnimatePresence>
@@ -183,11 +215,11 @@ export default function ProductDetails() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed bottom-8 left-1/2 flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-semibold px-6 py-3 rounded-full shadow-xl hover:bg-gray-200 transition-all text-sm md:text-base lg:text-[17px]"
+            className="fixed bottom-8 left-1/2 flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-6 pr-3 py-3 rounded-full shadow-xl hover:bg-gray-200 transition-all text-sm md:text-base lg:text-[14px]"
             href={currentContent.banner.buttonLink}
           >
             Explore the {tabs.find((t) => t.id === activeTab)?.model} Now{" "}
-            <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="30" height="30" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.1875" y="0.317383" width="42.6269" height="42.4082" rx="21.2041" fill="#4F4C4C" />
               <path d="M19.1875 26.7256L23.8145 21.5215L19.1875 16.3174" stroke="white" strokeWidth="4" strokeLinecap="round" />
             </svg>

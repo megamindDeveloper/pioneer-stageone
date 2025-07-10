@@ -133,11 +133,11 @@ const DashcamCard = ({
           initial={{ opacity: 0, y: 20 }}
           animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="absolute inset-0 text-white p-4 grid grid-cols-2 items-center pointer-events-none"
+          className="absolute inset-0 text-white p-4 pb-10 grid grid-cols-2 items-center pointer-events-none"
         >
           <div className="flex flex-col justify-center items-center gap-2">
             <motion.h3
-              className="font-medium text-base lg:text-[28px] font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+              className="font-medium text-base lg:text-[24px] font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
               initial={{ opacity: 0, y: 10 }}
               animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -145,7 +145,7 @@ const DashcamCard = ({
               {title}
             </motion.h3>
             <motion.p
-              className="text-[16px] text-[#ABABAB]/60 text-center whitespace-pre-line font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+              className="text-[14px] text-[#ABABAB]/60 text-center whitespace-pre-line font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
               initial={{ opacity: 0, y: 10 }}
               animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.3, delay: 0.15 }}
@@ -165,9 +165,9 @@ const DashcamCard = ({
         animate={{ opacity: hovered ? 0 : 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="absolute bottom-24 left-1/2 -translate-x-1/2"
+        className="absolute xl:bottom-24 bottom-20 left-1/2 -translate-x-1/2"
       >
-        <Typography variant="body" className="text-white  text-center font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] font-medium">
+        <Typography variant="body" className="text-white  text-center ">
           {title}
         </Typography>
       </motion.div>
@@ -186,7 +186,7 @@ const DashcamCard = ({
             />
 
             {/* 👇 Always visible text */}
-            <p className="text-xs  font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] whitespace-pre-line">{feature}</p>
+            <p className="text-xs text-[#ABABAB]/80 font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] whitespace-pre-line">{feature}</p>
           </div>
         ))}
       </div>

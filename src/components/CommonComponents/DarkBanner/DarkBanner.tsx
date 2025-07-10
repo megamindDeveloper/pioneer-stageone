@@ -30,7 +30,7 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
 }) => {
   return (
     <section
-      className={`relative bg-black py-4 mt-0  pl-12 text-white bottom-0 rounded-xl  flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 ${className}`}
+      className={`relative bg-black py-4 mt-0 xl:mt-32 pl-12 text-white bottom-0 rounded-xl  flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 ${className}`}
     >
       {/* Image */}
       <motion.div

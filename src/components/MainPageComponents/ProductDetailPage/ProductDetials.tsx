@@ -70,7 +70,7 @@ const contentMap = {
     banner: {
       title: `Worried about missing \nthings in traffic?`,
       description: `ADAS alerts help you stay on track and aware of\n surroundings in city traffic or highways.`,
-      imageSrc: "/modelImages/VREC-H320SC/Image1.png",
+      imageSrc: "/modelImages/VREC-H320SC/image1.png",
       buttonLabel: "See How",
       buttonLink: "/products/gps-dashcam",
       imagePositionClass: "bottom-0 left-[42%]" 

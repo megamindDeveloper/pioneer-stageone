@@ -40,7 +40,7 @@ const contentMap = {
       description: `Frustrated with blurry footage\nwhen it matters most?\nThis one records in true 4K, so\nnumber plates and road signs\nstay sharp, even when you're\ndriving fast.`,
     },
     sideCard: {
-      image: "/modelImages/VREC-Z820DC/Image3.png",
+      image: "/modelImages/VREC-Z820DC/image3.png",
       title: `Glare ruining\nyour footage?`,
       description: `City lights, tunnels, and glare\ncan mess with footage. The\nSTARVIS sensor handles all\nthat smoothly, so your video\nalways comes out clear.`,
     },
@@ -49,17 +49,17 @@ const contentMap = {
     banner: {
       title: `Struggling to catch fine \ndetails on the road?`,
       description: `Records in crisp 2K with HDR and ideal for\n capturing fine details like plates and street signs.`,
-      imageSrc: "/modelImages/VREC-H520DC/Image1.png",
+      imageSrc: "/modelImages/VREC-H520DC/image1.png",
       buttonLabel: "Explore",
       buttonLink: "/products/wide-display",
     },
     overlay: {
-      image: "/modelImages/VREC-H520DC/Image2.png",
+      image: "/modelImages/VREC-H520DC/image2.png",
       title: `Feel like you're\n not seeing \nenough?`,
       description: `A wider field of vision\n paired with a large screen\nmakes it easy to see more\n of every drive.`,
     },
     sideCard: {
-      image: "/modelImages/VREC-H520DC/Image3.png",
+      image: "/modelImages/VREC-H520DC/image3.png",
       title: `Can’t trust\n your cam after\n sunset?`,
       description: `Enhanced night vision with\n STARVIS 2 delivers clear\n footage even in low-light \nconditions.`,
     },
@@ -73,12 +73,12 @@ const contentMap = {
       buttonLink: "/products/gps-dashcam",
     },
     overlay: {
-      image: "/modelImages/VREC-H320SC/Image2.png",
+      image: "/modelImages/VREC-H320SC/image2.png",
       title: `Dealing with\n sudden light\n changes while\n driving?`,
       description: `WDR automatically adjusts\n exposure in tunnels, shadows\n and bright sunlight.`,
     },
     sideCard: {
-      image: "/modelImages/VREC-H320SC/Image3.png",
+      image: "/modelImages/VREC-H320SC/image3.png",
       title: "Find tiny \n screens\n frustrating?",
       description: `Large display gives you better\n visual feedback while\n reviewing footage or adjusting \nsettings.`,
     },
@@ -87,17 +87,17 @@ const contentMap = {
     banner: {
       title: `Hate the bulky setups\n on your dash?`,
       description: `A sleek, minimal design that doesn’t take up\n space, perfect for discreet installs.`,
-      imageSrc: "/modelImages/VREC-H120SC/Image1.png",
+      imageSrc: "/modelImages/VREC-H120SC/image1.png",
       buttonLabel: "Check It Out",
       buttonLink: "/products/compact-dashcam",
     },
     overlay: {
-      image: "/modelImages/VREC-H120SC/Image2.png",
+      image: "/modelImages/VREC-H120SC/image2.png",
       title: `Not a tech \nperson?`,
       description: `Quick setup and app-based \ncontrol make it beginner-friendly \nfrom day one.`,
     },
     sideCard: {
-      image: "/modelImages/VREC-H120SC/Image3.png",
+      image: "/modelImages/VREC-H120SC/image3.png",
       title: "Ever wish your \n footage looked\n sharper?",
       description: `1.5K recording gives you \nsharper footage without the bulk\n of bigger cams.`,
     },

@@ -29,26 +29,19 @@ export default function FadeLoader({ isModelReady }: { isModelReady: boolean }) 
 
   // Timer & resolution
   useEffect(() => {
-    const start = performance.now();
-
-    const timerInterval = setInterval(() => {
-      const elapsed = Math.floor((performance.now() - start) / 1000);
-      const min = String(Math.floor(elapsed / 60)).padStart(2, "0");
-      const sec = String(elapsed % 60).padStart(2, "0");
-      setTimer(`00:${min}:${sec}`);
+    const startTime = Date.now();
+  
+    const interval = setInterval(() => {
+      const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+      const hours = String(Math.floor(elapsedSeconds / 3600)).padStart(2, "0");
+      const minutes = String(Math.floor((elapsedSeconds % 3600) / 60)).padStart(2, "0");
+      const seconds = String(elapsedSeconds % 60).padStart(2, "0");
+      setTimer(`${hours}:${minutes}:${seconds}`);
     }, 1000);
-
-    const updateResolution = () => {
-      setResolution(`${window.innerWidth}x${window.innerHeight}`);
-    };
-    updateResolution();
-    window.addEventListener("resize", updateResolution);
-
-    return () => {
-      clearInterval(timerInterval);
-      window.removeEventListener("resize", updateResolution);
-    };
+  
+    return () => clearInterval(interval);
   }, []);
+  
 
   // Entrance animation
   useEffect(() => {

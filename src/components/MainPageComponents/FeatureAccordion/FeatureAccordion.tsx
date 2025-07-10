@@ -67,16 +67,15 @@ export default function FeatureAccordion() {
                 <AnimatePresence>
                   {isActive && (
                     <motion.p
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.25, 0.1, 0.25, 1] // cubic-bezier for smoother curve
-                    }}
-                    className="mt-4 text-[#ABABAB] whitespace-pre-line"
-                  >
-                  
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{
+                        duration: 0.6,
+                        ease: [0.25, 0.1, 0.25, 1], // cubic-bezier for smoother curve
+                      }}
+                      className="mt-4 text-[#ABABAB] whitespace-pre-line"
+                    >
                       {feature.content}
                     </motion.p>
                   )}
@@ -90,22 +89,21 @@ export default function FeatureAccordion() {
       {/* Image Section - absolutely positioned on right */}
       <div className="absolute top-0 right-0 w-1/2 -mr-4 h-full z-10">
         <AnimatePresence mode="wait">
-        <motion.div
-  key={currentFeature?.id}
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  exit={{ opacity: 0 }}
-  transition={{
-    duration: 0.8,
-    ease: [0.25, 0.1, 0.25, 1] // same easing for smooth fade
-  }}
-  className="absolute inset-0"
->
-
+          <motion.div
+            key={currentFeature?.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 0.8,
+              ease: [0.25, 0.1, 0.25, 1], // same easing for smooth fade
+            }}
+            className="absolute inset-0"
+          >
             {/* ✅ Wrapper to support fill layout */}
             {currentFeature?.id === "innovation" && (
               <div className="relative w-full h-full pt-32">
-                 <Image
+                <Image
                   src={currentFeature?.image || ""}
                   alt={currentFeature?.title || ""}
                   width={500}

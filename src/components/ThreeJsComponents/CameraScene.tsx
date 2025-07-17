@@ -2,173 +2,131 @@
 
 import React, { Suspense, useRef, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment, useGLTF } from "@react-three/drei";
+import { Environment, useGLTF, useProgress } from "@react-three/drei";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
 import Navbar from "../CommonComponents/Navbar";
-import { useProgress } from "@react-three/drei";
 import { Typography } from "../CommonComponents/Typography/Typography";
 
-gsap.registerPlugin(ScrollTrigger);
-
-/**
- * ✅ Helper: degrees ➜ radians
- */
-const degToRad = (degrees: number) => degrees * (Math.PI / 180);
-
-/**
- * ✅ CameraModel
- */
+const degToRad = (deg: number) => deg * (Math.PI / 180);
 
 function CameraModel({ onModelReady }: { onModelReady: () => void }) {
   const { scene } = useGLTF("/models/VREC-Z820DC_LOW POLY1.glb");
-  const group = useRef<THREE.Group>(null);
+  const groupRef = useRef<THREE.Group>(null);
 
   useEffect(() => {
-    if (scene && group.current) {
-      group.current.visible = true;
+    if (!scene || !groupRef.current) return;
 
-      scene.traverse((node: any) => {
-        if (node.isMesh) {
-          node.material.side = THREE.DoubleSide;
-          node.castShadow = true;
-          node.receiveShadow = true;
-        }
+    groupRef.current.visible = true;
+
+    scene.traverse((node: any) => {
+      if (node.isMesh) {
+        node.material.side = THREE.DoubleSide;
+        node.castShadow = true;
+        node.receiveShadow = true;
+      }
+    });
+
+    groupRef.current.position.set(-2.88, -2, 12);
+    groupRef.current.scale.set(100, 100, 100);
+    groupRef.current.rotation.set(degToRad(-90), 0, 0);
+
+    onModelReady();
+
+    const timer = setTimeout(() => {
+      const isMobile = window.innerWidth <= 768;
+      const scale = isMobile ? 50 : 120;
+
+      gsap.to(groupRef.current!.position, { x: -1, y: -0.5, z: 0.5, duration: 6, ease: "slow(0.7, 0.7, false)" });
+      gsap.to(groupRef.current!.scale, { x: scale, y: scale, z: scale, duration: 6, ease: "slow(0.7, 0.7, false)" });
+      gsap.to(groupRef.current!.rotation, {
+        x: degToRad(-10),
+        y: degToRad(-40),
+        z: 0,
+        duration: 6,
+        ease: "slow(0.7, 0.7, false)",
       });
+    }, 1800);
 
-      // ✅ Set initial transform
-      group.current.position.set(-2.88, -2, 12);
-      group.current.scale.set(100, 100, 100);
-      group.current.rotation.set(degToRad(-90), degToRad(0), degToRad(0));
-
-      // ✅ Notify model is ready
-      onModelReady();
-
-      // ✅ 3-second delay before starting GSAP animation
-      const timer = setTimeout(() => {
-        const ctx = gsap.context(() => {
-          const tl = gsap.timeline({
-            defaults: { ease: "slow(0.7, 0.7, false)", duration: 6 },
-          });
-          const isMobile = window.innerWidth <= 768;
-          const scale = isMobile ? 50 : 120;
-          tl.to(group.current!.position, { x: -1, y: -0.5, z: 0.5 }, 0)
-            .to(group.current!.scale, { x: scale, y: scale, z: scale }, 0)
-            .to(
-              group.current!.rotation,
-              {
-                x: degToRad(-10),
-                y: degToRad(-40),
-                z: degToRad(0),
-              },
-              0
-            );
-        });
-
-        return () => ctx.revert();
-      }, 1800); // Delay of 3 seconds
-
-      // ✅ Cleanup timer on unmount
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, [scene, onModelReady]);
 
   return (
-    <group ref={group} visible={false}>
+    <group ref={groupRef} visible={false}>
       <primitive object={scene} />
     </group>
   );
 }
 
-/**
- * ✅ CameraScene
- */
 export default function CameraScene({ onModelReady }: { onModelReady: () => void }) {
   const [isModelReady, setIsModelReady] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subheadingRef = useRef<HTMLParagraphElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (isModelReady) {
-      onModelReady()
-      // Delay text animation until model animation finishes
-      const timer = setTimeout(() => {
-        const tl = gsap.timeline();
-        tl.fromTo(headingRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 3.5, ease: "power2.out" }).fromTo(
-          subheadingRef.current,
-          { opacity: 0, y: 60 },
-          { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
-          "-=1.8" // start slightly earlier
-        );
-      }, 2500); // model animation takes ~8s + 1s delay = start at 9s
-
-      return () => clearTimeout(timer);
-    }
-  }, [isModelReady]);
-  const { progress, loaded, total } = useProgress();
-  const [showLoader, setShowLoader] = useState(true);
   const canvasRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (loaded === total && isModelReady) {
-      setShowLoader(false);
+    if (isModelReady) {
+      onModelReady();
+
+      const tl = gsap.timeline({ delay: 2.5 });
+      tl.fromTo(headingRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 3.5, ease: "power2.out" }).fromTo(
+        subheadingRef.current,
+        { opacity: 0, y: 60 },
+        { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
+        "-=1.8"
+      );
     }
-  }, [loaded, total, isModelReady]);
+  }, [isModelReady]);
+
   useEffect(() => {
     if (isModelReady && canvasRef.current) {
       gsap.fromTo(canvasRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5, ease: "power2.out" });
     }
   }, [isModelReady]);
+
   useEffect(() => {
     if (isModelReady && navbarRef.current) {
-      gsap.fromTo(navbarRef.current, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out", delay: 0.3 });
+      gsap.fromTo(
+        navbarRef.current,
+        { opacity: 0, y: -20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power2.out",
+          delay: 0.3,
+        }
+      );
     }
   }, [isModelReady]);
+
   return (
-    <>
-      {/* Loader sits on top */}
-      {/* <FadeLoader isModelReady={isModelReady} /> */}
-
-      <div id="scroll-container" className="relative overflow-hidden bg-gradient-to-t">
-        <div ref={navbarRef} className="opacity-0">
-          <Navbar />
-        </div>
-
-        {/* Headings and content */}
-        <div className="absolute w-full text-center z-10 pointer-events-none">
-          <Typography variant="h1" ref={headingRef} className="text-white  font-medium   opacity-0 translate-y-16">
-            Ahead of What’s Ahead
-          </Typography>
-          <Typography variant="h4" ref={subheadingRef} className="text-[#ABABAB]  !font-normal  opacity-0 translate-y-16">
-            Discover Pioneer’s Smart Dashcam Range
-          </Typography>
-        </div>
-        <div ref={canvasRef} className="opacity-0 transition-opacity">
-          {/* 3D Scene */}
-          <Canvas
-            camera={{ position: [0, 1, 18], fov: 40 }}
-            style={{
-              width: "100vw",
-              height: "100vh",
-              position: "sticky",
-              top: 0,
-            }}
-            shadows
-          >
-            <Suspense fallback={false}>
-              <CameraModel onModelReady={() => setIsModelReady(true)} />
-              <Environment
-                files="/hdri/07.hdr"
-                background={false} // Keep dark background
-              />
-            </Suspense>
-          </Canvas>
-        </div>
-        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-50 xl:h-72 z-20 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D] to-transparent" />
+    <div id="scroll-container" className="relative overflow-hidden bg-gradient-to-t">
+      <div ref={navbarRef} className="opacity-0">
+        <Navbar />
       </div>
-    </>
+
+      <div className="absolute w-full text-center z-10 pointer-events-none flex justify-center flex-col">
+        <Typography variant="hero-section-heading" ref={headingRef} className="text-white  font-medium">
+          Drive With More Than Just Vision
+        </Typography>
+        <Typography variant="hero-body" ref={subheadingRef} className="text-[#ABABAB] pt-[0.8em]  !font-normal ">
+          Pioneer Smart Dashcams for Clarity, Safety and Control
+        </Typography>
+      </div>
+
+      <div ref={canvasRef} className="opacity-0 transition-opacity">
+        <Canvas camera={{ position: [0, 1, 18], fov: 40 }} style={{ width: "100vw", height: "100vh", position: "sticky", top: 0 }} shadows>
+          <Suspense fallback={false}>
+            <CameraModel onModelReady={() => setIsModelReady(true)} />
+            <Environment files="/hdri/07.hdr" background={false} />
+          </Suspense>
+        </Canvas>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-50 xl:h-72 z-20 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D] to-transparent" />
+    </div>
   );
 }
 

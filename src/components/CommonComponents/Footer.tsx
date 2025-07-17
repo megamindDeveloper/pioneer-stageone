@@ -21,7 +21,7 @@ export default function Footer() {
         {/* Top Links */}
         <div className="pl-20 grid grid-cols-2 sm:grid-cols-4 gap-6 !text-sm md:text-base text-white/90 mb-12 lg:mb-32 text-justify sm:text-left font-medium ">
           {quickLinks.map((link, i) => (
-            <Link href="#" key={i} className="hover:text-white transition font-['Helvetica_Neue','Helvetica','Arial','sans-serif']">
+            <Link href="#" key={i} className="hover:text-white xl:text-[14px] transition font-['Helvetica_Neue','Helvetica','Arial','sans-serif']">
               {link}
             </Link>
           ))}
@@ -39,7 +39,7 @@ export default function Footer() {
               width={150}
               height={40}
             />
-            <div className="flex gap-4 pl-8 flex-wrap text-white/80 justify-center items-center pt-3">
+            <div className="flex gap-4 pl-8 flex-wrap text-[12px] text-white/80 justify-center items-center pt-3">
               {navLinks.map((link, i) => (
                 <Link href="#" key={i} className="hover:text-white transition !text-sm">
                   {link}
@@ -61,9 +61,9 @@ export default function Footer() {
         <div className="border-t border-white/20 my-4" />
 
         {/* Bottom */}
-        <div className="text-center text-xs text-white/60 mt-6">
-          <strong className="text-white/90">© 2025 Pioneer Gulf FZE. All Rights Reserved</strong>
-          <p className="mt-1">Powered by Megamind Advertising Private Limited</p>
+        <div className="text-center  text-white/60 mt-6">
+          <strong className="text-white/90 text-[12px]">© 2025 Pioneer Gulf FZE. All Rights Reserved</strong>
+          <p className="mt-1 text-[8px]">Powered by Megamind Advertising Private Limited</p>
         </div>
       </div>
     </footer>

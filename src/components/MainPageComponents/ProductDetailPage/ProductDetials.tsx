@@ -118,14 +118,14 @@ export default function ProductDetails() {
 
   return (
     <section className="relative min-h-screen py-12 px-4 text-white max-w-6xl xl:max-w-[90%] mt-20  mx-auto">
-      <Typography variant="h2" className="!font-medium mb-2 text-center text-white ">
+       <Typography variant="card-heading" className="!font-medium  text-center text-white  px-6">
         What Matters Most When You Drive?
       </Typography>
-      <h4 className="text-center text-lg md:text-[18px] text-[#ABABAB]/80 !font-normal mb-10">Choose features for your drive</h4>
+      <Typography variant="card-body" className="text-[#ABABAB] xl:pt-[0.8em] lg:xl:pt-[0.6em]  text-center !font-normal ">Choose features for your drive</Typography>
 
       {/* Tabs */}
-      <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-44">
-        <div className="flex flex-wrap justify-between items-center">
+      <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-44 xl:mt-12">
+        <div className="flex  justify-between items-center">
           {tabs.map((tab) => (
             <motion.button
               key={tab.id}
@@ -137,8 +137,9 @@ export default function ProductDetails() {
               whileTap={{ scale: 0.98 }}
             >
               <div className="text-center relative z-10">
-                <div className="text-base">{tab.label}</div>
-                <AnimatePresence mode="wait">
+                <div className="md:block hidden text-[17px] font-bold">{tab.label}</div>
+                <div className="md:hidden block text-[12px] font-bold">{tab.model}</div>
+                <AnimatePresence mode="wait" >
                   {tab.model && activeTab === tab.id && (
                     <motion.div
                       key="model"
@@ -146,7 +147,7 @@ export default function ProductDetails() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="text-sm text-[#ABABAB]/80 mt-1"
+                      className="text-sm text-[#ABABAB]/80 mt-1 hidden md:block"
                     >
                       {tab.model}
                     </motion.div>
@@ -215,7 +216,7 @@ export default function ProductDetails() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed bottom-8 left-1/2 flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-6 pr-3 py-3 rounded-full shadow-xl hover:bg-gray-200 transition-all text-sm md:text-base lg:text-[14px]"
+            className="fixed bottom-8 left-1/2 md:w-auto w-[100%] px-auto flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-[24px] pr-4 py-[15px] rounded-full shadow-xl hover:bg-gray-200 transition-all text-[18px] md:text-base lg:text-[14px] xl:text-[17px]"
             href={currentContent.banner.buttonLink}
           >
             Explore the {tabs.find((t) => t.id === activeTab)?.model} Now{" "}

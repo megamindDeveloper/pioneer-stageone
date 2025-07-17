@@ -48,6 +48,7 @@ const AnimatedModel = ({
 
 const DashcamCard = ({
   title,
+  cardIndex,
   Component,
   cameraPosition = [0, 1, 6],
   description,
@@ -72,12 +73,21 @@ const DashcamCard = ({
   defaultRotation?: [number, number, number];
   hoveredRotation?: [number, number, number];
   featureIcons?: string[];
+  cardIndex: number;
 }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div
-      className={`relative ${hovered ? "bg-[#1a1a1a]" : ""} overflow-hidden cursor-pointer shadow-xl transition-all duration-300`}
+      className={`relative ${hovered ? "bg-[#1a1a1a]" : ""} ${
+        cardIndex === 0
+          ? "border-r border-b border-[#3B3B3B]"
+          : cardIndex === 1
+          ? "border-b border-[#3B3B3B]"
+          : cardIndex === 2
+          ? "border-r border-[#3B3B3B]"
+          : ""
+      } overflow-hidden cursor-pointer shadow-xl transition-all duration-300`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -137,7 +147,7 @@ const DashcamCard = ({
         >
           <div className="flex flex-col justify-center items-center gap-2">
             <motion.h3
-              className="font-medium text-base lg:text-[24px] font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+              className="font-medium text-[16px] lg:text-[19.7px] xl:text-[26px]  leading-[auto] font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
               initial={{ opacity: 0, y: 10 }}
               animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -156,8 +166,7 @@ const DashcamCard = ({
           <div></div>
         </motion.div>
 
-        {/* Left Side (empty) */}
-        <div></div>
+     
       </motion.div>
 
       <motion.div
@@ -165,10 +174,13 @@ const DashcamCard = ({
         animate={{ opacity: hovered ? 0 : 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="absolute xl:bottom-24 bottom-20 left-1/2 -translate-x-1/2"
+        className="absolute xl:bottom-8 bottom-20 flex flex-col items-center justify-center w-full "
       >
-        <Typography variant="body" className="text-white  text-center ">
+        <Typography variant="grid-view-heading" className="text-white !font-medium text-base lg:text-[24px] xl: text-center ">
           {title}
+        </Typography>
+        <Typography variant="grid-view-body" className=" pt-2 text-[#ABABAB]/60  text-center font-['Helvetica_Neue','Helvetica','Arial','sans-serif']">
+          {description}
         </Typography>
       </motion.div>
 
@@ -184,11 +196,38 @@ const DashcamCard = ({
               animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
             />
-
             {/* 👇 Always visible text */}
-            <p className="text-xs text-[#ABABAB]/80 font-['Helvetica_Neue','Helvetica','Arial','sans-serif'] whitespace-pre-line">{feature}</p>
+
+            <motion.p
+              className="text-[9px] xl:text-[12px] text-[#ABABAB]/60 text-center whitespace-pre-line font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+              initial={{ opacity: 0, y: 10 }}
+              animate={hovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
+            >
+              {feature}
+            </motion.p>
           </div>
         ))}
+        {/* {!hovered && (
+          // <div className="w-full col-span-full mb-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: hovered ? 0 : 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className=" w-full col-span-full"
+          >
+            <motion.p
+              className="xl:text-[17.8px] lg:text-[14px] mb-6 text-[#ABABAB]/60  text-center font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+              initial={{ opacity: 0, y: 10 }}
+              animate={hovered ? { opacity: 0, y: 0 } : { opacity: 1, y: 10 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
+            >
+              {description}
+            </motion.p>
+          </motion.div>
+          // </div>
+        )} */}
       </div>
     </div>
   );

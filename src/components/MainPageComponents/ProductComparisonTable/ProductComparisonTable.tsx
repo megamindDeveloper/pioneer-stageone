@@ -21,7 +21,7 @@ const products = [
     name: "VREC - H320SC",
     image: "/modelImages/VREC-H320SC/thumb.png",
     link: "/products/gps-dashcam",
-    features: ["Full HD", "-", "Front\n+\nRear(Optional)", "90mm x 34.8mm\n  x 54.25mm", "Yes", "Yes", "Ideal for Practical\n  Users"],
+    features: ["Full HD", "-", "Front \n+\n Rear (Optional)", "90mm x 34.8mm\n  x 54.25mm", "Yes", "Yes", "Ideal for Practical\n  Users"],
   },
   {
     name: "VREC - H120SC",
@@ -65,7 +65,7 @@ export default function ProductComparisonTable() {
                 <Image src={product.image} alt={product.name} fill className="object-contain w-full h-full relative z-0" />
               </div>
 
-              <h3 className="text-[15px] font-semibold">{product.name}</h3>
+              <h3 className="text-[17px] font-bold">{product.name}</h3>
               <div className="flex flex-col items-center">
                 <a href={product.link} className="text-[#AD2239] text-xs  mb-1 font-extrabold">
                   Learn More &gt;
@@ -79,7 +79,7 @@ export default function ProductComparisonTable() {
             <React.Fragment key={feature}>
               <div className="py-6  text-[20px] font-bold">{feature}</div>
               {products.map((product, colIndex) => (
-                <div key={colIndex} className="py-6  text-sm text-center text-[#ABABAB] whitespace-pre-line">
+                <div key={colIndex} className="py-6  text-[17px] text-center text-[#ABABAB] whitespace-pre-line">
                   {product.features[rowIndex]}
                 </div>
               ))}

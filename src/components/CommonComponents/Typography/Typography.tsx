@@ -8,39 +8,79 @@ import {
   JSX,
 } from "react";
 
-type Variant =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "subtitle"
-  | "body"
-  | "caption"
-  | "label";
+const variantClasses: Record<string, string> = {
+  // Hero Section
+  "hero-section-heading":
+    "text-[36px] lg:text-[51.6px] lg:leading-[61.9px] xl:text-[68px] xl:leading-[81.6px] font-bold",
+  "hero-body":
+    "text-[16px] lg:text-[21.3px] xl:text-[28px] leading-[auto] font-normal",
+  "button":
+    "text-[20px] lg:text-[27.3px] xl:text-[36px] font-semibold tracking-[0%]",
 
-const variantClasses: Record<Variant, string> = {
-  h1: "text-[48px] xl:text-[76px] lg:text-[52px] font-bold",
-  h2: "text-3xl md:text-4xl font-semibold",
-  h3: "text-[24px]  md:text-[32px] font-semibold",
-  h4: "text-[19px] md:text-[17px] lg2:text-[21px]   font-semibold",
-  subtitle: "text-lg font-medium text-white/80",
-  body: "text-base lg:text-[24px] md:text-base text-white",
-  caption: "text-sm text-white/60",
-  label: "text-[14px] xl:text-lg font-normal text-[#DFDFDF]/80  mb-4 whitespace-pre-line",
+  // Section
+  "section-heading":
+    "text-[24px] lg:text-[27.3px] xl:text-[36px] leading-[auto] font-semibold",
+  "section-body":
+    "text-[16px] lg:text-[21.3px] xl:text-[28px] leading-[auto] xl:leading-[1.2354em] font-normal",
+
+  // Grid View
+  "grid-view-heading":
+    "text-[16px] lg:text-[19.7px] xl:text-[26px] font-semibold leading-[auto]",
+  "grid-view-body":
+    "text-[9px] lg:text-[10.6px] xl:text-[14px] font-normal leading-[auto]",
+  "grid-view-body-hovered":
+    "text-[9px] xl:text-[12px] font-normal leading-[auto]",
+
+  // Card
+  "card-heading":
+    "text-[28px] lg:text-[32.7px] xl:text-[43.1px] lg:leading-[39.2px] xl:leading-[38.6px] font-semibold tracking-[0.2px] xl:tracking-[0.388px]",
+  "card-body":
+    "text-[12px] lg:text-[12.9px] xl:text-[17px] lg:leading-[15.5px] xl:leading-[25px] font-normal",
+
+  // Slider
+  "slider-heading":
+    "text-[12.9px] xl:text-[17px] leading-[15.5px] xl:leading-[25px] font-semibold",
+  "slider-subtext":
+    "text-[10px] xl:text-[14px] font-normal leading-[auto]",
+
+  // Comparison Grid
+  "comparison-grid-side-heading":
+    "text-[15.6px] xl:text-[20.61px] lg:leading-[18.7px] xl:leading-[25px] font-semibold",
+  "comparison-grid-body":
+    "text-[14px] xl:text-[20px] font-normal leading-[auto]",
+
+  // Footer
+  "footer-navigation":
+    "text-[10.6px] xl:text-[14px] font-medium tracking-[0%]",
+  "footer-micro-text":
+    "text-[8px] xl:text-[12px] font-normal tracking-[0%]",
+};
+
+// 🔠 Semantic Tag Mapping
+const semanticTags: Record<string, ElementType> = {
+  "hero-section-heading": "h1",
+  "section-heading": "h2",
+  "grid-view-heading": "h3",
+  "card-heading": "h3",
+  "slider-heading": "h4",
+  "comparison-grid-side-heading": "h4",
+  "footer-navigation": "nav",
+  "footer-micro-text": "small",
+  // fallback: all others → <p>
 };
 
 type TypographyProps<T extends ElementType> = {
   as?: T;
-  variant?: Variant;
+  variant?: keyof typeof variantClasses;
   className?: string;
   children: ReactNode;
-} & ComponentPropsWithoutRef<T>;
+} & Omit<ComponentPropsWithoutRef<T>, "as" | "variant">;
 
 export const Typography = forwardRef(function Typography<T extends ElementType>(
-  { as, variant = "body", className, children, ...props }: TypographyProps<T>,
+  { as, variant = "section-body", className, children, ...props }: TypographyProps<T>,
   ref: Ref<any>
 ): JSX.Element {
-  const Component = as || "p";
+  const Component = as || semanticTags[variant] || "p";
 
   return (
     <Component

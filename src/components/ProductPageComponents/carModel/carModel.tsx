@@ -57,7 +57,9 @@ function VideoPlane({
     <mesh position={position} rotation={rotation} scale={scale}>
       <planeGeometry args={[16, 9]} /> {/* Adjust for video aspect ratio */}
       <meshBasicMaterial toneMapped={false} side={THREE.DoubleSide}>
-        {textureRef.current && <primitive attach="map" object={textureRef.current} />}
+        {textureRef.current && (
+          <primitive attach="map" object={textureRef.current} />
+        )}
       </meshBasicMaterial>
     </mesh>
   );
@@ -117,8 +119,16 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 1 - Rear Camera View (behind the car)
       tl.addLabel("keyframe1")
-        .to(camera.position, { x: 0, y: 2.5, z: -5.7, ease: "none" }, "keyframe1")
-        .to(camera.rotation, { x: 0, y: degToRad(180), z: 0, ease: "none" }, "keyframe1")
+        .to(
+          camera.position,
+          { x: 0, y: 2.5, z: -5.7, ease: "none" },
+          "keyframe1"
+        )
+        .to(
+          camera.rotation,
+          { x: 0, y: degToRad(180), z: 0, ease: "none" },
+          "keyframe1"
+        )
         .to(
           camera,
           {
@@ -131,8 +141,16 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 2 - Top View (flat, centered above car)
       tl.addLabel("keyframe2")
-        .to(camera.position, { x: 0, y: 10, z: 0, ease: "sine.inOut" }, "keyframe2")
-        .to(camera.rotation, { x: degToRad(90), y: degToRad(180), z: 0, ease: "sine.inOut" }, "keyframe2")
+        .to(
+          camera.position,
+          { x: 0, y: 10, z: 0, ease: "sine.inOut" },
+          "keyframe2"
+        )
+        .to(
+          camera.rotation,
+          { x: degToRad(90), y: degToRad(180), z: 0, ease: "sine.inOut" },
+          "keyframe2"
+        )
         .to(
           camera,
           {
@@ -145,8 +163,16 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 3 - Wide Top View (zoomed out overhead shot)
       tl.addLabel("keyframe3")
-        .to(camera.position, { x: 0, y: 20, z: 0, ease: "sine.inOut" }, "keyframe3")
-        .to(camera.rotation, { x: degToRad(90), y: degToRad(180), z: 0, ease: "sine.inOut" }, "keyframe3")
+        .to(
+          camera.position,
+          { x: 0, y: 20, z: 0, ease: "sine.inOut" },
+          "keyframe3"
+        )
+        .to(
+          camera.rotation,
+          { x: degToRad(90), y: degToRad(180), z: 0, ease: "sine.inOut" },
+          "keyframe3"
+        )
         .to(
           camera,
           {
@@ -159,8 +185,21 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 4 - Dynamic Angle View (angled top-right view)
       tl.addLabel("keyframe4")
-        .to(camera.position, { x: 0, y: 15, z: -5, ease: "sine.inOut" }, "keyframe4")
-        .to(camera.rotation, { x: degToRad(90), y: degToRad(180), z: degToRad(-90), ease: "sine.inOut" }, "keyframe4")
+        .to(
+          camera.position,
+          { x: 0, y: 15, z: -5, ease: "sine.inOut" },
+          "keyframe4"
+        )
+        .to(
+          camera.rotation,
+          {
+            x: degToRad(90),
+            y: degToRad(180),
+            z: degToRad(-90),
+            ease: "sine.inOut",
+          },
+          "keyframe4"
+        )
         .to(
           camera,
           {
@@ -173,8 +212,21 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 5 - Far Out View (camera pulling away)
       tl.addLabel("keyframe5")
-        .to(camera.position, { x: 0, y: 15, z: -15, ease: "sine.inOut" }, "keyframe5")
-        .to(camera.rotation, { x: degToRad(90), y: degToRad(180), z: degToRad(-90), ease: "sine.inOut" }, "keyframe5")
+        .to(
+          camera.position,
+          { x: 0, y: 15, z: -15, ease: "sine.inOut" },
+          "keyframe5"
+        )
+        .to(
+          camera.rotation,
+          {
+            x: degToRad(90),
+            y: degToRad(180),
+            z: degToRad(-90),
+            ease: "sine.inOut",
+          },
+          "keyframe5"
+        )
         .to(
           camera,
           {
@@ -245,28 +297,68 @@ function CameraModel() {
 
         // 📌 KEYFRAME 1
         tl.addLabel("keyframe1")
-          .to(group.current.position, { x: 0, y: 0, z: 0, ease: "none" }, "keyframe1")
-          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "none" }, "keyframe1");
+          .to(
+            group.current.position,
+            { x: 0, y: 0, z: 0, ease: "none" },
+            "keyframe1"
+          )
+          .to(
+            group.current.scale,
+            { x: 2, y: 2, z: 2, ease: "none" },
+            "keyframe1"
+          );
 
         // 📌 KEYFRAME 2
         tl.addLabel("keyframe2")
-          .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe2")
-          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe2");
+          .to(
+            group.current.position,
+            { x: 0, y: 0, z: 0, ease: "sine.inOut" },
+            "keyframe2"
+          )
+          .to(
+            group.current.scale,
+            { x: 2, y: 2, z: 2, ease: "sine.inOut" },
+            "keyframe2"
+          );
 
         // 📌 KEYFRAME 3
         tl.addLabel("keyframe3")
-          .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe3")
-          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe3");
+          .to(
+            group.current.position,
+            { x: 0, y: 0, z: 0, ease: "sine.inOut" },
+            "keyframe3"
+          )
+          .to(
+            group.current.scale,
+            { x: 2, y: 2, z: 2, ease: "sine.inOut" },
+            "keyframe3"
+          );
 
         // 📌 KEYFRAME 4
         tl.addLabel("keyframe4")
-          .to(group.current.position, { x: 0, y: 0, z: -10, ease: "sine.inOut" }, "keyframe4")
-          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe4");
+          .to(
+            group.current.position,
+            { x: 0, y: 0, z: -10, ease: "sine.inOut" },
+            "keyframe4"
+          )
+          .to(
+            group.current.scale,
+            { x: 2, y: 2, z: 2, ease: "sine.inOut" },
+            "keyframe4"
+          );
 
         // 📌 KEYFRAME 5
         tl.addLabel("keyframe5")
-          .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe5")
-          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe5");
+          .to(
+            group.current.position,
+            { x: 0, y: 0, z: 0, ease: "sine.inOut" },
+            "keyframe5"
+          )
+          .to(
+            group.current.scale,
+            { x: 2, y: 2, z: 2, ease: "sine.inOut" },
+            "keyframe5"
+          );
       });
 
       return () => ctx.revert();
@@ -276,7 +368,12 @@ function CameraModel() {
   return (
     <group ref={group} visible={false}>
       <primitive object={scene} />
-      <VideoPlane url="/video/video.mp4" position={[0.0, 1.167, 0.45]} rotation={[0, 0, 0]} scale={[0.0043, 0.0029, 0.0]} />
+      <VideoPlane
+        url="/video/video.mp4"
+        position={[0.0, 1.167, 0.45]}
+        rotation={[0, 0, 0]}
+        scale={[0.0043, 0.0029, 0.0]}
+      />
     </group>
   );
 }
@@ -296,42 +393,46 @@ export default function CarCameraScene() {
 
   return (
     <>
-    <BeamOverlaySVG />
-    <motion.div
-      ref={containerRef}
-      id="model2-scroll-container"
-      style={{ height: "600vh" }}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-      className="du"
+      <BeamOverlaySVG />
+      <motion.div
+        ref={containerRef}
+        id="model2-scroll-container"
+        style={{ height: "600vh" }}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        className="du"
       >
-      <Canvas
-        gl={{ toneMapping: THREE.ACESFilmicToneMapping }}
-        camera={{ position: [0, 1, 18], fov: 10, near: 0.1, far: 500 }}
-        style={{
-          background: "#0d0d0d",
-          width: "100vw",
-          height: "100vh",
-          position: "sticky",
-          top: 0,
-        }}
-        shadows
+        <Canvas
+          gl={{ toneMapping: THREE.ACESFilmicToneMapping }}
+          camera={{ position: [0, 1, 18], fov: 10, near: 0.1, far: 500 }}
+          style={{
+            background: "#0d0d0d",
+            width: "100vw",
+            height: "100vh",
+            position: "sticky",
+            top: 0,
+          }}
+          shadows
         >
-        <Suspense fallback={null}>
-          <CameraController onModelReady={() => setIsModelReady(true)} />
-          <CameraModel />
-          <Environment files="/hdri/custom.hdr" background={false} />
-        </Suspense>
-      </Canvas>
+          <Suspense fallback={null}>
+            <CameraController onModelReady={() => setIsModelReady(true)} />
+            <CameraModel />
+            <Environment files="/hdri/custom.hdr" background={false} />
+          </Suspense>
+        </Canvas>
 
-      {/* 🔴 Alert Overlay UI */}
-      <div
-        id="screen-alert-overlay"
-        className="fixed top-1/2 left-1/2 z-40 opacity-0 scale-75 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500"
+        {/* 🔴 Alert Overlay UI */}
+        <div
+          id="screen-alert-overlay"
+          className="fixed top-1/2 left-1/2 z-40 opacity-0 scale-75 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500"
         >
-        <img src="/icons/triangle-alert.svg" alt="Alert" className="w-24 h-24 animate-pulse" />
-      </div>
-    </motion.div>
-        </>
+          <img
+            src="/icons/triangle-alert.svg"
+            alt="Alert"
+            className="w-24 h-24 animate-pulse"
+          />
+        </div>
+      </motion.div>
+    </>
   );
 }

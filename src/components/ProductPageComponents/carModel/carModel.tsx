@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Suspense, useRef, useEffect, useState } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { Environment, useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -92,30 +92,6 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
           end: "bottom bottom",
         },
       });
-
-      // 📌 KEYFRAME 1.5 - Zoom into rear screen (preparing rear view + alert)
-      // tl.addLabel("keyframe1_5", "keyframe1-=1")
-      //   .to(camera.position, { x: 0, y: 2.3, z: -4.5, duration: 1, ease: "power2.out" }, "keyframe1_5")
-      //   .to(
-      //     camera,
-      //     {
-      //       fov: 12, // Slight zoom for emphasis
-      //       onUpdate: () => camera.updateProjectionMatrix(),
-      //       duration: 1,
-      //       ease: "power1.inOut",
-      //     },
-      //     "keyframe1_5"
-      //   )
-      //   .to(
-      //     "#screen-alert-overlay",
-      //     {
-      //       autoAlpha: 1,
-      //       scale: 1,
-      //       duration: 0.8,
-      //       ease: "back.out(1.7)",
-      //     },
-      //     "keyframe1_5"
-      //   );
 
       // 📌 KEYFRAME 1 - Rear Camera View (behind the car)
       tl.addLabel("keyframe1")
@@ -244,13 +220,32 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
   return null;
 }
 
+// BeamOverlayPlane.tsx (or inline in your main file)
+function BeamOverlayPlane({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> }) {
+  const texture = useLoader(THREE.TextureLoader, "/images/beamOverlay1.png");
+
+  useFrame(() => {
+    if (beamRef.current) {
+      beamRef.current.rotation.set(-Math.PI / 2, 0, 0); // Lock rotation every frame
+    }
+  });
+
+  return (
+    <mesh
+      ref={beamRef}
+      position={[-0.3, 0, 2]} // Initial position with z=2
+      scale={[5, 3, 1]}
+    >
+      <planeGeometry args={[10, 10]} />
+      <meshBasicMaterial map={texture} transparent />
+    </mesh>
+  );
+}
+
 /* -----------------------------------------------------
  ✅ CameraModel Component - Loads the car model & attaches video
 ----------------------------------------------------- */
-/* -----------------------------------------------------
- ✅ CameraModel Component - Loads the car model & attaches video
------------------------------------------------------ */
-function CameraModel() {
+function CameraModel({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> }) {
   const { scene } = useGLTF("/models/PIONEER CAR4.glb");
   const group = useRef<THREE.Group>(null);
 
@@ -279,7 +274,7 @@ function CameraModel() {
       group.current.scale.set(2, 2, 2); // Default scale
       group.current.rotation.set(0, 0, 0);
 
-      // ✅ GSAP timeline to animate model position + scale
+      // ✅ GSAP timeline to animate model position + scale + beam overlay
       const ctx = gsap.context(() => {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -290,80 +285,42 @@ function CameraModel() {
           },
         });
 
-        // // 📌 KEYFRAME 1_5
-        // tl.addLabel("keyframe1_5")
-        //   .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe1_5")
-        //   .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe1_5");
-
-        // 📌 KEYFRAME 1
+        // 📌 KEYFRAME 1 - Animate beam overlay position from z=2 to z=6
         tl.addLabel("keyframe1")
-          .to(
-            group.current.position,
-            { x: 0, y: 0, z: 0, ease: "none" },
-            "keyframe1"
-          )
-          .to(
-            group.current.scale,
-            { x: 2, y: 2, z: 2, ease: "none" },
-            "keyframe1"
-          );
+          .to(group.current.position, { x: 0, y: 0, z: 0, ease: "none" }, "keyframe1")
+          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "none" }, "keyframe1")
+          .to(beamRef.current!.position, { z: 2, ease: "power2.inOut" }, "keyframe1"); // Animate beam z position
 
-        // 📌 KEYFRAME 2
+        // 📌 KEYFRAME 2 - Keep beam position at z=6
         tl.addLabel("keyframe2")
-          .to(
-            group.current.position,
-            { x: 0, y: 0, z: 0, ease: "sine.inOut" },
-            "keyframe2"
-          )
-          .to(
-            group.current.scale,
-            { x: 2, y: 2, z: 2, ease: "sine.inOut" },
-            "keyframe2"
-          );
 
-        // 📌 KEYFRAME 3
+          .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe2")
+          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe2")
+          .to(beamRef.current!.position, { z: 2, ease: "sine.inOut" }, "keyframe2");
+
+        // 📌 KEYFRAME 3 - Maintain beam position
         tl.addLabel("keyframe3")
-          .to(
-            group.current.position,
-            { x: 0, y: 0, z: 0, ease: "sine.inOut" },
-            "keyframe3"
-          )
-          .to(
-            group.current.scale,
-            { x: 2, y: 2, z: 2, ease: "sine.inOut" },
-            "keyframe3"
-          );
+          .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe3")
+          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe3")
+          .to(beamRef.current!.position, { z: 3, ease: "sine.inOut" }, "keyframe3");
 
-        // 📌 KEYFRAME 4
+          
+        // 📌 KEYFRAME 4 - Car moves out, beam stays
         tl.addLabel("keyframe4")
-          .to(
-            group.current.position,
-            { x: 0, y: 0, z: -10, ease: "sine.inOut" },
-            "keyframe4"
-          )
-          .to(
-            group.current.scale,
-            { x: 2, y: 2, z: 2, ease: "sine.inOut" },
-            "keyframe4"
-          );
+        .to(beamRef.current!.position, { z: 16, ease: "sine.inOut" }, "keyframe4")
+          .to(group.current.position, { x: 0, y: 0, z: -10, ease: "sine.inOut" }, "keyframe4")
+          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe4");
 
-        // 📌 KEYFRAME 5
+        // 📌 KEYFRAME 5 - Reset beam to original position
         tl.addLabel("keyframe5")
-          .to(
-            group.current.position,
-            { x: 0, y: 0, z: 0, ease: "sine.inOut" },
-            "keyframe5"
-          )
-          .to(
-            group.current.scale,
-            { x: 2, y: 2, z: 2, ease: "sine.inOut" },
-            "keyframe5"
-          );
+          .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe5")
+          .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe5")
+          .to(beamRef.current!.position, { z: 2, ease: "sine.inOut" }, "keyframe5"); // Reset beam back to z=2
       });
 
       return () => ctx.revert();
     }
-  }, [scene]);
+  }, [scene, beamRef]);
 
   return (
     <group ref={group} visible={false}>
@@ -384,7 +341,7 @@ function CameraModel() {
 export default function CarCameraScene() {
   const [isModelReady, setIsModelReady] = useState(false);
   const containerRef = useRef(null);
-
+  const beamRef = useRef<THREE.Mesh>(null);
   // ✅ Detects when in view (fade in/out)
   const isInView = useInView(containerRef, {
     rootMargin: true,
@@ -393,7 +350,6 @@ export default function CarCameraScene() {
 
   return (
     <>
-      <BeamOverlaySVG />
       <motion.div
         ref={containerRef}
         id="model2-scroll-container"
@@ -406,7 +362,7 @@ export default function CarCameraScene() {
           gl={{ toneMapping: THREE.ACESFilmicToneMapping }}
           camera={{ position: [0, 1, 18], fov: 10, near: 0.1, far: 500 }}
           style={{
-            background: "#0d0d0d",
+            background: "#0D0D0D",
             width: "100vw",
             height: "100vh",
             position: "sticky",
@@ -416,7 +372,8 @@ export default function CarCameraScene() {
         >
           <Suspense fallback={null}>
             <CameraController onModelReady={() => setIsModelReady(true)} />
-            <CameraModel />
+            <BeamOverlayPlane beamRef={beamRef} /> {/* ✅ here */}
+            <CameraModel beamRef={beamRef} />  
             <Environment files="/hdri/custom.hdr" background={false} />
           </Suspense>
         </Canvas>
@@ -426,11 +383,8 @@ export default function CarCameraScene() {
           id="screen-alert-overlay"
           className="fixed top-1/2 left-1/2 z-40 opacity-0 scale-75 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500"
         >
-          <img
-            src="/icons/triangle-alert.svg"
-            alt="Alert"
-            className="w-24 h-24 animate-pulse"
-          />
+          <img src="/icons/triangle-alert.svg" alt="Alert" className="w-24 h-24 animate-pulse" />
+
         </div>
       </motion.div>
     </>

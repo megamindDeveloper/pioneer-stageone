@@ -14,25 +14,25 @@ import { ChevronRight } from "lucide-react";
 const products = [
   {
     name: "VREC - Z820DC",
-    image: "/images/modelImages/z820dc.png", // Replace with actual image path
+    image: "/modelImages/VREC-Z820DC/thumb.png", // Replace with actual image path
     link: "/products/night-vision-dashcam",
     features: ["4K", "Yes", "Front\n+\nRear", "104mm x 39mm\n x  43.3mm", "Yes", "Yes", "Ideal For Power\n  Users"],
   },
   {
     name: "VREC - H520DC",
-    image: "/images/modelImages/h520dc.png",
-    link: "/products/wide-display",
+    image: "/modelImages/VREC-H520DC/thumb.png",
+    link: "/modelImages/VREC-H520DC/thumb.png",
     features: ["2K", "-", "Front\n+\nRear", "88mm x 29.3mm\n  x  55.6mm", "Yes", "Yes", "Ideal For Experienced\n  Users"],
   },
   {
     name: "VREC - H320SC",
-    image: "/images/modelImages/h320sc.png",
+    image:  "/modelImages/VREC-H320SC/thumb.png",
     link: "/products/gps-dashcam",
     features: ["Full HD", "-", "Front \n+\n Rear (Optional)", "90mm x 34.8mm\n  x 54.25mm", "Yes", "Yes", "Ideal for Practical\n  Users"],
   },
   {
     name: "VREC - H120SC",
-    image: "/images/modelImages/h120sc.png",
+    image:  "/modelImages/VREC-H120SC/thumb.png",
     link: "/products/compact-dashcam",
     features: ["1.5K", "-", "Front", "31.12mm x 28.8mm\n  x 37.33mm", "-", "Yes", "Ideal for First-Time\n  Users"],
   },
@@ -52,7 +52,7 @@ export default function ProductFeatureTable() {
 
 const [open, setOpen] = useState(false);
   return (
-    <section className="b text-white px-4 md:px-8 py-20 max-w-6xl  xl:max-w-[90%] mx-auto mt-20">
+    <section className="b text-white px-4 md:px-8 py-20 max-w-7xl  xl:max-w-[90%] mx-auto mt-20">
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h2  className=" text-center text-[48px] font-medium tracking-wide mb-2">
           Which One’s Built for You?

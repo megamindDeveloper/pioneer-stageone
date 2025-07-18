@@ -35,7 +35,7 @@ export default function FeatureAccordion() {
   const currentFeature = features.find((f) => f.id === activeId);
 
   return (
-    <section className="relative bg-black text-white px-4 pl-20 py-12 md:py-16 rounded-3xl max-w-6xl mx-auto mt-20 overflow-hidden">
+    <section className="relative bg-black text-white px-4 pl-20 py-12 md:py-16 rounded-3xl max-w-7xl mx-auto mt-20 overflow-hidden">
       <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Accordion Content */}
         <div className="relative z-20">
@@ -44,7 +44,7 @@ export default function FeatureAccordion() {
             return (
               <div key={feature.id} className="border-b border-white/20 py-6 cursor-pointer" onClick={() => setActiveId(feature.id)}>
                 <div className="flex justify-between items-center text-lg font-medium">
-                <Typography variant="body" className="text-white text-[26px] font-bold text-center ">
+                <Typography variant="body" className="text-white text-[26px] font-bold ">
                     {feature.title}
                   </Typography>
                   <span className="text-2xl">
@@ -102,7 +102,7 @@ export default function FeatureAccordion() {
           >
             {/* ✅ Wrapper to support fill layout */}
             {currentFeature?.id === "innovation" && (
-              <div className="relative w-full h-full pt-32">
+              <div className="relative w-full h-full pt-10">
                 <Image
                   src={currentFeature?.image || ""}
                   alt={currentFeature?.title || ""}

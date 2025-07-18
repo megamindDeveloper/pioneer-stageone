@@ -82,19 +82,19 @@ function Model1({ onModelReady }: { onModelReady: () => void }) {
       tl.addLabel("keyframe1")
         .to(
           targetPosition.current,
-          { x: -5, y: 2.75, z: 0.5, ease: "none" },
+          { x: -5, y: 1.75, z: 0.5, ease: "none" },
           "keyframe1"
         )
         .to(
           targetScale.current,
-          { x: 80, y: 80, z: 80, ease: "none" },
+          { x: 100, y: 110, z: 100, ease: "none" },
           "keyframe1"
         )
         .to(
           targetRotation.current,
           {
-            x: degToRad(-10),
-            y: degToRad(60),
+            x: degToRad(-20),
+            y: degToRad(55),
             z: degToRad(20),
             ease: "none",
           },
@@ -131,7 +131,7 @@ function Model1({ onModelReady }: { onModelReady: () => void }) {
         )
         .to(
           targetScale.current,
-          { x: 60, y: 60, z: 60, ease: "sine.inOut" },
+          { x: 80, y: 100, z: 80, ease: "sine.inOut" },
           "keyframe2"
         )
         .to(

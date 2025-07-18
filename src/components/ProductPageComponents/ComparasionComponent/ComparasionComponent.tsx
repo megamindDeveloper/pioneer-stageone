@@ -64,7 +64,7 @@ export const Compare = () => {
       </div>
 
       {/* Conditional Rendering */}
-      <div className="w-full  max-w-7xl h-[800px] rounded-xl overflow-hidden bg-gradient-to-t from-black via-black/60 relative">
+      <div className="w-full  max-w-7xl h-[80vh] rounded-xl overflow-hidden bg-gradient-to-t from-black via-black/60 relative">
         {activeTab !== 2 ? (
           <div
             ref={sliderRef}

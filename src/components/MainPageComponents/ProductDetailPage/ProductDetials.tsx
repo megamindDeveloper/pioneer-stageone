@@ -117,14 +117,14 @@ export default function ProductDetails() {
   const isInView = useInView(sectionRef, { margin: "-10px", once: false });
 
   return (
-    <section className="relative min-h-screen py-12 px-4 text-white max-w-6xl xl:max-w-[90%] mt-20  mx-auto">
+    <section className="relative min-h-screen py-12 px-4 text-white max-w-7xl xl:max-w-[90%] mt-20  mx-auto">
        <Typography variant="card-heading" className="!font-medium  text-center text-white  px-6">
         What Matters Most When You Drive?
       </Typography>
-      <Typography variant="card-body" className="text-[#ABABAB] xl:pt-[0.8em] lg:xl:pt-[0.6em]  text-center !font-normal ">Choose features for your drive</Typography>
+      <Typography  className="text-[#ABABAB] pt-[0.8em]  !lg:text-[2px] text-center !font-normal mb-10">Choose features for your drive</Typography>
 
       {/* Tabs */}
-      <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-44 xl:mt-12">
+      <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-26 xl:mt-12">
         <div className="flex  justify-between items-center">
           {tabs.map((tab) => (
             <motion.button

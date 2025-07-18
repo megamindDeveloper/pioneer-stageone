@@ -59,7 +59,7 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
         transition={{ duration: 0.4 }}
         className="flex-1 z-20"
       >
-        <Typography variant="" className="!font-medium xl:text-[43.1px] leading-[48.8px] tracking-[0.388px] whitespace-pre-line pb-[21px]">
+        <Typography variant="" className="!font-semibold  lg:text-[32px] xl:text-[43.1px] leading-[48.8px] tracking-[0.388px] whitespace-pre-line pb-[12px]">
           {title}
         </Typography>
         <Typography variant="label" className="whitespace-pre-line">

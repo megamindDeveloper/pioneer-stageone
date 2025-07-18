@@ -174,7 +174,7 @@ const DashcamCard = ({
         animate={{ opacity: hovered ? 0 : 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="absolute xl:bottom-8 bottom-20 flex flex-col items-center justify-center w-full "
+        className="absolute xl:bottom-8 bottom-4 flex flex-col items-center justify-center w-full "
       >
         <Typography variant="grid-view-heading" className="text-white !font-medium text-base lg:text-[24px] xl: text-center ">
           {title}

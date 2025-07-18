@@ -203,19 +203,17 @@ export default function CarOverlayContentDivs() {
       <div>
         <div className="text-center max-w-xl mx-auto pb-12">
           <p className="text-cherryRed text-xl font-medium mb-2">
-            Parked, Not Unwatched
+          Monitors While You’re Away
           </p>
           <h2 className="text-3xl md:text-5xl font-medium mb-4 text-white">
-            Parking Mode <span className="text-[#313131]">*</span>
+          Optional Parking Mode
           </h2>
           <p className="text-gray-400 text-lg max-w-md mx-auto">
-            The VREC-Z820DC stays active even when parked, recording any motion
-            or impact to help keep your vehicle secure at all times.
+          Parking mode requires additional installation of an external Hardwire Kit, which enables power supply to the Dash Camera directly from the vehicle battery.
           </p>
         </div>
         <p className="text-[#313131] text-lg text-center max-w-md mx-auto mt-36">
-          *Disclaimer: This feature is available only with additional setup and
-          components, sold separately.
+        Disclaimer: Parking mode requires additional installation of an external Hardwire Kit, which enables power supply to the Dash Camera directly from the vehicle battery.
         </p>
       </div>
     ),

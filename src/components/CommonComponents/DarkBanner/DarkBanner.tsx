@@ -30,7 +30,7 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
 }) => {
   return (
     <section
-      className={`relative bg-black py-12 mt-0 xl:mt-32 pl-12 text-white bottom-0 rounded-xl  flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 ${className}`}
+      className={`relative bg-black py-12 mt- xl:mt-32 pl-12 text-white bottom-0 rounded-xl  flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 ${className}`}
     >
       {/* Image */}
       <motion.div
@@ -59,7 +59,7 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
         transition={{ duration: 0.4 }}
         className="flex-1 z-20"
       >
-        <Typography variant="" className="!font-semibold  lg:text-[32px] xl:text-[43.1px] leading-[48.8px] tracking-[0.388px] whitespace-pre-line pb-[12px]">
+        <Typography variant="" className="!font-semibold  lg:text-[32px] xl:text-[43.1px] leading-[35.8px] tracking-[0.388px] whitespace-pre-line pb-[12px]">
           {title}
         </Typography>
         <Typography variant="label" className="whitespace-pre-line">

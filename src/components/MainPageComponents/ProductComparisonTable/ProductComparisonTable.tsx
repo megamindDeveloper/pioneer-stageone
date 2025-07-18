@@ -9,25 +9,25 @@ const products = [
     name: "VREC - Z820DC",
     image: "/modelImages/VREC-Z820DC/thumb.png", // Replace with actual image path
     link: "/products/night-vision-dashcam",
-    features: ["4K", "Yes", "Front\n+\nRear", "104mm x 39mm\n x  43.3mm", "Yes", "Yes", "Ideal For Power\n  Users"],
+    features: ["4K", "Yes", "Front\n+\nRear", "104mm x 26.7mm\n x  43mm", "Yes", "Yes", "Up to 512GB"],
   },
   {
     name: "VREC - H520DC",
     image: "/modelImages/VREC-H520DC/thumb.png",
     link: "/products/wide-display",
-    features: ["2K", "-", "Front\n+\nRear", "88mm x 29.3mm\n  x  55.6mm", "Yes", "Yes", "Ideal For Experienced\n  Users"],
+    features: ["2K", "-", "Front\n+\nRear", "90mm x 34.8mm \n x 54.25mm", "Yes", "Yes", "Up to 512GB"],
   },
   {
     name: "VREC - H320SC",
     image: "/modelImages/VREC-H320SC/thumb.png",
     link: "/products/gps-dashcam",
-    features: ["Full HD", "-", "Front \n+\n Rear (Optional)", "90mm x 34.8mm\n  x 54.25mm", "Yes", "Yes", "Ideal for Practical\n  Users"],
+    features: ["Full HD", "-", "Front \n+\n Rear (Optional)", "90mm x 34.8mm\n  x 54.25mm", "Yes", "Yes", "Up to 512GB"],
   },
   {
     name: "VREC - H120SC",
     image: "/modelImages/VREC-H120SC/thumb.png",
     link: "/products/compact-dashcam",
-    features: ["1.5K", "-", "Front", "31.12mm x 28.8mm\n  x 37.33mm", "-", "Yes", "Ideal for First-Time\n  Users"],
+    features: ["1.5K", "-", "Front", "31.12mm x 28.8mm\n  x 37.33mm", "-", "Yes", "Up to 128GB"],
   },
 ];
 
@@ -48,7 +48,7 @@ export default function ProductComparisonTable() {
         <Typography variant="h2" className="!font-semibold mb-2 text-[40px]">
         Pick Your Level of Performance
         </Typography>
-        <p className="text-[#ABABAB]/80 text-sm md:text-base ">See how each dashcam delivers on clarity, safety, and control.</p>
+        <p className="text-[#ABABAB]/80 text-sm md:text-base ">See how each dashcam delivers on clarity, safety and control.</p>
       </div>
 
       <div className="overflow-x-auto">

@@ -40,7 +40,7 @@ export default function ZenVue() {
     //         />
     //       </div>
     //     </section>
-    <section className="relative w-full min-h-screen bg-gradient-to-b from-[#00000] via-[#a82137] to-[#000000] text-white ">
+    <section className="relative w-full min-h-screen bg-gradient-to-b  pt-32 from-[#020202ff] via-[#a82137] to-transparent text-white ">
       {/* Main Content */}
       <div className="relative z-10 max-w-[screen] mx-auto px-[9rem] py-20 flex flex-col lg:flex-row justify-between gap-20 items-start lg:items-center">
         {/* Left Content */}
@@ -65,7 +65,7 @@ export default function ZenVue() {
         <div className="hidden lg:flex flex-col items-end mt-[-3.5rem] flex-2 text-right space-y-4">
           <h1 className="text-[260px] ml-5 mt-[5.3rem] leading-none font-bold text-white">Vue</h1>
           <p className="text-sm text-white/70 mr-6">Available on</p>
-          <div className="flex gap-3  space-x-4 mt-0 mr-6">
+          <div className="flex gap-3  space-x-1 mt-0 mr-6">
             <Image
               src="/images/googlePlay.png" // Add this image to your public/images folder
               alt="Google Play"
@@ -73,13 +73,15 @@ export default function ZenVue() {
               height={45}
               className="object-contain"
             />
+            <p>Google play</p>
             <Image
               src="/images/appStore.png" // Add this image to your public/images folder
               alt="App Store"
               width={15}
               height={45}
               className="object-contain"
-            />
+            />{" "}
+            <p>App Store</p>
           </div>
         </div>
       </div>

@@ -165,8 +165,6 @@ const DashcamCard = ({
           </div>
           <div></div>
         </motion.div>
-
-     
       </motion.div>
 
       <motion.div
@@ -179,12 +177,19 @@ const DashcamCard = ({
         <Typography variant="grid-view-heading" className="text-white !font-medium text-base lg:text-[24px] xl: text-center ">
           {title}
         </Typography>
-        <Typography variant="grid-view-body" className=" pt-2 text-[#ABABAB]/60  text-center font-['Helvetica_Neue','Helvetica','Arial','sans-serif']">
+        <Typography
+          variant="grid-view-body"
+          className=" pt-2 text-[#ABABAB]/60  text-center font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+        >
           {description}
         </Typography>
       </motion.div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 grid grid-cols-5 w-full text-center gap-4 text-[#ABABAB] px-12">
+      <div
+        className={`absolute bottom-6 left-1/2 -translate-x-1/2 w-full text-center gap-4 text-[#ABABAB] px-12 grid ${
+          features.length === 1 ? "grid-cols-1 place-items-center" : "grid-cols-5"
+        }`}
+      >
         {features.map((feature, index) => (
           <div key={index} className="flex flex-col justify-center items-center gap-2 transition-opacity duration-300">
             {/* 👇 Only show icon when hovered */}

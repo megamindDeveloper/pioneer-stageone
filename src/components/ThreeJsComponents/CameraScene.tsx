@@ -104,15 +104,15 @@ export default function CameraScene({ onModelReady }: { onModelReady: () => void
   return (
     <div id="scroll-container" className="relative overflow-hidden bg-gradient-to-t">
       <div ref={navbarRef} className="opacity-0">
-        <Navbar />
+        {/* <Navbar /> */}
       </div>
 
-      <div className="absolute w-full text-center z-10 pointer-events-none flex justify-center flex-col">
+      <div className="absolute w-full text-center mt-12 z-10 pointer-events-none flex justify-center flex-col">
         <Typography variant="hero-section-heading" ref={headingRef} className="text-white  font-medium">
-          Drive With More Than Just Vision
+        See Everything. Miss Nothing.
         </Typography>
         <Typography variant="hero-body" ref={subheadingRef} className="text-[#ABABAB] pt-[0.8em]  !font-normal ">
-          Pioneer Smart Dashcams for Clarity, Safety and Control
+        Engineered for clarity, built for safety.
         </Typography>
       </div>
 

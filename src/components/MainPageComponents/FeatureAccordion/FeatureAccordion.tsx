@@ -9,21 +9,21 @@ const features = [
   {
     id: "innovation",
     title: "Trusted Innovation for Over \n 85 Years",
-    content: `For over 85 years, Pioneer has led in precision engineering and innovation. Our dashcams are built for real drivers, combining reliable performance, smart safety features, and clear recording that never misses a moment.`,
+    content: `For over 85 years, Pioneer has been a leader in precision engineering and innovation in audio and video products — a commitment to quality and reliability we now extend to our Dash Cam range.`,
     image: "/featureImages/feature1.png",
     imageClass: "object-cover object-center w-", // 👈 custom class
   },
   {
     id: "control",
     title: "Control That Goes Beyond\n the Camera",
-    content: `With the Pioneer ZenVue app, you can instantly view, download, and share your footage, turning your smartphone into a seamless command center for your dashcam.`,
+    content: `With the Pioneer ZenValue app, you can instantly view, download and share your footage, turning your smartphone into a seamless command center for your Dash Cam.`,
     image: "/featureImages/feature2.png",
     imageClass: "object-cover object-center", // 👈 different class
   },
   {
     id: "conditions",
     title: "Built for Real-World\n Conditions",
-    content: `With STARVIS night vision, GPS, ADAS and 24/7 parking protection, Pioneer dashcams deliver clear footage, smart safety and all-round confidence in one seamless system.`,
+    content: `Our Dash Cams are designed to perform reliably in everyday driving. With clear video recording and a durable build, they are made to handle the demands of daily use in a variety of environments.`,
     image: "/featureImages/feature3.png",
     imageClass: "object-contain object-center", // 👈 fallback class
   },

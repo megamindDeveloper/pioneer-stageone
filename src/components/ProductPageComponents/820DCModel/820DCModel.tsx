@@ -16,12 +16,37 @@ gsap.registerPlugin(ScrollTrigger);
  */
 const degToRad = (degrees: number) => degrees * (Math.PI / 180);
 
+function ImagePlane({
+  textureUrl,
+  visible,
+  opacity = 1,
+  position = [0, 0, 0],
+  scale = [1, 1, 1],
+}: {
+  textureUrl: string;
+  visible: boolean;
+  opacity?: number;
+  position?: [number, number, number];
+  scale?: [number, number, number];
+}) {
+  const [texture] = useState(() => new THREE.TextureLoader().load(textureUrl));
+
+  return (
+    <mesh visible={visible} position={position} scale={scale}>
+      <planeGeometry args={[2, 1.125]} />
+      <meshBasicMaterial map={texture} transparent opacity={opacity} toneMapped={false} side={THREE.DoubleSide} />
+    </mesh>
+  );
+}
+
 /**
  * ✅ CameraModel Component
  */
 function Model1({ onModelReady }: { onModelReady: () => void }) {
   const { scene } = useGLTF("/models/VREC-Z820DC_LOW POLY.glb");
   const group = useRef<THREE.Group>(null);
+  const imageMesh = useRef<THREE.Mesh>(null);
+  const [imageOpacity] = useState({ value: 0 }); // Controlled by GSAP
 
   // Refs to store animated properties
   const targetPosition = useRef(new THREE.Vector3(-2.95, 3.65, 15));
@@ -54,9 +79,7 @@ function Model1({ onModelReady }: { onModelReady: () => void }) {
 
     // Collect lens parts
     // Instead of "obj_2", "obj_3", etc. use just "2", "3", ...
-    const lensParts = Array.from({ length: 7 }, (_, i) =>
-      g.getObjectByName(`${i + 1}`)
-    )
+    const lensParts = Array.from({ length: 7 }, (_, i) => g.getObjectByName(`${i + 1}`))
       .filter(Boolean)
       .reverse(); // ← reverse so part "8" explodes first
 
@@ -80,16 +103,8 @@ function Model1({ onModelReady }: { onModelReady: () => void }) {
       const customLensZPositions = [0.04, 0.055, 0.07, 0.08, 0.09, 0.1];
       // Animate target refs (not directly group)
       tl.addLabel("keyframe1")
-        .to(
-          targetPosition.current,
-          { x: -5, y: 1.75, z: 0.5, ease: "none" },
-          "keyframe1"
-        )
-        .to(
-          targetScale.current,
-          { x: 100, y: 110, z: 100, ease: "none" },
-          "keyframe1"
-        )
+        .to(targetPosition.current, { x: -5, y: 1.75, z: 0.5, ease: "none" }, "keyframe1")
+        .to(targetScale.current, { x: 100, y: 110, z: 100, ease: "none" }, "keyframe1")
         .to(
           targetRotation.current,
           {
@@ -116,24 +131,12 @@ function Model1({ onModelReady }: { onModelReady: () => void }) {
 
       tl.addLabel("lens-collapse");
       lensParts.forEach((part) => {
-        tl.to(
-          part.position,
-          { z: 0.02222222, ease: "power2.inOut" },
-          "lens-collapse"
-        );
+        tl.to(part.position, { z: 0.02222222, ease: "power2.inOut" }, "lens-collapse");
       });
 
       tl.addLabel("keyframe2")
-        .to(
-          targetPosition.current,
-          { x: 7, y: 2, z: 0, ease: "sine.inOut" },
-          "keyframe2"
-        )
-        .to(
-          targetScale.current,
-          { x: 80, y: 100, z: 80, ease: "sine.inOut" },
-          "keyframe2"
-        )
+        .to(targetPosition.current, { x: 7, y: 2, z: 0, ease: "sine.inOut" }, "keyframe2")
+        .to(targetScale.current, { x: 80, y: 100, z: 80, ease: "sine.inOut" }, "keyframe2")
         .to(
           targetRotation.current,
           {
@@ -146,16 +149,8 @@ function Model1({ onModelReady }: { onModelReady: () => void }) {
         )
 
         .addLabel("keyframe3")
-        .to(
-          targetPosition.current,
-          { x: 0, y: 3.1, z: 10, ease: "sine.inOut" },
-          "keyframe3"
-        )
-        .to(
-          targetScale.current,
-          { x: 58, y: 58, z: 56, ease: "sine.inOut" },
-          "keyframe3"
-        )
+        .to(targetPosition.current, { x: 0, y: 3.1, z: 10, ease: "sine.inOut" }, "keyframe3")
+        .to(targetScale.current, { x: 58, y: 58, z: 56, ease: "sine.inOut" }, "keyframe3")
         .to(
           targetRotation.current,
           {
@@ -176,17 +171,22 @@ function Model1({ onModelReady }: { onModelReady: () => void }) {
     if (group.current) {
       group.current.position.lerp(targetPosition.current, 0.1);
       group.current.scale.lerp(targetScale.current, 0.1);
-      group.current.rotation.x +=
-        (targetRotation.current.x - group.current.rotation.x) * 0.1;
-      group.current.rotation.y +=
-        (targetRotation.current.y - group.current.rotation.y) * 0.1;
-      group.current.rotation.z +=
-        (targetRotation.current.z - group.current.rotation.z) * 0.1;
+      group.current.rotation.x += (targetRotation.current.x - group.current.rotation.x) * 0.1;
+      group.current.rotation.y += (targetRotation.current.y - group.current.rotation.y) * 0.1;
+      group.current.rotation.z += (targetRotation.current.z - group.current.rotation.z) * 0.1;
     }
   });
 
   return (
     <group ref={group} visible={false}>
+      <ImagePlane
+        textureUrl="/images/Video-Texture"
+        opacity={imageOpacity.value}
+        position={[0, 1.5, 1]} // adjust as needed
+        scale={[1.6, 0.9, 1]}
+        ref={imageMesh}
+      />
+
       <primitive object={scene} />
     </group>
   );
@@ -226,9 +226,7 @@ export default function CameraSceneModel1() {
           shadows
         >
           <Suspense fallback={null}>
-            {isModelReady && (
-              <Environment files="/hdri/07.hdr" background={false} />
-            )}
+            {isModelReady && <Environment files="/hdri/07.hdr" background={false} />}
             <Model1 onModelReady={() => setIsModelReady(true)} />
           </Suspense>
         </Canvas>

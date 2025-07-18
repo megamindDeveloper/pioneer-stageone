@@ -12,23 +12,24 @@ const tabs = [
     title: "Drive late?",
     image1: "/images/GLOW_BEFORE.webp",
     image2: "/images/GLOW_AFTER.webp",
-    headline: "Clarity That Keeps Up With Your Commute",
+    headline: "Designed for the Details",
     subtext:
-      "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time—handling glare, contrast, and light shifts with ease for clear, consistent footage in every driving condition.",
+      "Most dashcams blur the truth at night. The Z820DC, equipped with night vision AI and a STARVIS sensor, captures license plates, movements and moments even in low light.",
   },
   {
     title: "On the road daily?",
     image1: "/images/NOISE_BEFORE.webp",
     image2: "/images/NOISE_AFTER.webp",
-    headline: "See What Others Miss on the Road",
-    subtext: "With advanced night vision and noise reduction, STARVIS ensures daily drivers capture crucial details in every lighting situation.",
+    headline: "Clarity That Keeps Up With Your Commute",
+    subtext: "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time—handling glare, contrast, and light shifts with ease for clear, consistent footage in every driving condition.",
   },
   {
-    title: "Car left unattended?",
-    image1: "/images/CarBroken.png",
-    image2: "/images/CarBroken.png  ",
-    headline: "Protection Even When You're Away",
-    subtext: "Capture reliable footage even when parked, ensuring your vehicle is monitored day and night with unparalleled clarity.",
+    title: "Prefer Dual 4K Coverage?",
+    image1: "/images/car-was-broken.webp",
+    image2: "/images/car-was-broken.webp ",
+    headline: "Coverage That Keeps Both Ends Clear",
+    subtext:
+      "The VREC-Z820DC captures ultra-sharp 4K footage from the front and Full HD from the rear. With dual cameras working together, you get full-scene clarity, whether you're on the move or parked.",
   },
 ];
 
@@ -54,7 +55,7 @@ export const Compare = () => {
   };
 
   return (
-    <section className="w-full bg-black text-white flex flex-col  items-center py-16 px-4">
+    <section className="w-full bg-[#020202ff] text-white flex flex-col  items-center py-16 px-4">
       {/* Heading */}
       <div className="text-center  max-w-xl mb-12">
         <h2 className="text-3xl md:text-4xl font-semibold mb-4">See What Most Cameras Miss</h2>
@@ -102,6 +103,7 @@ export const Compare = () => {
             </motion.div>
 
             {/* Before Image */}
+
             <motion.div
               className="absolute inset-0 z-20 w-full h-full overflow-hidden"
               style={{ clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)` }}
@@ -114,20 +116,24 @@ export const Compare = () => {
             <img
               src={currentTab.image2}
               alt="After"
-              className="absolute top-0 left-0 z-[19] object-cover w-full h-full select-none "
+              className="absolute top-0 left-0 z-[] object-cover w-full h-full select-none "
               draggable={false}
             />
 
             {/* Overlay text */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-50 px-4 max-w-[90%]">
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-50 px-4 w-[70%]">
               <h3 className="text-white text-lg md:text-2xl font-semibold">{currentTab.headline}</h3>
               <p className="text-white text-sm md:text-base mt-2">{currentTab.subtext}</p>
             </div>
           </div>
         ) : (
-          <div className="relative w-full h-full bg-gradient-to-t from-black via-black/60 to-transparent  ">
+          <div className="relative w-full h-full bg-gradient-to-t from-black via-black/60 to-transparent">
             <img src={currentTab.image2} alt="Full View" className="absolute top-0 left-0 w-full h-full object-cover z-10" draggable={false} />
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-20 px-4 max-w-[90%]">
+            {/* Overlay below text */}
+            <div className="absolute inset-0 z-[15] bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+
+            {/* Text should now sit above the overlay */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-20 px-4 w-[70%]">
               <h3 className="text-white text-lg md:text-2xl font-semibold">{currentTab.headline}</h3>
               <p className="text-white text-sm md:text-base mt-2">{currentTab.subtext}</p>
             </div>
@@ -144,8 +150,8 @@ export const Compare = () => {
             className={cn(
               "relative font-semibold text-sm transition-all duration-300",
               activeTab === index
-                ? "text-white after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2    after:bottom-[-8px] after:w-[180px] after:h-[2px] after:bg-white after:rounded-full"
-                : "text-gray-400 hover:text-gray-600/40"
+                ? "text-white after:content-[''] cursor-pointer after:absolute after:left-1/2 after:-translate-x-1/2    after:bottom-[-8px] after:w-[180px] after:h-[2px] after:bg-white after:rounded-full"
+                : "text-gray-400 "
             )}
           >
             {tab.title}

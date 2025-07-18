@@ -18,10 +18,10 @@ type Tab = {
 };
 
 const tabs: Tab[] = [
-  { id: "capture", label: "Capture Every Detail in 4K", model: "VREC-Z820DC" },
-  { id: "display", label: "Larger Display", model: "VREC-H520DC" },
-  { id: "gps", label: "GPS Tracking and Safety Alerts", model: "VREC-H320SC" },
-  { id: "compact", label: "Compact Design", model: "VREC-H120SC" },
+  { id: "capture", label: "Power Users", model: "VREC-Z820DC" },
+  { id: "display", label: "Experienced Users", model: "VREC-H520DC" },
+  { id: "gps", label: "Practical Users", model: "VREC-H320SC" },
+  { id: "compact", label: "First-Time Users", model: "VREC-H120SC" },
 ];
 
 const contentMap = {
@@ -37,13 +37,13 @@ const contentMap = {
     },
     overlay: {
       image: "/modelImages/VREC-Z820DC/image2.png",
-      title: `Blurry when\nit counts?`,
+      title: `Blurry when \nspeeding?`,
       description: `Frustrated with blurry footage\nwhen it matters most?\nThis one records in true 4K, so\nnumber plates and road signs\nstay sharp, even when you're\ndriving fast.`,
     },
     sideCard: {
       image: "/modelImages/VREC-Z820DC/image3.png",
       title: `Glare ruining\nyour footage?`,
-      description: `City lights, tunnels, and glare\ncan mess with footage. The\nSTARVIS sensor handles all\nthat smoothly, so your video\nalways comes out clear.`,
+      description: `City lights, tunnels and glare can mess with\n footage. The STARVIS sensor handles all\n that smoothly, so your video always comes\n out clear.`,
     },
   },
   display: {
@@ -57,8 +57,8 @@ const contentMap = {
     },
     overlay: {
       image: "/modelImages/VREC-H520DC/image2.png",
-      title: `Feel like you're\n not seeing \nenough?`,
-      description: `A wider field of vision\n paired with a large screen\nmakes it easy to see more\n of every drive.`,
+      title: `Feel like you're not\n seeing enough?`,
+      description: `A wider field of vision paired with a \nlarge screen makes it easy to see\n  more of everydrive.`,
     },
     sideCard: {
       image: "/modelImages/VREC-H520DC/image3.png",
@@ -83,7 +83,7 @@ const contentMap = {
     sideCard: {
       image: "/modelImages/VREC-H320SC/image3.png",
       title: "Find tiny \n screens\n frustrating?",
-      description: `Large display gives you better\n visual feedback while\n reviewing footage or adjusting \nsettings.`,
+      description: `The large display makes it easier to view\n footage and tweak settings without the\n squint.`,
     },
   },
   compact: {
@@ -124,7 +124,7 @@ export default function ProductDetails() {
       <Typography  className="text-[#ABABAB] pt-[0.8em]  !lg:text-[2px] text-center !font-normal mb-10">Choose features for your drive</Typography>
 
       {/* Tabs */}
-      <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-26 xl:mt-12">
+      <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-36  xl:mt-12">
         <div className="flex  justify-between items-center">
           {tabs.map((tab) => (
             <motion.button
@@ -174,7 +174,7 @@ export default function ProductDetails() {
       </div>
 
       {/* Dynamic Content */}
-      <div className="relative mx-auto">
+      <div className="relative mx-auto ">
         <div ref={sectionRef}>
           <AnimatePresence mode="wait">
             <DarkBanner {...currentContent.banner} />

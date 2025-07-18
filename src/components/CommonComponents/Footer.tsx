@@ -16,7 +16,7 @@ const navLinks = ["Our Products", "Our History", "Pioneer Global", "Contact Us"]
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-[#AD2239]/60 via- to-transparent text-white pt-24 pb-6 px-4 mt-32">
+    <footer className="bg-gradient-to-t from-[#AD2239]/60 via- to-transparent text-white pt-24 pb-6 px-4 mt-32 ">
       <div className="max-w-6xl  mx-auto w-full">
         {/* Top Links */}
         <div className="pl-20 grid grid-cols-2 sm:grid-cols-4 gap-6 !text-sm md:text-base text-white/90 mb-12 lg:mb-32 text-justify sm:text-left font-medium ">
@@ -63,7 +63,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="text-center  text-white/60 mt-6">
           <strong className="text-white/90 text-[12px]">© 2025 Pioneer Gulf FZE. All Rights Reserved</strong>
-          <p className="mt-1 text-[8px]">Powered by Megamind Advertising Private Limited</p>
+          <p className="mt-1 text-[12px]">Powered by Megamind Studios </p>
         </div>
       </div>
     </footer>

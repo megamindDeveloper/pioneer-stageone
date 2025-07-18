@@ -19,7 +19,7 @@ export default function HeroScrollScene() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=4570", // Adjusted for smoother scroll
+          end: "+=3570", // Adjusted for smoother scroll
           scrub: 1, // Even smoother
           refreshPriority: -1,
           fastScrollEnd: true, // Optimize for fast scrolling
@@ -80,7 +80,7 @@ export default function HeroScrollScene() {
       {/* Spacer BEFORE */}
       <section className="h-[1px] bg-gray-900 text-white flex items-center justify-center"></section>
       {/* Container that provides scroll distance */}
-      <div ref={containerRef} className="h-[530vh]">
+      <div ref={containerRef} className="h-[1030vh]">
         {/* Sticky Hero Section */}
         <section
           ref={sectionRef}

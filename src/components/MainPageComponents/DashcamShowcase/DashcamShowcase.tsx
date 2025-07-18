@@ -131,7 +131,7 @@ export default function DashcamShowcase() {
   return (
     <section className="relative min-h-screen py-12 md:px-4 ">
       <Typography variant="section-heading" className="!font-medium   text-center text-white pb-12 md:pb-24 lg:text-[26px] xl:text-[32.9px]">
-        Discover Pioneer's Smart Dashcam Range
+      Explore the Pioneer lineup built for real driving
       </Typography>
 
       {/* Grid container with relative positioning */}

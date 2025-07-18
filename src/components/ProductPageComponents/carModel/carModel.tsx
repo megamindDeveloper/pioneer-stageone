@@ -39,20 +39,23 @@ function VideoPlane({
     video.muted = true;
     video.playsInline = true;
     video.autoplay = true;
-
-    video.play().catch(console.error);
-
+  
+    // Wait for video to be ready before playing
+    video.addEventListener("canplay", () => {
+      video.play().catch(console.error);
+    });
+  
     const texture = new THREE.VideoTexture(video);
     texture.colorSpace = THREE.SRGBColorSpace;
     textureRef.current = texture;
-
+  
     return () => {
       video.pause();
       video.src = "";
       texture.dispose();
     };
   }, [url]);
-
+  
   return (
     <mesh position={position} rotation={rotation} scale={scale}>
       <planeGeometry args={[16, 9]} /> {/* Adjust for video aspect ratio */}
@@ -329,7 +332,7 @@ function CameraModel({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> }) {
         url="/video/video.mp4"
         position={[0.0, 1.167, 0.45]}
         rotation={[0, 0, 0]}
-        scale={[0.0043, 0.0029, 0.0]}
+        scale={[0.0047, 0.0029, 0.0]}
       />
     </group>
   );
@@ -362,7 +365,7 @@ export default function CarCameraScene() {
           gl={{ toneMapping: THREE.ACESFilmicToneMapping }}
           camera={{ position: [0, 1, 18], fov: 10, near: 0.1, far: 500 }}
           style={{
-            background: "#0D0D0D",
+            background: "#020202ff",
             width: "100vw",
             height: "100vh",
             position: "sticky",

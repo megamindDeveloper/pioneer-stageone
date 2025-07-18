@@ -57,7 +57,9 @@ function VideoPlane({
     <mesh position={position} rotation={rotation} scale={scale}>
       <planeGeometry args={[16, 9]} /> {/* Adjust for video aspect ratio */}
       <meshBasicMaterial toneMapped={false} side={THREE.DoubleSide}>
-        {textureRef.current && <primitive attach="map" object={textureRef.current} />}
+        {textureRef.current && (
+          <primitive attach="map" object={textureRef.current} />
+        )}
       </meshBasicMaterial>
     </mesh>
   );
@@ -93,8 +95,16 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 1 - Rear Camera View (behind the car)
       tl.addLabel("keyframe1")
-        .to(camera.position, { x: 0, y: 2.5, z: -5.7, ease: "none" }, "keyframe1")
-        .to(camera.rotation, { x: 0, y: degToRad(180), z: 0, ease: "none" }, "keyframe1")
+        .to(
+          camera.position,
+          { x: 0, y: 2.5, z: -5.7, ease: "none" },
+          "keyframe1"
+        )
+        .to(
+          camera.rotation,
+          { x: 0, y: degToRad(180), z: 0, ease: "none" },
+          "keyframe1"
+        )
         .to(
           camera,
           {
@@ -107,8 +117,16 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 2 - Top View (flat, centered above car)
       tl.addLabel("keyframe2")
-        .to(camera.position, { x: 0, y: 10, z: 0, ease: "sine.inOut" }, "keyframe2")
-        .to(camera.rotation, { x: degToRad(90), y: degToRad(180), z: 0, ease: "sine.inOut" }, "keyframe2")
+        .to(
+          camera.position,
+          { x: 0, y: 10, z: 0, ease: "sine.inOut" },
+          "keyframe2"
+        )
+        .to(
+          camera.rotation,
+          { x: degToRad(90), y: degToRad(180), z: 0, ease: "sine.inOut" },
+          "keyframe2"
+        )
         .to(
           camera,
           {
@@ -121,8 +139,16 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 3 - Wide Top View (zoomed out overhead shot)
       tl.addLabel("keyframe3")
-        .to(camera.position, { x: 0, y: 20, z: 0, ease: "sine.inOut" }, "keyframe3")
-        .to(camera.rotation, { x: degToRad(90), y: degToRad(180), z: 0, ease: "sine.inOut" }, "keyframe3")
+        .to(
+          camera.position,
+          { x: 0, y: 20, z: 0, ease: "sine.inOut" },
+          "keyframe3"
+        )
+        .to(
+          camera.rotation,
+          { x: degToRad(90), y: degToRad(180), z: 0, ease: "sine.inOut" },
+          "keyframe3"
+        )
         .to(
           camera,
           {
@@ -135,8 +161,21 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 4 - Dynamic Angle View (angled top-right view)
       tl.addLabel("keyframe4")
-        .to(camera.position, { x: 0, y: 15, z: -5, ease: "sine.inOut" }, "keyframe4")
-        .to(camera.rotation, { x: degToRad(90), y: degToRad(180), z: degToRad(-90), ease: "sine.inOut" }, "keyframe4")
+        .to(
+          camera.position,
+          { x: 0, y: 15, z: -5, ease: "sine.inOut" },
+          "keyframe4"
+        )
+        .to(
+          camera.rotation,
+          {
+            x: degToRad(90),
+            y: degToRad(180),
+            z: degToRad(-90),
+            ease: "sine.inOut",
+          },
+          "keyframe4"
+        )
         .to(
           camera,
           {
@@ -149,8 +188,21 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
 
       // 📌 KEYFRAME 5 - Far Out View (camera pulling away)
       tl.addLabel("keyframe5")
-        .to(camera.position, { x: 0, y: 15, z: -15, ease: "sine.inOut" }, "keyframe5")
-        .to(camera.rotation, { x: degToRad(90), y: degToRad(180), z: degToRad(-90), ease: "sine.inOut" }, "keyframe5")
+        .to(
+          camera.position,
+          { x: 0, y: 15, z: -15, ease: "sine.inOut" },
+          "keyframe5"
+        )
+        .to(
+          camera.rotation,
+          {
+            x: degToRad(90),
+            y: degToRad(180),
+            z: degToRad(-90),
+            ease: "sine.inOut",
+          },
+          "keyframe5"
+        )
         .to(
           camera,
           {
@@ -241,6 +293,7 @@ function CameraModel({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> }) {
 
         // 📌 KEYFRAME 2 - Keep beam position at z=6
         tl.addLabel("keyframe2")
+
           .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe2")
           .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe2")
           .to(beamRef.current!.position, { z: 2, ease: "sine.inOut" }, "keyframe2");
@@ -272,7 +325,12 @@ function CameraModel({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> }) {
   return (
     <group ref={group} visible={false}>
       <primitive object={scene} />
-      <VideoPlane url="/video/video.mp4" position={[0.0, 1.167, 0.45]} rotation={[0, 0, 0]} scale={[0.0043, 0.0029, 0.0]} />
+      <VideoPlane
+        url="/video/video.mp4"
+        position={[0.0, 1.167, 0.45]}
+        rotation={[0, 0, 0]}
+        scale={[0.0043, 0.0029, 0.0]}
+      />
     </group>
   );
 }
@@ -326,6 +384,7 @@ export default function CarCameraScene() {
           className="fixed top-1/2 left-1/2 z-40 opacity-0 scale-75 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500"
         >
           <img src="/icons/triangle-alert.svg" alt="Alert" className="w-24 h-24 animate-pulse" />
+
         </div>
       </motion.div>
     </>

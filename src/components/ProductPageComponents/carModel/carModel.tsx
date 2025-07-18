@@ -86,7 +86,7 @@ function CameraController({ onModelReady }: { onModelReady: () => void }) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: "#model2-scroll-container",
-          start: "top+=200 top",
+          start: "top+=1300 top",
           scrub: 1.5,
           invalidateOnRefresh: true,
           end: "bottom bottom",

@@ -97,7 +97,7 @@ export default function CarOverlayContentDivs() {
     ),
     s4: (
       <section className="min-h-screen bg-none text-white flex flex-col justify-between px-6 py-10 text-center">
-        <div className="pt-44">
+        <div className="pt-28">
           <Image
             src="/images/svgs/dangerIcon.svg"
             alt="Warning Icon"
@@ -107,7 +107,7 @@ export default function CarOverlayContentDivs() {
           />
         </div>
 
-        <div className="flex flex-col items-center space-y-15 pb-12">
+        <div className="flex flex-col items-center space-y-15 pb-12 pt-32">
           <div className="text-center max-w-xl mx-auto pb-0">
             <p className="text-cherryRed text-xl font-medium mb-2">
               Built to Notice Before You Do

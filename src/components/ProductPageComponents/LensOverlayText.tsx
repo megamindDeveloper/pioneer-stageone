@@ -25,7 +25,7 @@ export default function LensOverlayContentDivs() {
 
           if (p === 0) setStage(null);
           else if (p > 0 && p < 0.2) setStage("s3");
-          else if (p >= 0.2 && p < 0.75) setStage("s4");
+          else if (p >= 0.2 && p < 0.7) setStage("s4");
           else if (p >= 0.75 && p < 0.9) setStage("s5");
           else setStage(null);
         },

@@ -40,28 +40,30 @@ export default function HeroScrollScene() {
           duration: 1,
         },
         0
-      ).fromTo(
-        imageWrapperRef.current,
-        {
-          scale: 3,
-          opacity: 0,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          ease: "power2.inOut",
-          duration: 1,
-        },
-        0
-      ).to(
-        imageWrapperRef.current,
-        {
-          opacity: 0,
-          ease: "power2.inOut",
-          duration: 1,
-        },
-        1 // Start fade out after 1.5 seconds into the timeline
-      );
+      )
+        .fromTo(
+          imageWrapperRef.current,
+          {
+            scale: 3,
+            opacity: 0,
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: "power2.inOut",
+            duration: 1,
+          },
+          0
+        )
+        .to(
+          imageWrapperRef.current,
+          {
+            opacity: 0,
+            ease: "power2.inOut",
+            duration: 1,
+          },
+          1 // Start fade out after 1.5 seconds into the timeline
+        );
 
       // Optimize ScrollTrigger performance
       ScrollTrigger.config({
@@ -78,7 +80,7 @@ export default function HeroScrollScene() {
       {/* Spacer BEFORE */}
       <section className="h-[1px] bg-gray-900 text-white flex items-center justify-center"></section>
       {/* Container that provides scroll distance */}
-      <div ref={containerRef} className="h-[300vh]">
+      <div ref={containerRef} className="h-[530vh]">
         {/* Sticky Hero Section */}
         <section
           ref={sectionRef}
@@ -109,18 +111,29 @@ export default function HeroScrollScene() {
           </div>
 
           {/* Heading */}
-          <div className="absolute inset-0 flex items-center justify-center z-10">
-            <h1
-              ref={headingRef}
-              className="text-4xl md:text-7xl font-bold text-white text-center px-4"
-              style={{
-                transform: "translateZ(0)",
-                backfaceVisibility: "hidden",
-                willChange: "transform, opacity",
-              }}
-            >
+          <div
+            ref={headingRef}
+            className="absolute inset-0 flex flex-col items-center justify-center z-10"
+            style={{
+              transform: "translateZ(0)",
+              backfaceVisibility: "hidden",
+              willChange: "transform, opacity",
+            }}
+          >
+            <h1 className="text-4xl md:text-7xl font-bold text-white text-center px-4">
               4K Clarity Meets AI Intelligence
             </h1>
+            <p className="text-[40px] text-[#ABABAB] mt-4">
+              VREC-Z820DC Keeps the Road on Record
+            </p>
+            <button className="bg-[#262626] px-2 pl-6 py-2 cursor-pointer rounded-full text-white mt-6 flex text-2xl font-medium items-center">
+              Scroll to Explore
+              <img
+                src="/icons/chevDownCircle.svg"
+                alt="Arrow Down"
+                className="ml-2 "
+              />
+            </button>
           </div>
         </section>
       </div>

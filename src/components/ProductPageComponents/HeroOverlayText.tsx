@@ -1,0 +1,73 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import ReactDOM from "react-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+type Stage = "s1" | null;
+
+export default function HeroOverlayText() {
+  const [stage, setStage] = useState<Stage>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: "#model0-scroll-container",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+        onUpdate: (self) => {
+          const p = self.progress;
+
+          if (p < 0.2) setStage(null);
+          else if (p >= 0.2 && p < 0.5) setStage(null);
+          else if (p >= 0.5 && p < 0.9) setStage("s1");
+          else setStage(null);
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  if (typeof window === "undefined") return null;
+
+  // Custom overlay divs
+  const overlays = {
+    s1: (
+      <div>
+        <p className="text-cherryRed text-xl font-bold text-center">Sharp Footage in Low Light</p>
+        <h2 className="text-[56px] text-white text-center font-medium">AI Powered Night Vision</h2>
+        <p className="text-pretty text-[#ABABAB] text-center max-w-lg mx-auto">
+          An 8MP sensor that captures sharp, detailed video with high
+          sensitivity, preserving image quality even during night drives and
+          low-light conditions.
+        </p>
+      </div>
+    ),
+  };
+
+  const currentOverlay = stage ? overlays[stage] : null;
+
+  return ReactDOM.createPortal(
+    <AnimatePresence>
+      {currentOverlay && (
+        <motion.div
+          key={stage}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
+          className="fixed top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        >
+          {currentOverlay}
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
+  );
+}

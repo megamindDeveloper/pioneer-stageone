@@ -7,6 +7,7 @@ import CarOverlayContentDivs from "@/components/ProductPageComponents/CarOverlay
 import { Compare } from "@/components/ProductPageComponents/ComparasionComponent/ComparasionComponent";
 import DriveSmarter from "@/components/ProductPageComponents/DriveSmarter/DriveSmarter";
 import EverythingNeedToKnow from "@/components/ProductPageComponents/EverythingNeedToKnow/EverythingNeedToKnow";
+import HeroOverlayText from "@/components/ProductPageComponents/HeroOverlayText";
 import LensOverlayText from "@/components/ProductPageComponents/LensOverlayText";
 import ProductFeatureTable from "@/components/ProductPageComponents/ProductFeatureTable/ProductFeatureTable";
 import ZenVue from "@/components/ProductPageComponents/ZenVue/ZenVue";
@@ -15,7 +16,7 @@ import React from "react";
 const Page = () => {
   return (
     <section>
-     
+      <HeroOverlayText />
       <div
         id="model0-scroll-container"
         style={{ height: "600vh", position: "relative" }}
@@ -32,7 +33,9 @@ const Page = () => {
         id="model1-scroll-container"
         style={{ height: "600vh", position: "relative" }}
       >
-        <div  style={{ position: "sticky", top: 0, zIndex: 1 ,background: "#000" }}>
+        <div
+          style={{ position: "sticky", top: 0, zIndex: 1, background: "#000" }}
+        >
           <CameraSceneModel1 />
         </div>
       </div>

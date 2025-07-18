@@ -43,12 +43,12 @@ const features = [
 
 export default function ProductComparisonTable() {
   return (
-    <section className="b text-white px-4 md:px-8 py-20 max-w-6xl  xl:max-w-[90%] mx-auto mt-20">
-      <div className="max-w-7xl mx-auto text-center mb-16">
-        <Typography variant="h2" className="!font-medium mb-2">
-          Which One’s Built for You?
+    <section className="b text-white px-4 md:px-8 py-20 max-w-7xl  xl:max-w-[90%] mx-auto mt-20">
+      <div className="max-w-7xl mx-auto text-center mb-20">
+        <Typography variant="h2" className="!font-semibold mb-2 text-[40px]">
+        Pick Your Level of Performance
         </Typography>
-        <p className="text-[#ABABAB]/80 text-sm md:text-base">Compare the key features across each model</p>
+        <p className="text-[#ABABAB]/80 text-sm md:text-base ">See how each dashcam delivers on clarity, safety, and control.</p>
       </div>
 
       <div className="overflow-x-auto">

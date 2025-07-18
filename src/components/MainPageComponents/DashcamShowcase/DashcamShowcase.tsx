@@ -135,7 +135,7 @@ export default function DashcamShowcase() {
       </Typography>
 
       {/* Grid container with relative positioning */}
-      <div className="relative max-w-6xl xl:max-w-[90%] mx-auto h-[180vh] md:h-[100vh]">
+      <div className="relative max-w-7xl xl:max-w-[90%] mx-auto h-[180vh] md:h-[100vh]">
         {/* Vertical Line */}
         <div className="pointer-events-none hidden md:absolute left-1/2 top-0 w-px h-full bg-white opacity-30 z-10 -translate-x-1/2" />
 

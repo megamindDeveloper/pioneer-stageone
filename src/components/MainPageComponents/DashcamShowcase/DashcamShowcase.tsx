@@ -13,10 +13,10 @@ export default function DashcamShowcase() {
   const scaleZ820DC = useResponsiveScale(
     useMemo(() => [0.6, 0.6, 0.6], []), // xl
     useMemo(() => [0.6, 0.6, 0.6], []), // lg2
-    useMemo(() => [0.5, 0.5, 0.5], []), // lg
+    useMemo(() => [0.6, 0.6, 0.6], []), // lg
     useMemo(() => [0.4, 0.4, 0.4], []), // md
     useMemo(() => [0.35, 0.35, 0.35], []), // sm
-    useMemo(() => [0.55, 0.65, 0.54], [])  // xs
+    useMemo(() => [0.45, 0.50, 0.45], []) // xs
   );
   const hoveredScaleZ820DC = useResponsiveScale(
     useMemo(() => [0.6, 0.6, 0.6], []),
@@ -24,12 +24,12 @@ export default function DashcamShowcase() {
     useMemo(() => [0.5, 0.5, 0.5], []),
     useMemo(() => [0.4, 0.4, 0.4], []),
     useMemo(() => [0.35, 0.35, 0.35], []),
-    useMemo(() => [0.3, 0.3, 0.3], [])
+    useMemo(() => [0., 0.3, 0.3], [])
   );
   const positionZ820DC = useResponsivePosition(
     useMemo(() => [0, 0.6, 0], []),
-    useMemo(() => [0, 0.6, 0], []),
-    useMemo(() => [0, 0.5, 0], []),
+    useMemo(() => [0, 0.8, 0], []),
+    useMemo(() => [0, 0.8, 0], []),
     useMemo(() => [0, 0.4, 0], []),
     useMemo(() => [0, 0.3, 0], []),
     useMemo(() => [0, 1, 0], [])
@@ -49,7 +49,7 @@ export default function DashcamShowcase() {
     useMemo(() => [0.5, 0.5, 0.5], []),
     useMemo(() => [0.4, 0.4, 0.4], []),
     useMemo(() => [0.35, 0.35, 0.35], []),
-    useMemo(() => [0.3, 0.3, 0.3], [])
+    useMemo(() => [0.60, 0.60, 0.60], [])
   );
   const hoveredScaleH520DC = scaleH520DC;
   const positionH520DC = useResponsivePosition(
@@ -75,7 +75,7 @@ export default function DashcamShowcase() {
     useMemo(() => [0.4, 0.4, 0.4], []),
     useMemo(() => [0.35, 0.35, 0.35], []),
     useMemo(() => [0.3, 0.3, 0.3], []),
-    useMemo(() => [0.25, 0.25, 0.25], [])
+    useMemo(() => [0.55, 0.55, 0.55], [])
   );
   const positionH320SC = useResponsivePosition(
     useMemo(() => [0, 0.2, 0], []),
@@ -95,15 +95,15 @@ export default function DashcamShowcase() {
   );
 
   const scaleH120SC = useResponsiveScale(
-    useMemo(() => [0.6, 0.6, 0.6], []),
+    useMemo(() => [0.7, 0.7, 0.7], []),
     useMemo(() => [0.6, 0.6, 0.6], []),
     useMemo(() => [0.5, 0.5, 0.5], []),
     useMemo(() => [0.4, 0.4, 0.4], []),
     useMemo(() => [0.35, 0.35, 0.35], []),
-    useMemo(() => [0.3, 0.3, 0.3], [])
+    useMemo(() => [0.9, 0.9, 0.9], [])
   );
   const hoveredScaleH120SC = useResponsiveScale(
-    useMemo(() => [0.85, 0.85, 0.85], []),
+    useMemo(() => [0.7, 0.7, 0.7], []),
     useMemo(() => [0.85, 0.85, 0.85], []),
     useMemo(() => [0.7, 0.7, 0.7], []),
     useMemo(() => [0.6, 0.6, 0.6], []),
@@ -127,15 +127,14 @@ export default function DashcamShowcase() {
     useMemo(() => [0.3, -0.2, 0], [])
   );
 
-
   return (
-    <section className="relative min-h-screen py-12 md:px-4 ">
-      <Typography variant="section-heading" className="!font-medium   text-center text-white pb-12 md:pb-24 lg:text-[26px] xl:text-[32.9px]">
-      Explore the Pioneer lineup built for real driving
+    <section className="relative min-h-screen py-12 md:px-4 md:mt-32 mt-0">
+      <Typography variant="section-heading" className="!font-medium   text-white text-center mb-20">
+        Explore the Pioneer lineup built for real driving
       </Typography>
 
       {/* Grid container with relative positioning */}
-      <div className="relative max-w-7xl xl:max-w-[90%] mx-auto h-[180vh] md:h-[100vh]">
+      <div className="relative max-w-7xl xl:max-w-[90%] mx-auto h-auto md:h-[100vh]">
         {/* Vertical Line */}
         <div className="pointer-events-none hidden md:absolute left-1/2 top-0 w-px h-full bg-white opacity-30 z-10 -translate-x-1/2" />
 
@@ -148,6 +147,22 @@ export default function DashcamShowcase() {
             cardIndex={0}
             title="VREC-Z820DC"
             Component={<VRECZ820DC />}
+            directionalLights={[
+              {
+                position: [-0.24, 3.295, 10.316],
+                hoveredPosition: [-22.58, 8.959, 15.017],
+                intensity: 1,
+                hoveredIntensity: 2,
+                color: "#ffffff",
+              },
+              {
+                position: [2.07, 8.164, 16.117],
+                hoveredPosition: [-1.916, 5.069, 20.8],
+                intensity: 1.5,
+                hoveredIntensity: 2,
+                color: "#ffffff",
+              },
+            ]}
             cameraPosition={[0, 1, 5]}
             description={`4K Flagship Dual Channel
               Dash Cam with Night Vision AI`}
@@ -157,10 +172,26 @@ export default function DashcamShowcase() {
             defaultPosition={positionZ820DC}
             hoveredPosition={hoveredPositionZ820DC}
             defaultRotation={[-0.2, 0, 0]}
-            hoveredRotation={[-0.2, -0.75, 0]}
+            hoveredRotation={[-0.2, -0.95, 0]}
             featureIcons={["/icons/4kicon.svg", "/icons/fullHd.svg", "/icons/aivision.svg", "/icons/wdrhdr.svg", "/icons/adasAlert.svg"]}
           />
           <DashcamCard
+            directionalLights={[
+              {
+                position: [-5.477, 20.381, 18.049],
+                hoveredPosition: [-23.118, 10.792, 4.712],
+                intensity: 0.5,
+                hoveredIntensity: 2,
+                color: "#ffffff",
+              },
+              {
+                position: [-2.758, 12.887, 34.355],
+                hoveredPosition: [-16.192, 10.811, 33.857],
+                intensity: 0.5,
+                hoveredIntensity: 2,
+                color: "#ffffff",
+              },
+            ]}
             cardIndex={1}
             title="VREC-H520DC"
             Component={<VRECH520DC />}
@@ -177,6 +208,23 @@ export default function DashcamShowcase() {
             featureIcons={["/icons/2kicon.svg", "/icons/fullHd.svg", "/icons/enhanced.svg", "/icons/hdr.svg", "/icons/adasAlert.svg"]}
           />
           <DashcamCard
+            directionalLights={[
+              {
+                position: [5.477, 20.372, 18.051],
+                hoveredPosition: [-4.537, 9.827, 17.011],
+                intensity: 3,
+                hoveredIntensity: 2,
+                color: "#ffffff",
+              },
+              {
+           
+                position: [-8.356, 18.164, 33.030],
+                hoveredPosition:[-12.588, 6.504, 5.122],
+                intensity: 10.5,
+                hoveredIntensity: 2,
+                color: "#ffffff",
+              },
+            ]}
             cardIndex={2}
             title="VREC-H320SC"
             Component={<VRECH320SC />}
@@ -193,6 +241,22 @@ export default function DashcamShowcase() {
             featureIcons={["/icons/2kicon.svg", "/icons/wdr.svg", "/icons/inBuildGps.svg", "/icons/wideDynamic.svg", "/icons/adasAlert.svg"]}
           />
           <DashcamCard
+          directionalLights={[
+            {
+              position: [-1.241, 8.582, 17.441],
+              hoveredPosition: [-1.673, 5.556, 25.090],
+              intensity: 3,
+              hoveredIntensity: 2,
+              color: "#ffffff",
+            },
+            {
+              position: [5.477, 20.372, 18.051],
+              hoveredPosition: [-1.840, 17.216, 1.162],
+              intensity: 10.5,
+              hoveredIntensity: 2,
+              color: "#ffffff",
+            },
+          ]}
             cardIndex={3}
             title="VREC-H120SC"
             Component={<VRECH120SC />}

@@ -216,7 +216,7 @@ export default function CameraSceneModel1() {
         <Canvas
           camera={{ position: [0, 1, 18], fov: 40, near: 0.01, far: 500 }}
           style={{
-            background: "#0d0d0d",
+            background: "#fffff",
             width: "100vw",
             height: "100vh",
             position: "sticky",

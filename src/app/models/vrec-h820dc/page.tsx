@@ -31,10 +31,10 @@ const Page = () => {
 
       <div
         id="model1-scroll-container"
-        style={{ height: "600vh", position: "relative" }}
+        style={{ height: "600vh", position: "relative" , backgroundColor:"white"}}
       >
         <div
-          style={{ position: "sticky", top: 0, zIndex: 1, background: "#000" }}
+          style={{ position: "sticky", top: 0, zIndex: 1,backgroundColor:"white" }}
         >
           <CameraSceneModel1 />
         </div>

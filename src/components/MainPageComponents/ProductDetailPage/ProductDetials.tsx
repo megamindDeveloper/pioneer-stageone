@@ -29,11 +29,11 @@ const contentMap = {
     banner: {
       title: "Hard to see on unlit roads?",
       description: `Ever missed something on a dark road or under harsh headlights?\nThe AI night vision picks up details clearly, even in low light or \nrainy evening drives.`,
-      imageSrc: "/modelImages/VREC-Z820DC/image1.png",
+      imageSrc: "/modelImages/VREC-Z820DC/00571.webp",
       buttonLabel: "Learn More",
       buttonLink: "/products/night-vision-dashcam",
       imageWidth: 700,
-      imagePositionClass: "bottom-0 left-[50%] right-6" 
+      imagePositionClass: "bottom-0 left-[45%]",
     },
     overlay: {
       image: "/modelImages/VREC-Z820DC/image2.png",
@@ -53,7 +53,7 @@ const contentMap = {
       imageSrc: "/modelImages/VREC-H520DC/image1.png",
       buttonLabel: "Explore",
       buttonLink: "/products/wide-display",
-      imagePositionClass: "bottom-0 left-[42%]" 
+      imagePositionClass: "bottom-0 left-[42%]",
     },
     overlay: {
       image: "/modelImages/VREC-H520DC/image2.png",
@@ -73,7 +73,7 @@ const contentMap = {
       imageSrc: "/modelImages/VREC-H320SC/image1.png",
       buttonLabel: "See How",
       buttonLink: "/products/gps-dashcam",
-      imagePositionClass: "bottom-0 left-[42%]" 
+      imagePositionClass: "bottom-0 left-[42%]",
     },
     overlay: {
       image: "/modelImages/VREC-H320SC/image2.png",
@@ -93,19 +93,19 @@ const contentMap = {
       imageSrc: "/modelImages/VREC-H120SC/image1.png",
       buttonLabel: "Check It Out",
       buttonLink: "/products/compact-dashcam",
-      imagePositionClass: "bottom-0 left-[40%]" 
+      imagePositionClass: "bottom-0 left-[40%]",
     },
     overlay: {
       image: "/modelImages/VREC-H120SC/image2.png",
       title: `Not a tech \nperson?`,
       description: `Quick setup and app-based \ncontrol make it beginner-friendly \nfrom day one.`,
-      imageClassName:"w-[100%]  h-[100%] mt-2"
+      imageClassName: "w-[100%]  h-[100%] mt-2",
     },
     sideCard: {
       image: "/modelImages/VREC-H120SC/image3.png",
       title: "Ever wish your \n footage looked\n sharper?",
       description: `1.5K recording gives you \nsharper footage without the bulk\n of bigger cams.`,
-      imageClassName:"w-[90%]  h-[80%]"
+      imageClassName: "w-[90%]  h-[80%]",
     },
   },
 };
@@ -118,10 +118,12 @@ export default function ProductDetails() {
 
   return (
     <section className="relative min-h-screen py-12 px-4 text-white max-w-7xl xl:max-w-[90%] mt-20  mx-auto">
-       <Typography variant="card-heading" className="!font-medium  text-center text-white  px-6">
+      <Typography variant="section-heading" className="!font-medium  text-center text-white  px-8">
         What Matters Most When You Drive?
       </Typography>
-      <Typography  className="text-[#ABABAB] pt-[0.8em]  !lg:text-[2px] text-center !font-normal mb-10">Choose features for your drive</Typography>
+      <Typography variant="section-body" className="text-[#ABABAB] lg:pt-[0.8em] xl:pt-0 text-center !font-normal mb-10">
+        Choose features for your drive
+      </Typography>
 
       {/* Tabs */}
       <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-36  xl:mt-12">
@@ -137,9 +139,12 @@ export default function ProductDetails() {
               whileTap={{ scale: 0.98 }}
             >
               <div className="text-center relative z-10">
-                <div className="md:block hidden text-[17px] font-bold">{tab.label}</div>
+                <div className="md:block hidden  font-bold">
+                  {" "}
+                  <Typography variant="slider-heading">{tab.label}</Typography>
+                </div>
                 <div className="md:hidden block text-[12px] font-bold">{tab.model}</div>
-                <AnimatePresence mode="wait" >
+                <AnimatePresence mode="wait">
                   {tab.model && activeTab === tab.id && (
                     <motion.div
                       key="model"
@@ -147,7 +152,7 @@ export default function ProductDetails() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="text-sm text-[#ABABAB]/80 mt-1 hidden md:block"
+                      className="text-sm text-[#ABABAB]/80 xl:mt-1 mt-2 hidden md:block"
                     >
                       {tab.model}
                     </motion.div>

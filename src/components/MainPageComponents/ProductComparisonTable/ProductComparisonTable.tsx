@@ -45,10 +45,10 @@ export default function ProductComparisonTable() {
   return (
     <section className="b text-white px-4 md:px-8 py-20 max-w-7xl  xl:max-w-[90%] mx-auto mt-20">
       <div className="max-w-7xl mx-auto text-center mb-20">
-        <Typography variant="h2" className="!font-semibold mb-2 text-[40px]">
+        <Typography variant="section-heading" className="!font-semibold ">
         Pick Your Level of Performance
         </Typography>
-        <p className="text-[#ABABAB]/80 text-sm md:text-base ">See how each dashcam delivers on clarity, safety and control.</p>
+        <Typography variant="section-body"  className="text-[#ABABAB]/80 lg:pt-[0.8em] xl:pt-0  text-sm md:text-base px-12 md:px-0">See how each dashcam delivers on clarity, safety and control.</Typography>
       </div>
 
       <div className="overflow-x-auto">
@@ -65,11 +65,11 @@ export default function ProductComparisonTable() {
                 <Image src={product.image} alt={product.name} fill className="object-contain w-full h-full relative z-0" />
               </div>
 
-              <h3 className="text-[17px] font-bold">{product.name}</h3>
+              <Typography variant="comparison-grid-side-heading" className="font-bold">{product.name}</Typography>
               <div className="flex flex-col items-center">
-                <a href={product.link} className="text-[#AD2239] text-xs  mb-1 font-extrabold">
+              <Typography variant="comparison-grid-body"href={product.link} className="text-[#AD2239]   mb-1 font-extrabold">
                   Learn More &gt;
-                </a>
+                </Typography>
                 <div className="my-6 w-[70%] h-[1px] bg-[#4B4B4B]/80" />
               </div>
             </div>
@@ -77,10 +77,13 @@ export default function ProductComparisonTable() {
           {/* Feature Rows */}
           {features.map((feature, rowIndex) => (
             <React.Fragment key={feature}>
-              <div className="py-6  text-[20px] font-bold">{feature}</div>
+               <Typography variant="comparison-grid-side-subheading" className=" font-bold">{feature}</Typography>
               {products.map((product, colIndex) => (
-                <div key={colIndex} className="py-6  text-[17px] text-center text-[#ABABAB] whitespace-pre-line">
+                <div key={colIndex} className="py-6  text-center text-[#ABABAB] whitespace-pre-line">
+                   <Typography variant="comparison-grid-body">
+
                   {product.features[rowIndex]}
+                   </Typography>
                 </div>
               ))}
             </React.Fragment>

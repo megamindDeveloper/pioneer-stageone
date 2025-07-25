@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,9 +13,7 @@ interface DarkBannerProps {
   buttonLink: string;
   className?: string;
   imageWidth?: number;
-  imagePositionClass?: string; // ✅ new
 }
-
 
 const DarkBanner: React.FC<DarkBannerProps> = ({
   title,
@@ -26,53 +24,52 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
   buttonLink,
   className,
   imageWidth = 800,
-  imagePositionClass = "bottom-0 left-[48%]"
 }) => {
   return (
-    <section
-      className={`relative bg-black py-12 mt- xl:mt-32 pl-12 text-white bottom-0 rounded-xl  flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 ${className}`}
-    >
-      {/* Image */}
+    <section className="w-full relative">
+      <div
+        className={`relative z-10 grid md:grid-cols-2 items-center bg-black text-white rounded-xl py-12 xl:py-20 px-8 xl:px-16 gap-8 
+        lg:h-[300px] lg2:h-[380px] ${className}`}
+      >
+        {/* Left: Content */}
+        <motion.div
+          key={title + description}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+          transition={{ duration: 0.4 }}
+          className="z-20"
+        >
+           <h3 className="text-[20px] md:text-3xl !font-medium xl:text-4xl mb-3 whitespace-pre-line">{title}</h3>
+          <Typography  variant="section-card-body">{description}</Typography>
+          <Link href={buttonLink}>
+            <p className="bg-white text-black text-sm font-bold px-4 py-2 mt-10 rounded hover:bg-gray-200 transition inline-block w-fit">
+              Learn More
+            </p>
+          </Link>
+        </motion.div>
+
+        {/* Right: Empty space for visual balance (optional) */}
+        <div className="relative" />
+      </div>
+
+      {/* Absolute Image Outside */}
       <motion.div
         key={imageSrc}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.4 }}
-        className={`absolute z-10 ${imagePositionClass}`} 
+        className="absolute right-8 bottom-0 z-0"
       >
         <Image
           src={imageSrc}
           alt={imageAlt}
           width={imageWidth}
           height={450}
-          className="object-contain w-full h-auto"
+          className="object-contain h-auto"
         />
       </motion.div>
-
-      {/* Content */}
-      <motion.div
-        key={title + description}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 20 }}
-        transition={{ duration: 0.4 }}
-        className="flex-1 z-20"
-      >
-        <Typography variant="" className="!font-semibold  lg:text-[32px] xl:text-[43.1px] leading-[35.8px] tracking-[0.388px] whitespace-pre-line pb-[12px]">
-          {title}
-        </Typography>
-        <Typography variant="label" className="whitespace-pre-line">
-          {description}
-        </Typography>
-        <Link href={buttonLink}>
-          <p className="bg-white text-black text-sm font-bold px-4 py-2 mt-16 rounded hover:bg-gray-200 transition inline-block w-fit">
-            Learn More
-          </p>
-        </Link>
-      </motion.div>
-
-      <div className="flex-1" />
     </section>
   );
 };

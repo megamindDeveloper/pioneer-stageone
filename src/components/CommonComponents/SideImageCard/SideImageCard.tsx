@@ -23,7 +23,7 @@ export const SideImageCard: React.FC<SideImageCardProps> = ({ image, title, desc
       <div className="flex">
         <div className="flex-1 p-8 flex flex-col justify-center">
           <h3 className="text-2xl md:text-3xl !font-medium xl:text-4xl mb-3 whitespace-pre-line">{title}</h3>
-          <Typography variant="label" className="text-[#DFDFDF]">
+          <Typography variant="section-card-body" className="text-[#DFDFDF]">
             {description}
           </Typography>
         </div>

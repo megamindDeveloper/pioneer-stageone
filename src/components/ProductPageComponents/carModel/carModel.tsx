@@ -249,7 +249,7 @@ function BeamOverlayPlane({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> })
  ✅ CameraModel Component - Loads the car model & attaches video
 ----------------------------------------------------- */
 function CameraModel({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> }) {
-  const { scene } = useGLTF("/models/PIONEER CAR4.glb");
+  const { scene } = useGLTF("/models/PIONEER ONLY CAR .glb");
   const group = useRef<THREE.Group>(null);
 
   useEffect(() => {

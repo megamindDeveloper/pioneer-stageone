@@ -44,7 +44,7 @@ export default function FeatureAccordion() {
             return (
               <div key={feature.id} className="border-b border-white/20 py-6 cursor-pointer" onClick={() => setActiveId(feature.id)}>
                 <div className="flex justify-between items-center text-lg font-medium">
-                <Typography variant="body" className="text-white text-[26px] font-bold ">
+                <Typography variant="section-card-heading" className="text-white font-bold">
                     {feature.title}
                   </Typography>
                   <span className="text-2xl">
@@ -74,7 +74,7 @@ export default function FeatureAccordion() {
                         duration: 0.6,
                         ease: [0.25, 0.1, 0.25, 1], // cubic-bezier for smoother curve
                       }}
-                      className="mt-4 text-[#ABABAB] whitespace-pre-line text-[14px]"
+                      className="mt-4 text-[#ABABAB] whitespace-pre-line text-[12px] md:text-[16px]"
                     >
                       {feature.content}
                     </motion.p>

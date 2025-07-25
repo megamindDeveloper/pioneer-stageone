@@ -21,7 +21,7 @@ export default function Home() {
           <FadeLoader isModelReady={false} />
         </div>
       )}
-      <div className="w-full h-full bg-gradient-to-b from-[#0D0D0D] to-transparent">
+      <div className="w-full h-full bg-gradient-to-b ">
         <CameraScene onModelReady={() => setModelReady(true)} />
         <DashcamShowcase />
         <ProductDetials />

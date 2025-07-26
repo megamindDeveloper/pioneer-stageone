@@ -27,12 +27,12 @@ export default function DashcamShowcase() {
     useMemo(() => [0., 0.3, 0.3], [])
   );
   const positionZ820DC = useResponsivePosition(
-    useMemo(() => [0, 0.6, 0], []),
-    useMemo(() => [0, 0.8, 0], []),
-    useMemo(() => [0, 0.8, 0], []),
-    useMemo(() => [0, 0.4, 0], []),
-    useMemo(() => [0, 0.3, 0], []),
-    useMemo(() => [0, 1, 0], [])
+    useMemo(() => [0, 0.9, 0], []),
+    useMemo(() => [0, 0.9, 0], []),
+    useMemo(() => [0, 0.9, 0], []),
+    useMemo(() => [0, 0.9, 0], []),
+    useMemo(() => [0, 0.9, 0], []),
+    useMemo(() => [0, 0.9, 0], []),
   );
   const hoveredPositionZ820DC = useResponsivePosition(
     useMemo(() => [0.9, 0.6, 0], []),
@@ -53,20 +53,20 @@ export default function DashcamShowcase() {
   );
   const hoveredScaleH520DC = scaleH520DC;
   const positionH520DC = useResponsivePosition(
-    useMemo(() => [0, 0.3, 0], []),
-    useMemo(() => [0, 0.3, 0], []),
-    useMemo(() => [0, 0.25, 0], []),
-    useMemo(() => [0, 0.2, 0], []),
-    useMemo(() => [0, 0.15, 0], []),
-    useMemo(() => [0, 0.1, 0], [])
+    useMemo(() => [0, 0.5, 0], []),
+    useMemo(() => [0, 0.5, 0], []),
+    useMemo(() => [0, 0.5, 0], []),
+    useMemo(() => [0, 0.5, 0], []),
+    useMemo(() => [0, 0.5, 0], []),
+    useMemo(() => [0, 0.5, 0], []),
   );
   const hoveredPositionH520DC = useResponsivePosition(
-    useMemo(() => [0.8, 0.3, 0], []),
-    useMemo(() => [0.8, 0.3, 0], []),
-    useMemo(() => [0.65, 0.25, 0], []),
-    useMemo(() => [0.5, 0.2, 0], []),
-    useMemo(() => [0.4, 0.15, 0], []),
-    useMemo(() => [0.3, 0.1, 0], [])
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8, 0.45, 0], [])
   );
 
   const scaleH320SC = useResponsiveScale(
@@ -78,20 +78,20 @@ export default function DashcamShowcase() {
     useMemo(() => [0.55, 0.55, 0.55], [])
   );
   const positionH320SC = useResponsivePosition(
-    useMemo(() => [0, 0.2, 0], []),
-    useMemo(() => [0, 0.2, 0], []),
-    useMemo(() => [0, 0.15, 0], []),
-    useMemo(() => [0, 0.1, 0], []),
-    useMemo(() => [0, 0.05, 0], []),
-    useMemo(() => [0, 0, 0], [])
+    useMemo(() => [0, 0.5, 0], []),
+    useMemo(() => [0, 0.6, 0], []),
+    useMemo(() => [0, 0.6, 0], []),
+    useMemo(() => [0, 0.6, 0], []),
+    useMemo(() => [0, 0.6, 0], []),
+    useMemo(() => [0, 0.6, 0], []),
   );
   const hoveredPositionH320SC = useResponsivePosition(
-    useMemo(() => [0.8, 0.2, 0], []),
-    useMemo(() => [0.8, 0.2, 0], []),
-    useMemo(() => [0.6, 0.15, 0], []),
-    useMemo(() => [0.45, 0.1, 0], []),
-    useMemo(() => [0.35, 0.05, 0], []),
-    useMemo(() => [0.25, 0, 0], [])
+    useMemo(() => [0.8, 0.5, 0], []),
+    useMemo(() => [0.8, 0.6, 0], []),
+    useMemo(() => [0.8, 0.6, 0], []),
+    useMemo(() => [0.8, 0.6, 0], []),
+    useMemo(() => [0.8, 0.6, 0], []),
+    useMemo(() => [0.8, 0.6, 0], [])
   );
 
   const scaleH120SC = useResponsiveScale(
@@ -111,20 +111,20 @@ export default function DashcamShowcase() {
     useMemo(() => [0.45, 0.45, 0.45], [])
   );
   const positionH120SC = useResponsivePosition(
-    useMemo(() => [0, 0, 0], []),
-    useMemo(() => [0, 0, 0], []),
-    useMemo(() => [0, -0.05, 0], []),
-    useMemo(() => [0, -0.1, 0], []),
-    useMemo(() => [0, -0.15, 0], []),
-    useMemo(() => [0, -0.2, 0], [])
+    useMemo(() => [0, 0.45, 0], []),
+    useMemo(() => [0, 0.45, 0], []),
+    useMemo(() => [0, 0.45, 0], []),
+    useMemo(() => [0, 0.45, 0], []),
+    useMemo(() => [0, 0.45, 0], []),
+    useMemo(() => [0, 0.45, 0], []),
   );
   const hoveredPositionH120SC = useResponsivePosition(
-    useMemo(() => [0.8, 0, 0], []),
-    useMemo(() => [0.8, 0, 0], []),
-    useMemo(() => [0.6, -0.05, 0], []),
-    useMemo(() => [0.5, -0.1, 0], []),
-    useMemo(() => [0.4, -0.15, 0], []),
-    useMemo(() => [0.3, -0.2, 0], [])
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8,  0.45,0], []),
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8, 0.45, 0], []),
+    useMemo(() => [0.8, 0.45, 0], []),
   );
 
   return (
@@ -142,7 +142,8 @@ export default function DashcamShowcase() {
         <div className="pointer-events-none hidden md:absolute top-1/2 left-0 h-px w-full bg-white opacity-30 z-10 -translate-y-1/2" />
 
         {/* Cards Grid */}
-        <div className="relative z-20 grid md:grid-cols-2 md:grid-rows-2 gap-0 w-full h-full">
+        <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-0 w-full h-full">
+
           <DashcamCard
             cardIndex={0}
             title="VREC-Z820DC"
@@ -169,8 +170,8 @@ export default function DashcamShowcase() {
             features={["4K Resolution\nFront Camera", "Full HD\nRear Camera", "Intelligent\nNight Vision AI", "WDR & HDR\nRecording", "ADAS\nAlerts"]}
             defaultScale={scaleZ820DC}
             hoveredScale={hoveredScaleZ820DC}
-            defaultPosition={positionZ820DC}
-            hoveredPosition={hoveredPositionZ820DC}
+            defaultPosition={ [0, 0.9, 0]}
+            hoveredPosition={[0.9, 0.9, 0]}
             defaultRotation={[-0.2, 0, 0]}
             hoveredRotation={[-0.2, -0.95, 0]}
             featureIcons={["/icons/4kicon.svg", "/icons/fullHd.svg", "/icons/aivision.svg", "/icons/wdrhdr.svg", "/icons/adasAlert.svg"]}

@@ -77,7 +77,7 @@ export default function ProductComparisonTable() {
           {/* Feature Rows */}
           {features.map((feature, rowIndex) => (
             <React.Fragment key={feature}>
-               <Typography variant="comparison-grid-side-subheading" className=" font-bold">{feature}</Typography>
+               <Typography variant="comparison-grid-side-subheading" className="py-6  font-bold">{feature}</Typography>
               {products.map((product, colIndex) => (
                 <div key={colIndex} className="py-6  text-center text-[#ABABAB] whitespace-pre-line">
                    <Typography variant="comparison-grid-body">

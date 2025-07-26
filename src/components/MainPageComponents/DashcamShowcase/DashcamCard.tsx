@@ -104,7 +104,7 @@ const DashcamCard = ({
           : cardIndex === 2
           ? "md:border-r md:border-[#3B3B3B]"
           : ""
-      } overflow-hidden cursor-pointer h-[450px] sm:h-[500px] shadow-xl transition-all duration-300`}
+      } overflow-hidden cursor-pointer  shadow-xl transition-all duration-300`}
       onMouseEnter={() => !isMobile && setHovered(true)}
       onMouseLeave={() => !isMobile && setHovered(false)}
     >
@@ -125,22 +125,23 @@ const DashcamCard = ({
         {/* Bottom Right */}
         <div className="absolute bottom-4 right-4 xl:bottom-6 xl:right-6 w-4 h-4 border-b-2 border-r-2 border-[#AD2239] rounded-br-[8px]" />
       </motion.div>
-      <Canvas camera={{ position: cameraPosition, fov: 35 }} shadows>
-        <SceneLights hovered={hovered} directionalLights={directionalLights || []} />
+      <div className="w-full  h-[400px] md:h-auto mx-auto aspect-[4/3]">
+        <Canvas camera={{ position: cameraPosition, fov: 35 }} shadows>
+          <SceneLights hovered={hovered} directionalLights={directionalLights || []} />
 
-        <AnimatedModel
-          hovered={hovered}
-          defaultScale={defaultScale}
-          hoveredScale={hoveredScale}
-          defaultPosition={defaultPosition}
-          hoveredPosition={hoveredPosition}
-          defaultRotation={defaultRotation}
-          hoveredRotation={hoveredRotation}
-        >
-          {Component}
-        </AnimatedModel>
-      </Canvas>
-
+          <AnimatedModel
+            hovered={hovered}
+            defaultScale={[0.45, 0.45, 0.45]}
+            hoveredScale={[0.45, 0.45, 0.45]}
+            defaultPosition={defaultPosition}
+            hoveredPosition={hoveredPosition}
+            defaultRotation={defaultRotation}
+            hoveredRotation={hoveredRotation}
+          >
+            {Component}
+          </AnimatedModel>
+        </Canvas>
+      </div>
       {/* Hover UI */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -172,6 +173,9 @@ const DashcamCard = ({
             >
               {description}
             </motion.p>
+            <div className="w-full h-px bg-[#3B3B3B] mt-4" />
+
+            <br />
           </div>
           <div></div>
         </motion.div>
@@ -182,7 +186,7 @@ const DashcamCard = ({
         animate={{ opacity: hovered ? 0 : 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="absolute xl:bottom-8 bottom-32 flex flex-col items-center justify-center w-full "
+        className="absolute md:bottom-14 bottom-36  flex flex-col items-center justify-center w-full "
       >
         <Typography variant="grid-view-heading" className="text-white !font-medium text-base xl: text-center ">
           {title}
@@ -194,9 +198,13 @@ const DashcamCard = ({
           {description}
         </Typography>
       </motion.div>
+      {cardIndex !== 3 && (
+  <div className="w-[90%] h-px bg-[#3B3B3B] mt-4 flex items-center justify-center mx-auto" />
+)}
+
 
       <div
-        className={`absolute bottom-6 left-1/2 -translate-x-1/2 w-full text-center md:gap-4 gap-0 text-[#ABABAB] md:px-12 grid px-2 ${
+        className={`absolute bottom-10 md:bottom-6 left-1/2 -translate-x-1/2 w-full text-center md:gap-4 gap-0 text-[#ABABAB] md:px-12 grid px-2 ${
           features.length === 1 ? "grid-cols-1 place-items-center" : "md:grid-cols-5 grid-cols-4"
         }`}
       >

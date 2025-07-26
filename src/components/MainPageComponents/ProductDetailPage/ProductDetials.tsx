@@ -9,7 +9,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useInView } from "framer-motion";
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
-
+import model1Image1 from "../../../../public/modelImages/VREC-Z820DC/00571.webp";
+import model1Image2 from "../../../../public/modelImages/VREC-H520DC/image1.webp";
+import model1Image3 from "../../../../public/modelImages/VREC-H320SC/image1.webp";
+import model1Image4 from "../../../../public/modelImages/VREC-H120SC/image1.webp";
 gsap.registerPlugin(ScrollTrigger);
 type Tab = {
   id: string;
@@ -29,11 +32,12 @@ const contentMap = {
     banner: {
       title: "Hard to see on unlit roads?",
       description: `Ever missed something on a dark road or under harsh headlights?\nThe AI night vision picks up details clearly, even in low light or \nrainy evening drives.`,
-      imageSrc: "/modelImages/VREC-Z820DC/00571.webp",
+      imageSrc: model1Image1,
       buttonLabel: "Learn More",
       buttonLink: "/products/night-vision-dashcam",
       imageWidth: 700,
       imagePositionClass: "bottom-0 left-[45%]",
+      imageClassName: "w-[60%] md:w-[100%] xl:w-[87%]",
     },
     overlay: {
       image: "/modelImages/VREC-Z820DC/image2.png",
@@ -50,10 +54,11 @@ const contentMap = {
     banner: {
       title: `Struggling to catch fine \ndetails on the road?`,
       description: `Records in crisp 2K with HDR and ideal for\n capturing fine details like plates and street signs.`,
-      imageSrc: "/modelImages/VREC-H520DC/image1.png",
+      imageSrc: model1Image2,
       buttonLabel: "Explore",
       buttonLink: "/products/wide-display",
       imagePositionClass: "bottom-0 left-[42%]",
+      imageClassName: "md:w-[100%] xl:w-[87%]",
     },
     overlay: {
       image: "/modelImages/VREC-H520DC/image2.png",
@@ -70,10 +75,11 @@ const contentMap = {
     banner: {
       title: `Worried about missing \nthings in traffic?`,
       description: `ADAS alerts help you stay on track and aware of\n surroundings in city traffic or highways.`,
-      imageSrc: "/modelImages/VREC-H320SC/image1.png",
+      imageSrc: model1Image3,
       buttonLabel: "See How",
       buttonLink: "/products/gps-dashcam",
       imagePositionClass: "bottom-0 left-[42%]",
+      imageClassName: "md:w-[100%] xl:w-[87%]",
     },
     overlay: {
       image: "/modelImages/VREC-H320SC/image2.png",
@@ -90,10 +96,11 @@ const contentMap = {
     banner: {
       title: `Hate the bulky setups\n on your dash?`,
       description: `A sleek, minimal design that doesn’t take up\n space, perfect for discreet installs.`,
-      imageSrc: "/modelImages/VREC-H120SC/image1.png",
+      imageSrc: model1Image4,
       buttonLabel: "Check It Out",
       buttonLink: "/products/compact-dashcam",
       imagePositionClass: "bottom-0 left-[40%]",
+      imageClassName: "md:w-[90%] xl:w-[77%]",
     },
     overlay: {
       image: "/modelImages/VREC-H120SC/image2.png",
@@ -126,13 +133,13 @@ export default function ProductDetails() {
       </Typography>
 
       {/* Tabs */}
-      <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-36  xl:mt-12">
-        <div className="flex  justify-between items-center">
+      <div className="max-w-7xl xl:max-w-[90%] w-full mx-auto mb-10 xl:mt-12">
+        <div className="grid grid-cols-4 md:grid-cols-4 gap-4 items-center justify-between">
           {tabs.map((tab) => (
             <motion.button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-4 font-medium transition-colors duration-300 border-b-2 border-transparent cursor-pointer relative ${
+              className={`md:px-6 py-4 font-medium transition-colors duration-300 border-b-2 border-transparent cursor-pointer relative ${
                 activeTab === tab.id ? "text-white" : "text-white"
               }`}
               whileHover={{ scale: 1.02 }}
@@ -143,7 +150,10 @@ export default function ProductDetails() {
                   {" "}
                   <Typography variant="slider-heading">{tab.label}</Typography>
                 </div>
-                <div className="md:hidden block text-[12px] font-bold">{tab.model}</div>
+                <div className={`md:hidden block text-[12px] text-center font-bold ${activeTab === tab.id ? "text-white" : "text-[#ABABAB]/80"}`}>
+                  {tab.model}
+                </div>
+
                 <AnimatePresence mode="wait">
                   {tab.model && activeTab === tab.id && (
                     <motion.div

@@ -49,7 +49,6 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
 
             <Typography variant="section-card-body">{description}</Typography>
           </div>
-          
 
           <Link href={buttonLink}>
             <p className="bg-white md:inline-block hidden text-black text-[12px] lg2:text-sm font-bold px-4 py-2 mt-10 rounded hover:bg-gray-200 transition  w-fit">
@@ -61,6 +60,8 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
         {/* Right: Empty space for visual balance (optional) */}
 
         <div className="relative" />
+        <div className="md:hidden flex">
+
         <motion.div
           key={title + description}
           initial={{ opacity: 0, x: -20 }}
@@ -70,11 +71,12 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
           className="z-20 h-full flex md:hidden flex-col justify-end"
         >
           <div>
-            <h3 className="text-[20px] md:text-2xl lg2:text-3xl !font-medium xl:text-4xl mb-3 whitespace-pre-line leading-[23px] md:leading-auto">{title}</h3>
+            <h3 className="text-[20px] md:text-2xl lg2:text-3xl !font-medium xl:text-4xl mb-3 whitespace-pre-line leading-[23px] md:leading-auto">
+              {title}
+            </h3>
 
             <Typography variant="section-card-body">{description}</Typography>
           </div>
-          
 
           <Link href={buttonLink}>
             <p className="bg-white md:inline-block hidden text-black text-[12px] lg2:text-sm font-bold px-4 py-2 mt-10 rounded hover:bg-gray-200 transition  w-fit">
@@ -82,12 +84,13 @@ const DarkBanner: React.FC<DarkBannerProps> = ({
             </p>
           </Link>
         </motion.div>
+        </div>
       </div>
 
       {/* Absolute Image Outside */}
 
       <motion.div
-        key={imageSrc}
+        key={title}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}

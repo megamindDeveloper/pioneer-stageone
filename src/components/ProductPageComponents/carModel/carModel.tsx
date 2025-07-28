@@ -292,25 +292,25 @@ function CameraModel({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> }) {
         tl.addLabel("keyframe1")
           .to(group.current.position, { x: 0, y: 0, z: 0, ease: "none" }, "keyframe1")
           .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "none" }, "keyframe1")
-          .to(beamRef.current!.position, { z: 2, ease: "power2.inOut" }, "keyframe1"); // Animate beam z position
+         // Animate beam z position
 
         // 📌 KEYFRAME 2 - Keep beam position at z=6
         tl.addLabel("keyframe2")
 
           .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe2")
           .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe2")
-          .to(beamRef.current!.position, { z: 2, ease: "sine.inOut" }, "keyframe2");
+      
 
         // 📌 KEYFRAME 3 - Maintain beam position
         tl.addLabel("keyframe3")
           .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe3")
           .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe3")
-          .to(beamRef.current!.position, { z: 3, ease: "sine.inOut" }, "keyframe3");
+   
 
           
         // 📌 KEYFRAME 4 - Car moves out, beam stays
         tl.addLabel("keyframe4")
-        .to(beamRef.current!.position, { z: 16, ease: "sine.inOut" }, "keyframe4")
+      
           .to(group.current.position, { x: 0, y: 0, z: -10, ease: "sine.inOut" }, "keyframe4")
           .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe4");
 
@@ -318,7 +318,7 @@ function CameraModel({ beamRef }: { beamRef: React.RefObject<THREE.Mesh> }) {
         tl.addLabel("keyframe5")
           .to(group.current.position, { x: 0, y: 0, z: 0, ease: "sine.inOut" }, "keyframe5")
           .to(group.current.scale, { x: 2, y: 2, z: 2, ease: "sine.inOut" }, "keyframe5")
-          .to(beamRef.current!.position, { z: 2, ease: "sine.inOut" }, "keyframe5"); // Reset beam back to z=2
+   
       });
 
       return () => ctx.revert();
@@ -363,7 +363,7 @@ export default function CarCameraScene() {
       >
         <Canvas
           gl={{ toneMapping: THREE.ACESFilmicToneMapping }}
-          camera={{ position: [0, 1, 18], fov: 10, near: 0.1, far: 500 }}
+          camera={{ position: [0, 1, 18], fov: 40, near: 0.1, far: 500 }}
           style={{
             background: "#020202ff",
             width: "100vw",
@@ -371,6 +371,7 @@ export default function CarCameraScene() {
             position: "sticky",
             top: 0,
           }}
+          
           shadows
         >
           <Suspense fallback={null}>

@@ -25,13 +25,13 @@ const Page = () => {
           <HeroScrollScene />
         </div>
       </div>
-
+{/* 
       <LensOverlayText />
-      <CarOverlayContentDivs />
+      <CarOverlayContentDivs /> */}
 
       <div
         id="model1-scroll-container"
-        style={{ height: "600vh", position: "relative" , backgroundColor:"white"}}
+        style={{ height: "7000vh", position: "relative" , backgroundColor:"white"}}
       >
         <div
           style={{ position: "sticky", top: 0, zIndex: 1,backgroundColor:"white" }}
@@ -40,14 +40,14 @@ const Page = () => {
         </div>
       </div>
 
-      <div
+      {/* <div
         id="model2-scroll-container"
         style={{ height: "1000vh", position: "relative" }}
       >
         <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
           <CarCameraScene />
         </div>
-      </div>
+      </div> */}
       <Compare />
       <ZenVue />
       <ProductFeatureTable />

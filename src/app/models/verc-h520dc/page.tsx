@@ -1,6 +1,7 @@
 import Footer from "@/components/CommonComponents/Footer";
 import HeroScrollScene from "@/components/HeroScrollScene";
 import ImageScrollScene from "@/components/ImageScrollScene";
+import CameraToCarScene from "@/components/ProductPageComponents/529CDModel/520CDModel";
 import CameraSceneModel1 from "@/components/ProductPageComponents/820DCModel/820DCModel";
 import CarCameraScene from "@/components/ProductPageComponents/carModel/carModel";
 import CarOverlayContentDivs from "@/components/ProductPageComponents/CarOverlay";
@@ -30,9 +31,8 @@ const Page = () => {
       <div id="model0-scroll-container" style={{ height: "600vh", position: "relative" }}>
         <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
           <HeroScrollScene
-            heading="4K Clarity Meets AI Intelligence"
-            subheading="VREC-Z820DC Keeps the Road on Record"
-            imageSrc="/images/lens.webp"
+            heading="When Detail Matters the Most"
+            subheading="VREC‑H520DC captures sharp 2K video, even in low light and on the move."
           />
         </div>
       </div>
@@ -42,7 +42,7 @@ const Page = () => {
 
       <div id="model1-scroll-container" style={{ height: "7000vh", position: "relative", backgroundColor: "balck" }}>
         <div style={{ position: "sticky", top: 0, zIndex: 1, backgroundColor: "balck" }}>
-          <CameraSceneModel1 />
+          <CameraToCarScene />
         </div>
       </div>
 

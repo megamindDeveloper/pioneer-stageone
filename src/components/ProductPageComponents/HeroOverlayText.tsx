@@ -10,7 +10,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 type Stage = "s1" | null;
 
-export default function HeroOverlayText() {
+type OverlayContent = {
+  title: string;
+  heading: string;
+  description: string;
+};
+
+type HeroOverlayTextProps = {
+  overlays: {
+    [K in Stage]?: OverlayContent;
+  };
+};
+
+export default function HeroOverlayText({ overlays }: HeroOverlayTextProps) {
   const [stage, setStage] = useState<Stage>(null);
 
   useEffect(() => {
@@ -36,22 +48,7 @@ export default function HeroOverlayText() {
 
   if (typeof window === "undefined") return null;
 
-  // Custom overlay divs
-  const overlays = {
-    s1: (
-      <div>
-        <p className="text-cherryRed text-xl font-bold text-center">Sharp Footage in Low Light</p>
-        <h2 className="text-[56px] text-white text-center font-medium">AI Powered Night Vision</h2>
-        <p className="text-pretty text-[#ABABAB] text-center max-w-lg mx-auto">
-          An 8MP sensor that captures sharp, detailed video with high
-          sensitivity, preserving image quality even during night drives and
-          low-light conditions.
-        </p>
-      </div>
-    ),
-  };
-
-  const currentOverlay = stage ? overlays[stage] : null;
+  const currentOverlay = stage && overlays[stage];
 
   return ReactDOM.createPortal(
     <AnimatePresence>
@@ -64,7 +61,17 @@ export default function HeroOverlayText() {
           transition={{ duration: 0.4 }}
           className="fixed top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         >
-          {currentOverlay}
+          <div>
+            <p className="text-cherryRed text-xl font-bold text-center">
+              {currentOverlay.title}
+            </p>
+            <h2 className="text-[56px] text-white text-center font-medium">
+              {currentOverlay.heading}
+            </h2>
+            <p className="text-pretty text-[#ABABAB] text-center max-w-lg mx-auto">
+              {currentOverlay.description}
+            </p>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>,

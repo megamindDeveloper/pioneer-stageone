@@ -46,7 +46,7 @@ function ImageBillboard({
  * - Manages both the camera model animation and the car model transition.
  */
 function CombinedModelAnimation({ onLoadComplete }: { onLoadComplete: () => void }) {
-  const { scene: cameraModelScene } = useGLTF("/models/VREC-Z820DC_LOW POLY.glb");
+  const { scene: cameraModelScene } = useGLTF("/models/VREC_H320SC.glb");
   const { scene: carModelScene, nodes } = useGLTF("/models/car.glb");
 
   const cameraModelGroupRef = useRef<THREE.Group>(null);
@@ -55,7 +55,7 @@ function CombinedModelAnimation({ onLoadComplete }: { onLoadComplete: () => void
   const viewerCameraRef = useRef<THREE.PerspectiveCamera>();
 
   // Target state values for animation interpolation
-  const cameraModelPosition = useRef(new THREE.Vector3(-2.95, 3.65, 15));
+  const cameraModelPosition = useRef(new THREE.Vector3(0, 1, 15));
   const cameraModelScale = useRef(new THREE.Vector3(100, 100, 100));
   const cameraModelRotation = useRef(new THREE.Euler(0, 0, 0));
 
@@ -92,14 +92,14 @@ function CombinedModelAnimation({ onLoadComplete }: { onLoadComplete: () => void
     });
 
     // 🎯 Lens elements for explode/collapse
-    const lensElements = Array.from({ length: 7 }, (_, i) => cameraModelGroupRef.current!.getObjectByName(`${i + 1}`))
-      .filter(Boolean)
-      .reverse();
+    // const lensElements = Array.from({ length: 7 }, (_, i) => cameraModelGroupRef.current!.getObjectByName(`${i + 1}`))
+    //   .filter(Boolean)
+    //   .reverse();
 
-    // Initialize lens positions
-    lensElements.forEach((part) => {
-      if (part) part.position.z = 0;
-    });
+    // // Initialize lens positions
+    // lensElements.forEach((part) => {
+    //   if (part) part.position.z = 0.02222222;
+    // });
 
     onLoadComplete();
     ScrollTrigger.refresh();
@@ -127,15 +127,16 @@ function CombinedModelAnimation({ onLoadComplete }: { onLoadComplete: () => void
         .to(cameraModelRotation.current, { x: degToRad(-20), y: degToRad(55), z: degToRad(20) }, "zoom-in");
 
       // 🔧 Lens explode
-      tl.addLabel("lens-explode");
-      lensElements.forEach((part, i) => {
-        tl.to(part.position, { z: [0.02, 0.06, 0.05, 0.06, 0.07, 0.01][i] || 0 }, "lens-explode");
-      });
-      // 🔧 Lens collapse
-      tl.addLabel("lens-collapse");
-      lensElements.forEach((part) => {
-        tl.to(part.position, { z: 0 }, "lens-collapse");
-      });
+    //   tl.addLabel("lens-explode");
+    //   lensElements.forEach((part, i) => {
+    //     tl.to(part.position, { z: [0.04, 0.055, 0.07, 0.08, 0.09, 0.1][i] || 0 }, "lens-explode");
+    //   });
+
+    //   // 🔧 Lens collapse
+    //   tl.addLabel("lens-collapse");
+    //   lensElements.forEach((part) => {
+    //     tl.to(part.position, { z: 0.02222222 }, "lens-collapse");
+    //   });
 
       // 🔁 Rotation & scale
       tl.addLabel("rotate-and-scale")
@@ -151,29 +152,27 @@ function CombinedModelAnimation({ onLoadComplete }: { onLoadComplete: () => void
         .to(cameraModelPosition.current, { x: 15, y: 3.1, z: 10 }, "final-pose")
         .to(cameraModelScale.current, { x: 55, y: 55, z: 55 }, "final-pose")
         .to(cameraModelRotation.current, { x: 0, y: degToRad(180), z: 0 }, "final-pose");
-      // tl.add(() => {
-      //   if (dummyMountRef.current && cameraModelGroupRef.current && dummyMountRef.current.children.indexOf(cameraModelGroupRef.current) === -1) {
-      //     dummyMountRef.current.add(cameraModelGroupRef.current);
+      tl.add(() => {
+        if (dummyMountRef.current && cameraModelGroupRef.current && dummyMountRef.current.children.indexOf(cameraModelGroupRef.current) === -1) {
+          dummyMountRef.current.add(cameraModelGroupRef.current);
 
-      //     // 🔍 Reset local transform
-      //     cameraModelGroupRef.current.position.set(0, -0.009, 0);
-      //     cameraModelGroupRef.current.rotation.set(0, 0, 0);
-      //     cameraModelGroupRef.current.scale.set(1.4, 1.4, 1.4); // Try 1 first, adjust later
+          // 🔍 Reset local transform
+          cameraModelGroupRef.current.position.set(0, -0.009, 0);
+          cameraModelGroupRef.current.rotation.set(0, 0, 0);
+          cameraModelGroupRef.current.scale.set(1.4, 1.4, 1.4); // Try 1 first, adjust later
 
-      //     // 🧪 Log the world position for sanity check
-      //     console.log("Mounted camera at", dummyMountRef.current.getWorldPosition(new THREE.Vector3()));
-      //   }
-      // }, "final-pose+=0.001");
+          // 🧪 Log the world position for sanity check
+          console.log("Mounted camera at", dummyMountRef.current.getWorldPosition(new THREE.Vector3()));
+        }
+      }, "final-pose+=0.001");
 
       // 🚗 Show Car + Reset Camera
       tl.add(() => {
-        cameraModelGroupRef.current!.visible = true;
-
+        carModelGroupRef.current!.visible = false;
         carModelGroupRef.current!.visible = true;
-        viewerCameraRef.current!.position.set(0, 2.4, -2);
+        viewerCameraRef.current!.position.set(0, 2.4, -0.6);
         viewerCameraRef.current!.rotation.set(0, 0, 0);
-      }, "final-pose+=0.002");
-       // Just after camera mounts
+      }, "final-pose+=0.002"); // Just after camera mounts
       // tl.to(cameraModelGroupRef.current!.position, {
       //   x: 0.02,
       //   y: 1,
@@ -242,14 +241,13 @@ function CombinedModelAnimation({ onLoadComplete }: { onLoadComplete: () => void
     const isMounted = dummyMount && dummyMount.children.includes(cameraModel);
 
     // Only animate camera model if it's NOT mounted in the dummy
-    if (cameraModel) {
+    if (cameraModel && !isMounted) {
       cameraModel.position.lerp(cameraModelPosition.current, 0.1);
       cameraModel.scale.lerp(cameraModelScale.current, 0.1);
       cameraModel.rotation.x += (cameraModelRotation.current.x - cameraModel.rotation.x) * 0.1;
       cameraModel.rotation.y += (cameraModelRotation.current.y - cameraModel.rotation.y) * 0.1;
       cameraModel.rotation.z += (cameraModelRotation.current.z - cameraModel.rotation.z) * 0.1;
     }
-    
 
     // Always animate car model (unless you plan to reparent it too)
     const carModel = carModelGroupRef.current;
@@ -278,7 +276,7 @@ function CombinedModelAnimation({ onLoadComplete }: { onLoadComplete: () => void
 /**
  * ✅ Top-level Scene Component
  */
-export default function CameraToCarScene() {
+export default function Model3() {
   const [modelIsReady, setModelIsReady] = useState(false);
   const containerRef = useRef(null);
   const isVisible = useInView(containerRef, {
@@ -315,4 +313,4 @@ export default function CameraToCarScene() {
   );
 }
 
-useGLTF.preload("/models/VREC-Z820DC_LOW POLY.glb");
+useGLTF.preload("/models/VREC_H320SC.glb");

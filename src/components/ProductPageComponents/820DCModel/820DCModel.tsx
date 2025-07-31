@@ -143,7 +143,7 @@ export default function CameraToCarScene() {
   return (
     <div id="model-scroll-container" ref={containerRef} style={{ height: "3000vh" }}>
       <Canvas
-        camera={{ position: [0, 0,20], fov: 10, near: 0.01, far: 500 }}
+        camera={{ position: [0, 0, 0], fov: 10, near: 0.01, far: 500 }}
         style={{ background: "#0D0D0D", width: "100vw", height: "100vh", position: "sticky", top: 0 }}
         shadows
       >

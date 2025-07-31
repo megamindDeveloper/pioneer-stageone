@@ -18,7 +18,7 @@ import React from "react";
 const Page = () => {
   return (
     <section>
-      <HeroOverlayText
+      {/* <HeroOverlayText
         overlays={{
           s1: {
             title: "Sharp Footage in Low Light",
@@ -36,7 +36,7 @@ const Page = () => {
             subheading="VREC‑H520DC captures sharp 2K video, even in low light and on the move."
           />
         </div>
-      </div>
+      </div> */}
       {/* 
       <LensOverlayText />
       <CarOverlayContentDivs /> */}

@@ -40,7 +40,7 @@ const Page = () => {
       <LensOverlayText />
       <CarOverlayContentDivs /> */}
 
-      <div id="model1-scroll-container" style={{ height: "7000vh", position: "relative", backgroundColor: "balck" }}>
+      <div id="model1-scroll-container" style={{ position: "relative", backgroundColor: "balck" }}>
         <div style={{ position: "sticky", top: 0, zIndex: 1, backgroundColor: "balck" }}>
           <CameraSceneModel1 />
         </div>

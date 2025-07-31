@@ -140,7 +140,7 @@ function CombinedModelAnimation({ onLoadComplete }: { onLoadComplete: () => void
 
       // 🔁 Rotation & scale
       tl.addLabel("rotate-and-scale")
-        .to(cameraModelPosition.current, { x: 7, y: 2, z: 0 }, "rotate-and-scale")
+        .to(cameraModelPosition.current, { x: 7, y: 2, z: 0  }, "rotate-and-scale")
         .to(cameraModelScale.current, { x: 80, y: 100, z: 80 }, "rotate-and-scale")
         .to(cameraModelRotation.current, { x: 0, y: degToRad(120), z: 0 }, "rotate-and-scale");
       tl.addLabel("finall-pose")

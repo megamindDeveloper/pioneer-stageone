@@ -59,16 +59,16 @@ export default function HeroOverlayText({ overlays }: HeroOverlayTextProps) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4 }}
-          className="fixed top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          className="fixed top-1/2 mx-auto text-center z-[100] w-[900px] -translate-x-1/2 -translate-y-1/2 pointer-events-none left-1/2 px-32"
         >
           <div>
-            <p className="text-cherryRed text-xl font-bold text-center">
+            <p className="text-cherryRed text-[16px] font-bold text-center">
               {currentOverlay.title}
             </p>
-            <h2 className="text-[56px] text-white text-center font-medium">
+            <h2 className="text-[48px] text-white text-center font-medium">
               {currentOverlay.heading}
             </h2>
-            <p className="text-pretty text-[#ABABAB] text-center max-w-lg mx-auto">
+            <p className="text-pretty text-[16px] text-[#ABABAB] text-center max-w-lg mx-auto">
               {currentOverlay.description}
             </p>
           </div>

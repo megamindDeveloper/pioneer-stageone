@@ -1,45 +1,62 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-
-import { IconDotsVertical } from "@tabler/icons-react";
-
 import { cn } from "@/lib/utils";
 import { SparklesCore } from "./Sparkles";
+import { IconDotsVertical } from "@tabler/icons-react";
 
-const tabs = [
-  {
-    title: "Drive late?",
-    image1: "/images/GLOW_BEFORE.webp",
-    image2: "/images/GLOW_AFTER.webp",
-    headline: "Designed for the Details",
-    subtext:
-      "Most dashcams blur the truth at night. The Z820DC, equipped with night vision AI and a STARVIS sensor, captures license plates, movements and moments even in low light.",
-  },
-  {
-    title: "On the road daily?",
-    image1: "/images/NOISE_BEFORE.webp",
-    image2: "/images/NOISE_AFTER.webp",
-    headline: "Clarity That Keeps Up With Your Commute",
-    subtext: "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time—handling glare, contrast, and light shifts with ease for clear, consistent footage in every driving condition.",
-  },
-  {
-    title: "Prefer Dual 4K Coverage?",
-    image1: "/images/car-was-broken.webp",
-    image2: "/images/car-was-broken.webp ",
-    headline: "Coverage That Keeps Both Ends Clear",
-    subtext:
-      "The VREC-Z820DC captures ultra-sharp 4K footage from the front and Full HD from the rear. With dual cameras working together, you get full-scene clarity, whether you're on the move or parked.",
-  },
-];
+// const tabs = [
+//   {
+//     title: "Drive late?",
+//     image1: "/images/GLOW_BEFORE.webp",
+//     image2: "/images/GLOW_AFTER.webp",
+//     headline: "Clarity That Keeps Up With Your Commute",
+//     subtext:
+//       "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time—handling glare, contrast, and light shifts with ease for clear, consistent footage in every driving condition.",
+//   },
+//   {
+//     title: "On the road daily?",
+//     image1: "/images/NOISE_BEFORE.webp",
+//     image2: "/images/NOISE_AFTER.webp",
+//     headline: "See What Others Miss on the Road",
+//     subtext:
+//       "With advanced night vision and noise reduction, STARVIS ensures daily drivers capture crucial details in every lighting situation.",
+//   },
+//   {
+//     title: "Car left unattended?",
+//     image1: "/images/CarBroken.png",
+//     image2: "/images/CarBroken.png",
+//     headline: "Protection Even When You're Away",
+//     subtext:
+//       "Capture reliable footage even when parked, ensuring your vehicle is monitored day and night with unparalleled clarity.",
+//   },
+// ]
 
-export const Compare = () => {
+type tabDataProps = {
+  heading: string;
+  subheading: string;
+  compareHeading: string;
+  compareSubheading: string;
+  tabtitle: string;
+  image1: string;
+  image2: string;
+};
+
+export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
   const [sliderXPercent, setSliderXPercent] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  //  console.log("tabs:", tabs);
+  // console.log("activeTab:", activeTab);
+  // console.log(
+  //   "tabs[activeTab]:",
+  //   Array.isArray(tabs) && tabs.length > activeTab ? tabs[activeTab] : "invalid"
+  // );
+  console.log(activeTab);
 
   const sliderRef = useRef<HTMLDivElement>(null);
-  const currentTab = tabs[activeTab];
+  const currentTab = Array.isArray(tabs) && tabs.length > activeTab ? tabs[activeTab] : null;
+  if (!currentTab) return null;
 
   const handleStart = (clientX: number) => setIsDragging(true);
   const handleEnd = () => setIsDragging(false);
@@ -54,22 +71,25 @@ export const Compare = () => {
     });
   };
 
+  const handleClick = (index: number) => {
+    setActiveTab(index);
+  };
+
   return (
-    <section className="w-full bg-[#020202ff] text-white flex flex-col  items-center py-16 px-4">
+    <section className="w-full bg- text-white  flex flex-col items-center py-16 px-4">
       {/* Heading */}
-      <div className="text-center  max-w-xl mb-12">
-        <h2 className="text-3xl md:text-4xl font-semibold mb-4">See What Most Cameras Miss</h2>
-        <p className=" text-[#ABABAB] text-[13px] w-full md:text-base">
-          Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.
-        </p>
+      <div className="text-center max-w-xl mb-1">
+        <h2 className="text-3xl sm:whitespace-nowrap md:text-4xl font-semibold mb-4">{tabs[activeTab].heading}</h2>
+        <p className="text-[#ABABAB] cursor-pointer text-[13px] w-full md:text-base">{tabs[activeTab].subheading}</p>
       </div>
 
-      {/* Conditional Rendering */}
-      <div className="w-full  max-w-7xl h-[80vh] rounded-xl overflow-hidden bg-gradient-to-t from-black via-black/60 relative">
+      {/* Comparison / Image Section */}
+      <div className="w-full max-w-5xl h-[500px] sm:h-[600px] md:h-[80vh] rounded-xl overflow-hidden relative mt-10">
+        {/* Image Comparison Mode */}
         {activeTab !== 2 ? (
           <div
             ref={sliderRef}
-            className="relative w-full h-[800px] overflow-hidden"
+            className="relative w-full h-full"
             style={{ cursor: "col-resize" }}
             onMouseDown={(e) => handleStart(e.clientX)}
             onMouseUp={handleEnd}
@@ -102,8 +122,7 @@ export const Compare = () => {
               </div>
             </motion.div>
 
-            {/* Before Image */}
-
+            {/* Before */}
             <motion.div
               className="absolute inset-0 z-20 w-full h-full overflow-hidden"
               style={{ clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)` }}
@@ -112,51 +131,80 @@ export const Compare = () => {
               <img src={currentTab.image1} alt="Before" className="object-cover w-full h-full select-none" draggable={false} />
             </motion.div>
 
-            {/* After Image */}
+            {/* After */}
             <img
               src={currentTab.image2}
               alt="After"
-              className="absolute top-0 left-0 z-[] object-cover w-full h-full select-none "
+              className="absolute top-0 left-0 z-[19] object-cover w-full h-full select-none"
               draggable={false}
             />
+{/* Gradient Overlay */}
+{/* Gradient Overlay */}
+<div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
 
-            {/* Overlay text */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-50 px-4 w-[70%]">
-              <h3 className="text-white text-lg md:text-2xl font-semibold">{currentTab.headline}</h3>
-              <p className="text-white text-sm md:text-base mt-2">{currentTab.subtext}</p>
+
+            {/* Headline/Subtext over image for desktop only */}
+            <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[90%]">
+              <h3 className="text-white text-2xl font-semibold">{currentTab.compareHeading}</h3>
+              <p className="text-[#ABABAB] text-base mt-2">{currentTab.compareSubheading}</p>
             </div>
           </div>
         ) : (
-          <div className="relative w-full h-full bg-gradient-to-t from-black via-black/60 to-transparent">
-            <img src={currentTab.image2} alt="Full View" className="absolute top-0 left-0 w-full h-full object-cover z-10" draggable={false} />
-            {/* Overlay below text */}
-            <div className="absolute inset-0 z-[15] bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+          <div className="relative w-full h-full">
+            <img src={currentTab.image2} alt="Full" className="absolute top-0 left-0 w-full h-full object-cover z-10" draggable={false} />
+            {/* Gradient Overlay */}
+{/* Gradient Overlay */}
+<div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
 
-            {/* Text should now sit above the overlay */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-20 px-4 w-[70%]">
-              <h3 className="text-white text-lg md:text-2xl font-semibold">{currentTab.headline}</h3>
-              <p className="text-white text-sm md:text-base mt-2">{currentTab.subtext}</p>
+
+            <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[90%]">
+              <h3 className="text-white text-2xl font-semibold">{currentTab.compareHeading}</h3>
+              <p className="text-[#ABABAB] text-base mt-2">{currentTab.compareSubheading}</p>
             </div>
           </div>
         )}
       </div>
-
       {/* Tabs */}
-      <div className="flex justify-center gap-30 space-x-28 mt-12 py-4">
-        {tabs.map((tab, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveTab(index)}
-            className={cn(
-              "relative font-semibold text-sm transition-all duration-300",
-              activeTab === index
-                ? "text-white after:content-[''] cursor-pointer after:absolute after:left-1/2 after:-translate-x-1/2    after:bottom-[-8px] after:w-[180px] after:h-[2px] after:bg-white after:rounded-full"
-                : "text-gray-400 "
-            )}
-          >
-            {tab.title}
-          </button>
-        ))}
+      {/* <div className="flex justify-center flex-wrap gap-8 mt-4">
+    {tabs.map((tab, index) => (
+      <button
+        type="button"
+        key={index}
+        onClick={() => setActiveTab(index)}
+        className={cn(
+          "relative font-semibold text-sm transition-all duration-300 text-center",
+          activeTab === index
+            ? "text-white after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-8px] after:w-[120px] md:after:w-[180px] after:h-[2px] after:bg-white after:rounded-full"
+            : "text-gray-400 hover:text-gray-600/40"
+        )}
+      >
+        <h4 className="text-sm sm:text-base md:text-lg whitespace-nowrap">{tab.title}</h4>
+      </button>
+      
+    ))} */}
+      <div className="w-full flex justify-center mt-12">
+        <div className="flex justify-center gap-8 sm:gap-6 md:gap-27 flex-wrap sm:flex-nowrap max-w-full">
+          {tabs.map((tab, index) => (
+            <button
+              type="button"
+              key={index}
+              onClick={() => setActiveTab(index)}
+              className={cn(
+                "relative font-semibold text-[10px] cursor-pointer sm:text-sm md:text-base transition-all duration-300 text-center",
+                activeTab === index
+                  ? "text-white after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-6px] after:w-[60px] sm:after:w-[100px] md:after:w-[120px] after:h-[2px] after:bg-white after:rounded-full"
+                  : "text-gray-400 hover:text-gray-600/40"
+              )}
+            >
+              <h4 className="whitespace-nowrap">{tab.tabtitle}</h4>
+            </button>
+          ))}
+        </div>
+      </div>
+      {/* Mobile-only subtext below tabs */}
+      <div className="block md:hidden text-center mt-6 px-4 max-w-sm">
+        <h3 className="text-white text-base font-semibold">{currentTab.compareHeading}</h3>
+        <p className="text-gray-300 text-xs mt-2">{currentTab.compareSubheading}</p>
       </div>
     </section>
   );

@@ -35,7 +35,19 @@ body {
 .helvetica-neue {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+@keyframes fast-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
 
+/* Global utility class */
+.animate-fastpulse {
+  animation: fast-pulse 0.5s ease-in-out infinite;
+}
 @theme {
   --breakpoint-*: initial;
   --breakpoint-sm: 640px;

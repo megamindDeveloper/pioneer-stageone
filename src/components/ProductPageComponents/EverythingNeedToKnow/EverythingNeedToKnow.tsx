@@ -1,11 +1,17 @@
 'use client'
 
 import React, { useState } from 'react'
-
-import { Minus, Plus } from 'lucide-react';
 import { faqData } from '@/app/utils/FaqData/FaqData';
+import { Minus, Plus } from 'lucide-react';
 
-export default function EverythingNeedToKnow() {
+
+type Props = {
+  faqData: {
+    question: string;
+    answer: string;
+  }[];
+};
+export default function EverythingNeedToKnow({ faqData }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleItem = (index: number) => {
@@ -23,8 +29,8 @@ export default function EverythingNeedToKnow() {
         </div>
 
         {/* RIGHT COLUMN - ACCORDION */}
-        <div className="divide-y divide-gray-700 w-full">
-          {faqData.map((item, index) => (
+        <div className="divide-y divide-[#4B4B4B] w-full">
+          {faqData?.map((item, index) => (
             <div key={index} className="py-4 mt-5">
               <button
                 className="flex justify-between items-center w-full text-left focus:outline-none"

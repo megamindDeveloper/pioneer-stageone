@@ -47,11 +47,11 @@ export default function HeroScrollScene({ heading, subheading, imageSrc }: HeroS
 
   return (
     <>
-      <section className="h-[1px] bg-gray-900 text-white flex items-center justify-center" />
+      <section className="h-[1px] bg-[#0D0D0D] text-white flex items-center justify-center" />
       <div ref={containerRef} className="h-[730vh]">
         <section
           ref={sectionRef}
-          className="sticky top-0 bg-black text-white overflow-hidden h-screen"
+          className="sticky top-0 bg-[#0D0D0D] text-white overflow-hidden h-screen"
           style={{
             transform: "translateZ(0)",
             backfaceVisibility: "hidden",
@@ -80,11 +80,11 @@ export default function HeroScrollScene({ heading, subheading, imageSrc }: HeroS
               willChange: "transform, opacity",
             }}
           >
-            <h1 className="text-4xl md:text-7xl font-bold text-white text-center px-4">{heading}</h1>
-            <p className="text-[40px] text-[#ABABAB] mt-4">{subheading}</p>
-            <button className="bg-[#262626] px-2 pl-6 py-2 cursor-pointer rounded-full text-white mt-6 flex text-2xl font-medium items-center">
+            <h1 className="text-xl md:text-[52px] font-bold text-white text-center px-4">{heading}</h1>
+            <p className="text-[24px] text-[#ABABAB] mt-2">{subheading}</p>
+            <button className="bg-[#262626]  px-2 pl-4 py-2 cursor-pointer rounded-full text-white mt-12 flex text-[16px] font-medium items-center">
               Scroll to Explore
-              <img src="/icons/chevDownCircle.svg" alt="Arrow Down" className="ml-2" />
+              <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
             </button>
           </div>
         </section>

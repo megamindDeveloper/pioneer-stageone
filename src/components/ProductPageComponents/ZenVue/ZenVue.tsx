@@ -4,93 +4,105 @@ import Image from "next/image";
 
 export default function ZenVue() {
   return (
-    //   <section className="relative w-full min-h-screen bg-gradient-to-b from-[#0D0D0D] via-[#a82137] to-[#00000] text-white overflow-hidden">
-
-    //       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 flex flex-col lg:flex-row  justify-between">
-    //         {/* Left Content */}
-    //         <div className="flex-1 space-y-6 text-center  lg:text-left">
-    //           <p className="text-sm text-white/70">Control at Your Fingertips</p>
-    //           <h1 className="text-[260px] leading-none  mt-10 font-bold text-white">Zen</h1>
-    //           <p className="text-white/80 text-base max-w-md mx-auto lg:mx-0">
-    //             The Pioneer ZenVue Dash Camera App gives you instant access to your recordings,
-    //             making it easy to view, download, and share footage on the go. With its intuitive,
-    //             user-friendly interface, the experience is seamless from start to finish.
-    //           </p>
-
-    //         </div>
-    // {/* center Image */}
-    // <div className="img">
-
-    // </div>
-    //         {/* Right Title */}
-    //         <div className="hidden lg:block mt-20 flex-1 text-right">
-    //           <h1 className="text-[260px] leading-none font-bold text-white">Vue</h1>
-    //         </div>
-
-    //       </div>
-
-    //       {/* Center Phone Image - Absolute Positioned */}
-    //       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[40%] z-20">
-    //         <Image
-    //           src="/mobilebg.png" // Replace with correct image path
-    //           alt="Mobile Device"
-    //           width={3000}
-    //           height={3000}
-    //           className="drop-shadow-2xl"
-    //         />
-    //       </div>
-    //     </section>
-    <section className="relative w-full min-h-screen bg-gradient-to-b  pt-32 from-[#020202ff] via-[#a82137] to-transparent text-white ">
+    <section className="relative w-full min-h-screen bg-gradient-to-b from-[#00000] via-[#a82137] to-[#000000] text-white mt-32">
       {/* Main Content */}
-      <div className="relative z-10 max-w-[screen] mx-auto px-[9rem] py-20 flex flex-col lg:flex-row justify-between gap-20 items-start lg:items-center">
-        {/* Left Content */}
-        <div className="flex-1 space-y-6 text-center lg:text-left">
-          <p className="text-sm  text-white/70">Control at Your Fingertips</p>
-          <h1 className="text-[260px] leading-none mt-10 font-bold text-white">Zen</h1>
-          <p className="text-white/80 text-base max-w-md mx-auto lg:mx-0">
-            The Pioneer ZenVue Dash Camera App gives you instant access to your recordings, making it easy to view, download, and share footage on the
-            go. With its intuitive, user-friendly interface, the experience is seamless from start to finish.
+      <div className="relative z-10 max-w-[screen] mx-auto px-6 md:px-[5rem] py-12 md:py-20 flex flex-col lg:flex-row justify-between gap-20 items-center lg:items-start">
+
+        {/* Mobile Header */}
+        <div className="block lg:hidden text-center w-full mt-6">
+          <p className="text-[16px] text-white/70">Control at Your Fingertips</p>
+        </div>
+
+        {/* ZenVue Heading (Mobile) */}
+        <div className="block lg:hidden w-full text-center mt-[-4rem]">
+          <h1 className="text-[40px] xs:text-[48px] sm:text-[60px] leading-[1.1] font-bold">ZenVue</h1>
+        </div>
+
+        {/* App Description (Mobile) */}
+        <p className="block lg:hidden text-white/80 text-[13px] sm:text-[14px] max-w-sm mx-auto text-center mt-[-3rem] px-3">
+          The Pioneer ZenVue Dash Camera App gives you instant access to your recordings,
+          making it easy to view, download, and share footage on the go. With its intuitive,
+          user-friendly interface, the experience is seamless from start to finish.
+        </p>
+
+        {/* Mobile Image */}
+        <div className="block lg:hidden flex justify-center mt-[-5rem]">
+          <div className="w-screen sm:w-[300px] md:w-[500px] h-auto">
+            <Image
+              src="/images/zenVueIMg.png"
+              alt="Mobile Device"
+              width={1200}
+              height={1200}
+              className="w-full h-auto object-contain drop-shadow-7xl"
+            />
+          </div>
+        </div>
+
+        {/* Mobile "Available on" + Logos */}
+        <div className="block lg:hidden text-center mt-[-2rem]  ">
+          <p className="text-[13px] text-white/70 mb-2 ">Available on</p>
+          <div className="flex justify-center gap-6">
+            <Image
+              src="/images/googlePlay.png"
+              alt="Google Play"
+              width={130}
+              height={40}
+              className="object-contain"
+            />
+            <Image
+              src="/images/appStore.png"
+              alt="App Store"
+              width={130}
+              height={40}
+              className="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Left Content (Desktop) */}
+        <div className="flex-1 space-y-6 text-center lg:text-left order-3 lg:order-none hidden lg:block">
+          <p className="text-[16px] text-white/70 lg:mx-8">Control at Your Fingertips</p>
+          <h1 className="tracking-wider text-[180px] leading-none mt-[-14px] ms-5 pl-2 font-bold text-white">Zen</h1>
+          <p className="text-white/80 text-[12px] max-w-md mx-auto lg:ml-9 mr-12 ">
+            The Pioneer ZenVue Dash Camera App gives you instant access to your recordings,
+            making it easy to view, download, and share footage on the go. With its intuitive,
+            user-friendly interface, the experience is seamless from start to finish.
           </p>
         </div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-[52%] -translate-y-[51%] z-20 w-[480px] h-[650px] flex items-center justify-center">
+
+        {/* Center Image for Desktop */}
+        <div className="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-[54%] -translate-y-[52%] z-20 w-auto h-[700px] items-center justify-center">
           <Image
-            src="/images/zenVueIMg.png" // Replace with your actual transparent background image
+            src="/images/zenVueIMg.png"
             alt="Mobile Device"
             width={1000}
             height={1000}
-            className="drop-shadow-3xl w-full h-full object-cover opacity "
+            className="drop-shadow-3xl w-full h-full object-cover"
           />
         </div>
-        {/* Right Title */}
+
+        {/* Right Title & Store Buttons (Desktop) */}
         <div className="hidden lg:flex flex-col items-end mt-[-3.5rem] flex-2 text-right space-y-4">
-          <h1 className="text-[260px] ml-5 mt-[5.3rem] leading-none font-bold text-white">Vue</h1>
+          <h1 className="text-[180px] tracking-wider ml-5 mt-[5.3rem] leading-none font-bold text-white">Vue</h1>
           <p className="text-sm text-white/70 mr-6">Available on</p>
-          <div className="flex gap-3  space-x-1 mt-0 mr-6">
+          <div className="flex gap-3 space-x-2 mt-0 mr-6">
             <Image
-              src="/images/googlePlay.png" // Add this image to your public/images folder
+              src="/images/googlePlay.png"
               alt="Google Play"
-              width={15}
+              width={140}
               height={45}
               className="object-contain"
             />
-            <p>Google play</p>
             <Image
-              src="/images/appStore.png" // Add this image to your public/images folder
+              src="/images/appStore.png"
               alt="App Store"
-              width={15}
+              width={120}
               height={45}
               className="object-contain"
-            />{" "}
-            <p>App Store</p>
+            />
           </div>
         </div>
       </div>
-
-      {/* <div className="absolute inset-0 bg-gradient-to-b from-[#00000] via-[#a82137] to-[#000000] w-full h-full">
-
-</div> */}
-
-      {/* Center Phone Image - Positioned Perfectly */}
     </section>
   );
 }

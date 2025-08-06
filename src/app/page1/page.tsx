@@ -560,8 +560,13 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
     loader.load("/Images/ainight.png", (texture) => {
       texture.flipY = false;
       texture.colorSpace = THREE.SRGBColorSpace;
-      materialRef.current.map = texture;
-      materialRef.current.needsUpdate = true;
+  
+      if (imagePlaneRef.current && imagePlaneRef.current.material) {
+        imagePlaneRef.current.material.map = texture;
+        imagePlaneRef.current.material.needsUpdate = true;
+      } else {
+        console.warn("⚠️ imagePlaneRef or its material is null");
+      }
     });
   }, []);
 

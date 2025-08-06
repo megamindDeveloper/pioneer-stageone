@@ -502,8 +502,12 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
     loader.load("/Images/ainight.png", (texture) => {
       texture.flipY = false;
       texture.colorSpace = THREE.SRGBColorSpace;
-      materialRef.current.map = texture;
-      materialRef.current.needsUpdate = true;
+      if (imagePlaneRef.current && imagePlaneRef.current.material) {
+        imagePlaneRef.current.material.map = texture;
+        imagePlaneRef.current.material.needsUpdate = true;
+      } else {
+        console.warn("⚠️ imagePlaneRef or its material is null");
+      }
     });
   }, []);
 
@@ -1241,7 +1245,7 @@ export default function Blender2JSPage() {
     <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
       <Timeline scrollProgress={scrollProgress} />
-
+      <HeroTextFade scrollProgress={scrollProgress} />
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}
         style={{ background: "#1a1a1a", width: "100vw", height: "100vh", position: "sticky", top: 0 }}

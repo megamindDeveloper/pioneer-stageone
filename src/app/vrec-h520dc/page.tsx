@@ -18,46 +18,62 @@ const page = () => {
       <Compare
         tabs={[
           {
-            heading: "See What Most Cameras Miss",
-            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
-            compareHeading: "Designed for the Details",
+            tabtitle: "Drive every day?",
+
+            heading: "Discover the Tools Built for Real Roads",
+            subheading:
+              "Smartly built for everyday drives, the H520DC offers clear 2K HDR footage, wide-road coverage and helpful driving alerts, all tuned for real conditions.",
+            compareHeading: "Clear Footage in Motion and Light",
             compareSubheading:
-              "Most dashcams blur the truth at night. The Z820DC, equipped with night vision AI and a STARVIS sensor, captures license plates, movements and moments even in low light.",
-            tabtitle: "Drive Late?",
+              "With 2K HDR recording, the H520DC keeps your video sharp across bright sun, moving traffic, and fast-changing streets.",
             image1: "/images/GLOW_BEFORE.webp",
             image2: "/images/GLOW_AFTER.webp",
           },
           {
-            heading: "See What Most Cameras Miss",
-            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
-            compareHeading: "Clarity That Keeps Up With Your Commute ",
+            tabtitle: "Need Wider Visibility?",
+
+            heading: "Discover the Tools Built for Real Roads",
+            subheading:
+              "Smartly built for everyday drives, the H520DC offers clear 2K HDR footage, wide-road coverage and helpful driving alerts, all tuned for real conditions.",
+            compareHeading: "Built for a Broader View ",
             compareSubheading:
-              "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
-            tabtitle: "On The Road Daily?",
+              "The VREC-H520DC captures a wider view with its 140-degree lens, letting you see more of the road, side lanes, and unexpected moments others often miss.",
             image1: "/images/NOISE_BEFORE.webp",
             image2: "/images/NOISE_AFTER.webp",
           },
           {
-            heading: "See What Most Cameras Miss",
-            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
-            compareHeading: "Clarity That Keeps Up With Your Commute",
+            tabtitle: "Prefer Dual Coverage?",
+            heading: "Discover the Tools Built for Real Roads",
+            subheading:
+              "Smartly built for everyday drives, the H520DC offers clear 2K HDR footage, wide-road coverage and helpful driving alerts, all tuned for real conditions.",
+            compareHeading: "Coverage That Looks Both Ways",
             compareSubheading:
-              "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
-            tabtitle: "Prefer Dual 4K Coverage?",
-            image2: "/comparisionImages/car-was-broken-car-accident 1.png",
+              "The dual-channel Dash Cam records front and rear in high resolution, with sharp 2K footage ahead and Full HD behind for clear synchronized coverage.",
+            image2: "/images/CarBroken.png",
             image1: "/images/page1Images/frontCamera2.webp",
           },
         ]}
       />
       <ZenVue />
-      <section className="bg-black">
-        <ProductFeatureTable products={defaultProducts} priorityProductIndex={0} />
-      </section>
-      <EverythingNeedToKnow faqData={faqData.set1} />
+      <ProductFeatureTable products={defaultProducts} priorityProductIndex={1} />
+      <EverythingNeedToKnow faqData={faqData.set2} />
       <DriveSmarter
-        subText="Drive with confidence, capture every moment, & stay protected. Explore what the Z820DC brings to every drive."
-        image="/modelImages/VREC-Z820DC/00571.webp"
+        subText="Drive with confidence, capture every moment, & stay protected. Explore what the H520DC brings to every drive."
+           image="/modelImages/VREC-H520DC/image1.webp"
       />
+      {/* <div
+        id="model2-scroll-container"
+        style={{ height: "1000vh", position: "relative" }}
+      >
+        <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
+          <CarCameraScene />
+        </div>
+      </div> */}
+      {/* <Compare />
+      <ZenVue />
+      <ProductFeatureTable />
+      <EverythingNeedToKnow />
+      <DriveSmarter /> */}
       <Footer />
     </div>
   )

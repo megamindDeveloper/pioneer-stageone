@@ -15,9 +15,9 @@ import FieldOfVision from "@/components/TextComponents/FieldOfVision";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Stage = "s2" | "s3" | "s4" | "s5" | "s6" | "s7" | "s8" | "s9" | "s10" | "s11" | null;
+type Stage = "s2" | "s3" | "s4" | "s5" | "s6" | "s7" | "s8" | "s9" | "s10" | "s11" | "s12" | "s13" | null;
 
-export default function Model1textOverlay() {
+export default function Model3textOverlay() {
   const [stage, setStage] = useState<Stage>(null);
   const overlayRef = useRef(null);
 
@@ -35,14 +35,16 @@ export default function Model1textOverlay() {
           if (p === 0) setStage(null);
           else if (p >= 0.0178 && p < 0.0675) setStage("s2");
           else if (p >= 0.0877 && p < 0.1113) setStage("s3");
-          else if (p >= 0.2566 && p < 0.2982) setStage("s4");
-          else if (p >= 0.3595 && p < 0.4079) setStage("s5");
-          else if (p >= 0.469 && p < 0.484) setStage("s6");
-          else if (p >= 0.505 && p < 0.525) setStage("s7");
-          else if (p >= 0.6386 && p < 0.6559) setStage("s8");
-          else if (p >= 0.7119 && p < 0.8419) setStage("s9");
-          else if (p >= 0.9420 && p < 0.9529) setStage("s10");
-          else if (p >= 0.9779 && p < 1) setStage("s11");
+          else if (p >= 0.2055 && p < 0.2432) setStage("s4");
+          else if (p >= 0.2433 && p < 0.2633) setStage("s13");
+          else if (p >= 0.2798 && p < 0.2944) setStage("s5");
+          else if (p >= 0.3546 && p < 0.3723) setStage("s6");
+          else if (p >= 0.3824 && p < 0.4) setStage("s7");
+          else if (p >= 0.6590 && p < 0.6666) setStage("s8");
+          else if (p >= 0.703 && p < 0.8423) setStage("s9");
+          else if (p >= 0.942 && p < 0.9529) setStage("s10");
+          else if (p >= 0.9317 && p < 0.9492) setStage("s12");
+          else if (p >= 0.9777 && p < 1) setStage("s11");
           else setStage(null);
         },
       });
@@ -68,28 +70,37 @@ export default function Model1textOverlay() {
   const overlays = {
     s2: (
       <div>
-        <FourKVideo
+        {/* <FourKVideo
           highlightedText="Sharp Footage in Low Light"
           heading="AI Powered Night Vision"
           subheading="An 8MP sensor that captures sharp, detailed video with high sensitivity, preserving image quality even during night drives and low-light conditions."
-        />
+        /> */}
       </div>
     ),
     s3: (
       <div>
         <FourKVideo
-          highlightedText="Details Stay Intact"
-          heading="4K Video Resolution"
-          subheading="The VREC-Z820DC records in true 4K, producing sharp video that makes plates, signs and unexpected moments easy to identify when needed."
+          highlightedText="Precision in Motion"
+          heading="Full HD Recording"
+          subheading="The front camera records in crisp 1080p, giving you sharp visuals for everyday drives, traffic incidents or unexpected moments."
         />
       </div>
     ),
     s4: (
       <div>
         <SharpVision
-          highlightedText="Clarity That Goes Further"
-          heading="High-Performance Imaging"
-          subheading="The VREC-Z820DC uses a Sony STARVIS IMX415 sensor, an f/1.8 aperture and a 7-layer glass lens. Together, they capture sharp, bright footage with accurate detail even in low or uneven lighting."
+          highlightedText="Automatic Event Recording"
+          heading="Built-in G-Sensor"
+          subheading="Stay protected with built-in G-sensor technology that automatically locks important footage during emergencies."
+        />
+      </div>
+    ),
+    s13: (
+      <div>
+        <SharpVision
+          highlightedText="Automatic Event Recording"
+          heading="Built-in G-Sensor"
+          subheading="Stay protected with built-in G-sensor technology that automatically locks important footage during emergencies."
         />
       </div>
     ),
@@ -97,18 +108,18 @@ export default function Model1textOverlay() {
       <div>
         <DynamicContent
           style="flex-col items-center justify-end sm:items-start sm:justify-center"
-          highlightedText="Sharp On-Screen Clarity"
-          heading='3.2" IPS Display'
-          subheading="The 8.1 cm built-in screen lets you review footage and adjust settings with sharp detail, all without taking up space on your dash."
+          highlightedText="Clear View at a Glance"
+          heading="3″ IPS Display"
+          subheading="The 7.6 cm screen lets you review footage, adjust settings, and see live video clearly right from the dash without needing your phone."
         />
       </div>
     ),
     s6: (
       <div>
-        <p className="text-cherryRed text-xl font-bold text-center">Adapts to Any Light</p>
-        <h2 className="text-[56px] mx text-white text-center font-medium">WDR & HDR Recording</h2>
+        <p className="text-cherryRed text-xl font-bold text-center">Clarity in Changing Light</p>
+        <h2 className="text-[56px] mx text-white text-center font-medium">Wide Dynamic Range (WDR)</h2>
         <p className="text-pretty text-[#ABABAB]  text-center max-w-xl mx-auto">
-          It adjusts exposure in real time, preserving visibility and fine detail, so footage stays clear in both bright and low-light conditions.
+        From tunnels to tree cover, WDR balances bright and dark areas in real time so your footage stays detailed and easy to review.
         </p>
       </div>
     ),
@@ -124,16 +135,18 @@ export default function Model1textOverlay() {
           alert1="Lane Departure Alert"
           alert2="Forward Collision Alert"
           alert3="Stop & Go Alert"
+          model="model3"
         />
       </div>
     ),
     s8: (
       <div>
-        <p className="text-cherryRed text-xl font-bold text-center">Every Angle Matters</p>
-        <h2 className="text-[56px] text-white text-center font-medium">Dual Camera setup</h2>
+        {/* <p className="text-cherryRed text-xl font-bold text-center">Dual Camera Setup</p>
+        <h2 className="text-[56px] text-white text-center font-medium">Front and Rear in Focus</h2>
         <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto">
-          The VREC-Z820DC pairs a 4K front and HD rear camera to record both directions at once, delivering clearer evidence and wider coverage.
-        </p>
+          The VREC‑H520DC captures your journey from both ends with 2K clarity in front and Full HD behind, giving you balanced, high-quality footage
+          wherever the road takes you.
+        </p> */}
       </div>
     ),
     s9: (
@@ -148,7 +161,7 @@ export default function Model1textOverlay() {
       </div>
     ),
 
-    s10: (
+    s12: (
       <OptionalParking
         style="flex flex-col items-center sm:items-start justify-center sm:justify-center "
         highlightedText="Stay Secure While Parked"
@@ -173,7 +186,7 @@ export default function Model1textOverlay() {
     default: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s2: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s3: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s4: "bottom-32 right-32 z-[100]",
+    s4: "top-1/2  right-32 z-[100]",
     s5: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s6: "bottom-1 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s7: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
@@ -181,6 +194,8 @@ export default function Model1textOverlay() {
     s9: "top-1/3 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s10: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s11: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s13: "top-0 left-2/3 z-[100] -translate-x-1/2 -translate-y-1/2",
+      s12: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
   };
 
   const currentOverlay = stage ? overlays[stage] : null;

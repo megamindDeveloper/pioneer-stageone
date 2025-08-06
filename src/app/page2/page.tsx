@@ -17,10 +17,10 @@ const animationData = [
   { time: 0.122, position: [-0.08, 1.22, 0.275], quaternion: [0, -0.90010577, 0.00000004, 0.43567151], fov: 20 },
   { time: 0.1667, position: [-0.000, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
 
-  { time: 0.1667, position: [-0.0016, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
+  { time: 0.1667, position: [-0.001, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
 
   { time: 0.1667, position: [-0.002, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 35 },
-  { time: 0.2083, position: [-0.0094, 1.2136, 0.0113], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 26.9915 },
+  { time: 0.2083, position: [-0.0094, 1.2136, 0.0113], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 30.9915 },
 
   { time: 0.25, position: [-0.0093, 1.1809, -2.2], quaternion: [0.00000002, 0.99999607, 0.00280268, 0.00000016], fov: 40 },
 
@@ -29,10 +29,9 @@ const animationData = [
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
-  { time: 0.375, position: [-0.0093, 6.6768, 3.1115], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 43.6028 },
-  { time: 0.375, position: [-0.0093, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 43.6028 },
-  { time: 0.375, position: [-0.0093, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 43.6028 },
-  { time: 0.375, position: [-0.0093, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 43.6028 },
+  { time: 0.375, position: [-0.0093, 6.6768, 3.1115], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 30.6028 },
+  { time: 0.375, position: [-0.0093, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 33.6028 },
+
 ];
 
 import { OrbitControls, Stats, TransformControls } from "@react-three/drei";
@@ -471,8 +470,13 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
     loader.load("/Images/ainight.png", (texture) => {
       texture.flipY = false;
       texture.colorSpace = THREE.SRGBColorSpace;
-      materialRef.current.map = texture;
-      materialRef.current.needsUpdate = true;
+     
+    if (imagePlaneRef.current && imagePlaneRef.current.material) {
+      imagePlaneRef.current.material.map = texture;
+      imagePlaneRef.current.material.needsUpdate = true;
+    } else {
+      console.warn("⚠️ imagePlaneRef or its material is null");
+    }
     });
   }, []);
 
@@ -644,9 +648,9 @@ const openShape = "polygon(-15% 34%, 0 0, 100% 0, 115% 34%, 50% 44%)";
 const closedShape = "polygon(49.75% 0%, 49.75% 0%, 49.75% 0%, 49.75% 0%, 50.41% 66.01%)";
 
 function getInterpolatedClip(scrollProgress) {
-  const start = 0.703;
-  const mid = 0.772; // halfway (adjust if needed)
-  const end = 0.8423;
+  const start = 0.7833;
+  const mid = 0.834; // halfway (adjust if needed)
+  const end = 0.8879;
 
   let blend;
   let shapeFrom, shapeTo;
@@ -790,7 +794,7 @@ function Blender2JSScene({
     }
     // Load image texture
     const loader = new THREE.TextureLoader();
-    loader.load("/Images/820Screen.webp", (texture) => {
+    loader.load("/Images/520 Screen.webp", (texture) => {
       console.log("🎯 Image texture loaded successfully");
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.repeat.x = -1;
@@ -844,7 +848,7 @@ function Blender2JSScene({
     });
   }, [cameraNodes]);
   if (imagePlaneRef.current) {
-    if (scrollProgress >= 0.4314) {
+    if (scrollProgress >= 0.4556) {
       const { videoMap, videoEl } = imagePlaneRef.current.userData;
       if (videoMap) {
         const material = imagePlaneRef.current.material as THREE.MeshBasicMaterial;
@@ -858,7 +862,7 @@ function Blender2JSScene({
         // fallback: hide until video is ready
         imagePlaneRef.current.visible = false;
       }
-    } else if (scrollProgress >= 0.4000 && scrollProgress <=  0.4314) {
+    } else if (scrollProgress >= 0.4455 && scrollProgress <= 0.4555) {
       const { imageMap, videoEl } = imagePlaneRef.current.userData;
       const material = imagePlaneRef.current.material as THREE.MeshBasicMaterial;
       if (imageMap && material.map !== imageMap) {
@@ -931,7 +935,7 @@ function Blender2JSScene({
       )}
 
       {/* DEBUG: HTML overlay showing positions */}
-      <Html position={[0, 3, 0]}>
+      {/* <Html position={[0, 3, 0]}>
         <div
           style={{
             background: "rgba(0,0,0,0.8)",
@@ -972,11 +976,11 @@ function Blender2JSScene({
  }
      LookAt Active: ${scrollProgress >= 0.0417 && scrollProgress <= 0.0833 ? "YES" : "NO"}`}
         </div>
-      </Html>
+      </Html> */}
       {/* ✅ White platform under car model */}
-      {scrollProgress >= 0.703 && scrollProgress <= 0.8423 && (
+      {scrollProgress >= 0.7833 && scrollProgress <= 0.8879 && (
         <mesh geometry={geometry} rotation={[-Math.PI / 2, 0, Math.PI / 1]} position={[0, 0.1, 0]}>
-          <meshStandardMaterial color="#2b2b2b" toneMapped={false} />
+          <meshBasicMaterial color="#313131" toneMapped={false} />
         </mesh>
       )}
 
@@ -1300,8 +1304,8 @@ export default function Blender2JSPage() {
           outputColorSpace: THREE.SRGBColorSpace, // ✅ Default in r155+
         }}
         onCreated={({ gl, scene }) => {
-          scene.background = new THREE.Color("#1a1a1a");
-          gl.setClearColor("#1a1a1a");
+          scene.background = new THREE.Color("#0D0D0D");
+          gl.setClearColor("#0D0D0D");
           // No need to set colorSpace again here
         }}
       >

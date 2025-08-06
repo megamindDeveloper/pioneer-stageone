@@ -38,12 +38,13 @@ export default function Model2textOverlay() {
           else if (p >= 0.2103 && p < 0.2432) setStage("s4");
           else if (p >= 0.2433 && p < 0.2633) setStage("s13");
           else if (p >= 0.3327 && p < 0.3506) setStage("s5");
-          else if (p >= 0.4052 && p < 0.4306) setStage("s6");
-          else if (p >= 0.4356 && p < 0.4538) setStage("s7");
-          else if (p >= 0.6386 && p < 0.6459) setStage("s8");
-          else if (p >= 0.7119 && p < 0.8419) setStage("s9");
+          else if (p >= 0.4507 && p < 0.46) setStage("s6");
+          else if (p >= 0.462 && p < 0.4838) setStage("s7");
+          else if (p >= 0.6590 && p < 0.6666) setStage("s8");
+          else if (p >= 0.7833 && p < 0.8879) setStage("s9");
           else if (p >= 0.942 && p < 0.9529) setStage("s10");
-          else if (p >= 0.9779 && p < 1) setStage("s11");
+          else if (p >= 0.9400 && p < 0.9600) setStage("s12");
+          else if (p >= 0.9777 && p < 1) setStage("s11");
           else setStage(null);
         },
       });
@@ -126,9 +127,9 @@ export default function Model2textOverlay() {
     s7: (
       <div>
         <DriveAlert
-          highlightedText="Timely Warnings When It Matters"
-          heading="ADAS Alerts"
-          subheading="Get audio cues for lane departure and forward collision so you can stay aware, avoid surprises and respond faster on busy roads."
+          highlightedText="ADAS Enabled"
+          heading="Smart Alerts for Safer Driving"
+          subheading="Get audio alerts for lane departure, forward collision and stop-and-go alert so you stay aware of your surroundings and respond faster to sudden changes on the road."
           alert1Image="/images/svgs/laneIcon.svg"
           alert2Image="/images/svgs/collisionIcon.svg"
           alert3Image="/images/svgs/stopnGoIcon.svg"
@@ -140,10 +141,11 @@ export default function Model2textOverlay() {
     ),
     s8: (
       <div>
-        <p className="text-cherryRed text-xl font-bold text-center">Every Angle Matters</p>
-        <h2 className="text-[56px] text-white text-center font-medium">Dual Camera setup</h2>
+        <p className="text-cherryRed text-xl font-bold text-center">Dual Camera Setup</p>
+        <h2 className="text-[56px] text-white text-center font-medium">Front and Rear in Focus</h2>
         <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto">
-          The VREC-Z820DC pairs a 4K front and HD rear camera to record both directions at once, delivering clearer evidence and wider coverage.
+          The VREC‑H520DC captures your journey from both ends with 2K clarity in front and Full HD behind, giving you balanced, high-quality footage
+          wherever the road takes you.
         </p>
       </div>
     ),
@@ -152,9 +154,9 @@ export default function Model2textOverlay() {
 
       <div>
         <FieldOfVision
-          highlightedText="See More Than Just the Lane Ahead"
-          heading="139° Wide-Angle Lens"
-          subheading="Captures multiple lanes and surrounding details, giving you a broader view of every situation on the road."
+          highlightedText="Wide Angle View"
+          heading="140° Field of Vision"
+          subheading="The lens captures more of what’s around you including lanes, nearby vehicles and surroundings so you get a complete view of every drive."
         />
       </div>
     ),
@@ -193,7 +195,7 @@ export default function Model2textOverlay() {
     s10: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s11: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s13: "top-0 left-2/3 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s12: "",
+      s12: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
   };
 
   const currentOverlay = stage ? overlays[stage] : null;

@@ -35,9 +35,9 @@ export const OverlayCard: React.FC<OverlayCardProps> = ({ image, title, descript
         <Typography variant="section-card-body" className="text-[#DFDFDF] whitespace-pre-line md:block hidden">
           {description}
         </Typography>
-        <Typography variant="section-card-body" className="text-[#DFDFDF]  max-w-[50%]">
+        {/* <Typography variant="section-card-body" className="text-[#DFDFDF]  max-w-[50%]">
           {description}
-        </Typography>
+        </Typography> */}
       </div>
     </motion.div>
   );

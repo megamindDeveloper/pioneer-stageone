@@ -17,62 +17,50 @@ const page = () => {
   return (
     <div>
       <Blender2JSPage/>
-      <Model3textOverlay />
+      {/* <Model3textOverlay /> */}
       <Compare
         tabs={[
           {
-            tabtitle: "Want Driving Alerts?",
-
-            heading: "Get More from Your Daily Drive",
-            subheading: "The VREC-H320SC adds smart driving support, automatic event recording and clear video built for real road conditions.",
-            compareHeading: "Helps You Focus on the Drive",
-            compareSubheading: "Built-in alerts respond to sudden shifts and lane drifts, giving you a second set of eyes when the road gets busy.",
+            heading: "See What Most Cameras Miss",
+            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
+            compareHeading: "Designed for the Details",
+            compareSubheading:
+              "Most dashcams blur the truth at night. The Z820DC, equipped with night vision AI and a STARVIS sensor, captures license plates, movements and moments even in low light.",
+            tabtitle: "Drive Late?",
             image1: "/images/GLOW_BEFORE.webp",
             image2: "/images/GLOW_AFTER.webp",
           },
           {
-            tabtitle: "Prefer Auto Recording?",
-
-            heading: "Get More from Your Daily Drive",
-            subheading: "The VREC-H320SC adds smart driving support, automatic event recording and clear video built for real road conditions.",
-            compareHeading: "Always Ready to Record",
+            heading: "See What Most Cameras Miss",
+            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
+            compareHeading: "Clarity That Keeps Up With Your Commute ",
             compareSubheading:
-              "When motion or impact is detected, the VREC-320SC begins recording automatically. With parking mode enabled, it helps to capture unexpected incidents even while your car is parked.",
+              "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
+            tabtitle: "On The Road Daily?",
             image1: "/images/NOISE_BEFORE.webp",
             image2: "/images/NOISE_AFTER.webp",
           },
           {
-            tabtitle: "Need Clear Footage?  ",
-            heading: "Get More from Your Daily Drive",
-            subheading: "The VREC-H320SC adds smart driving support, automatic event recording and clear video built for real road conditions.",
-            compareHeading: "Built for Shifting Light Conditions",
-            compareSubheading: "From harsh sunlight to shaded corners, WDR and Full HD work together to keep your video balanced and clear.",
-            image2: "/images/CarBroken.png",
+            heading: "See What Most Cameras Miss",
+            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
+            compareHeading: "Clarity That Keeps Up With Your Commute",
+            compareSubheading:
+              "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
+            tabtitle: "Prefer Dual 4K Coverage?",
+            image2: "/comparisionImages/car-was-broken-car-accident 1.png",
             image1: "/images/page1Images/frontCamera2.webp",
           },
         ]}
       />
       <ZenVue />
-      <ProductFeatureTable products={defaultProducts} priorityProductIndex={3} />
-      <EverythingNeedToKnow faqData={faqData.set3} />
+      <section className="bg-black">
+        <ProductFeatureTable products={defaultProducts} priorityProductIndex={0} />
+      </section>
+      <EverythingNeedToKnow faqData={faqData.set1} />
       <DriveSmarter
-        subText="Drive with confidence, capture every moment, & stay protected. Explore what the H320SC brings to every drive."
-               image="/modelImages/VREC-H320SC/image1.webp"
+        subText="Drive with confidence, capture every moment, & stay protected. Explore what the Z820DC brings to every drive."
+        image="/modelImages/VREC-Z820DC/00571.webp"
       />
-      <Footer />
-      {/* <div
-        id="model2-scroll-container"
-        style={{ height: "1000vh", position: "relative" }}
-      >
-        <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
-          <CarCameraScene />
-        </div>
-      </div> */}
-      {/* <Compare />
-      <ZenVue />
-      <ProductFeatureTable />
-      <EverythingNeedToKnow />
-      <DriveSmarter /> */}
       <Footer />
     </div>
   )

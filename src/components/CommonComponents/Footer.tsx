@@ -7,7 +7,7 @@ const navLinks = ["Our Products", "Our History", "Pioneer Global", "Contact Us",
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-[#AD2239]/60 via- to-black text-white pt-24 pb-6 px-4  ">
+    <footer className="bg-gradient-to-t from-[#AD2239]/60 via- to-transparent text-white pt-24 pb-6 px-4  ">
       <div className="max-w-6xl  mx-auto w-full">
         {/* Top Links */}
         <div className="pl-20 grid grid-cols-2 sm:grid-cols-3 gap-6 !text-[14px] md:text-base text-white/90 mb-12 lg:mb-32 text-justify sm:text-left font-medium ">

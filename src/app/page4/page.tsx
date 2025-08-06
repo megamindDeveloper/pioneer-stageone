@@ -56,6 +56,7 @@ const animationData = [
 
 import { OrbitControls, Stats, TransformControls } from "@react-three/drei";
 import { Html } from "@react-three/drei";
+import { Typography } from "@/components/CommonComponents/Typography/Typography";
 
 function EditableCameraHelper({ setKeyframe }: { setKeyframe: Function }) {
   const camGroupRef = useRef<THREE.Group>(null);
@@ -1198,6 +1199,44 @@ function AnimatedBackdrop({ scrollProgress }) {
   );
 }
 
+function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
+  const progress = THREE.MathUtils.clamp(scrollProgress / 0.028, 0, 1);
+  const scale = THREE.MathUtils.lerp(1, 2.6, progress);
+  const opacity = THREE.MathUtils.lerp(1, 0, progress);
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "black",
+        zIndex: 20,
+        pointerEvents: "none",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        textAlign: "center",
+        transform: `scale(${scale})`,
+        opacity,
+        transition: "transform 0.2s ease-out, opacity 0.2s ease-out",
+      }}
+    >
+      <Typography variant="hero-section-heading" className="text-xl !md:text-[62px] font-bold text-white text-center px-4 ">
+      Compact Design That Stays Out of the Way
+      </Typography>
+      <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl">VREC‑H120SC is a compact dash cam that captures clear 1.5K footage while staying out of the way.</p>
+      <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
+        Explore the features
+        <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
+      </button>
+    </div>
+  );
+}
+
 export default function Blender2JSPage() {
   const [modelIsReady, setModelIsReady] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -1244,7 +1283,7 @@ export default function Blender2JSPage() {
   return (
     <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
-      <Timeline scrollProgress={scrollProgress} />
+      {/* <Timeline scrollProgress={scrollProgress} /> */}
       <HeroTextFade scrollProgress={scrollProgress} />
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}
@@ -1271,14 +1310,14 @@ export default function Blender2JSPage() {
             dashcamGroupRef={dashcamGroupRef}
             dashcamOffsetGroupRef={dashcamOffsetGroupRef}
           />
-          <LensAnimation isAnimating={lensAnimation} dashcamGroupRef={dashcamGroupRef} />
+          {/* <LensAnimation isAnimating={lensAnimation} dashcamGroupRef={dashcamGroupRef} />
           <EditableCameraHelper setKeyframe={({ position, quaternion, fov }: any) => {}} />
           <Stats />
           <DebugAxesHelper size={5} />
           <DebugGridHelper size={20} divisions={20} />
           <BoundingBoxHelper objectRef={dashcamGroupRef} />
           <LogWorldPosition objectRef={dashcamGroupRef} />
-          <TransformControls object={dashcamGroupRef.current} />
+          <TransformControls object={dashcamGroupRef.current} /> */}
         </Suspense>
         {/* <ambientLight intensity={0.3} />
         <directionalLight position={[10, 10, 5]} intensity={1} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />

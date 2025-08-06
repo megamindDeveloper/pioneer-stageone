@@ -1,15 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import image from "../../../public/logo/image.png";
-const quickLinks = [
+const quickLinks = [, ,];
 
-  "Distributors",
-  "Dashcam EULA Document",
-  "Dashcam Privacy Policy",
-
-];
-
-const navLinks = ["Our Products", "Our History", "Pioneer Global", "Contact Us"];
+const navLinks = ["Our Products", "Our History", "Pioneer Global", "Contact Us", "Distributors", "Dashcam EULA Document", "Dashcam Privacy Policy"];
 
 export default function Footer() {
   return (

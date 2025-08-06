@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ZenVue() {
   return (
-    <section className="relative w-full min-h-screen bg-gradient-to-b from-[#00000] via-[#a82137] to-[#000000] text-white mt-32">
+    <section className="relative w-full min-h-screen bg-gradient-to-b from-[#00000] via-[#a82137] to-[#000000] text-white mt-32 xl:mt50">
       {/* Main Content */}
       <div className="relative z-10 max-w-[screen] mx-auto px-6 md:px-[5rem] py-12 md:py-20 flex flex-col lg:flex-row justify-between gap-20 items-center lg:items-start">
 
@@ -14,7 +14,7 @@ export default function ZenVue() {
         </div>
 
         {/* ZenVue Heading (Mobile) */}
-        <div className="block lg:hidden w-full text-center mt-[-4rem]">
+        <div className="block lg:hidden w-full text-center mt-[-4rem] xl:mt-[-4rem]">
           <h1 className="text-[40px] xs:text-[48px] sm:text-[60px] leading-[1.1] font-bold">ZenVue</h1>
         </div>
 

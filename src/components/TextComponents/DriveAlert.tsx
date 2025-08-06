@@ -21,7 +21,7 @@ export default function DriveAlert({ highlightedText, heading, subheading , aler
   return (
     <section className="min-h-screen  text-white flex flex-col justify-between px-4 sm:px-6 py-10 text-center">
       {/* Top Icon */}
-      <div className="pt-50 sm:pt-20 animate-fastpulse">
+      <div className="pt-52 sm:pt-28 animate-fastpulse">
         <Image
           src="/images/svgs/dangerIcon.svg"
           alt="Warning Icon"

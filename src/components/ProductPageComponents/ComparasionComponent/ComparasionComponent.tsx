@@ -78,13 +78,13 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
   return (
     <section className="w-full bg- text-white  flex flex-col items-center py-16 px-4">
       {/* Heading */}
-      <div className="text-center max-w-xl mb-1">
+      <div className="text-center max-w-xl xl:max-w-[90%] mb-1">
         <h2 className="text-3xl sm:whitespace-nowrap md:text-4xl font-semibold mb-4">{tabs[activeTab].heading}</h2>
         <p className="text-[#ABABAB] cursor-pointer text-[13px] w-full md:text-base">{tabs[activeTab].subheading}</p>
       </div>
 
       {/* Comparison / Image Section */}
-      <div className="w-full max-w-5xl h-[500px] sm:h-[600px] md:h-[80vh] rounded-xl overflow-hidden relative mt-10">
+      <div className="w-full max-w-5xl xl:max-w-[80%] h-[500px] sm:h-[600px] md:h-[80vh] rounded-xl overflow-hidden relative mt-10">
         {/* Image Comparison Mode */}
         {activeTab !== 2 ? (
           <div
@@ -138,10 +138,9 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
               className="absolute top-0 left-0 z-[19] object-cover w-full h-full select-none"
               draggable={false}
             />
-{/* Gradient Overlay */}
-{/* Gradient Overlay */}
-<div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
-
+            {/* Gradient Overlay */}
+            {/* Gradient Overlay */}
+            <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
 
             {/* Headline/Subtext over image for desktop only */}
             <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[90%]">
@@ -153,9 +152,8 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
           <div className="relative w-full h-full">
             <img src={currentTab.image2} alt="Full" className="absolute top-0 left-0 w-full h-full object-cover z-10" draggable={false} />
             {/* Gradient Overlay */}
-{/* Gradient Overlay */}
-<div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
-
+            {/* Gradient Overlay */}
+            <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
 
             <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[90%]">
               <h3 className="text-white text-2xl font-semibold">{currentTab.compareHeading}</h3>

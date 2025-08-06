@@ -9,21 +9,21 @@ useGLTF.preload("/models/car.glb");
 
 const animationData = [
   { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2 },
-  { time: 0.0, position: [0.005, 1.222, 0.4968],  quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2.5 },
-  { time: 0.0, position: [0.005, 1.222, 0.4968],  quaternion: [0.0, 0.0, 0.0, 1.0], fov: 3 },
+  { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2.5 },
+  { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 3 },
   { time: 0.0417, position: [-0.11, 1.215, 0.44], quaternion: [0.03902204, -0.5, -0.0781377, 0.9276399], fov: 20 },
   { time: 0.0417, position: [-0.11, 1.215, 0.44], quaternion: [0.03902204, -0.5, -0.0781377, 0.9276399], fov: 20 },
   { time: 0.122, position: [-0.08, 1.22, 0.275], quaternion: [0, -0.90010577, 0.00000004, 0.43567151], fov: 20 },
   { time: 0.122, position: [-0.08, 1.22, 0.275], quaternion: [0, -0.90010577, 0.00000004, 0.43567151], fov: 20 },
-  { time: 0.1667, position: [-0.0, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
+  { time: 0.1667, position: [-0.000, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
 
-  { time: 0.1667, position: [-0.0, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
+  { time: 0.1667, position: [-0.0016, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
 
-  { time: 0.1667, position: [-0.0, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 35 },
+  { time: 0.1667, position: [-0.002, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 35 },
   { time: 0.2083, position: [-0.0094, 1.2136, 0.0113], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 26.9915 },
 
   { time: 0.25, position: [-0.0093, 1.1809, -2.2], quaternion: [0.00000002, 0.99999607, 0.00280268, 0.00000016], fov: 40 },
- 
+
   { time: 0.2917, position: [-0.0093, 3.9288, -3.2975], quaternion: [0.00000007, 0.9208445, 0.38993004, 0.00000008], fov: 26.9915 },
 
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
@@ -37,6 +37,7 @@ const animationData = [
 
 import { OrbitControls, Stats, TransformControls } from "@react-three/drei";
 import { Html } from "@react-three/drei";
+import { Typography } from "@/components/CommonComponents/Typography/Typography";
 
 function EditableCameraHelper({ setKeyframe }: { setKeyframe: Function }) {
   const camGroupRef = useRef<THREE.Group>(null);
@@ -420,7 +421,7 @@ function useCameraAnimationSync(
   const cameraMountWorldMatrix = new THREE.Matrix4();
 
   useFrame(() => {
-    const inExplodeRange = scrollProgress >= 0.2559 && scrollProgress < 0.2932;
+    const inExplodeRange = scrollProgress >= 0.2104 && scrollProgress < 0.2432;
 
     // 🔓 Explode lens when entering the range
     if (inExplodeRange && !explodedRef.current) {
@@ -507,7 +508,7 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
   }, [scrollProgress]);
   depthWrite: false;
   return (
-    <mesh ref={imagePlaneRef} renderOrder={10} position={[0.01, 1.214, -4]} visible={true}>
+    <mesh ref={imagePlaneRef} renderOrder={10} position={[0.004, 1.211, -4]} visible={true}>
       <planeGeometry args={[1]} />
       <meshBasicMaterial
         ref={materialRef}
@@ -550,7 +551,7 @@ function LensAnimation({ isAnimating, dashcamGroupRef }: { isAnimating: boolean;
           timelineRef.current.to(
             part.position,
             {
-              z: [0.07, 0.065, 0.04, 0.055, 0.02, 0.01][i] || 0.05,
+              z: [0.05, 0.015, 0.04, 0.035, 0.02, 0.01][i] || 0.05,
               duration: 1.2,
               ease: "power2.out",
             },
@@ -642,9 +643,6 @@ function clipPathToShape(points: string, width = 5, height = 5) {
 const openShape = "polygon(-15% 34%, 0 0, 100% 0, 115% 34%, 50% 44%)";
 const closedShape = "polygon(49.75% 0%, 49.75% 0%, 49.75% 0%, 49.75% 0%, 50.41% 66.01%)";
 
-
-
-
 function getInterpolatedClip(scrollProgress) {
   const start = 0.703;
   const mid = 0.772; // halfway (adjust if needed)
@@ -652,7 +650,7 @@ function getInterpolatedClip(scrollProgress) {
 
   let blend;
   let shapeFrom, shapeTo;
-  
+
   if (scrollProgress <= mid) {
     // Phase 1: close → open
     blend = THREE.MathUtils.clamp((scrollProgress - start) / (mid - start), 0, 1);
@@ -666,10 +664,16 @@ function getInterpolatedClip(scrollProgress) {
   }
 
   const parse = (str) =>
-    str.replace("polygon(", "")
+    str
+      .replace("polygon(", "")
       .replace(")", "")
       .split(",")
-      .map(pt => pt.trim().split(" ").map(v => parseFloat(v)));
+      .map((pt) =>
+        pt
+          .trim()
+          .split(" ")
+          .map((v) => parseFloat(v))
+      );
 
   const a = parse(shapeFrom);
   const b = parse(shapeTo);
@@ -683,8 +687,6 @@ function getInterpolatedClip(scrollProgress) {
 
   return `polygon(${points.join(", ")})`;
 }
-
-
 
 function Blender2JSScene({
   onLoadComplete,
@@ -746,10 +748,7 @@ function Blender2JSScene({
           node.material.side = THREE.DoubleSide;
         }
       }
-      if (
-        node instanceof THREE.Mesh &&
-        node.name.toLowerCase().includes("windshield")
-      ) {
+      if (node instanceof THREE.Mesh && node.name.toLowerCase().includes("windshield")) {
         windshieldObjects.current.push(node);
       }
     });
@@ -764,7 +763,7 @@ function Blender2JSScene({
         }
       }
     });
-    if (scrollProgress > 0.5000) {
+    if (scrollProgress > 0.5) {
       setCarVisible(true);
     } else {
       setCarVisible(false);
@@ -795,7 +794,7 @@ function Blender2JSScene({
       console.log("🎯 Image texture loaded successfully");
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.repeat.x = -1;
-texture.offset.x = 1;
+      texture.offset.x = 1;
 
       // Create image plane
       const plane = new THREE.Mesh(
@@ -814,7 +813,7 @@ texture.offset.x = 1;
       console.log("🎯 Display mount found:", displayMountRef.current);
       if (displayMountRef.current) {
         displayMountRef.current.add(plane);
-        plane.position.set(0.003, 0.0035, 0); // Much further in front to be outside the model
+        plane.position.set(0.004, 0.00353, 0); // Much further in front to be outside the model
         plane.visible = false; // Start hidden, controlled by scroll logic
         console.log("🎯 Plane added to display mount");
         console.log("🎯 Plane position:", plane.position);
@@ -859,7 +858,7 @@ texture.offset.x = 1;
         // fallback: hide until video is ready
         imagePlaneRef.current.visible = false;
       }
-    } else if (scrollProgress >= 0.365 && scrollProgress <= 0.3737) {
+    } else if (scrollProgress >= 0.4000 && scrollProgress <=  0.4314) {
       const { imageMap, videoEl } = imagePlaneRef.current.userData;
       const material = imagePlaneRef.current.material as THREE.MeshBasicMaterial;
       if (imageMap && material.map !== imageMap) {
@@ -879,17 +878,17 @@ texture.offset.x = 1;
     const interpolated = getInterpolatedClip(scrollProgress);
     return clipPathToShape(interpolated, 10, 10);
   }, [scrollProgress]);
-  
+
   // useFrame(() => {
   //   const highlightStart = 0.3546;
   //   const highlightEnd = 0.5221;
-  
+
   //   const blend = THREE.MathUtils.clamp(
   //     (scrollProgress - highlightStart) / (highlightEnd - highlightStart),
   //     0,
   //     1
   //   );
-  
+
   //   windshieldObjects.current.forEach((mesh) => {
   //     const mat = mesh.material as THREE.MeshStandardMaterial;
   //     mat.transparent = true;
@@ -901,13 +900,9 @@ texture.offset.x = 1;
   useFrame(() => {
     const highlightStart = 0.4968;
     const highlightEnd = 0.6024;
-  
-    const blend = THREE.MathUtils.clamp(
-      (scrollProgress - highlightStart) / (highlightEnd - highlightStart),
-      0,
-      1
-    );
-  
+
+    const blend = THREE.MathUtils.clamp((scrollProgress - highlightStart) / (highlightEnd - highlightStart), 0, 1);
+
     windshieldObjects.current.forEach((mesh) => {
       const mat = mesh.material as THREE.MeshStandardMaterial;
       mat.transparent = true;
@@ -915,7 +910,6 @@ texture.offset.x = 1;
       mat.needsUpdate = true;
     });
   });
-  
 
   useFadeModelOpacity(fadeRef, scrollProgress);
   return (
@@ -995,7 +989,99 @@ texture.offset.x = 1;
     </>
   );
 }
+function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
+  const progress = THREE.MathUtils.clamp(scrollProgress / 0.028, 0, 1);
+  const scale = THREE.MathUtils.lerp(1, 2.6, progress);
+  const opacity = THREE.MathUtils.lerp(1, 0, progress);
 
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "black",
+        zIndex: 20,
+        pointerEvents: "none",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        textAlign: "center",
+        transform: `scale(${scale})`,
+        opacity,
+        transition: "transform 0.2s ease-out, opacity 0.2s ease-out",
+      }}
+    >
+      <Typography variant="hero-section-heading" className="text-xl !md:text-[62px] font-bold text-white text-center px-4 ">
+        When Detail Matters the Most
+      </Typography>
+      <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl">VREC‑H520DC captures sharp 2K video, even in low light and on the move.</p>
+      <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
+        Explore the features
+        <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
+      </button>
+    </div>
+  );
+}
+
+function DummyBlack({
+  scrollProgress,
+  fadeInStart = 0,
+  fadeInEnd = 0.0185,
+  fadeOutStart = 0.03,
+  fadeOutEnd = 0.08,
+}: {
+  scrollProgress: number;
+  fadeInStart?: number;
+  fadeInEnd?: number;
+  fadeOutStart?: number;
+  fadeOutEnd?: number;
+}) {
+  // Scale from 1 → 2.6 over first 0.08 of scroll (you can adjust)
+  const scaleProgress = THREE.MathUtils.clamp(scrollProgress / 0.08, 0, 1);
+  const scale = THREE.MathUtils.lerp(1, 2.6, scaleProgress);
+
+  // Opacity: fade in, hold, fade out
+  let opacity = 0;
+
+  if (scrollProgress <= fadeInStart) {
+    opacity = 0;
+  } else if (scrollProgress <= fadeInEnd) {
+    // fade in
+    const t = THREE.MathUtils.clamp((scrollProgress - fadeInStart) / (fadeInEnd - fadeInStart), 0, 1);
+    opacity = THREE.MathUtils.lerp(0, 1, t);
+  } else if (scrollProgress < fadeOutStart) {
+    // hold full
+    opacity = 1;
+  } else if (scrollProgress <= fadeOutEnd) {
+    // fade out
+    const t = THREE.MathUtils.clamp((scrollProgress - fadeOutStart) / (fadeOutEnd - fadeOutStart), 0, 1);
+    opacity = THREE.MathUtils.lerp(1, 0, t);
+  } else {
+    opacity = 0;
+  }
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "black",
+        zIndex: 20,
+        pointerEvents: "none",
+        transform: `scale(${scale})`,
+        opacity,
+        transition: "none", // disable CSS transition to keep scroll-driven immediate response
+      }}
+    />
+  );
+}
 function CameraAnimation({
   scrollProgress,
   carScene,
@@ -1203,7 +1289,8 @@ export default function Blender2JSPage() {
     <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "4000vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
       <Timeline scrollProgress={scrollProgress} />
-
+      <HeroTextFade scrollProgress={scrollProgress} />
+      {/* <DummyBlack scrollProgress={scrollProgress} /> */}
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}
         style={{ background: "#1a1a1a", width: "100vw", height: "100vh", position: "sticky", top: 0 }}
@@ -1230,7 +1317,6 @@ export default function Blender2JSPage() {
             dashcamOffsetGroupRef={dashcamOffsetGroupRef}
           />
           <LensAnimation isAnimating={lensAnimation} dashcamGroupRef={dashcamGroupRef} />
-       
         </Suspense>
         {/* <ambientLight intensity={0.3} />
         <directionalLight position={[10, 10, 5]} intensity={1} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />

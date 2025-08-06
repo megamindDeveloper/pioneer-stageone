@@ -1,6 +1,5 @@
 import React from 'react'
-import Blender2JSPage from '../page1/page'
-import Model1textOverlay from '@/components/Model1Components/Textoverlay/Textoverlay';
+
 import { Compare } from '@/components/ProductPageComponents/ComparasionComponent/ComparasionComponent';
 import ZenVue from '@/components/ProductPageComponents/ZenVue/ZenVue';
 import ProductFeatureTable from '@/components/ProductPageComponents/ProductFeatureTable/ProductFeatureTable';
@@ -9,11 +8,13 @@ import EverythingNeedToKnow from '@/components/ProductPageComponents/EverythingN
 import { faqData } from '../utils/FaqData/FaqData';
 import DriveSmarter from '@/components/ProductPageComponents/DriveSmarter/DriveSmarter';
 import Footer from '@/components/CommonComponents/Footer';
+import Blender2JSPage from '../page2/page';
+import Model2textOverlay from '@/components/Model2Components/Textoverlay/Textoverlay';
 const page = () => {
   return (
     <div>
       <Blender2JSPage/>
-      <Model1textOverlay />
+      <Model2textOverlay />
       <Compare
         tabs={[
           {

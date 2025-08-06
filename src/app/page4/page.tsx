@@ -13,29 +13,29 @@ const animationData = [
     position: [0.0014, 1.2215, 0.5],
     quaternion: [0.0, 0.0, 0.0, 1.0],
     fov: 1,
-  }, 
+  },
   {
     time: 0.0,
     position: [0.0014, 1.2215, 0.5],
     quaternion: [0.0, 0.0, 0.0, 1.0],
     fov: 2,
-  },//close
+  }, //close
   {
     time: 0.0417,
-    position: [-0.1, 1.22, 0.48],
-    quaternion: [0.0, -0.4, -0, 0.9276399],
+    position: [-0.09, 1.22, 0.45],
+    quaternion: [0.0, -0.42, -0, 0.9276399],
     fov: 20,
   }, //LEFT lens explode
   {
     time: 0.0417,
-    position: [-0.09, 1.22, 0.367],
+    position: [-0.07, 1.223, 0.3812],
     quaternion: [0.0, -0.7, 0, 0.6781],
     fov: 20,
   }, // DC IN
 
   {
     time: 0.122,
-    position: [-0.08, 1.22, 0.275],
+    position: [-0.056, 1.22, 0.29],
     quaternion: [-0.0, -0.90010577, 0.00000004, 0.3567151],
     fov: 20,
   }, //right HDR
@@ -46,9 +46,12 @@ const animationData = [
     quaternion: [0.0, 1.0, 0.0, 0.0],
     fov: 20,
   }, //behind
-{
-  time: 0.205, position: [0.11, 1.215, 0.25], quaternion: [0.0, 0.9, -0.0199, 0.4], fov: 8 }, //left
-
+  {
+    time: 0.205,
+    position: [0.12, 1.215, 0.25],
+    quaternion: [0.0, 0.9, -0.019, 0.44],
+    fov: 8,
+  }, //left
 ];
 
 import { OrbitControls, Stats, TransformControls } from "@react-three/drei";
@@ -419,6 +422,19 @@ function interpolateCamera(time: number, dashcamGroupRef?: React.RefObject<THREE
 
   return { position, quaternion, focalLength };
 }
+function mapScrollToAnimationTime(scrollProgress: number) {
+  const pauseStart = 0.5752;
+  const pauseEnd = 0.7143;
+  const holdAt = 0.54; // ⬅️ Pause exactly at keyframe 5
+
+  if (scrollProgress < pauseStart) {
+    return THREE.MathUtils.mapLinear(scrollProgress, 0, pauseStart, 0, holdAt);
+  } else if (scrollProgress <= pauseEnd) {
+    return holdAt; // ⏸️ Freeze at keyframe 5
+  } else {
+    return THREE.MathUtils.mapLinear(scrollProgress, pauseEnd, 1, holdAt, 1);
+  }
+}
 
 function interpolateCameraFromScroll(scrollProgress: number, dashcamGroupRef?: React.RefObject<THREE.Group>) {
   return interpolateCamera(scrollProgress, dashcamGroupRef);
@@ -455,8 +471,8 @@ function useCameraAnimationSync(
     // Camera animation sync
     const start = 0.09;
     const end = 1.0;
-    const progressInRange = THREE.MathUtils.clamp((scrollProgress - start) / (end - start), 0, 1);
-    const { position, quaternion, focalLength } = interpolateCameraFromScroll(progressInRange, dashcamGroupRef);
+    const animationTime = mapScrollToAnimationTime(scrollProgress);
+    const { position, quaternion, focalLength } = interpolateCamera(animationTime, dashcamGroupRef);
 
     camera.position.copy(position);
     camera.quaternion.copy(quaternion);
@@ -655,52 +671,48 @@ function clipPathToShape(points: string, width = 5, height = 5) {
 
   return new THREE.ShapeGeometry(shape);
 }
-const openShape = "polygon(-15% 34%, 0 0, 100% 0, 115% 34%, 50% 44%)";
+const openShape = "polygon(-60% 0%, 0 0, 100% 0, 155% 0%, 50% 49%)";
 const closedShape = "polygon(49.75% 0%, 49.75% 0%, 49.75% 0%, 49.75% 0%, 50.41% 66.01%)";
 
-
-
-
-function getInterpolatedClip(scrollProgress) {
-  const start = 0.703;
-  const mid = 0.772; // halfway (adjust if needed)
-  const end = 0.8423;
-
-  let blend;
-  let shapeFrom, shapeTo;
-  
-  if (scrollProgress <= mid) {
-    // Phase 1: close → open
-    blend = THREE.MathUtils.clamp((scrollProgress - start) / (mid - start), 0, 1);
-    shapeFrom = closedShape;
-    shapeTo = openShape;
-  } else {
-    // Phase 2: open → close
-    blend = THREE.MathUtils.clamp((scrollProgress - mid) / (end - mid), 0, 1);
-    shapeFrom = openShape;
-    shapeTo = closedShape;
-  }
-
+function interpolateClipShape(from, to, t) {
   const parse = (str) =>
-    str.replace("polygon(", "")
+    str
+      .replace("polygon(", "")
       .replace(")", "")
       .split(",")
-      .map(pt => pt.trim().split(" ").map(v => parseFloat(v)));
+      .map((pt) => pt.trim().split(" ").map(parseFloat));
 
-  const a = parse(shapeFrom);
-  const b = parse(shapeTo);
+  const a = parse(from);
+  const b = parse(to);
 
   const points = a.map(([ax, ay], i) => {
     const [bx, by] = b[i];
-    const ix = THREE.MathUtils.lerp(ax, bx, blend);
-    const iy = THREE.MathUtils.lerp(ay, by, blend);
+    const ix = THREE.MathUtils.lerp(ax, bx, t);
+    const iy = THREE.MathUtils.lerp(ay, by, t);
     return `${ix}% ${iy}%`;
   });
 
   return `polygon(${points.join(", ")})`;
 }
 
+function getInterpolatedClip(scrollProgress) {
+  const openStart = 0.58;
+  const openEnd = 0.62;
+  const closeStart = 0.64;
+  const closeEnd = 0.71;
 
+  if (scrollProgress >= openStart && scrollProgress <= openEnd) {
+    const t = (scrollProgress - openStart) / (openEnd - openStart);
+    return interpolateClipShape(closedShape, openShape, t);
+  } else if (scrollProgress >= closeStart && scrollProgress <= closeEnd) {
+    const t = (scrollProgress - closeStart) / (closeEnd - closeStart);
+    return interpolateClipShape(openShape, closedShape, t);
+  } else if (scrollProgress < openStart || scrollProgress > closeEnd) {
+    return closedShape;
+  } else {
+    return openShape;
+  }
+}
 
 function Blender2JSScene({
   onLoadComplete,
@@ -744,7 +756,7 @@ function Blender2JSScene({
     const carScene = carGLTF.scene;
     const dashcamScene = dashcamGLTF.scene;
     setCarSceneRef(carScene);
-    
+
     carScene.traverse((node) => {
       if (node instanceof THREE.Mesh) {
         node.castShadow = true;
@@ -753,10 +765,7 @@ function Blender2JSScene({
           node.material.side = THREE.DoubleSide;
         }
       }
-      if (
-        node instanceof THREE.Mesh &&
-        node.name.toLowerCase().includes("windshield")
-      ) {
+      if (node instanceof THREE.Mesh && node.name.toLowerCase().includes("windshield")) {
         windshieldObjects.current.push(node);
       }
     });
@@ -884,17 +893,17 @@ function Blender2JSScene({
     const interpolated = getInterpolatedClip(scrollProgress);
     return clipPathToShape(interpolated, 10, 10);
   }, [scrollProgress]);
-  
+
   // useFrame(() => {
   //   const highlightStart = 0.3546;
   //   const highlightEnd = 0.5221;
-  
+
   //   const blend = THREE.MathUtils.clamp(
   //     (scrollProgress - highlightStart) / (highlightEnd - highlightStart),
   //     0,
   //     1
   //   );
-  
+
   //   windshieldObjects.current.forEach((mesh) => {
   //     const mat = mesh.material as THREE.MeshStandardMaterial;
   //     mat.transparent = true;
@@ -906,13 +915,9 @@ function Blender2JSScene({
   useFrame(() => {
     const highlightStart = 0.3546;
     const highlightEnd = 0.5221;
-  
-    const blend = THREE.MathUtils.clamp(
-      (scrollProgress - highlightStart) / (highlightEnd - highlightStart),
-      0,
-      1
-    );
-  
+
+    const blend = THREE.MathUtils.clamp((scrollProgress - highlightStart) / (highlightEnd - highlightStart), 0, 1);
+
     windshieldObjects.current.forEach((mesh) => {
       const mat = mesh.material as THREE.MeshStandardMaterial;
       mat.transparent = true;
@@ -920,8 +925,11 @@ function Blender2JSScene({
       mat.needsUpdate = true;
     });
   });
-  
 
+  const backdropGeometry = useMemo(() => {
+    const interpolated = getInterpolatedClip(scrollProgress);
+    return clipPathToShape(interpolated, 10, 10);
+  }, [scrollProgress]);
   useFadeModelOpacity(fadeRef, scrollProgress);
   return (
     <>
@@ -986,11 +994,16 @@ function Blender2JSScene({
       </Html>
       {/* ✅ White platform under car model */}
       {scrollProgress >= 0.703 && scrollProgress <= 0.8423 && (
-        <mesh geometry={geometry} rotation={[-Math.PI / 2, 0, Math.PI / 1]} position={[0, 0.1, 0]}>
-          <meshStandardMaterial color="gray" toneMapped={false} />
+        <mesh
+          geometry={backdropGeometry}
+          rotation={[-Math.PI / 2, 0, Math.PI]} // match orientation
+          position={[0, 0.1, 0]}
+          renderOrder={-1}
+        >
+          <meshStandardMaterial color="white" toneMapped={false} />
         </mesh>
       )}
-
+      <AnimatedBackdrop scrollProgress={scrollProgress} />
       <primitive object={carGLTF.scene} visible={carVisible} />
       <group ref={dashcamGroupRef}>
         <group ref={dashcamOffsetGroupRef}>
@@ -1160,6 +1173,26 @@ function Timeline({ scrollProgress }: { scrollProgress: number }) {
     </div>
   );
 }
+function AnimatedBackdrop({ scrollProgress }) {
+  const geometry = useMemo(() => {
+    const interpolated = getInterpolatedClip(scrollProgress);
+    return clipPathToShape(interpolated, 10, 10);
+  }, [scrollProgress]);
+
+  // Optional fade opacity
+
+  return (
+    <mesh
+      geometry={geometry}
+      position={[310, -2, 15]} // Behind the dashcam
+      rotation={[0, -1.8, -1.55]}
+      scale={[11, 29, 11]}
+    >
+<meshBasicMaterial color="#313131" transparent opacity={100} toneMapped={false} />
+
+    </mesh>
+  );
+}
 
 export default function Blender2JSPage() {
   const [modelIsReady, setModelIsReady] = useState(false);
@@ -1205,7 +1238,7 @@ export default function Blender2JSPage() {
   }, []);
 
   return (
-    <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "4000vh", scrollBehavior: "smooth" }}>
+    <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
       <Timeline scrollProgress={scrollProgress} />
 
@@ -1218,7 +1251,7 @@ export default function Blender2JSPage() {
           outputColorSpace: THREE.SRGBColorSpace, // ✅ Default in r155+
         }}
         onCreated={({ gl, scene }) => {
-          scene.background = new THREE.Color("#1a1a1a");
+          scene.background = new THREE.Color("#0D0D0D");
           gl.setClearColor("#1a1a1a");
           // No need to set colorSpace again here
         }}

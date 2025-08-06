@@ -55,48 +55,45 @@ const Page = () => {
       <Compare
         tabs={[
           {
-            tabtitle: "Need something compact?",
-
-            heading: "Designed to Keep Things Simple ",
-            subheading:
-              "The VREC-H120SC is built for simplicity with a clean design, Full HD clarity and essential features that fit into any drive, without getting in the way.",
-            compareHeading: "A Compact Fit for Every Drive",
+            heading: "See What Most Cameras Miss",
+            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
+            compareHeading: "Designed for the Details",
             compareSubheading:
-              "This model fits neatly into your windshield space without blocking your view. A clean look with no distractions, just smart recording.",
+              "Most dashcams blur the truth at night. The Z820DC, equipped with night vision AI and a STARVIS sensor, captures license plates, movements and moments even in low light.",
+            tabtitle: "Drive Late?",
             image1: "/images/GLOW_BEFORE.webp",
             image2: "/images/GLOW_AFTER.webp",
           },
           {
-            tabtitle: "First dashcam?",
-
-            heading: "Designed to Keep Things Simple ",
-            subheading:
-              "The VREC-H120SC is built for simplicity with a clean design, Full HD clarity and essential features that fit into any drive, without getting in the way.",
-            compareHeading: "Built for Beginners",
+            heading: "See What Most Cameras Miss",
+            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
+            compareHeading: "Clarity That Keeps Up With Your Commute ",
             compareSubheading:
-              "The VREC-H120SC keeps things simple with clear recording and no complicated setup, making it ideal if you're new to dashcams.",
+              "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
+            tabtitle: "On The Road Daily?",
             image1: "/images/NOISE_BEFORE.webp",
             image2: "/images/NOISE_AFTER.webp",
           },
           {
-            tabtitle: "Want a simple setup? ",
-            heading: "Designed to Keep Things Simple ",
-            subheading:
-              "The VREC-H120SC is built for simplicity with a clean design, Full HD clarity and essential features that fit into any drive, without getting in the way.",
-            compareHeading: "Clarity in a minimal design ",
+            heading: "See What Most Cameras Miss",
+            subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
+            compareHeading: "Clarity That Keeps Up With Your Commute",
             compareSubheading:
-              "The VREC-H120SC records in 1296p with a 2MP sensor, giving you sharper footage that makes it easier to read plates, spot signs and review details when it matters.",
-            image2: "/images/CarBroken.png",
+              "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
+            tabtitle: "Prefer Dual 4K Coverage?",
+            image2: "/comparisionImages/car-was-broken-car-accident 1.png",
             image1: "/images/page1Images/frontCamera2.webp",
           },
         ]}
       />
       <ZenVue />
-      <ProductFeatureTable products={defaultProducts} priorityProductIndex={3} />
-      <EverythingNeedToKnow faqData={faqData.set3} />
+      <section className="bg-black">
+        <ProductFeatureTable products={defaultProducts} priorityProductIndex={0} />
+      </section>
+      <EverythingNeedToKnow faqData={faqData.set1} />
       <DriveSmarter
-        subText="Drive with confidence, capture every moment, & stay protected. Explore what the H120SC brings to every drive."
-        image="/modelImages/VREC-H120SC/image1.webp"
+        subText="Drive with confidence, capture every moment, & stay protected. Explore what the Z820DC brings to every drive."
+        image="/modelImages/VREC-Z820DC/00571.webp"
       />
       <Footer />
     </section>

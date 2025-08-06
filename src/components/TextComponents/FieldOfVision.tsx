@@ -17,7 +17,7 @@ export default function FieldOfVision({
       <div className="absolute top-0 left-0 w-full h-full  z-0" />
 
       {/* Centered Content */}
-      <div className="relative z-20  w-full h-full flex items-center justify-between px-6 lg:px-12">
+      <div className="relative z-20  w-full h-full flex items-center justify-between px-6 lg:px-32">
         {/* Left Side */}
         <div className="max-w-sm space-y-2">
           {highlightedText && (

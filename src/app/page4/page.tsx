@@ -10,7 +10,7 @@ useGLTF.preload("/models/car.glb");
 const animationData = [
   {
     time: 0.0,
-    position: [0.0014, 1.2215, 0.5],
+    position: [0.0012, 1.2215, 0.4],
     quaternion: [0.0, 0.0, 0.0, 1.0],
     fov: 1,
   },
@@ -511,37 +511,31 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
       }
     });
   }, []);
-
   useEffect(() => {
     if (!imagePlaneRef.current || !materialRef.current) return;
-
+  
     const { gsap } = require("gsap");
-    const start = 0;
-    const end = 0.113;
+    const end = 0.1467;
     const progress = THREE.MathUtils.clamp(scrollProgress / end, 0, 1);
-
-    // Scale: from 5 to 1
-    const scale = THREE.MathUtils.lerp(0.5, 0.1, progress);
+  
+    const scale = THREE.MathUtils.lerp(0.5, 0.4, progress);
     imagePlaneRef.current.scale.set(scale, scale, 1);
-
-    // Rotation: 0 to 2π
+  
     const rotation = THREE.MathUtils.lerp(0, Math.PI * 1, progress);
     imagePlaneRef.current.rotation.z = rotation;
-    const targetOpacity = THREE.MathUtils.lerp(1, 0, progress);
-
+  
+    // Let GSAP handle the fading
     gsap.to(materialRef.current, {
-      opacity: targetOpacity,
-      duration: 1,
+      opacity: THREE.MathUtils.lerp(1, 0, progress),
+      duration: 0.5,
       ease: "power1.out",
     });
-    // Opacity: 1 to 0
-    const opacity = THREE.MathUtils.lerp(1, 0, progress);
-    materialRef.current.opacity = opacity;
+  
     materialRef.current.transparent = true;
-
-    // Visibility
-    imagePlaneRef.current.visible = scrollProgress <= 0.0999999999999;
+  
+    imagePlaneRef.current.visible = scrollProgress <= 0.25;
   }, [scrollProgress]);
+  
   depthWrite: false;
   return (
     <mesh ref={imagePlaneRef} renderOrder={10} position={[-0.002, 1.22, -4]} visible={true}>
@@ -559,73 +553,6 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
       />
     </mesh>
   );
-}
-function LensAnimation({ isAnimating, dashcamGroupRef }: { isAnimating: boolean; dashcamGroupRef: React.RefObject<THREE.Group> }) {
-  const timelineRef = useRef<any>(null);
-  const explodedRef = useRef(false); // tracks exploded state
-
-  useEffect(() => {
-    if (!dashcamGroupRef.current) return;
-
-    const runAnimation = async () => {
-      const { gsap } = await import("gsap");
-
-      const lensElements: THREE.Object3D[] = [];
-      dashcamGroupRef.current.traverse((child) => {
-        if (child.name.toLowerCase().includes("lens") || child.name.match(/^\d+$/)) {
-          lensElements.push(child);
-        }
-      });
-
-      // if (lensElements.length === 0) return;
-      // lensElements.reverse();
-
-      // const explodeLens = () => {
-      //   if (timelineRef.current) timelineRef.current.kill();
-      //   timelineRef.current = gsap.timeline();
-      //   lensElements.forEach((part, i) => {
-      //     timelineRef.current.to(
-      //       part.position,
-      //       {
-      //         z: [0.07, 0.065, 0.04, 0.055, 0.02, 0.01][i] || 0.05,
-      //         duration: 1.2,
-      //         ease: "power2.out",
-      //       },
-      //       0
-      //     );
-      //   });
-      //   explodedRef.current = true;
-      // };
-
-      // const collapseLens = () => {
-      //   if (timelineRef.current) timelineRef.current.kill();
-      //   timelineRef.current = gsap.timeline();
-      //   lensElements.forEach((part) => {
-      //     timelineRef.current.to(
-      //       part.position,
-      //       {
-      //         z: 0,
-      //         duration: 0.4,
-      //         ease: "power2.inOut",
-      //       },
-      //       0
-      //     );
-      //   });
-      //   explodedRef.current = false;
-      // };
-
-      // // Trigger based on isAnimating
-      // if (isAnimating && !explodedRef.current) {
-      //   explodeLens();
-      // } else if (!isAnimating && explodedRef.current) {
-      //   collapseLens();
-      // }
-    };
-
-    runAnimation();
-  }, [isAnimating, dashcamGroupRef]);
-
-  return null;
 }
 
 function CameraMover() {
@@ -1226,11 +1153,11 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
       }}
     >
       <Typography variant="hero-section-heading" className="text-xl !md:text-[62px] font-bold text-white text-center px-4 ">
-      Compact Design That Stays Out of the Way
+      Designed to Fit In. Built to Stand Out.
       </Typography>
-      <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl">VREC‑H120SC is a compact dash cam that captures clear 1.5K footage while staying out of the way.</p>
+      <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl"> Compact, discreet, and always ready to capture your drive in stunning 1.5K.</p>
       <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
-        Explore the features
+        Scroll to explore
         <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
       </button>
     </div>
@@ -1283,7 +1210,7 @@ export default function Blender2JSPage() {
   return (
     <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
-      {/* <Timeline scrollProgress={scrollProgress} /> */}
+      <Timeline scrollProgress={scrollProgress} />
       <HeroTextFade scrollProgress={scrollProgress} />
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}

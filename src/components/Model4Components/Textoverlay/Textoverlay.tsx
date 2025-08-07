@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Define stage type for TypeScript
 type Stage = "s1" | "s2" | "s3" | "s4" | "s5" | "s6" | "s7" | "s8" | "s9" | "s10" | null;
 
-export default function Model1TextOverlay() {
+export default function Model4TextOverlay() {
   // State to track the current stage
   const [stage, setStage] = useState<Stage>(null);
   // Reference to the overlay element

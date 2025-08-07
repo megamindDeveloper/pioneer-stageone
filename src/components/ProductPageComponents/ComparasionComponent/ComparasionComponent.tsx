@@ -4,33 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SparklesCore } from "./Sparkles";
 import { IconDotsVertical } from "@tabler/icons-react";
-
-// const tabs = [
-//   {
-//     title: "Drive late?",
-//     image1: "/images/GLOW_BEFORE.webp",
-//     image2: "/images/GLOW_AFTER.webp",
-//     headline: "Clarity That Keeps Up With Your Commute",
-//     subtext:
-//       "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time—handling glare, contrast, and light shifts with ease for clear, consistent footage in every driving condition.",
-//   },
-//   {
-//     title: "On the road daily?",
-//     image1: "/images/NOISE_BEFORE.webp",
-//     image2: "/images/NOISE_AFTER.webp",
-//     headline: "See What Others Miss on the Road",
-//     subtext:
-//       "With advanced night vision and noise reduction, STARVIS ensures daily drivers capture crucial details in every lighting situation.",
-//   },
-//   {
-//     title: "Car left unattended?",
-//     image1: "/images/CarBroken.png",
-//     image2: "/images/CarBroken.png",
-//     headline: "Protection Even When You're Away",
-//     subtext:
-//       "Capture reliable footage even when parked, ensuring your vehicle is monitored day and night with unparalleled clarity.",
-//   },
-// ]
+import Image from "next/image";
 
 type tabDataProps = {
   heading: string;
@@ -40,18 +14,16 @@ type tabDataProps = {
   tabtitle: string;
   image1: string;
   image2: string;
+  product?: string;
+  compare?: true;
+  beforeImageText?: string;
+  afterImageText?: string;
 };
 
 export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
   const [sliderXPercent, setSliderXPercent] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
-  //  console.log("tabs:", tabs);
-  // console.log("activeTab:", activeTab);
-  // console.log(
-  //   "tabs[activeTab]:",
-  //   Array.isArray(tabs) && tabs.length > activeTab ? tabs[activeTab] : "invalid"
-  // );
   console.log(activeTab);
 
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -76,17 +48,19 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
   };
 
   return (
-    <section className="w-full bg- text-white  flex flex-col items-center py-16 px-4">
+    <section className="w-full h-[100vh] text-white flex flex-col items-center py-16 px-4">
       {/* Heading */}
-      <div className="text-center max-w-xl xl:max-w-[90%] mb-1">
-        <h2 className="text-3xl sm:whitespace-nowrap md:text-4xl font-semibold mb-4">{tabs[activeTab].heading}</h2>
+      <div className="text-center max-w-[90%] mb-1">
+        <h2 className="text-3xl sm:whitespace-nowrap md:text-4xl font-semibold mb-4 font-['Helvetica_Neue','Helvetica','Arial','sans-serif']">
+          {tabs[activeTab].heading}
+        </h2>
         <p className="text-[#ABABAB] cursor-pointer text-[13px] w-full md:text-base">{tabs[activeTab].subheading}</p>
       </div>
 
       {/* Comparison / Image Section */}
       <div className="w-full max-w-5xl xl:max-w-[80%] h-[500px] sm:h-[600px] md:h-[80vh] rounded-xl overflow-hidden relative mt-10">
         {/* Image Comparison Mode */}
-        {activeTab !== 2 ? (
+        {tabs[activeTab].compare === true ? (
           <div
             ref={sliderRef}
             className="relative w-full h-full"
@@ -122,36 +96,65 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
               </div>
             </motion.div>
 
-            {/* Before */}
+            {/* Before Image */}
             <motion.div
               className="absolute inset-0 z-20 w-full h-full overflow-hidden"
               style={{ clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)` }}
               transition={{ duration: 0 }}
             >
-              <img src={currentTab.image1} alt="Before" className="object-cover w-full h-full select-none" draggable={false} />
+              <Image
+                fill
+                src={currentTab.image1}
+                alt="Before"
+                className="object-cover w-full h-full select-none"
+                draggable={false}
+              />
+              {/* Before Image Text */}
+              {currentTab.beforeImageText && (
+                <div
+                  className="absolute top-4 left-4 z-30 text-white text-sm md:text-base font-semibold bg-black/50 px-2 py-1 rounded"
+                >
+                  {currentTab.beforeImageText}
+                </div>
+              )}
             </motion.div>
 
-            {/* After */}
-            <img
+            {/* After Image */}
+            <Image
+              fill
               src={currentTab.image2}
               alt="After"
               className="absolute top-0 left-0 z-[19] object-cover w-full h-full select-none"
               draggable={false}
             />
-            {/* Gradient Overlay */}
+            {/* After Image Text */}
+            {currentTab.afterImageText && (
+              <div
+                className="absolute top-4 right-4 z-30 text-white text-sm md:text-base  font-normal bg-black/50 px-2 py-1 rounded"
+            
+              >
+                {currentTab.afterImageText}
+              </div>
+            )}
+
             {/* Gradient Overlay */}
             <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
 
             {/* Headline/Subtext over image for desktop only */}
-            <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[90%]">
+            <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[60%]">
               <h3 className="text-white text-2xl font-semibold">{currentTab.compareHeading}</h3>
               <p className="text-[#ABABAB] text-base mt-2">{currentTab.compareSubheading}</p>
             </div>
           </div>
         ) : (
           <div className="relative w-full h-full">
-            <img src={currentTab.image2} alt="Full" className="absolute top-0 left-0 w-full h-full object-cover z-10" draggable={false} />
-            {/* Gradient Overlay */}
+            <Image
+              fill
+              src={currentTab.image2}
+              alt="Full"
+              className="absolute top-0 left-0 w-full h-full object-cover z-10"
+              draggable={false}
+            />
             {/* Gradient Overlay */}
             <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
 
@@ -162,24 +165,8 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
           </div>
         )}
       </div>
+
       {/* Tabs */}
-      {/* <div className="flex justify-center flex-wrap gap-8 mt-4">
-    {tabs.map((tab, index) => (
-      <button
-        type="button"
-        key={index}
-        onClick={() => setActiveTab(index)}
-        className={cn(
-          "relative font-semibold text-sm transition-all duration-300 text-center",
-          activeTab === index
-            ? "text-white after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-8px] after:w-[120px] md:after:w-[180px] after:h-[2px] after:bg-white after:rounded-full"
-            : "text-gray-400 hover:text-gray-600/40"
-        )}
-      >
-        <h4 className="text-sm sm:text-base md:text-lg whitespace-nowrap">{tab.title}</h4>
-      </button>
-      
-    ))} */}
       <div className="w-full flex justify-center mt-12">
         <div className="flex justify-center gap-8 sm:gap-6 md:gap-27 flex-wrap sm:flex-nowrap max-w-full">
           {tabs.map((tab, index) => (
@@ -199,6 +186,7 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
           ))}
         </div>
       </div>
+
       {/* Mobile-only subtext below tabs */}
       <div className="block md:hidden text-center mt-6 px-4 max-w-sm">
         <h3 className="text-white text-base font-semibold">{currentTab.compareHeading}</h3>

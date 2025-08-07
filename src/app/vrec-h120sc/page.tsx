@@ -9,15 +9,16 @@ import { faqData } from '../utils/FaqData/FaqData';
 import DriveSmarter from '@/components/ProductPageComponents/DriveSmarter/DriveSmarter';
 import Footer from '@/components/CommonComponents/Footer';
 
-
-
-import Model3textOverlay from '@/components/Mode3Components/Model4textOverlay/Model3textOverlay';
 import Blender2JSPage from '../page4/page';
+import Model4TextOverlay from '@/components/Model4Components/Textoverlay/Textoverlay';
+import Model1TextOverlay from '@/components/Model1Components/Textoverlay/Textoverlay';
+
+
 const page = () => {
   return (
     <div>
       <Blender2JSPage/>
-      {/* <Model3textOverlay /> */}
+      <Model1TextOverlay />
       <Compare
         tabs={[
           {

@@ -555,7 +555,7 @@ function LensAnimation({ isAnimating, dashcamGroupRef }: { isAnimating: boolean;
           timelineRef.current.to(
             part.position,
             {
-              z: [0.05, 0.015, 0.04, 0.035, 0.02, 0.01][i] || 0.05,
+              z: [0.001, 0.01, 0.02, 0.035, 0.02, 0.01][i] || 0.0,
               duration: 1.2,
               ease: "power2.out",
             },

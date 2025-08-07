@@ -23,8 +23,11 @@ const page = () => {
             compareSubheading:
               "Most dashcams blur the truth at night. The Z820DC, equipped with night vision AI and a STARVIS sensor, captures license plates, movements and moments even in low light.",
             tabtitle: "Drive Late?",
-            image1: "/images/GLOW_BEFORE.webp",
-            image2: "/images/GLOW_AFTER.webp",
+            image1: "/modelImages/VREC-Z820DC/ComparasionImages/GLOW_BEFORE.webp",
+            image2: "/modelImages/VREC-Z820DC/ComparasionImages/GLOW_AFTER.webp",
+            beforeImageText:"Normal Dashcams",
+            afterImageText:"With Night Vision AI & STARVIS image sensor",
+            compare:true
           },
           {
             heading: "See What Most Cameras Miss",
@@ -33,8 +36,11 @@ const page = () => {
             compareSubheading:
               "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
             tabtitle: "On The Road Daily?",
-            image1: "/images/NOISE_BEFORE.webp",
-            image2: "/images/NOISE_AFTER.webp",
+            image1: "/modelImages/VREC-Z820DC/ComparasionImages/NOISE_BEFORE.webp",
+            image2: "/modelImages/VREC-Z820DC/ComparasionImages/NOISE_AFTER.webp",
+                 beforeImageText:"Normal Dashcams",
+            afterImageText:"With STARVIS image sensor",
+            compare:true
           },
           {
             heading: "See What Most Cameras Miss",
@@ -42,9 +48,9 @@ const page = () => {
             compareHeading: "Clarity That Keeps Up With Your Commute",
             compareSubheading:
               "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
-            tabtitle: "Prefer Dual 4K Coverage?",
-            image2: "/comparisionImages/car-was-broken-car-accident 1.png",
-            image1: "/images/page1Images/frontCamera2.webp",
+            tabtitle: "Prefer Dual  Coverage?",
+            image2: "/modelImages/VREC-Z820DC/ComparasionImages/VREC-Z820DC - 3RD.webp",
+            image1: "/modelImages/VREC-Z820DC/frontCamera2.webp",
           },
         ]}
       />

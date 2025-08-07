@@ -9,7 +9,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useInView } from "framer-motion";
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
-import model1Image1 from "../../../../public/modelImages/VREC-Z820DC/00571.webp";
+import model1Image1 from "../../../../public/modelImages/VREC-Z820DC/0057 1.webp";
 import model1Image2 from "../../../../public/modelImages/VREC-H520DC/image1.webp";
 import model1Image3 from "../../../../public/modelImages/VREC-H320SC/image1.webp";
 import model1Image4 from "../../../../public/modelImages/VREC-H120SC/image1.webp";

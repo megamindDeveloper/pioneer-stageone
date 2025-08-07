@@ -11,18 +11,12 @@ const animationData = [
   { time: 0.0, position: [-0.001, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2 },
   { time: 0.0, position: [-0.001, 1.222, 0.4968],   quaternion: [0.0, 0.0, 0.0, 1.0], fov: 3 },
   { time: 0.0417, position: [-0.1, 1.213, 0.48], quaternion: [0.03902204, -0.4, -0.0781377, 0.9276399], fov: 20 },
-
   { time: 0.122, position: [-0.08, 1.22, 0.275], quaternion: [0, -0.90010577, 0.00000004, 0.43567151], fov: 20 },
-
   { time: 0.1667, position: [-0.0, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
-
   { time: 0.1667, position: [-0.0, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 35 },
-
   { time: 0.2083, position: [-0.0094, 1.2136, 0.0113], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 26.9915 },
-
   { time: 0.25, position: [-0.0093, 1.1809, -2.2], quaternion: [0.00000002, 0.99999607, 0.00280268, 0.00000016], fov: 40 },
   { time: 0.2917, position: [-0.0093, 3.9288, -3.2975], quaternion: [0.00000007, 0.9208445, 0.38993004, 0.00000008], fov: 26.9915 },
-
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
@@ -1188,7 +1182,7 @@ export default function Blender2JSPage() {
   return (
     <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "4000vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
-      {/* <Timeline scrollProgress={scrollProgress} /> */}
+      <Timeline scrollProgress={scrollProgress} />
       <HeroTextFade scrollProgress={scrollProgress} />
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}

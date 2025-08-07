@@ -12,7 +12,7 @@ export default function FieldOfVision({
   subheading,
 }: FieldOfVisionProps) {
   return (
-    <main className="relative  h-[100%] mt-[400] w-full overflow-hidden text-white px-4 sm:block hidden ">
+    <main className="relative  h-[100%] w-[100%]  overflow-hidden text-white px-4 sm:block hidden ">
       {/* Background Layer */}
       <div className="absolute top-0 left-0 w-full h-full  z-0" />
 

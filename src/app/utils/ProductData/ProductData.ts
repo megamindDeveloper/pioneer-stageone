@@ -1,13 +1,13 @@
 export const defaultProducts = [
     {
       name: "VREC - Z820DC",
-      image: "/modelImages/VREC-z820DC/thumb.png", // Replace with actual image path
+      image: "/modelImages/VREC-Z820DC/thumb.png", // Replace with actual image path
       link: "/vrec-z820dc",
       features: ["4K", "Yes", "Front\n+\nRear", "104mm x 39mm\n x  43.3mm", "Yes", "Yes", "Ideal For Power\n  Users"],
     },
     {
       name: "VREC - H520DC",
-      image: "/modelImages/VREC-H520dC/thumb.png",
+      image: "/modelImages/VREC-H520DC/thumb.png",
       link: "/vrec-h520dc",
       features: ["2K", "-", "Front\n+\nRear", "88mm x 29.3mm\n  x  55.6mm", "Yes", "Yes", "Ideal For Experienced\n  Users"],
     },

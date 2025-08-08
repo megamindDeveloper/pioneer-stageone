@@ -29,7 +29,7 @@ export default function ZenVue() {
         <div className="block lg:hidden flex justify-center mt-[-5rem]">
           <div className="w-screen sm:w-[300px] md:w-[500px] h-auto">
             <Image
-              src="/images/zenVueIMg.png"
+              src="/Images/zenVueIMg.png"
               alt="Mobile Device"
               width={1200}
               height={1200}
@@ -44,14 +44,14 @@ export default function ZenVue() {
           <p className="text-[13px] text-white/70 mb-2 ">Available on</p>
           <div className="flex justify-center gap-6">
             <Image
-              src="/images/googlePlay.png"
+              src="/Images/googlePlay.png"
               alt="Google Play"
               width={130}
               height={40}
               className="object-contain"
             />
             <Image
-              src="/images/appStore.png"
+              src="/Images/appStore.png"
               alt="App Store"
               width={130}
               height={40}
@@ -74,7 +74,7 @@ export default function ZenVue() {
         {/* Center Image for Desktop */}
         <div className="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-[54%] -translate-y-[52%] z-20 w-auto h-[700px] items-center justify-center">
           <Image
-            src="/images/zenVueIMg.png"
+            src="/Images/zenVueIMg.png"
             alt="Mobile Device"
             width={1000}
             height={1000}
@@ -88,14 +88,14 @@ export default function ZenVue() {
           <p className="text-sm text-white/70 mr-6">Available on</p>
           <div className="flex gap-3 space-x-2 mt-0 mr-6">
             <Image
-              src="/images/googlePlay.png"
+              src="/Images/googlePlay.png"
               alt="Google Play"
               width={140}
               height={45}
               className="object-contain"
             />
             <Image
-              src="/images/appStore.png"
+              src="/Images/appStore.png"
               alt="App Store"
               width={120}
               height={45}

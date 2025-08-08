@@ -174,7 +174,7 @@ export default function DashcamShowcase() {
             hoveredPosition={[0.9, 0.9, 0]}
             defaultRotation={[-0.2, 0, 0]}
             hoveredRotation={[-0.2, -0.95, 0]}
-            featureIcons={["/icons/4kicon.svg", "/icons/fullHd.svg", "/icons/aivision.svg", "/icons/wdrhdr.svg", "/icons/adasAlert.svg"]}
+            featureIcons={["/homePageImages/dashboardShowcaseIcons/4kicon.svg", "/homePageImages/dashboardShowcaseIcons/fullHd.svg", "/homePageImages/dashboardShowcaseIcons/aivision.svg", "/homePageImages/dashboardShowcaseIcons/wdrhdr.svg", "/homePageImages/dashboardShowcaseIcons/adasAlert.svg"]}
           />
           <DashcamCard
             directionalLights={[
@@ -206,7 +206,7 @@ export default function DashcamShowcase() {
             hoveredPosition={hoveredPositionH520DC}
             defaultRotation={[-0.2, 0, 0]}
             hoveredRotation={[-0.2, -0.75, 0]}
-            featureIcons={["/icons/2kicon.svg", "/icons/fullHd.svg", "/icons/enhanced.svg", "/icons/hdr.svg", "/icons/adasAlert.svg"]}
+            featureIcons={["/homePageImages/dashboardShowcaseIcons/2kicon.svg", "/homePageImages/dashboardShowcaseIcons/fullHd.svg", "/homePageImages/dashboardShowcaseIcons/enhanced.svg", "/homePageImages/dashboardShowcaseIcons/hdr.svg", "/homePageImages/dashboardShowcaseIcons/adasAlert.svg"]}
           />
           <DashcamCard
             directionalLights={[
@@ -239,7 +239,7 @@ export default function DashcamShowcase() {
             hoveredPosition={hoveredPositionH320SC}
             defaultRotation={[-0.2, 0, 0]}
             hoveredRotation={[-0.2, -0.75, 0]}
-            featureIcons={["/icons/2kicon.svg", "/icons/wdr.svg", "/icons/inBuildGps.svg", "/icons/adasAlert.svg"]}
+            featureIcons={["/homePageImages/dashboardShowcaseIcons/2kicon.svg", "/homePageImages/dashboardShowcaseIcons/wdr.svg", "/homePageImages/dashboardShowcaseIcons/inBuildGps.svg", "/homePageImages/dashboardShowcaseIcons/adasAlert.svg"]}
           />
           <DashcamCard
           directionalLights={[
@@ -270,7 +270,7 @@ export default function DashcamShowcase() {
             hoveredPosition={hoveredPositionH120SC}
             defaultRotation={[-0.2, 0, 0]}
             hoveredRotation={[-0.2, -0.75, 0]}
-            featureIcons={["/icons/1.5k.svg", "/icons/compact.svg", "/icons/emergency.svg", "/icons/wideView.svg", "/icons/inbuidSensor.svg"]}
+            featureIcons={["/homePageImages/dashboardShowcaseIcons/1.5k.svg", "/homePageImages/dashboardShowcaseIcons/compact.svg", "/homePageImages/dashboardShowcaseIcons/emergency.svg", "/homePageImages/dashboardShowcaseIcons/wideView.svg", "/homePageImages/dashboardShowcaseIcons/inbuidSensor.svg"]}
           />
         </div>
       </div>

@@ -48,7 +48,7 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
   };
 
   return (
-    <section className="w-full h-[100vh] text-white flex flex-col items-center py-16 px-4">
+    <section className="w-full xl:h-[100vh] text-white flex flex-col items-center py-16 px-4">
       {/* Heading */}
       <div className="text-center max-w-[90%] mb-1">
         <h2 className="text-3xl sm:whitespace-nowrap md:text-4xl font-semibold mb-4 font-['Helvetica_Neue','Helvetica','Arial','sans-serif']">

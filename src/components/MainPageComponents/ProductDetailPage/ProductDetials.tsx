@@ -13,6 +13,7 @@ import model1Image1 from "../../../../public/modelImages/VREC-Z820DC/0057 1.webp
 import model1Image2 from "../../../../public/modelImages/VREC-H520DC/image1.webp";
 import model1Image3 from "../../../../public/modelImages/VREC-H320SC/image1.webp";
 import model1Image4 from "../../../../public/modelImages/VREC-H120SC/image1.webp";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 type Tab = {
   id: string;
@@ -34,7 +35,7 @@ const contentMap = {
       description: `Ever missed something on a dark road or under harsh headlights?\nThe AI night vision picks up details clearly, even in low light or \nrainy evening drives.`,
       imageSrc: model1Image1,
       buttonLabel: "Learn More",
-      buttonLink: "/products/night-vision-dashcam",
+      buttonLink: "/vrec-z820dc",
       imageWidth: 700,
       imagePositionClass: "bottom-0 left-[45%]",
       imageClassName: "w-[60%] md:w-[100%] xl:w-[87%]",
@@ -56,7 +57,7 @@ const contentMap = {
       description: `Records in crisp 2K with HDR and ideal for\n capturing fine details like plates and street signs.`,
       imageSrc: model1Image2,
       buttonLabel: "Explore",
-      buttonLink: "/products/wide-display",
+      buttonLink: "/vrec-h520dc",
       imagePositionClass: "bottom-0 left-[42%]",
       imageClassName: "md:w-[100%] xl:w-[87%]",
     },
@@ -77,7 +78,7 @@ const contentMap = {
       description: `ADAS alerts help you stay on track and aware of\n surroundings in city traffic or highways.`,
       imageSrc: model1Image3,
       buttonLabel: "See How",
-      buttonLink: "/products/gps-dashcam",
+      buttonLink: "/vrec-h320sc",
       imagePositionClass: "bottom-0 left-[42%]",
       imageClassName: "md:w-[100%] xl:w-[87%]",
     },
@@ -98,7 +99,7 @@ const contentMap = {
       description: `A sleek, minimal design that doesn’t take up\n space, perfect for discreet installs.`,
       imageSrc: model1Image4,
       buttonLabel: "Check It Out",
-      buttonLink: "/products/compact-dashcam",
+      buttonLink: "/vrec-h120sc",
       imagePositionClass: "bottom-0 left-[40%]",
       imageClassName: "md:w-[90%] xl:w-[77%]",
     },
@@ -231,10 +232,13 @@ export default function ProductDetails() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed bottom-8 left-1/2 md:w-auto w-[100%] px-auto flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-[24px] pr-4 py-[15px] rounded-full shadow-xl hover:bg-gray-200 transition-all text-[18px] md:text-base lg:text-[14px] xl:text-[17px]"
-            href={currentContent.banner.buttonLink}
+            className="fixed bottom-8 left-1/2 md:w-auto w-[100%] px-auto flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-[24px] pr-4 py-[15px] rounded-full shadow-xl  transition-all text-[18px] md:text-base lg:text-[14px] xl:text-[17px]"
+           
           >
+            <Link  href={currentContent.banner.buttonLink}>
+            
             Explore the {tabs.find((t) => t.id === activeTab)?.model} Now{" "}
+            </Link>
             <svg width="30" height="30" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.1875" y="0.317383" width="42.6269" height="42.4082" rx="21.2041" fill="#4F4C4C" />
               <path d="M19.1875 26.7256L23.8145 21.5215L19.1875 16.3174" stroke="white" strokeWidth="4" strokeLinecap="round" />

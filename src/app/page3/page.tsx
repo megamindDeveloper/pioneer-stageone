@@ -1186,7 +1186,7 @@ export default function Blender2JSPage() {
       <HeroTextFade scrollProgress={scrollProgress} />
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}
-        style={{ background: "#1a1a1a", width: "100vw", height: "100vh", position: "sticky", top: 0 }}
+        style={{ background: "#0D0D0D", width: "100vw", height: "100vh", position: "sticky", top: 0 }}
         shadows
         gl={{
           toneMapping: THREE.NoToneMapping,

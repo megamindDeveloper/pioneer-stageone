@@ -173,7 +173,7 @@ const DashcamCard = ({
             >
               {description}
             </motion.p>
-            <div className="w-full h-px bg-[#3B3B3B] mt-4" />
+            <div className="w-full h-px bg-[#3B3B3B] mt-4 md:hidden block" />
 
             <br />
           </div>
@@ -186,7 +186,7 @@ const DashcamCard = ({
         animate={{ opacity: hovered ? 0 : 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="absolute md:bottom-14 bottom-36  flex flex-col items-center justify-center w-full "
+        className="absolute md:bottom-10 bottom-36  flex flex-col items-center justify-center w-full "
       >
         <Typography variant="grid-view-heading" className="text-white !font-medium text-base xl: text-center ">
           {title}
@@ -202,8 +202,8 @@ const DashcamCard = ({
   <div className="w-[90%] h-px bg-[#3B3B3B] mt-4 flex items-center justify-center mx-auto" />
 )}
 
-
-      <div
+ {cardIndex !== 2 ? (
+ <div
         className={`absolute bottom-10 md:bottom-6 left-1/2 -translate-x-1/2 w-full text-center md:gap-4 gap-0 text-[#ABABAB] md:px-12 grid px-2 ${
           features.length === 1 ? "grid-cols-1 place-items-center" : "md:grid-cols-5 grid-cols-4"
         }`}
@@ -252,6 +252,58 @@ const DashcamCard = ({
           // </div>
         )} */}
       </div>
+):(
+<div
+        className={`absolute bottom-10 md:bottom-6 left-1/2 -translate-x-1/2 w-full text-center md:gap-4 gap-0 text-[#ABABAB] md:px-12 grid px-2 ${
+          features.length === 1 ? "grid-cols-1 place-items-center" : "md:grid-cols-4 grid-cols-4"
+        }`}
+      >
+        {(isMobile ? features.slice(0, 4) : features).map((feature, index) => (
+          <div key={index} className="flex flex-col justify-center items-center gap-2  transition-opacity duration-300">
+            {/* 👇 Only show icon when hovered */}
+            <motion.img
+              src={featureIcons?.[index]}
+              alt={`${feature} icon`}
+              className="xl:w-7 xl:h-7 lg:w-5 lg:h-5 w-5 h-5"
+              initial={{ opacity: 0, y: 5 }}
+              animate={hovered || isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+            />
+            {/* 👇 Always visible text */}
+
+            <motion.p
+              className="text-[12px] lg:text-[14px]  lg2:leading-auto xl:text-[12px] xl:leading-auto 2xl:text-[15.2px] 2xl:leading-auto text-[#ABABAB]/60 text-center whitespace-pre-line font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+              initial={{ opacity: 0, y: 10 }}
+              animate={hovered || isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
+            >
+              {feature}f
+            </motion.p>
+          </div>
+        ))}
+        {/* {!hovered && (
+          // <div className="w-full col-span-full mb-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: hovered ? 0 : 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className=" w-full col-span-full"
+          >
+            <motion.p
+              className="xl:text-[17.8px] lg:text-[14px] mb-6 text-[#ABABAB]/60  text-center font-['Helvetica_Neue','Helvetica','Arial','sans-serif']"
+              initial={{ opacity: 0, y: 10 }}
+              animate={hovered ? { opacity: 0, y: 0 } : { opacity: 1, y: 10 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
+            >
+              {description}
+            </motion.p>
+          </motion.div>
+          // </div>
+        )} */}
+      </div>
+)}
+      
     </div>
   );
 };

@@ -2,31 +2,32 @@
 
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const products = [
   {
     name: "VREC - Z820DC",
     image: "/modelImages/VREC-Z820DC/thumb.png", // Replace with actual image path
-    link: "/products/night-vision-dashcam",
+    link: "/vrec-z820dc",
     features: ["4K", "Yes", "Front\n+\nRear", "104mm x 26.7mm\n x  43mm", "Yes", "Yes", "Up to 512GB"],
   },
   {
     name: "VREC - H520DC",
     image: "/modelImages/VREC-H520DC/thumb.png",
-    link: "/products/wide-display",
+    link: "/vrec-h520dc",
     features: ["2K", "-", "Front\n+\nRear", "90mm x 34.8mm \n x 54.25mm", "Yes", "Yes", "Up to 512GB"],
   },
   {
     name: "VREC - H320SC",
     image: "/modelImages/VREC-H320SC/thumb.png",
-    link: "/products/gps-dashcam",
+    link: "/vrec-h320sc",
     features: ["Full HD", "-", "Front \n+\n Rear (Optional)", "90mm x 34.8mm\n  x 54.25mm", "Yes", "Yes", "Up to 512GB"],
   },
   {
     name: "VREC - H120SC",
     image: "/modelImages/VREC-H120SC/thumb.png",
-    link: "/products/compact-dashcam",
+    link: "/vrec-h120dc",
     features: ["1.5K", "-", "Front", "31.12mm x 28.8mm\n  x 37.33mm", "-", "Yes", "Up to 128GB"],
   },
 ];
@@ -67,8 +68,11 @@ export default function ProductComparisonTable() {
 
               <Typography variant="comparison-grid-side-heading" className="font-bold">{product.name}</Typography>
               <div className="flex flex-col items-center">
-              <Typography variant="comparison-grid-body"href={product.link} className="text-[#AD2239]   mb-1 font-extrabold">
+              <Typography variant="comparison-grid-body" className="text-[#AD2239] cursor-pointer  mb-1 font-extrabold">
+                <Link href={product.link}>
+                
                   Learn More &gt;
+                </Link>
                 </Typography>
                 <div className="my-6 w-[70%] h-[1px] bg-[#4B4B4B]/80" />
               </div>

@@ -28,8 +28,8 @@ const page = () => {
             compareSubheading:
               "Most dashcams blur the truth at night. The Z820DC, equipped with night vision AI and a STARVIS sensor, captures license plates, movements and moments even in low light.",
             tabtitle: "Drive Late?",
-            image1: "/images/GLOW_BEFORE.webp",
-            image2: "/images/GLOW_AFTER.webp",
+            image1: "/PioneerComparisionImages/120-Compact -1CARD.webp",
+            image2: "/PioneerComparisionImages/120-Compact -1CARD.webp",
           },
           {
             heading: "See What Most Cameras Miss",
@@ -38,8 +38,8 @@ const page = () => {
             compareSubheading:
               "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
             tabtitle: "On The Road Daily?",
-            image1: "/images/NOISE_BEFORE.webp",
-            image2: "/images/NOISE_AFTER.webp",
+            image1: "/PioneerComparisionImages/120-Drive -2CARD.webp",
+            image2: "/PioneerComparisionImages/120-Drive -2CARD.webp",
           },
           {
             heading: "See What Most Cameras Miss",
@@ -48,16 +48,16 @@ const page = () => {
             compareSubheading:
               "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
             tabtitle: "Prefer Dual 4K Coverage?",
-            image2: "/comparisionImages/car-was-broken-car-accident 1.png",
-            image1: "/images/page1Images/frontCamera2.webp",
+            image2: "/PioneerComparisionImages/120 BEFORE.webp",
+            image1: "/PioneerComparisionImages/120 AFTER.webp",
           },
         ]}
       />
       <ZenVue />
       <section className="bg-black">
-        <ProductFeatureTable products={defaultProducts} priorityProductIndex={0} />
+        <ProductFeatureTable products={defaultProducts} priorityProductIndex={3} />
       </section>
-      <EverythingNeedToKnow faqData={faqData.set1} />
+      <EverythingNeedToKnow faqData={faqData.set3} />
       <DriveSmarter
         subText="Drive with confidence, capture every moment, & stay protected. Explore what the Z820DC brings to every drive."
         image="/modelImages/VREC-Z820DC/00571.webp"

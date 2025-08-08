@@ -153,14 +153,14 @@ export default function DashcamShowcase() {
                 position: [-0.24, 3.295, 10.316],
                 hoveredPosition: [-22.58, 8.959, 15.017],
                 intensity: 1,
-                hoveredIntensity: 2,
+                hoveredIntensity: 5,
                 color: "#ffffff",
               },
               {
                 position: [2.07, 8.164, 16.117],
                 hoveredPosition: [-1.916, 5.069, 20.8],
                 intensity: 1.5,
-                hoveredIntensity: 2,
+                hoveredIntensity: 5,
                 color: "#ffffff",
               },
             ]}
@@ -181,15 +181,15 @@ export default function DashcamShowcase() {
               {
                 position: [-5.477, 20.381, 18.049],
                 hoveredPosition: [-23.118, 10.792, 4.712],
-                intensity: 0.5,
-                hoveredIntensity: 2,
+                intensity:1.5,
+                hoveredIntensity: 4,
                 color: "#ffffff",
               },
               {
                 position: [-2.758, 12.887, 34.355],
                 hoveredPosition: [-16.192, 10.811, 33.857],
-                intensity: 0.5,
-                hoveredIntensity: 2,
+                intensity: 1.5,
+                hoveredIntensity: 4,
                 color: "#ffffff",
               },
             ]}
@@ -213,8 +213,8 @@ export default function DashcamShowcase() {
               {
                 position: [5.477, 20.372, 18.051],
                 hoveredPosition: [-4.537, 9.827, 17.011],
-                intensity: 3,
-                hoveredIntensity: 2,
+                intensity: 4,
+                hoveredIntensity: 4,
                 color: "#ffffff",
               },
               {
@@ -222,7 +222,7 @@ export default function DashcamShowcase() {
                 position: [-8.356, 18.164, 33.030],
                 hoveredPosition:[-12.588, 6.504, 5.122],
                 intensity: 10.5,
-                hoveredIntensity: 2,
+                hoveredIntensity: 5,
                 color: "#ffffff",
               },
             ]}
@@ -232,29 +232,29 @@ export default function DashcamShowcase() {
             cameraPosition={[0, 1, 5]}
             description={`Full HD Dash Cam
               `}
-            features={["2 MP 1080P\nFront Camera", "WDR\nRecording", "In-built\nGPS Logger", "Wide Dynamic\nRange", "ADAS\nAlerts"]}
+            features={["2 MP 1080P\nFront Camera", "WDR\nRecording", "In-built\nGPS Logger", "ADAS\nAlerts"]}
             defaultScale={scaleH320SC}
             hoveredScale={scaleH320SC}
             defaultPosition={positionH320SC}
             hoveredPosition={hoveredPositionH320SC}
             defaultRotation={[-0.2, 0, 0]}
             hoveredRotation={[-0.2, -0.75, 0]}
-            featureIcons={["/icons/2kicon.svg", "/icons/wdr.svg", "/icons/inBuildGps.svg", "/icons/wideDynamic.svg", "/icons/adasAlert.svg"]}
+            featureIcons={["/icons/2kicon.svg", "/icons/wdr.svg", "/icons/inBuildGps.svg", "/icons/adasAlert.svg"]}
           />
           <DashcamCard
           directionalLights={[
             {
               position: [-1.241, 8.582, 17.441],
               hoveredPosition: [-1.673, 5.556, 25.090],
-              intensity: 3,
-              hoveredIntensity: 2,
+              intensity: 4,
+              hoveredIntensity: 8,
               color: "#ffffff",
             },
             {
               position: [5.477, 20.372, 18.051],
               hoveredPosition: [-1.840, 17.216, 1.162],
               intensity: 10.5,
-              hoveredIntensity: 2,
+              hoveredIntensity: 6,
               color: "#ffffff",
             },
           ]}

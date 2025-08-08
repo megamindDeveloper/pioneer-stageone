@@ -9,10 +9,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useInView } from "framer-motion";
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
-import model1Image1 from "../../../../public/modelImages/VREC-Z820DC/0057 1.webp";
-import model1Image2 from "../../../../public/modelImages/VREC-H520DC/image1.webp";
-import model1Image3 from "../../../../public/modelImages/VREC-H320SC/image1.webp";
-import model1Image4 from "../../../../public/modelImages/VREC-H120SC/image1.webp";
+import model1Image1 from "../../../../public/homePageImages/productDetailsImage/z820dcImages/image4.webp";
+import model1Image2 from "../../../../public/homePageImages/productDetailsImage/h520dcImages/image1.webp";
+import model1Image3 from "../../../../public/homePageImages/productDetailsImage/h320scImages/image1.webp";
+import model1Image4 from "../../../../public/homePageImages/productDetailsImage/h120scImages/image1.webp";
 import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 type Tab = {
@@ -41,12 +41,12 @@ const contentMap = {
       imageClassName: "w-[60%] md:w-[100%] xl:w-[87%]",
     },
     overlay: {
-      image: "/modelImages/VREC-Z820DC/image2.png",
+      image: "/homePageImages/productDetailsImage/z820dcImages/image2.png",
       title: `Blurry when \nspeeding?`,
       description: `Frustrated with blurry footage\nwhen it matters most?\nThis one records in true 4K, so\nnumber plates and road signs\nstay sharp, even when you're\ndriving fast.`,
     },
     sideCard: {
-      image: "/modelImages/VREC-Z820DC/image3.png",
+      image: "/homePageImages/productDetailsImage/z820dcImages/image3.png",
       title: `Glare ruining\nyour footage?`,
       description: `City lights, tunnels and glare can mess with\n footage. The STARVIS sensor handles all\n that smoothly, so your video always comes\n out clear.`,
     },
@@ -62,12 +62,12 @@ const contentMap = {
       imageClassName: "md:w-[100%] xl:w-[87%]",
     },
     overlay: {
-      image: "/modelImages/VREC-H520DC/image2.png",
+      image: "/homePageImages/productDetailsImage/h520dcImages/image2.png",
       title: `Feel like you're not\n seeing enough?`,
       description: `A wider field of vision paired with a \nlarge screen makes it easy to see\n  more of everydrive.`,
     },
     sideCard: {
-      image: "/modelImages/VREC-H520DC/image3.png",
+      image: "/homePageImages/productDetailsImage/h520dcImages/image3.png",
       title: `Can’t trust\n your cam after\n sunset?`,
       description: `Enhanced night vision with\n STARVIS 2 delivers clear\n footage even in low-light \nconditions.`,
     },
@@ -83,12 +83,12 @@ const contentMap = {
       imageClassName: "md:w-[100%] xl:w-[87%]",
     },
     overlay: {
-      image: "/modelImages/VREC-H320SC/image2.png",
+      image: "/homePageImages/productDetailsImage/h320scImages/image2.png",
       title: `Dealing with\n sudden light\n changes while\n driving?`,
       description: `WDR automatically adjusts\n exposure in tunnels, shadows\n and bright sunlight.`,
     },
     sideCard: {
-      image: "/modelImages/VREC-H320SC/image3.png",
+      image: "/homePageImages/productDetailsImage/h320scImages/image3.png",
       title: "Find tiny \n screens\n frustrating?",
       description: `The large display makes it easier to view\n footage and tweak settings without the\n squint.`,
     },
@@ -104,13 +104,13 @@ const contentMap = {
       imageClassName: "md:w-[90%] xl:w-[77%]",
     },
     overlay: {
-      image: "/modelImages/VREC-H120SC/image2.png",
+      image: "/homePageImages/productDetailsImage/h120scImages/image3.png",
       title: `Not a tech \nperson?`,
       description: `Quick setup and app-based \ncontrol make it beginner-friendly \nfrom day one.`,
       imageClassName: "w-[100%]  h-[100%] mt-2",
     },
     sideCard: {
-      image: "/modelImages/VREC-H120SC/image3.png",
+      image: "/homePageImages/productDetailsImage/h120scImages/image3.png",
       title: "Ever wish your \n footage looked\n sharper?",
       description: `1.5K recording gives you \nsharper footage without the bulk\n of bigger cams.`,
       imageClassName: "w-[90%]  h-[80%]",
@@ -166,7 +166,7 @@ export default function ProductDetails() {
                       className="text-sm text-[#ABABAB]/80 xl:mt-1 mt-2 hidden md:block"
                     >
                       {tab.model}
-                    </motion.div>
+                    </motion.div> 
                   )}
                 </AnimatePresence>
               </div>

@@ -26,7 +26,7 @@ export default function Home() {
         <DashcamShowcase />
         <ProductDetials />
         <ProductComparisonTable />
-        <FeatureAccordion />
+        <FeatureAccordion  />
         <Footer />
         {/* <CameraScenetest/> */}
       </div>

@@ -30,7 +30,7 @@ export default function DriveAlert({
       {/* Top Icon */}
       <div className="pt-52 sm:pt-37 pl- animate-fastpulse">
         <Image
-          src="/Images/svgs/dangerIcon.svg"
+          src="/productPageImages/driveAlertIcons/dangerIcon.svg"
           alt="Warning Icon"
           width={80} // smaller on mobile
           height={80}

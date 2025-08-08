@@ -72,9 +72,9 @@ export default function ZenVue() {
         </div>
 
         {/* Center Image for Desktop */}
-        <div className="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-[54%] -translate-y-[52%] z-20 w-auto h-[700px] items-center justify-center">
+        <div className="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[52%] z-20 w-auto h-[700px] items-center justify-center">
           <Image
-            src="/Images/zenVueIMg.png"
+            src="/homePageImages/featureAccordionImages/feature2.png"
             alt="Mobile Device"
             width={1000}
             height={1000}
@@ -88,14 +88,14 @@ export default function ZenVue() {
           <p className="text-sm text-white/70 mr-6">Available on</p>
           <div className="flex gap-3 space-x-2 mt-0 mr-6">
             <Image
-              src="/Images/googlePlay.png"
+              src="/productPageImages/zenVueImages/googlePlay.png"
               alt="Google Play"
               width={140}
               height={45}
               className="object-contain"
             />
             <Image
-              src="/Images/appStore.png"
+              src="/productPageImages/zenVueImages/appStore.png"
               alt="App Store"
               width={120}
               height={45}

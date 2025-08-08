@@ -26,8 +26,8 @@ const page = () => {
             subheading: "The VREC-H320SC adds smart driving support, automatic event recording and clear video built for real road conditions.",
             compareHeading: "Helps You Focus on the Drive",
             compareSubheading: "Built-in alerts respond to sudden shifts and lane drifts, giving you a second set of eyes when the road gets busy.",
-            image1: "/PioneerComparisionImages/320-ADAS  -1CARD.webp",
-            image2: "/PioneerComparisionImages/320-ADAS  -1CARD.webp",
+            image1: "/productPageImages/comparisionImages/h320sc/320-WD.webp",
+            image2: "/productPageImages/comparisionImages/h320sc/320-WD.webp",
           },
           {
             tabtitle: "Prefer Auto Recording?",
@@ -37,8 +37,8 @@ const page = () => {
             compareHeading: "Always Ready to Record",
             compareSubheading:
               "When motion or impact is detected, the VREC-320SC begins recording automatically. With parking mode enabled, it helps to capture unexpected incidents even while your car is parked.",
-            image1: "/PioneerComparisionImages/320-Motion -2CARD.webp",
-            image2: "/PioneerComparisionImages/320-Motion -2CARD.webp",
+            image1: "/productPageImages/comparisionImages/h320sc/320-PAR.webp",
+            image2: "/productPageImages/comparisionImages/h320sc/320-PAR.webp",
           },
           {
             tabtitle: "Need Clear Footage?  ",
@@ -46,8 +46,8 @@ const page = () => {
             subheading: "The VREC-H320SC adds smart driving support, automatic event recording and clear video built for real road conditions.",
             compareHeading: "Built for Shifting Light Conditions",
             compareSubheading: "From harsh sunlight to shaded corners, WDR and Full HD work together to keep your video balanced and clear.",
-            image2: "/PioneerComparisionImages/320 before.webp",
-            image1: "/PioneerComparisionImages/320 AFTER.webp",
+            image2: "/productPageImages/comparisionImages/h320sc/320_before.webp",
+            image1: "/productPageImages/comparisionImages/h320sc/320_AFTER.webp",
             compare:true,
           },
         ]}
@@ -57,7 +57,7 @@ const page = () => {
       <EverythingNeedToKnow faqData={faqData.set3} />
       <DriveSmarter
         subText="Drive with confidence, capture every moment, & stay protected. Explore what the H320SC brings to every drive."
-               image="/modelImages/VREC-H320SC/image1.webp"
+               image="/productPageImages/driveSmarterImages/h320sc.webp"
       />
       <Footer />
 

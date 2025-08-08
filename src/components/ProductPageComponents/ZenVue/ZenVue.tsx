@@ -36,6 +36,7 @@ export default function ZenVue() {
               className="w-full h-auto object-contain drop-shadow-7xl"
             />
           </div>
+          
         </div>
 
         {/* Mobile "Available on" + Logos */}

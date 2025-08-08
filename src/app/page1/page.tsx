@@ -62,7 +62,7 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
       </Typography>
       <p className="text-[32px] text-[#ABABAB] mt-2">VREC-Z820DC Keeps the Road on Record</p>
       <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
-        Explore the features
+        Scroll to explore
         <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
       </button>
     </div>

@@ -14,7 +14,7 @@ import Blender2JSPage from '../page3/page';
 import Model3textOverlay from '@/components/Mode3Components/Model4textOverlay/Model3textOverlay';
 const page = () => {
   return (
-    <div>
+    <div className='bg-black'>
       <Blender2JSPage/>
       <Model3textOverlay />
       <Compare
@@ -26,8 +26,8 @@ const page = () => {
             subheading: "The VREC-H320SC adds smart driving support, automatic event recording and clear video built for real road conditions.",
             compareHeading: "Helps You Focus on the Drive",
             compareSubheading: "Built-in alerts respond to sudden shifts and lane drifts, giving you a second set of eyes when the road gets busy.",
-            image1: "/images/GLOW_BEFORE.webp",
-            image2: "/images/GLOW_AFTER.webp",
+            image1: "/PioneerComparisionImages/320-ADAS  -1CARD.webp",
+            image2: "/PioneerComparisionImages/320-ADAS  -1CARD.webp",
           },
           {
             tabtitle: "Prefer Auto Recording?",
@@ -37,8 +37,8 @@ const page = () => {
             compareHeading: "Always Ready to Record",
             compareSubheading:
               "When motion or impact is detected, the VREC-320SC begins recording automatically. With parking mode enabled, it helps to capture unexpected incidents even while your car is parked.",
-            image1: "/images/NOISE_BEFORE.webp",
-            image2: "/images/NOISE_AFTER.webp",
+            image1: "/PioneerComparisionImages/320-Motion -2CARD.webp",
+            image2: "/PioneerComparisionImages/320-Motion -2CARD.webp",
           },
           {
             tabtitle: "Need Clear Footage?  ",
@@ -46,33 +46,21 @@ const page = () => {
             subheading: "The VREC-H320SC adds smart driving support, automatic event recording and clear video built for real road conditions.",
             compareHeading: "Built for Shifting Light Conditions",
             compareSubheading: "From harsh sunlight to shaded corners, WDR and Full HD work together to keep your video balanced and clear.",
-            image2: "/images/CarBroken.png",
-            image1: "/images/page1Images/frontCamera2.webp",
+            image2: "/PioneerComparisionImages/320 before.webp",
+            image1: "/PioneerComparisionImages/320 AFTER.webp",
+            compare:true,
           },
         ]}
       />
       <ZenVue />
-      <ProductFeatureTable products={defaultProducts} priorityProductIndex={3} />
+      <ProductFeatureTable products={defaultProducts} priorityProductIndex={2} />
       <EverythingNeedToKnow faqData={faqData.set3} />
       <DriveSmarter
         subText="Drive with confidence, capture every moment, & stay protected. Explore what the H320SC brings to every drive."
                image="/modelImages/VREC-H320SC/image1.webp"
       />
       <Footer />
-      {/* <div
-        id="model2-scroll-container"
-        style={{ height: "1000vh", position: "relative" }}
-      >
-        <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
-          <CarCameraScene />
-        </div>
-      </div> */}
-      {/* <Compare />
-      <ZenVue />
-      <ProductFeatureTable />
-      <EverythingNeedToKnow />
-      <DriveSmarter /> */}
-      <Footer />
+
     </div>
   )
 }

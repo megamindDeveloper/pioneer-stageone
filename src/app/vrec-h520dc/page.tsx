@@ -12,7 +12,7 @@ import Blender2JSPage from '../page2/page';
 import Model2textOverlay from '@/components/Model2Components/Textoverlay/Textoverlay';
 const page = () => {
   return (
-    <div>
+    <div className='bg-black'>
       <Blender2JSPage/>
       <Model2textOverlay />
       <Compare
@@ -26,8 +26,9 @@ const page = () => {
             compareHeading: "Clear Footage in Motion and Light",
             compareSubheading:
               "With 2K HDR recording, the H520DC keeps your video sharp across bright sun, moving traffic, and fast-changing streets.",
-            image1: "/images/GLOW_BEFORE.webp",
-            image2: "/images/GLOW_AFTER.webp",
+            image1: "/PioneerComparisionImages/520_1_BEFORE.webp",
+            image2: "/PioneerComparisionImages/520_1_AFTER.webp",
+            compare:true
           },
           {
             tabtitle: "Need Wider Visibility?",
@@ -38,8 +39,11 @@ const page = () => {
             compareHeading: "Built for a Broader View ",
             compareSubheading:
               "The VREC-H520DC captures a wider view with its 140-degree lens, letting you see more of the road, side lanes, and unexpected moments others often miss.",
-            image1: "/images/NOISE_BEFORE.webp",
-            image2: "/images/NOISE_AFTER.webp",
+               image1: "/PioneerComparisionImages/520_2_BEFORE.webp",
+            image2: "/PioneerComparisionImages/520_2_AFTER.webp",
+            compare: true,
+            beforeImageText:"",
+            afterImageText:""
           },
           {
             tabtitle: "Prefer Dual Coverage?",
@@ -49,8 +53,8 @@ const page = () => {
             compareHeading: "Coverage That Looks Both Ways",
             compareSubheading:
               "The dual-channel Dash Cam records front and rear in high resolution, with sharp 2K footage ahead and Full HD behind for clear synchronized coverage.",
-            image2: "/images/CarBroken.png",
-            image1: "/images/page1Images/frontCamera2.webp",
+                image1: "/PioneerComparisionImages/520_1_BEFORE.webp",
+            image2: "/PioneerComparisionImages/520 - 3RD Card Image.webp",
           },
         ]}
       />

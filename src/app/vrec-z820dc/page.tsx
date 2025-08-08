@@ -11,7 +11,7 @@ import DriveSmarter from '@/components/ProductPageComponents/DriveSmarter/DriveS
 import Footer from '@/components/CommonComponents/Footer';
 const page = () => {
   return (
-    <div>
+    <div className='bg-black'>
       <Blender2JSPage/>
       <Model1textOverlay />
       <Compare
@@ -48,7 +48,7 @@ const page = () => {
             compareHeading: "Clarity That Keeps Up With Your Commute",
             compareSubheading:
               "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
-            tabtitle: "Prefer Dual  Coverage?",
+            tabtitle: "Prefer 4k Coverage?",
             image2: "/modelImages/VREC-Z820DC/ComparasionImages/VREC-Z820DC - 3RD.webp",
             image1: "/modelImages/VREC-Z820DC/frontCamera2.webp",
           },
@@ -61,7 +61,7 @@ const page = () => {
       <EverythingNeedToKnow faqData={faqData.set1} />
       <DriveSmarter
         subText="Drive with confidence, capture every moment, & stay protected. Explore what the Z820DC brings to every drive."
-        image="/modelImages/VREC-Z820DC/00571.webp"
+        image="/modelImages/VREC-Z820DC/0057 1.webp"
       />
       <Footer />
     </div>

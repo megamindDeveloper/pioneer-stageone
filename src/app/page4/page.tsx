@@ -646,303 +646,93 @@ function getInterpolatedClip(scrollProgress) {
   }
 }
 
-function Blender2JSScene({
-  onLoadComplete,
-  scrollProgress,
-  setCarSceneRef,
-  dashcamGroupRef,
-  dashcamOffsetGroupRef,
-}: {
-  onLoadComplete: () => void;
-  scrollProgress: number;
-  setCarSceneRef: (ref: THREE.Group) => void;
-  dashcamGroupRef: React.RefObject<THREE.Group>;
-  dashcamOffsetGroupRef: React.RefObject<THREE.Group>;
-}) {
-  const carGLTF = useGLTF("/models/car.glb");
-  const dashcamGLTF = useGLTF("/models/VREC_H120SC.glb");
-  const { scene: cameraModelScene, nodes: cameraNodes } = useGLTF("/models/VREC_H120SC.glb");
-  const [carVisible, setCarVisible] = useState(false);
-  const displayMountRef = useRef<THREE.Object3D | null>(null);
-  const imagePlaneRef = useRef<THREE.Mesh | null>(null);
-  const imageTextureRef = useRef<THREE.Texture | null>(null);
-  const windshieldObjects = useRef<THREE.Mesh[]>([]);
+export default function Blender2JSPage() {
+  const [modelIsReady, setModelIsReady] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [carScene, setCarScene] = useState<THREE.Group | null>(null);
+  const [lensAnimation, setLensAnimation] = useState(false);
+  const dashcamGroupRef = useRef<THREE.Group>(null);
+  const containerRef = useRef(null);
+  const dashcamOffsetGroupRef = useRef<THREE.Group>(null);
+
   useEffect(() => {
-    if (scrollProgress >= 1) {
-      console.log("🎬 Triggering animation at scrollProgress 1");
+    if (typeof window === "undefined") return;
+    let cleanup: (() => void) | undefined;
+    let targetProgress = 0;
+    const initGSAP = async () => {
+      try {
+        gsap.registerPlugin(ScrollTrigger);
 
-      // Example: start GSAP animation
-      (async () => {
-        const { gsap } = await import("gsap");
-
-        gsap.to(dashcamGroupRef.current?.rotation || {}, {
-          y: "+=Math.PI * 2",
-          duration: 2,
-          ease: "power2.inOut",
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: "#blender2js-scroll-container-model1",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0,
+            onUpdate: (self) => {
+              targetProgress = self.progress;
+            },
+          },
         });
-      })();
-    }
-  }, [scrollProgress]);
+        gsap.ticker.add(() => {
+          setScrollProgress((prev) => THREE.MathUtils.lerp(prev, targetProgress, 0.03));
+        });
 
-  useEffect(() => {
-    const carScene = carGLTF.scene;
-    const dashcamScene = dashcamGLTF.scene;
-    setCarSceneRef(carScene);
-
-    carScene.traverse((node) => {
-      if (node instanceof THREE.Mesh) {
-        node.castShadow = true;
-        node.receiveShadow = true;
-        if (node.material) {
-          node.material.side = THREE.DoubleSide;
-        }
+        cleanup = () => {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        };
+      } catch (err) {
+        console.error("Failed to load GSAP:", err);
       }
-      if (node instanceof THREE.Mesh && node.name.toLowerCase().includes("windshield")) {
-        windshieldObjects.current.push(node);
-      }
-    });
+    };
 
-    dashcamScene.traverse((node) => {
-      if (node instanceof THREE.Mesh) {
-        node.castShadow = true;
-        node.receiveShadow = true;
-        if (node.material) {
-          node.material.transparent = true;
-          node.material.depthWrite = true;
-        }
-      }
-    });
-    if (scrollProgress > 0.352) {
-      setCarVisible(false);
-    } else {
-      setCarVisible(false);
-    }
+    initGSAP();
+    return () => cleanup?.();
+  }, []);
 
-    onLoadComplete();
-  }, [carGLTF, dashcamGLTF, onLoadComplete, setCarSceneRef]);
-  useEffect(() => {
-    console.log("🎯 Searching for DISPLAY object in camera model...");
-    const displayMount = cameraModelScene.getObjectByName("DISPLAY");
-    if (displayMount) {
-      console.log("🎯 Found DISPLAY as object:", displayMount);
-      console.log("🎯 DISPLAY position:", displayMount.position);
-      console.log("🎯 DISPLAY world position:", displayMount.getWorldPosition(new THREE.Vector3()));
-      displayMountRef.current = displayMount;
-    } else {
-      console.log("🎯 DISPLAY not found - searching all objects...");
-      cameraModelScene.traverse((node) => {
-        console.log("🎯 Node name:", node.name);
-        if (node.name.toLowerCase().includes("display")) {
-          console.log("🎯 Found similar object:", node.name);
-        }
-      });
-    }
-    // Load image texture
-    const loader = new THREE.TextureLoader();
-    loader.load("/Images/820Screen.webp", (texture) => {
-      console.log("🎯 Image texture loaded successfully");
-      texture.encoding = 3001;
-      texture.flipY = false;
-      // Create image plane
-      const plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(6, 2), // Adjust width and height here
-        new THREE.MeshBasicMaterial({
-          map: texture,
-          transparent: false,
-          side: THREE.DoubleSide,
-          toneMapped: false,
-        })
-      );
-      plane.visible = false;
-      imagePlaneRef.current = plane;
-      plane.userData.imageMap = texture;
-
-      console.log("🎯 Display mount found:", displayMountRef.current);
-      if (displayMountRef.current) {
-        displayMountRef.current.add(plane);
-        plane.position.set(0, 0, 0); // Much further in front to be outside the model
-        plane.visible = false; // Start hidden, controlled by scroll logic
-        console.log("🎯 Plane added to display mount");
-        console.log("🎯 Plane position:", plane.position);
-        console.log("🎯 Plane world position:", plane.getWorldPosition(new THREE.Vector3()));
-      } else {
-        console.log("🎯 Display mount not found");
-      }
-
-      // Load video texture
-      const video = document.createElement("video");
-      video.src = "/video/video.mp4";
-      video.crossOrigin = "anonymous";
-      video.loop = true;
-      video.muted = true;
-      video.playsInline = true;
-      video.preload = "auto";
-      video.load();
-
-      const videoTexture = new THREE.VideoTexture(video);
-      videoTexture.minFilter = THREE.LinearFilter;
-      videoTexture.magFilter = THREE.LinearFilter;
-      videoTexture.format = THREE.RGBAFormat;
-
-      plane.userData.videoMap = videoTexture;
-      plane.userData.videoEl = video;
-
-      console.log("🎯 Video texture created");
-    });
-  }, [cameraNodes]);
-  if (imagePlaneRef.current) {
-    if (scrollProgress >= 0.417) {
-      const { videoMap, videoEl } = imagePlaneRef.current.userData;
-      if (videoMap) {
-        const material = imagePlaneRef.current.material as THREE.MeshBasicMaterial;
-        if (material.map !== videoMap) {
-          material.map = videoMap;
-          material.needsUpdate = true;
-        }
-        if (videoEl && videoEl.paused) videoEl.play();
-        imagePlaneRef.current.visible = true;
-      } else {
-        // fallback: hide until video is ready
-        imagePlaneRef.current.visible = false;
-      }
-    } else if (scrollProgress >= 0.1096 && scrollProgress <= 0.1864) {
-      const { imageMap, videoEl } = imagePlaneRef.current.userData;
-      const material = imagePlaneRef.current.material as THREE.MeshBasicMaterial;
-      if (imageMap && material.map !== imageMap) {
-        material.map = imageMap;
-        material.needsUpdate = true;
-      }
-      if (videoEl && !videoEl.paused) videoEl.pause();
-      imagePlaneRef.current.visible = true;
-    } else {
-      const { videoEl } = imagePlaneRef.current.userData;
-      imagePlaneRef.current.visible = false;
-      if (videoEl && !videoEl.paused) videoEl.pause();
-    }
-  }
-  const fadeRef = useRef<THREE.Group>(null);
-  const geometry = useMemo(() => {
-    const interpolated = getInterpolatedClip(scrollProgress);
-    return clipPathToShape(interpolated, 10, 10);
-  }, [scrollProgress]);
-
-  // useFrame(() => {
-  //   const highlightStart = 0.3546;
-  //   const highlightEnd = 0.5221;
-
-  //   const blend = THREE.MathUtils.clamp(
-  //     (scrollProgress - highlightStart) / (highlightEnd - highlightStart),
-  //     0,
-  //     1
-  //   );
-
-  //   windshieldObjects.current.forEach((mesh) => {
-  //     const mat = mesh.material as THREE.MeshStandardMaterial;
-  //     mat.transparent = true;
-  //     mat.opacity = THREE.MathUtils.lerp(0, 1.0, blend);
-  //     mat.color.lerp(new THREE.Color(0x00ffff), blend * 0.5);
-  //     mat.needsUpdate = true;
-  //   });
-  // });
-  useFrame(() => {
-    const highlightStart = 0.3546;
-    const highlightEnd = 0.5221;
-
-    const blend = THREE.MathUtils.clamp((scrollProgress - highlightStart) / (highlightEnd - highlightStart), 0, 1);
-
-    windshieldObjects.current.forEach((mesh) => {
-      const mat = mesh.material as THREE.MeshStandardMaterial;
-      mat.transparent = true;
-      mat.opacity = THREE.MathUtils.lerp(0, 0.5, blend);
-      mat.needsUpdate = true;
-    });
-  });
-
-  const backdropGeometry = useMemo(() => {
-    const interpolated = getInterpolatedClip(scrollProgress);
-    return clipPathToShape(interpolated, 10, 10);
-  }, [scrollProgress]);
-  useFadeModelOpacity(fadeRef, scrollProgress);
   return (
-    <>
-      {/* DEBUG: Always visible test plane */}
-      {imageTextureRef.current && (
-        <mesh position={[0, 2, 5]} visible={true}>
-          <planeGeometry args={[2, 2]} />
-          <meshBasicMaterial map={imageTextureRef.current} toneMapped={false} />
-        </mesh>
-      )}
-
-      {/* DEBUG: Independent plane at DISPLAY world position */}
-      {displayMountRef.current && imageTextureRef.current && (
-        <mesh position={displayMountRef.current.getWorldPosition(new THREE.Vector3())} visible={true}>
-          <planeGeometry args={[2, 2]} />
-          <meshBasicMaterial map={imageTextureRef.current} toneMapped={false} color="red" />
-        </mesh>
-      )}
-
-      {/* DEBUG: HTML overlay showing positions */}
-      <Html position={[0, 3, 0]}>
-        <div
-          style={{
-            background: "rgba(0,0,0,0.8)",
-            color: "white",
-            padding: "10px",
-            borderRadius: "5px",
-            fontSize: "12px",
-            whiteSpace: "pre-wrap",
-          }}
-        >
-          {`Camera: ${scrollProgress.toFixed(3)}
- DISPLAY World: ${
-   displayMountRef.current
-     ? displayMountRef.current
-         .getWorldPosition(new THREE.Vector3())
-         .toArray()
-         .map((v) => v.toFixed(3))
-         .join(", ")
-     : "N/A"
- }
- Plane World: ${
-   imagePlaneRef.current
-     ? imagePlaneRef.current
-         .getWorldPosition(new THREE.Vector3())
-         .toArray()
-         .map((v) => v.toFixed(3))
-         .join(", ")
-     : "N/A"
- }
- Dashcam World: ${
-   dashcamGroupRef.current
-     ? dashcamGroupRef.current
-         .getWorldPosition(new THREE.Vector3())
-         .toArray()
-         .map((v) => v.toFixed(3))
-         .join(", ")
-     : "N/A"
- }
-     LookAt Active: ${scrollProgress >= 0.0417 && scrollProgress <= 0.0833 ? "YES" : "NO"}`}
-        </div>
-      </Html>
-      {/* ✅ White platform under car model */}
-      {scrollProgress >= 0.703 && scrollProgress <= 0.8423 && (
-        <mesh
-          geometry={backdropGeometry}
-          rotation={[-Math.PI / 2, 0, Math.PI]} // match orientation
-          position={[0, 0.1, 0]}
-          renderOrder={-1}
-        >
-          <meshStandardMaterial color="white" toneMapped={false} />
-        </mesh>
-      )}
-      <AnimatedBackdrop scrollProgress={scrollProgress} />
-      <primitive object={carGLTF.scene} visible={carVisible} />
-      <group ref={dashcamGroupRef}>
-        <group ref={dashcamOffsetGroupRef}>
-          <primitive object={dashcamGLTF.scene} />
-        </group>
-      </group>
-    </>
+    <div id="blender2js-scroll-container-model1" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
+      <Timeline scrollProgress={scrollProgress} />
+      <HeroTextFade scrollProgress={scrollProgress} />
+      <FullscreenBlackOverlay scrollProgress={scrollProgress} />
+      <Model1TextOverlay scrollProgress={scrollProgress} /> {/* Pass scrollProgress as prop */}
+      <Canvas
+        camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}
+        style={{ background: "#1a1a1a", width: "100vw", height: "100vh", position: "sticky", top: 0 }}
+        shadows
+        gl={{
+          toneMapping: THREE.NoToneMapping,
+          outputColorSpace: SRGBColorSpace,
+        }}
+        dpr={[1, 2]}
+        onCreated={({ gl, scene }) => {
+          scene.background = new THREE.Color("#0D0D0D");
+          gl.setClearColor("#0D0D0D");
+        }}
+      >
+        <Suspense fallback={null}>
+          <IntroImageAnimation scrollProgress={scrollProgress} />
+          {modelIsReady && <Environment files="/hdri/111.hdr" background={false} />}
+          <Blender2JSScene
+            scrollProgress={scrollProgress}
+            onLoadComplete={() => setModelIsReady(true)}
+            setCarSceneRef={(ref) => setCarScene(ref)}
+            dashcamGroupRef={dashcamGroupRef}
+            dashcamOffsetGroupRef={dashcamOffsetGroupRef}
+          />
+          <LensAnimation isAnimating={lensAnimation} dashcamGroupRef={dashcamGroupRef} />
+        </Suspense>
+        {carScene && (
+          <CameraAnimation
+            scrollProgress={scrollProgress}
+            carScene={carScene}
+            dashcamGroupRef={dashcamGroupRef}
+            dashcamOffsetGroupRef={dashcamOffsetGroupRef}
+            setLensAnimation={setLensAnimation}
+          />
+        )}
+      </Canvas>
+    </div>
   );
 }
 
@@ -1153,7 +943,7 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
       }}
     >
       <Typography variant="hero-section-heading" className="text-xl !md:text-[62px] font-bold text-white text-center px-4 ">
-      Designed to Fit In. Built to Stand Out.
+      Built to fit in, made to stand out.
       </Typography>
       <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl"> Compact, discreet, and always ready to capture your drive in stunning 1.5K.</p>
       <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
@@ -1208,7 +998,7 @@ export default function Blender2JSPage() {
   }, []);
 
   return (
-    <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
+    <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "2500vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
       <Timeline scrollProgress={scrollProgress} />
       <HeroTextFade scrollProgress={scrollProgress} />

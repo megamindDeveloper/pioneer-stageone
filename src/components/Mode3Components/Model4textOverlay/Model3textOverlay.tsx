@@ -130,7 +130,7 @@ export default function Model3textOverlay() {
           heading="ADAS Alerts"
           subheading="Get audio cues for lane departure and forward collision so you can stay aware, avoid surprises and respond faster on busy roads."
           alert1Image="/images/svgs/laneIcon.svg"
-          alert2Image="/images/svgs/collisionIcon.svg"
+          alert2Image="/Images/svgs/collisionIcon.svg"
           alert3Image="/images/svgs/stopnGoIcon.svg"
           alert1="Lane Departure Alert"
           alert2="Forward Collision Alert"

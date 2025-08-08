@@ -99,7 +99,7 @@ export default function CarOverlayContentDivs() {
       <section className="min-h-screen bg-none text-white flex flex-col justify-between px-6 py-10 text-center">
         <div className="pt-28">
           <Image
-            src="/images/svgs/dangerIcon.svg"
+            src="/Images/svgs/dangerIcon.svg"
             alt="Warning Icon"
             width={80}
             height={80}
@@ -125,7 +125,7 @@ export default function CarOverlayContentDivs() {
           <div className="flex flex-col md:flex-row justify-center items-center gap-13">
             <div className="flex flex-col items-center space-y-2">
               <Image
-                src="/images/svgs/laneIcon.svg"
+                src="/Images/svgs/laneIcon.svg"
                 alt="Lane Departure"
                 width={60}
                 height={60}
@@ -136,7 +136,7 @@ export default function CarOverlayContentDivs() {
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Image
-                src="/images/svgs/collisionIcon.svg"
+                src="/Images/svgs/collisionIcon.svg"
                 alt="Forward Collision"
                 width={60}
                 height={60}
@@ -147,7 +147,7 @@ export default function CarOverlayContentDivs() {
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Image
-                src="/images/svgs/stopnGoIcon.svg"
+                src="/Images/svgs/stopnGoIcon.svg"
                 alt="Stop and Go"
                 width={60}
                 height={60}

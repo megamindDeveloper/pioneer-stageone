@@ -493,7 +493,7 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
   useEffect(() => {
     // Load image texture
     const loader = new THREE.TextureLoader();
-    loader.load("/Images/ainight.png", (texture) => {
+    loader.load("/modelImages/CommonModelImages/aiNight.png", (texture) => {
       texture.flipY = false;
       texture.colorSpace = THREE.SRGBColorSpace;
       

@@ -2,7 +2,7 @@
 
 import React, { Suspense, useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, useGLTF, OrbitControls, Stats, TransformControls, Html } from "@react-three/drei";
+import { Environment, useGLTF, OrbitControls, TransformControls, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { SRGBColorSpace } from "three";
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
@@ -677,7 +677,7 @@ function getInterpolatedClip(scrollProgress: number) {
   }
 }
 
-export default function Blender2JSPage() {
+function DashcamScrollPage() {
   const [modelIsReady, setModelIsReady] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [carScene, setCarScene] = useState<THREE.Group | null>(null);
@@ -987,101 +987,4 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
   );
 }
 
-// export default function Blender2JSPage() {
-//   const [modelIsReady, setModelIsReady] = useState(false);
-//   const [scrollProgress, setScrollProgress] = useState(0);
-//   const [carScene, setCarScene] = useState<THREE.Group | null>(null);
-//   const [lensAnimation, setLensAnimation] = useState(false);
-//   const dashcamGroupRef = useRef<THREE.Group | null>(null);
-//   const containerRef = useRef<HTMLDivElement | null>(null);
-//   const dashcamOffsetGroupRef = useRef<THREE.Group | null>(null);
-//   useEffect(() => {
-//     if (typeof window === "undefined") return;
-//     let cleanup: (() => void) | undefined;
-//     let targetProgress = 0;
-//     const initGSAP = async () => {
-//       try {
-//         const { gsap } = await import("gsap");
-//         const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-//         gsap.registerPlugin(ScrollTrigger);
-
-//         gsap.timeline({
-//           scrollTrigger: {
-//             trigger: "#blender2js-scroll-container",
-//             start: "top top",
-//             end: "bottom bottom",
-//             scrub: 0,
-//             onUpdate: (self) => {
-//               targetProgress = self.progress;
-//             },
-//           },
-//         });
-//         gsap.ticker.add(() => {
-//           setScrollProgress((prev) => THREE.MathUtils.lerp(prev, targetProgress, 0.1));
-//         });
-
-//         cleanup = () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-//       } catch (err) {
-//         console.error("Failed to load GSAP:", err);
-//       }
-//     };
-
-//     initGSAP();
-//     return () => cleanup?.();
-//   }, []);
-
-//   return (
-//     <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "2500vh", scrollBehavior: "smooth" }}>
-//       {/* Timeline Component - Outside Canvas */}
-//       <Timeline scrollProgress={scrollProgress} />
-//       <HeroTextFade scrollProgress={scrollProgress} />
-//       <Canvas
-//         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}
-//         style={{ background: "#1a1a1a", width: "100vw", height: "100vh", position: "sticky", top: 0 }}
-//         shadows
-//         gl={{
-//           toneMapping: THREE.NoToneMapping,
-//           outputColorSpace: THREE.SRGBColorSpace, // ✅ Default in r155+
-//         }}
-//         onCreated={({ gl, scene }) => {
-//           scene.background = new THREE.Color("#0D0D0D");
-//           gl.setClearColor("#1a1a1a");
-//           // No need to set colorSpace again here
-//         }}
-//       >
-//         <Suspense fallback={null}>
-//           <CameraMover />
-//           <IntroImageAnimation scrollProgress={scrollProgress} />
-//           {modelIsReady && <Environment files="/hdri/111.hdr" background={false} />}
-//           <Blender2JSScene
-//             scrollProgress={scrollProgress}
-//             onLoadComplete={() => setModelIsReady(true)}
-//             setCarSceneRef={(ref: THREE.Group) => setCarScene(ref)}
-//             dashcamGroupRef={dashcamGroupRef}
-//             dashcamOffsetGroupRef={dashcamOffsetGroupRef}
-//           />
-//           {/* <LensAnimation isAnimating={lensAnimation} dashcamGroupRef={dashcamGroupRef} />
-//           <EditableCameraHelper setKeyframe={({ position, quaternion, fov }: any) => {}} />
-//           <Stats />
-//           <DebugAxesHelper size={5} />
-//           <DebugGridHelper size={20} divisions={20} />
-//           <BoundingBoxHelper objectRef={dashcamGroupRef as unknown as React.RefObject<THREE.Object3D>} />
-//           <LogWorldPosition objectRef={dashcamGroupRef as unknown as React.RefObject<THREE.Object3D>} />
-//           <TransformControls object={dashcamGroupRef.current as unknown as THREE.Object3D} /> */}
-//         </Suspense>
-//         {/* <ambientLight intensity={0.3} />
-//         <directionalLight position={[10, 10, 5]} intensity={1} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />
-//         <pointLight position={[-10, -10, -10]} intensity={0.5} /> */}
-//         {carScene && (
-//           <CameraAnimation
-//             scrollProgress={scrollProgress}
-//             carScene={carScene}
-//             dashcamGroupRef={dashcamGroupRef}
-//             dashcamOffsetGroupRef={dashcamOffsetGroupRef}
-//             setLensAnimation={setLensAnimation}
-//           />
-//         )}
-//       </Canvas>
-//     </div>
-//   );
-// }
+export default DashcamScrollPage;

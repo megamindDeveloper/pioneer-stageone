@@ -16,16 +16,16 @@ export default function Home() {
   return (
     <>
       {/* ✅ Loader rendered from the page itself */}
-      {/* {!modelReady && (
+      {!modelReady && (
         <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
           <FadeLoader isModelReady={false} />
         </div>
-      )} */}
+      )}
       <div className="w-full h-full bg-gradient-to-b ">
-        {/* <CameraScene onModelReady={() => setModelReady(true)} />
+        <CameraScene onModelReady={() => setModelReady(true)} />
         <DashcamShowcase />
         <ProductDetials />
-        <ProductComparisonTable /> */}
+        <ProductComparisonTable />
         <FeatureAccordion  />
         <Footer />
         {/* <CameraScenetest/> */}

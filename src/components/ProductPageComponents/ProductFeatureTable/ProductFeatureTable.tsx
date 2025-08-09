@@ -102,6 +102,7 @@ import { ChevronRight } from "lucide-react";
 import { SpecsModal } from "../modals/SpecsModal/SpecsModal";
 import { defaultProducts } from "@/app/utils/ProductData/ProductData";
 import { specsData } from "@/app/utils/specsData/specsData";
+import Link from "next/link";
 
 const features = [
   "Video Resolution",
@@ -154,9 +155,9 @@ export default function ProductFeatureTable({
                 {i === 0 ? (
                   <span className="text-[#8C8C8C] text-[14px] font-medium">Currently Viewing</span>
                 ) : (
-                  <a href={product.link} className="text-[#AD2239] text-xs mb-1 font-extrabold">
+                  <Link href={product.link} className="text-[#AD2239] text-xs mb-1 font-extrabold">
                     Learn More &gt;
-                  </a>
+                  </Link>
                 )}
                 <div className="my-6 w-[70%] h-[1px] bg-[#4B4B4B]/80" />
               </div>

@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import amazonLogo from '../../../../public/Images/svgs/amazon.svg';  // replace with your path
-import noonLogo from '../../../../public/Images/svgs/noon.svg';  // replace with your path
+import amazonLogo from '../../../../public/svgs/amazon.svg';  // replace with your path
+import noonLogo from '../../../../public/svgs/noon.svg';  // replace with your path
 import productImage  from '../../../../public/Images/dashCamLogo.png';  // replace with your path
 
 

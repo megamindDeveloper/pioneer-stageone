@@ -1,5 +1,5 @@
 import React from 'react'
-import Blender2JSPage from '../page1/page'
+import Blender2JSPage from '../../components/Model1Components/BlenderComponent/page'
 import Model1textOverlay from '@/components/Model1Components/Textoverlay/Textoverlay';
 import { Compare } from '@/components/ProductPageComponents/ComparasionComponent/ComparasionComponent';
 import ZenVue from '@/components/ProductPageComponents/ZenVue/ZenVue';
@@ -12,6 +12,7 @@ import Footer from '@/components/CommonComponents/Footer';
 const page = () => {
   return (
     <div className='bg-black'>
+      
       <Blender2JSPage/>
       <Model1textOverlay />
       <Compare

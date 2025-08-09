@@ -15,7 +15,7 @@ const page = () => {
       <Blender2JSPage/>
       <Model1textOverlay />
       <Compare
-        tabs={[
+        tabs={[ 
           {
             heading: "See What Most Cameras Miss",
             subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
@@ -23,8 +23,8 @@ const page = () => {
             compareSubheading:
               "Most dashcams blur the truth at night. The Z820DC, equipped with night vision AI and a STARVIS sensor, captures license plates, movements and moments even in low light.",
             tabtitle: "Drive Late?",
-            image1: "/modelImages/VREC-Z820DC/ComparasionImages/GLOW_BEFORE.webp",
-            image2: "/modelImages/VREC-Z820DC/ComparasionImages/GLOW_AFTER.webp",
+            image1: "/productPageImages/comparisionImages/z820dc/GLOW_BEFORE.webp",
+            image2: "/productPageImages/comparisionImages/z820dc/GLOW_AFTER.webp",
             beforeImageText:"Normal Dashcams",
             afterImageText:"With Night Vision AI & STARVIS image sensor",
             compare:true
@@ -36,8 +36,8 @@ const page = () => {
             compareSubheading:
               "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
             tabtitle: "On The Road Daily?",
-            image1: "/modelImages/VREC-Z820DC/ComparasionImages/NOISE_BEFORE.webp",
-            image2: "/modelImages/VREC-Z820DC/ComparasionImages/NOISE_AFTER.webp",
+            image1: "/productPageImages/comparisionImages/z820dc/NOISE_BEFORE.webp",
+            image2: "/productPageImages/comparisionImages/z820dc/NOISE_AFTER.webp",
                  beforeImageText:"Normal Dashcams",
             afterImageText:"With STARVIS image sensor",
             compare:true
@@ -49,8 +49,8 @@ const page = () => {
             compareSubheading:
               "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
             tabtitle: "Prefer 4k Coverage?",
-            image2: "/modelImages/VREC-Z820DC/ComparasionImages/VREC-Z820DC - 3RD.webp",
-            image1: "/modelImages/VREC-Z820DC/frontCamera2.webp",
+            image2: "/productPageImages/comparisionImages/z820dc/Z820DC-3rd.webp",
+            image1: "/productPageImages/comparisionImages/z820dc/Z820DC-3rd.webp",
           },
         ]}
       />
@@ -61,7 +61,7 @@ const page = () => {
       <EverythingNeedToKnow faqData={faqData.set1} />
       <DriveSmarter
         subText="Drive with confidence, capture every moment, & stay protected. Explore what the Z820DC brings to every drive."
-        image="/modelImages/VREC-Z820DC/0057 1.webp"
+        image="/productPageImages/driveSmarterImages/z820dc.webp"
       />
       <Footer />
     </div>

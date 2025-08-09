@@ -35,7 +35,7 @@ export default function FeatureAccordion() {
   const currentFeature = features.find((f) => f.id === activeId);
 
   return (
-    <section className="relative bg-black text-white px-8 md:px-4 md:pl-20 py-12 md:py-16 rounded-3xl max-w-7xl mx-5 mt-20 mb-[10rem] overflow-hidden">
+    <section className="relative bg-black text-white px-8 md:px-4 md:pl-20 py-12 md:py-16 rounded-3xl max-w-7xl lg:mx-32 mx-5 mt-20 mb-[10rem] overflow-hidden">
       <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Accordion Content */}
         <div className="relative z-20">

@@ -21,7 +21,7 @@ const animationData = [
   { time: 0.122, position: [-0.09, 1.216, 0.32], quaternion: [-0.0, -0.75, 0.0000004, 0.61231], fov: 20 },
   // { time: 0.122, position: [-0.08, 1.216, 0.275], quaternion: [-0.0, -0.90010577, 0.00000004, 0.43567151], fov: 20 },
   { time: 0.1667, position: [-0.0, 1.21, 0.292], quaternion: [0, 1.0, 0.0, 0.0], fov: 20 },
-  { time: 0.1667, position: [-0.00, 1.207, 0.29], quaternion: [0, 1.0, 0, 0], fov: 20 },
+  { time: 0.1667, position: [-0.00, 1.21, 0.26], quaternion: [0, 1.0, 0, 0], fov: 20 },
   { time: 0.2083, position: [-0.00, 1.2136, 0.1], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 20 },
   { time: 0.25, position: [-0.0093, 1.1809, -2.2], quaternion: [0.00000002, 0.99999607, 0.00280268, 0.00000016], fov: 20 },
   { time: 0.2917, position: [-0.0093, 3.9288, -3.2975], quaternion: [0.00000007, 0.9208445, 0.38993004, 0.00000008], fov: 35 },
@@ -230,7 +230,7 @@ function useCameraAnimationSync(
   const cameraMountWorldMatrix = new THREE.Matrix4();
 
   useFrame(() => {
-    const inExplodeRange = scrollProgress >= 0.2559 && scrollProgress < 0.2932;
+    const inExplodeRange = scrollProgress >= 0.195 && scrollProgress < 0.235;
 
     if (inExplodeRange && !explodedRef.current) {
       console.log("🎯 Scroll in range → EXPLODE");
@@ -502,7 +502,7 @@ function Blender2JSScene({
     }
 
     const loader = new THREE.TextureLoader();
-    loader.load("/Images/820Screen.webp", (texture) => {
+    loader.load("/productPageImages/screenImages/820 Screen.webp", (texture) => {
       console.log("🎯 Image texture loaded successfully");
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.repeat.x = -1;
@@ -560,9 +560,9 @@ function Blender2JSScene({
     const { imageMap, videoMap, videoEl } = imagePlaneRef.current.userData;
     let targetOpacity = 0;
 
-    const imageFadeIn = 0.34;
-    const imageMidpoint = 0.375;
-    const imageFadeOut = 0.415;
+    const imageFadeIn = 0.27;
+    const imageMidpoint = 0.28;
+    const imageFadeOut = 0.3;
     const videoFadeIn = 0.4683;
     const videoMidpoint = 0.49665;
     const videoFadeOut = 1;

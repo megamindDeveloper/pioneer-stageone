@@ -1,5 +1,6 @@
-import React from 'react'
-
+"use client";
+import React, { useState } from 'react'
+import dynamic from "next/dynamic";
 import { Compare } from '@/components/ProductPageComponents/ComparasionComponent/ComparasionComponent';
 import ZenVue from '@/components/ProductPageComponents/ZenVue/ZenVue';
 import ProductFeatureTable from '@/components/ProductPageComponents/ProductFeatureTable/ProductFeatureTable';
@@ -9,15 +10,24 @@ import { faqData } from '../utils/FaqData/FaqData';
 import DriveSmarter from '@/components/ProductPageComponents/DriveSmarter/DriveSmarter';
 import Footer from '@/components/CommonComponents/Footer';
 
-import Blender2JSPage from '../page4/page';
+
 import Model4TextOverlay from '@/components/Model4Components/Textoverlay/Textoverlay';
 import Model1TextOverlay from '@/components/Model1Components/Textoverlay/Textoverlay';
-
+import FadeLoader from '@/components/CommonComponents/Loader';
+const Blender2JSPage = dynamic(() => import("../../components/Model1Components/MobileBlender/MobileBlender"), {
+  ssr: false,
+});
 
 const page = () => {
+  const [modelReady, setModelReady] = useState(false);
   return (
     <div>
-      <Blender2JSPage/>
+      {!modelReady && (
+        <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
+          <FadeLoader isModelReady={false} />
+        </div>
+      )}
+      <Blender2JSPage onModelReady={() => setModelReady(true)}/>
       <Model1TextOverlay />
       <Compare
         tabs={[

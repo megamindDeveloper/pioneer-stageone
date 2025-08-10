@@ -12,7 +12,7 @@ import { faqData } from '../utils/FaqData/FaqData';
 import DriveSmarter from '@/components/ProductPageComponents/DriveSmarter/DriveSmarter';
 import Footer from '@/components/CommonComponents/Footer';
 import FadeLoader from '@/components/CommonComponents/Loader';
-const Blender2JSPage = dynamic(() => import("../../components/Model1Components/BlenderComponent/page"), {
+const Blender2JSPage = dynamic(() => import("../../components/Model1Components/MobileBlender/MobileBlender"), {
   ssr: false,
 });
 

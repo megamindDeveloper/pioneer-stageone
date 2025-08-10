@@ -8,7 +8,7 @@ import { SRGBColorSpace } from "three";
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
 import FadeLoader from "@/components/CommonComponents/Loader";
 useGLTF.preload("/models/car.glb");
-useGLTF.preload("/models/VREC-Z820DC.glb");
+useGLTF.preload("/models/VREC_H520DC.glb");
 useTexture.preload("/modelImages/CommonModelImages/aiNight.png");
 
 const animationData = [
@@ -62,7 +62,7 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
       <Typography variant="hero-section-heading" className="text-xl !md:text-[62px] font-bold text-white text-center px-4 max-w-2xl">
         4K Clarity Meets AI Intelligence
       </Typography>
-      <p className="text-[32px] text-[#ABABAB] mt-2">VREC-Z820DC Keeps the Road on Record</p>
+      <p className="text-[32px] text-[#ABABAB] mt-2">VREC_H520DC Keeps the Road on Record</p>
       <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
         Scroll to explore
         <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
@@ -415,9 +415,9 @@ function Blender2JSScene({
   dashcamOffsetGroupRef: React.RefObject<THREE.Group | null>;
 }) {
   const carGLTF = useGLTF("/models/car.glb");
-  const dashcamGLTF = useGLTF("/models/VREC-Z820DC.glb");
+  const dashcamGLTF = useGLTF("/models/VREC_H520DC.glb");
   const rearCamGLTF = useGLTF("/models/REARCAM.glb");
-  const { scene: cameraModelScene, nodes: cameraNodes } = useGLTF("/models/VREC-Z820DC.glb");
+  const { scene: cameraModelScene, nodes: cameraNodes } = useGLTF("/models/VREC_H520DC.glb");
   const [carVisible, setCarVisible] = useState(false);
   const displayMountRef = useRef<THREE.Object3D | null>(null);
   const imagePlaneRef = useRef<THREE.Mesh | null>(null);
@@ -1026,7 +1026,7 @@ export default function Blender2JSPage() {
   }, [modelIsReady]);
 
   return (
-    <div id="blender2js-scroll-container-model1" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
+    <div id="blender2js-scroll-container-model1" ref={containerRef} style={{ height: "3500vh", scrollBehavior: "smooth" }}>
       {!modelIsReady && (
         <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
           <FadeLoader isModelReady={false} />

@@ -39,7 +39,7 @@ export default function Model1TextOverlay() {
           // Map scroll progress to stages
           if (p === 0) setStage(null);
           else if (p >= 0.0350 && p < 0.1) setStage("s1");
-          else if (p >= 0.110 && p < 0.1613) setStage("s2");
+          else if (p >= 0.110 && p < 0.12) setStage("s2");
           else if (p >= 0.2420 && p < 0.2982) setStage("s3");
           else if (p >= 0.3547 && p < 0.4079) setStage("s4");
           else if (p >= 0.469 && p < 0.5) setStage("s5");

@@ -407,12 +407,14 @@ function Blender2JSScene({
   setCarSceneRef,
   dashcamGroupRef,
   dashcamOffsetGroupRef,
+  onModelReady
 }: {
   onLoadComplete: () => void;
   scrollProgress: number;
   setCarSceneRef: (ref: THREE.Group) => void;
   dashcamGroupRef: React.RefObject<THREE.Group | null>;
   dashcamOffsetGroupRef: React.RefObject<THREE.Group | null>;
+  onModelReady: () => void
 }) {
   const carGLTF = useGLTF("/models/car.glb");
   const dashcamGLTF = useGLTF("/models/VREC-Z820DC.glb");
@@ -663,7 +665,7 @@ function Blender2JSScene({
     });
   
   }, [scrollProgress]);
-  
+  onModelReady();
   useFadeModelOpacity(fadeRef, scrollProgress);
   return (
     <>
@@ -959,7 +961,7 @@ function BackgroundFade({ scrollProgress }: { scrollProgress: number }) {
   return null;
 }
 
-export default function Blender2JSPage() {
+export default function Blender2JSPage({ onModelReady }: { onModelReady: () => void }) {
   const [modelIsReady, setModelIsReady] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [carScene, setCarScene] = useState<THREE.Group | null>(null);
@@ -1056,6 +1058,7 @@ export default function Blender2JSPage() {
           <IntroImageAnimation scrollProgress={scrollProgress} />
           {modelIsReady && <Environment files="/hdri/111.hdr" background={false} />}
           <Blender2JSScene
+          onModelReady={() => setIsModelReady(true)} 
             scrollProgress={scrollProgress}
             onLoadComplete={() => setModelIsReady(true)}
             setCarSceneRef={(ref) => setCarScene(ref)}

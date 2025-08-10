@@ -13,23 +13,23 @@ useTexture.preload("/modelImages/CommonModelImages/aiNight.png");
 
 const animationData = [
   { time: 0.0, position: [0.0081, 1.2133, 0.38], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 20 },
-  { time: 0.0, position: [0.0081, 1.2133, 0.4], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 20 },
-
+  { time: 0.0, position: [0.0081, 1.2133, 0.40], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 20 },
+  
   // { time: 0.0, position: [0.0081, 1.2133, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 20 },
   { time: 0.0417, position: [-0.08, 1.213, 0.48], quaternion: [0.02902204, -0.37, -0.0781377, 0.9276399], fov: 20 },
   // { time: 0.0417, position: [-0.1, 1.213, 0.48], quaternion: [0.02902204, -0.4, -0.0781377, 0.9276399], fov: 20 },
   { time: 0.122, position: [-0.09, 1.216, 0.32], quaternion: [-0.0, -0.75, 0.0000004, 0.61231], fov: 20 },
   // { time: 0.122, position: [-0.08, 1.216, 0.275], quaternion: [-0.0, -0.90010577, 0.00000004, 0.43567151], fov: 20 },
   { time: 0.1667, position: [-0.0, 1.21, 0.292], quaternion: [0, 1.0, 0.0, 0.0], fov: 20 },
-  { time: 0.1667, position: [-0.0, 1.207, 0.29], quaternion: [0, 1.0, 0, 0], fov: 20 },
-  { time: 0.2083, position: [-0.0, 1.2136, 0.1], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 20 },
+  { time: 0.1667, position: [-0.00, 1.207, 0.29], quaternion: [0, 1.0, 0, 0], fov: 20 },
+  { time: 0.2083, position: [-0.00, 1.2136, 0.1], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 20 },
   { time: 0.25, position: [-0.0093, 1.1809, -2.2], quaternion: [0.00000002, 0.99999607, 0.00280268, 0.00000016], fov: 20 },
   { time: 0.2917, position: [-0.0093, 3.9288, -3.2975], quaternion: [0.00000007, 0.9208445, 0.38993004, 0.00000008], fov: 35 },
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 40 },
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 40 },
   { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 40 },
   { time: 0.375, position: [-0.0093, 6.6768, 2.0115], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 20 },
-  { time: 0.375, position: [-0.0092, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 20 },
+  { time: 0.375, position: [-0.0092, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 20},
   // { time: 0.375, position: [-0.0092, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 20},
 ];
 
@@ -102,28 +102,33 @@ function FullscreenBlackOverlay({
     opacity = 0;
   }
 
-  return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        background: "black",
-        zIndex: 20,
-        pointerEvents: "none",
-        transform: `scale(${scale})`,
-        opacity: opacity * 0.65,
-        transition: "none",
-      }}
-    />
-  );
+      return (
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "black",
+          zIndex: 20,
+          pointerEvents: "none",
+          transform: `scale(${scale})`,
+          opacity: opacity * 0.65,
+          transition: "none",
+        }}
+      />
+    );
 }
 
 const degToRad = (degrees: number): number => degrees * (Math.PI / 180);
 
-function useFadeModelOpacity(groupRef: React.RefObject<THREE.Group | null>, scrollProgress: number, rangeStart = 0, rangeEnd = 0.12) {
+function useFadeModelOpacity(
+  groupRef: React.RefObject<THREE.Group | null>,
+  scrollProgress: number,
+  rangeStart = 0,
+  rangeEnd = 0.12
+) {
   useFrame(() => {
     if (!groupRef.current) return;
 
@@ -397,19 +402,19 @@ function Timeline({ scrollProgress }: { scrollProgress: number }) {
 }
 
 function Blender2JSScene({
-//   onLoadComplete,
+  onLoadComplete,
   scrollProgress,
   setCarSceneRef,
   dashcamGroupRef,
   dashcamOffsetGroupRef,
-//   onModelReady,
+  onModelReady
 }: {
-//   onLoadComplete: () => void;
+  onLoadComplete: () => void;
   scrollProgress: number;
   setCarSceneRef: (ref: THREE.Group) => void;
   dashcamGroupRef: React.RefObject<THREE.Group | null>;
   dashcamOffsetGroupRef: React.RefObject<THREE.Group | null>;
-//   onModelReady: () => void;
+  onModelReady: () => void
 }) {
   const carGLTF = useGLTF("/models/car.glb");
   const dashcamGLTF = useGLTF("/models/VREC-Z820DC.glb");
@@ -477,8 +482,8 @@ function Blender2JSScene({
       setCarVisible(false);
     }
 
-    // onLoadComplete();
-  }, [carGLTF, dashcamGLTF, setCarSceneRef]);
+    onLoadComplete();
+  }, [carGLTF, dashcamGLTF, onLoadComplete, setCarSceneRef]);
 
   useEffect(() => {
     console.log("🎯 Searching for DISPLAY object in camera model...");
@@ -634,12 +639,12 @@ function Blender2JSScene({
   });
   useEffect(() => {
     if (!carGLTF.scene || !dashcamGLTF.scene) return;
-
+  
     const fadeStart = 0.06;
     const fadeEnd = 0.1;
-
+  
     let opacity = 0;
-
+  
     if (scrollProgress < fadeStart) {
       opacity = 0;
     } else if (scrollProgress > fadeEnd) {
@@ -648,7 +653,9 @@ function Blender2JSScene({
       const fadeProgress = (scrollProgress - fadeStart) / (fadeEnd - fadeStart);
       opacity = THREE.MathUtils.lerp(0, 1, fadeProgress);
     }
+  
 
+  
     dashcamGLTF.scene.traverse((child) => {
       if ((child as THREE.Mesh).material) {
         const mat = (child as THREE.Mesh).material as THREE.Material;
@@ -656,8 +663,9 @@ function Blender2JSScene({
         (mat as any).opacity = opacity;
       }
     });
+  
   }, [scrollProgress]);
-//   onModelReady();
+  onModelReady();
   useFadeModelOpacity(fadeRef, scrollProgress);
   return (
     <>
@@ -734,7 +742,7 @@ const closedShape = "polygon(49.75% 0%, 49.75% 0%, 49.75% 0%, 49.75% 0%, 50.41% 
 function getInterpolatedClip(scrollProgress: number) {
   const start = 0.703;
   const mid = 0.792;
-  const end = 0.8813;
+  const end = 0.8813  ;
 
   let blend;
   let shapeFrom, shapeTo;
@@ -754,13 +762,7 @@ function getInterpolatedClip(scrollProgress: number) {
       .replace("polygon(", "")
       .replace(")", "")
       .split(",")
-      .map(
-        (pt: string) =>
-          pt
-            .trim()
-            .split(" ")
-            .map((v: string) => parseFloat(v)) as number[]
-      );
+      .map((pt: string) => pt.trim().split(" ").map((v: string) => parseFloat(v)) as number[]);
 
   const a = parse(shapeFrom);
   const b = parse(shapeTo);
@@ -785,21 +787,21 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
     loader.load("/modelImages/CommonModelImages/aiNight.png", (texture) => {
       texture.flipY = false;
       texture.colorSpace = THREE.SRGBColorSpace;
-
-      if (imagePlaneRef.current) {
-        const mat = imagePlaneRef.current.material as unknown as THREE.MeshBasicMaterial | THREE.MeshBasicMaterial[];
-        if (Array.isArray(mat)) {
-          mat.forEach((m) => {
-            m.map = texture;
-            m.needsUpdate = true;
-          });
-        } else if (mat) {
-          mat.map = texture;
-          mat.needsUpdate = true;
-        }
-      } else {
-        console.warn("⚠️ imagePlaneRef or its material is null");
+      
+    if (imagePlaneRef.current) {
+      const mat = imagePlaneRef.current.material as unknown as THREE.MeshBasicMaterial | THREE.MeshBasicMaterial[];
+      if (Array.isArray(mat)) {
+        mat.forEach((m) => {
+          m.map = texture;
+          m.needsUpdate = true;
+        });
+      } else if (mat) {
+        mat.map = texture;
+        mat.needsUpdate = true;
       }
+    } else {
+      console.warn("⚠️ imagePlaneRef or its material is null");
+    }
     });
   }, []);
 
@@ -931,12 +933,13 @@ function LensAnimation({ isAnimating, dashcamGroupRef }: { isAnimating: boolean;
 }
 import { Color } from "three";
 
+
 function BackgroundFade({ scrollProgress }: { scrollProgress: number }) {
   const { scene } = useThree();
 
   useEffect(() => {
-    const start = 0; // fade start
-    const end = 0.1; // fade end
+    const start = 0;   // fade start
+    const end = 0.1;   // fade end
     let t = 0;
 
     if (scrollProgress < start) {
@@ -958,8 +961,8 @@ function BackgroundFade({ scrollProgress }: { scrollProgress: number }) {
   return null;
 }
 
-export default function Blender2JSPage() {
-    const [modelIsReady, setModelIsReady] = useState(false);
+export default function Blender2JSPage({ onModelReady }: { onModelReady: () => void }) {
+  const [modelIsReady, setModelIsReady] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [carScene, setCarScene] = useState<THREE.Group | null>(null);
   const [lensAnimation, setLensAnimation] = useState(false);
@@ -971,7 +974,7 @@ export default function Blender2JSPage() {
   // When all assets are loaded (useProgress active = false), mark ready
   useEffect(() => {
     if (!active) {
-        setModelIsReady(true);
+      setModelIsReady(true);
     }
   }, [active]);
 
@@ -985,7 +988,7 @@ export default function Blender2JSPage() {
       };
     }
   }, [modelIsReady]);
-
+ 
   useEffect(() => {
     if (!modelIsReady) return; // Defer ScrollTrigger init until models are ready
     if (typeof window === "undefined") return;
@@ -1026,7 +1029,11 @@ export default function Blender2JSPage() {
 
   return (
     <div id="blender2js-scroll-container-model1" ref={containerRef} style={{ height: "3500vh", scrollBehavior: "smooth" }}>
-        {!modelIsReady && <FadeLoader isModelReady={modelIsReady} />}
+      {!modelIsReady && (
+        <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
+          <FadeLoader isModelReady={false} />
+        </div>
+      )}
       {modelIsReady && <Timeline scrollProgress={scrollProgress} />}
       {modelIsReady && <HeroTextFade scrollProgress={scrollProgress} />}
       {modelIsReady && <FullscreenBlackOverlay scrollProgress={scrollProgress} />}
@@ -1042,17 +1049,18 @@ export default function Blender2JSPage() {
         }}
         dpr={[1, 2]}
         frameloop={modelIsReady ? "always" : "never"}
+
       >
-        <AdaptiveDpr pixelated />
-        <BackgroundFade scrollProgress={scrollProgress} />
+          <AdaptiveDpr pixelated />
+          <BackgroundFade scrollProgress={scrollProgress} />
 
         <Suspense fallback={null}>
           <IntroImageAnimation scrollProgress={scrollProgress} />
           {modelIsReady && <Environment files="/hdri/111.hdr" background={false} />}
           <Blender2JSScene
-            // onModelReady={() => setIsModelReady(true)}
+          onModelReady={() => setIsModelReady(true)} 
             scrollProgress={scrollProgress}
-            // onLoadComplete={() => setIsModelReady(true)}
+            onLoadComplete={() => setModelIsReady(true)}
             setCarSceneRef={(ref) => setCarScene(ref)}
             dashcamGroupRef={dashcamGroupRef}
             dashcamOffsetGroupRef={dashcamOffsetGroupRef}

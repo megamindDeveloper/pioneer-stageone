@@ -6,7 +6,7 @@ export default function DashcamShowcaseMobile() {
 
   return (
     <section className="relative min-h-screen py-12 md:px-4 md:mt-32 mt-0">
-      <Typography variant="section-heading" className="!font-medium   text-white text-center mb-20">
+      <Typography variant="section-heading" className="!font-medium   text-white text-center mb-20 px-12">
         Explore the Pioneer lineup built for real driving
       </Typography>
 

@@ -53,8 +53,8 @@ const page = () => {
             compareHeading: "Coverage That Looks Both Ways",
             compareSubheading:
               "The dual-channel Dash Cam records front and rear in high resolution, with sharp 2K footage ahead and Full HD behind for clear synchronized coverage.",
-                image1: "/productPageImages/comparisionImages/h520dc/520_3RDIMAGE.webp",
-            image2: "/productPageImages/comparisionImages/h520dc/520_3RDIMAGE.webp",
+                image1: "/productPageImages/comparisionImages/h520dc/520 - 3rd card.webp",
+            image2: "/productPageImages/comparisionImages/h520dc/520 - 3rd card.webp",
           },
         ]}
       />

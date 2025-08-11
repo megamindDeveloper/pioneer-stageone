@@ -2,7 +2,7 @@
 
 import React, { Suspense, useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, useGLTF, useTexture } from "@react-three/drei";
+import { AdaptiveDpr, Environment, useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { SRGBColorSpace } from "three";
 useGLTF.preload("/models/car.glb");
@@ -1246,7 +1246,33 @@ function Timeline({ scrollProgress }: { scrollProgress: number }) {
     </div>
   );
 }
+import { Color } from "three";
+function BackgroundFade({ scrollProgress }: { scrollProgress: number }) {
+  const { scene } = useThree();
 
+  useEffect(() => {
+    const start = 0;   // fade start
+    const end = 0.1;   // fade end
+    let t = 0;
+
+    if (scrollProgress < start) {
+      t = 0;
+    } else if (scrollProgress > end) {
+      t = 1;
+    } else {
+      t = (scrollProgress - start) / (end - start);
+    }
+
+    // Start color #0D0D0D
+    const startColor = new Color("#0D0D0D");
+    const endColor = new Color("#000000");
+
+    const mixed = startColor.clone().lerp(endColor, t);
+    scene.background = mixed;
+  }, [scrollProgress, scene]);
+
+  return null;
+}
 export default function Blender2JSPage() {
   const [modelIsReady, setModelIsReady] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -1310,6 +1336,8 @@ export default function Blender2JSPage() {
           // No need to set colorSpace again here
         }}
       >
+         <AdaptiveDpr pixelated />
+         <BackgroundFade scrollProgress={scrollProgress} />
         <Suspense fallback={null}>
           <CameraMover />
           <IntroImageAnimation scrollProgress={scrollProgress} />

@@ -28,7 +28,7 @@ export default function Model4TextOverlay() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
-        trigger: "#blender2js-scroll-container-model1",
+        trigger: "#blender2js-scroll-container",
         start: "top top",
         end: "bottom bottom",
         scrub: true,

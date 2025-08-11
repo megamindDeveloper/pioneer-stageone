@@ -2,14 +2,14 @@
 
 import React, { Suspense, useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, useGLTF, OrbitControls, Stats, TransformControls, Html } from "@react-three/drei";
+import { Environment, useGLTF, OrbitControls, Stats, TransformControls, Html, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { SRGBColorSpace } from "three";
 
 
 useGLTF.preload("/models/car.glb");
 useGLTF.preload("/models/VREC_H120SC.glb");
-
+useTexture.preload("/modelImages/CommonModelImages/aiNight.png");
 // Meaningful type for captured camera keyframes
 type CameraKeyframe = {
   time: number;
@@ -79,6 +79,7 @@ const animationData = [
     quaternion: [0.0, 0.9, -0.019, 0.44],
     fov: 8,
   }, // left
+  
 ];
 
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
@@ -524,7 +525,7 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
   useEffect(() => {
     // Load image texture
     const loader = new THREE.TextureLoader();
-    loader.load("/Images/ainight.png", (texture) => {
+    loader.load("/modelImages/CommonModelImages/aiNight.png", (texture) => {
       texture.flipY = false;
       texture.colorSpace = THREE.SRGBColorSpace;
       if (imagePlaneRef.current) {

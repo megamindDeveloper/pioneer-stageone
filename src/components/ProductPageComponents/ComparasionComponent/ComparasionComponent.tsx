@@ -106,7 +106,7 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
                 fill
                 src={currentTab.image1}
                 alt="Before"
-                className="object-cover w-full h-full select-none"
+                className="absolute top-0 left-0 z-[19] object-cover w-full h-full select-none"
                 draggable={false}
               />
               {/* Before Image Text */}

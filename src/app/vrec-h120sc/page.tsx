@@ -13,6 +13,7 @@ import Footer from '@/components/CommonComponents/Footer';
 import Model1TextOverlay from '@/components/Model1Components/Textoverlay/Textoverlay';
 
 import Blender2JSPage from '../page4/page';
+import Model4TextOverlay from '@/components/Model4Components/Textoverlay/Textoverlay';
 
 
 const page = () => {
@@ -21,7 +22,7 @@ const page = () => {
     <div>
      
       <Blender2JSPage/>
-      <Model1TextOverlay />
+      <Model4TextOverlay />
       <Compare
         tabs={[
           {

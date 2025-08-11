@@ -1,5 +1,5 @@
 import React from "react";
-import Blender2JSPage from "../../components/Model1Components/BlenderComponent/page";
+
 import Model1textOverlay from "@/components/Model1Components/Textoverlay/Textoverlay";
 import { Compare } from "@/components/ProductPageComponents/ComparasionComponent/ComparasionComponent";
 import ZenVue from "@/components/ProductPageComponents/ZenVue/ZenVue";
@@ -9,6 +9,7 @@ import EverythingNeedToKnow from "@/components/ProductPageComponents/EverythingN
 import { faqData } from "../utils/FaqData/FaqData";
 import DriveSmarter from "@/components/ProductPageComponents/DriveSmarter/DriveSmarter";
 import Footer from "@/components/CommonComponents/Footer";
+import Blender2JSPage from "@/components/Model1Components/MobileBlender";
 const page = () => {
   return (
     <div className="bg-black">

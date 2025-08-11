@@ -12,7 +12,7 @@ import { Html } from "@react-three/drei";
 const degToRad = (deg: number) => deg * (Math.PI / 180);
 
 function CameraModel({ onModelReady, onIntroComplete }: { onModelReady: () => void; onIntroComplete: () => void }) {
-  const { scene } = useGLTF("/models/vrec-z820dc-opt.glb");
+  const { scene } = useGLTF("/models/VREC-Z820DC.glb");
   const groupRef = useRef<THREE.Group>(null);
   const breakpoint = useBreakpoint();
   const hasPlayedRef = useRef<boolean>(false);
@@ -191,4 +191,4 @@ export default function CameraScene({ onModelReady }: { onModelReady: () => void
   );
 }
 
-useGLTF.preload("/models/vrec-z820dc-opt.glb");
+useGLTF.preload("/models/VREC-Z820DC.glb");

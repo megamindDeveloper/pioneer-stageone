@@ -10,10 +10,8 @@ import { faqData } from '../utils/FaqData/FaqData';
 import DriveSmarter from '@/components/ProductPageComponents/DriveSmarter/DriveSmarter';
 import Footer from '@/components/CommonComponents/Footer';
 
-
-import Model4TextOverlay from '@/components/Model4Components/Textoverlay/Textoverlay';
 import Model1TextOverlay from '@/components/Model1Components/Textoverlay/Textoverlay';
-import FadeLoader from '@/components/CommonComponents/Loader';
+
 import Blender2JSPage from '../page4/page';
 
 

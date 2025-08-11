@@ -20,7 +20,7 @@ export default function EverythingNeedToKnow({ faqData }: Props) {
 
   return (
     <div className="bg-black text-white px-4 py-12 md:px-20 lg:px-32">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-20 items-start max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-20 items-start max-w-6xl  mx-auto">
         {/* LEFT COLUMN - HEADING */}
         <div className="min-h-full">
           <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-tight text-[#E2E2E2] max-w-sm lg:top-6 sticky top-5 self-start">

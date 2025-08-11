@@ -72,7 +72,7 @@ export default function Footer() {
             {/* Left Side */}
             <div className="flex flex-col md:flex-row md:items-center gap-12">
               <Image src={logo} alt="Pioneer" width={180} height={42} className="object-contain" />
-              <div className="flex gap-12 flex-wrap text-[13px] text-white/80">
+              <div className="flex gap-8 flex-wrap text-[13px] text-white/80">
                 {bottomLinks.map((link, i) => (
                   <Link key={i} href={link.href} className="hover:text-white transition" target="_blank">
                     {link.label}

@@ -149,7 +149,7 @@ export const SpecsModal: React.FC<SpecsModalProps> = ({ isOpen, onClose, specs }
               className="absolute  top-6 right-6 p-2 rounded-full cursor-pointer transition z-10"
               aria-label="Close"
             >
-              <img src="/images/svgs/closeIcon.svg" className='w-10 h-12' alt="Close" />
+              <img src="/svgs/closeIcon.svg" className='w-10 h-12' alt="Close" />
             </button>
 
             {/* Scrollable Content */}
@@ -186,6 +186,6 @@ export const SpecsModal: React.FC<SpecsModalProps> = ({ isOpen, onClose, specs }
 const SpecRow = ({ label, value }: { label: string; value: string }) => (
   <div className="flex justify-between items-start gap-3 md:gap-6 text-[13px] md:text-sm">
     <span className="text-[#ABABAB] w-1/2">{label}</span>
-    <span className="text-[#E2E2E2] text-right w-1/2">{value}</span>
+    <span className="text-[#E2E2E2] text- w-1/2">{value}</span>
   </div>
 );

@@ -19,7 +19,7 @@ export default function FieldOfVision({
       {/* Centered Content */}
       <div className="relative z-20  w-full h-full flex items-center justify-between px-6 lg:px-32">
         {/* Left Side */}
-        <div className="max-w-sm space-y-2">
+        <div className="max-w-sm space-y-2 mt-24">
           {highlightedText && (
             <p className="text-[16px] text-[#AD2239] text-center font-bold">
               {highlightedText}
@@ -31,7 +31,7 @@ export default function FieldOfVision({
         </div>
 
         {/* Right Side */}
-        <div className="max-w-md text-[16px] text-[#ABABAB] leading-relaxed text-center">
+        <div className="max-w-md mt-24 text-[16px] text-[#ABABAB] leading-relaxed text-center">
           <p>{subheading}</p>
         </div>
       </div>

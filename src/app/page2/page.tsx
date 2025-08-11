@@ -795,7 +795,7 @@ function Blender2JSScene({
     }
     // Load image texture
     const loader = new THREE.TextureLoader();
-    loader.load("/Images/520 Screen.webp", (texture) => {
+    loader.load("/modelImages/CommonModelImages/520 Screen.webp", (texture) => {
       console.log("🎯 Image texture loaded successfully");
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.repeat.x = -1;
@@ -818,7 +818,7 @@ function Blender2JSScene({
       console.log("🎯 Display mount found:", displayMountRef.current);
       if (displayMountRef.current) {
         displayMountRef.current.add(plane);
-        plane.position.set(0.004, 0.00353, 0); // Much further in front to be outside the model
+        plane.position.set(0.003, 0.00353, 0); // Much further in front to be outside the model
         plane.visible = false; // Start hidden, controlled by scroll logic
         console.log("🎯 Plane added to display mount");
         console.log("🎯 Plane position:", plane.position);
@@ -829,7 +829,7 @@ function Blender2JSScene({
 
       // Load video texture
       const video = document.createElement("video");
-      video.src = "/video/video.mp4";
+      video.src = "/video/Video520.mp4";
       video.crossOrigin = "anonymous";
       video.loop = true;
       video.muted = true;
@@ -863,7 +863,7 @@ function Blender2JSScene({
         // fallback: hide until video is ready
         imagePlaneRef.current.visible = false;
       }
-    } else if (scrollProgress >= 0.4455 && scrollProgress <= 0.4555) {
+    } else if (scrollProgress >= 0.2884 && scrollProgress <= 0.3493) {
       const { imageMap, videoEl } = imagePlaneRef.current.userData;
       const material = imagePlaneRef.current.material as THREE.MeshBasicMaterial;
       if (imageMap && material.map !== imageMap) {

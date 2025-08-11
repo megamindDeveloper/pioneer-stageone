@@ -34,7 +34,7 @@ export default function Model2textOverlay() {
           console.log("Scroll Progress:", p.toFixed(3));
 
           if (p === 0) setStage(null);
-        
+
           else if (p >= 0.0365 && p < 0.1113) setStage("s3");
           else if (p >= 0.1741 && p < 0.2432) setStage("s4");
           else if (p >= 0.2433 && p < 0.2633) setStage("s13");
@@ -117,13 +117,20 @@ export default function Model2textOverlay() {
     ),
     s6: (
       <div>
-        <p className="text-cherryRed text-xl font-bold text-center">Clear Control with a Wider Screen</p>
-        <h2 className="text-[56px] mx text-white text-center font-medium">3" IPS Display</h2>
-        <p className="text-pretty text-[#ABABAB]  text-center max-w-xl mx-auto">
+        <p className="text-cherryRed font-bold text-center text-lg sm:text-xl md:text-md">
+          Clear Control with a Wider Screen
+        </p>
+
+        <h2 className="text-white text-center font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+          3" IPS Display
+        </h2>
+
+        <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto text-sm sm:text-base md:text-md">
           The built-in screen measures 7.6 cm across and offers a clear, responsive view for checking footage, adjusting settings or navigating menus
           without needing your phone.
         </p>
       </div>
+
     ),
     s7: (
       <div>
@@ -142,10 +149,14 @@ export default function Model2textOverlay() {
     ),
     s8: (
       <div>
-        <p className="text-cherryRed text-xl font-bold text-center">Dual Camera Setup</p>
-        <h2 className="text-[56px] text-white text-center font-medium">Front and Rear in Focus</h2>
-        <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto">
-          The VREC‑H520DC captures your journey from both ends with 2K clarity in front and Full HD behind, giving you balanced, high-quality footage
+        <p className="text-cherryRed font-bold text-center text-sm sm:text-base md:text-lg">
+          Dual Camera Setup
+        </p>
+        <h2 className="text-white text-center font-medium text-3xl sm:text-4xl md:text-[50px]">
+          Front and Rear in Focus
+        </h2>
+        <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto text-sm sm:text-base md:text-md">
+          The VREC-H520DC captures your journey from both ends with 2K clarity in front and Full HD behind, giving you balanced, high-quality footage
           wherever the road takes you.
         </p>
       </div>
@@ -196,7 +207,7 @@ export default function Model2textOverlay() {
     s10: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s11: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s13: "top-0 left-2/3 z-[100] -translate-x-1/2 -translate-y-1/2",
-      s12: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s12: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
   };
 
   const currentOverlay = stage ? overlays[stage] : null;

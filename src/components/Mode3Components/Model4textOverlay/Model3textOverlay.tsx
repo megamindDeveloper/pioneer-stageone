@@ -107,13 +107,18 @@ export default function Model3textOverlay() {
       </div>
     ),
     s6: (
-      <div>
-        <p className="text-cherryRed text-xl font-bold text-center">Clarity in Changing Light</p>
-        <h2 className="text-[56px] mx text-white text-center font-medium">Wide Dynamic Range (WDR)</h2>
-        <p className="text-pretty text-[#ABABAB]  text-center max-w-xl mx-auto">
-        From tunnels to tree cover, WDR balances bright and dark areas in real time so your footage stays detailed and easy to review.
-        </p>
-      </div>
+     <div>
+  <p className="text-cherryRed font-bold text-center text-lg sm:text-xl md:text-lg">
+    Clarity in Changing Light
+  </p>
+  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-white text-center font-medium">
+    Wide Dynamic Range (WDR)
+  </h2>
+  <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto text-sm sm:text-base md:text-md">
+    From tunnels to tree cover, WDR balances bright and dark areas in real time so your footage stays detailed and easy to review.
+  </p>
+</div>
+
     ),
     s7: (
       <div>

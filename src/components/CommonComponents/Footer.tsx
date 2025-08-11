@@ -46,33 +46,19 @@ export default function Footer() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <footer className="bg-gradient-to-t from-[#AD2239] to-[#00000000] text-white">
+    <footer className="bg-gradient-to-t from-[#AD2239] to-transparent text-white">
       {/* ---------- DESKTOP / LAPTOP VERSION ---------- */}
       <div className="hidden md:block pt-20 pb-8">
-        <div className="max-w-6xl xl:max-w-[90%] mx-auto w-full px-4 flex flex-col justify-center min-h-[300px]">
+        <div className="max-w-[90%] mx-auto w-full px-4 flex flex-col justify-center min-h-[300px]">
           {/* Top Link Groups */}
-          {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-[14px] text-white/90 mb-16 justify-items-center">
-            {linkGroups.map((group, i) => (
-              <div key={i} className="space-y-2 text-center sm:text-left">
-                {group.map((link, idx) => (
-                  <Link
-                    href="#"
-                    key={idx}
-                    className="hover:text-white transition font-medium block"
-                  >
-                    {link}
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div> */}
+   
 
           {/* Logo + Bottom Links + Social Icons */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 mt-8">
             {/* Left Side */}
-            <div className="flex flex-col md:flex-row md:items-center gap-12">
+            <div className="flex flex-col md:flex-row md:items-center lg2:gap-12 gap-3">
               <Image src={logo} alt="Pioneer" width={180} height={42} className="object-contain" />
-              <div className="flex gap-8 flex-wrap text-[13px] text-white/80">
+              <div className="flex lg2:gap-8 lg:gap-4 flex-wrap lg:text-[10px] lg2:text-[13px] text-white/80">
                 {bottomLinks.map((link, i) => (
                   <Link key={i} href={link.href} className="hover:text-white transition" target="_blank">
                     {link.label}
@@ -86,8 +72,8 @@ export default function Footer() {
               <Link href="https://www.instagram.com/pioneermea/" aria-label="Instagram" target="_blank">
                 <Image src="/svgs/instagram.svg" alt="Instagram" width={20} height={20} />
               </Link>
-              <Link href="https://www.facebook.com/PioneerMEA/" aria-label="Other">
-                <Image src="/svgs/meta.svg" alt="Meta" width={20} height={20} target="_blank" />
+              <Link href="https://www.facebook.com/PioneerMEA/" aria-label="Other" target="_blank">
+                <Image src="/svgs/meta.svg" alt="Meta" width={20} height={20}  />
               </Link>
             </div>
           </div>
@@ -132,7 +118,7 @@ export default function Footer() {
               <div key={i}>
                 {/* Accordion Header */}
                 <button
-                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                  onClick={() => setOpenIndex(openIndex === i ? null : i as any)}
                   className="w-full flex justify-between items-center py-3 border-b border-white/20 text-[19px] font-medium"
                 >
                   {group.title}

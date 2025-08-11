@@ -1,22 +1,21 @@
-import React from 'react'
-import Blender2JSPage from '../../components/Model1Components/BlenderComponent/page'
-import Model1textOverlay from '@/components/Model1Components/Textoverlay/Textoverlay';
-import { Compare } from '@/components/ProductPageComponents/ComparasionComponent/ComparasionComponent';
-import ZenVue from '@/components/ProductPageComponents/ZenVue/ZenVue';
-import ProductFeatureTable from '@/components/ProductPageComponents/ProductFeatureTable/ProductFeatureTable';
-import { defaultProducts } from '../utils/ProductData/ProductData';
-import EverythingNeedToKnow from '@/components/ProductPageComponents/EverythingNeedToKnow/EverythingNeedToKnow';
-import { faqData } from '../utils/FaqData/FaqData';
-import DriveSmarter from '@/components/ProductPageComponents/DriveSmarter/DriveSmarter';
-import Footer from '@/components/CommonComponents/Footer';
+import React from "react";
+import Blender2JSPage from "../../components/Model1Components/BlenderComponent/page";
+import Model1textOverlay from "@/components/Model1Components/Textoverlay/Textoverlay";
+import { Compare } from "@/components/ProductPageComponents/ComparasionComponent/ComparasionComponent";
+import ZenVue from "@/components/ProductPageComponents/ZenVue/ZenVue";
+import ProductFeatureTable from "@/components/ProductPageComponents/ProductFeatureTable/ProductFeatureTable";
+import { defaultProducts } from "../utils/ProductData/ProductData";
+import EverythingNeedToKnow from "@/components/ProductPageComponents/EverythingNeedToKnow/EverythingNeedToKnow";
+import { faqData } from "../utils/FaqData/FaqData";
+import DriveSmarter from "@/components/ProductPageComponents/DriveSmarter/DriveSmarter";
+import Footer from "@/components/CommonComponents/Footer";
 const page = () => {
   return (
-    <div className='bg-black'>
-      
-      <Blender2JSPage/>
+    <div className="bg-black">
+      <Blender2JSPage />
       <Model1textOverlay />
       <Compare
-        tabs={[ 
+        tabs={[
           {
             heading: "See What Most Cameras Miss",
             subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
@@ -26,9 +25,9 @@ const page = () => {
             tabtitle: "Drive Late?",
             image1: "/productPageImages/comparisionImages/z820dc/GLOW_BEFORE.webp",
             image2: "/productPageImages/comparisionImages/z820dc/GLOW_AFTER.webp",
-            beforeImageText:"Normal Dashcams",
-            afterImageText:"With Night Vision AI & STARVIS image sensor",
-            compare:true
+            beforeImageText: "Normal Dashcams",
+            afterImageText: "With Night Vision AI & STARVIS image sensor",
+            compare: true,
           },
           {
             heading: "See What Most Cameras Miss",
@@ -39,9 +38,9 @@ const page = () => {
             tabtitle: "On The Road Daily?",
             image1: "/productPageImages/comparisionImages/z820dc/820_before.webp",
             image2: "/productPageImages/comparisionImages/z820dc/820_After.webp",
-                 beforeImageText:"Normal Dashcams",
-            afterImageText:"With STARVIS image sensor",
-            compare:true
+            beforeImageText: "Normal Dashcams",
+            afterImageText: "With STARVIS image sensor",
+            compare: true,
           },
           {
             heading: "See What Most Cameras Miss",
@@ -66,7 +65,7 @@ const page = () => {
       />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

@@ -35,7 +35,7 @@ export default function FeatureAccordion() {
   const currentFeature = features.find((f) => f.id === activeId);
 
   return (
-    <section className="relative bg-black text-white px-8 md:px-4 md:pl-20 py-12 md:py-16 rounded-3xl max-w-7xl xl:max-w-[90%] lg:mx-32 mx-5 mt-20 mb-[10rem] overflow-hidden">
+    <section className="relative bg-black text-white px-8 md:px-4 md:pl-20 py-12 md:py-16 rounded-3xl max-w-[90%] mx-auto xl:max-w-[90%]  mx-5  mt-20 mb-[10rem] overflow-hidden">
       <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Accordion Content */}
         <div className="relative z-20">
@@ -82,7 +82,7 @@ export default function FeatureAccordion() {
                       className="mt-4"
                     >
                       {/* Text */}
-                      <p className="text-[#ABABAB] whitespace-pre-line text-[14px] md:text-[16px]">{feature.content}</p>
+                      <p className="text-[#ABABAB] whitespace-pre-line text-[12px] lg2:text-[16px]">{feature.content}</p>
 
                       {/* Small Image only on mobile */}
                       {/* Small Image only on mobile */}
@@ -155,7 +155,7 @@ export default function FeatureAccordion() {
             {currentFeature?.id === "conditions" && (
               <div className="w-[100%] h-full flex  flex-row-reverse">
                 <div className="relative w-[80%] h-full overflow-hidden">
-                  <Image src={currentFeature?.image || ""} alt={currentFeature?.title || ""} fill className="object-cover object-left" />
+                  <Image src={currentFeature?.image || ""} alt={currentFeature?.title || ""} fill className="object-cover md:!h-80 md:!w-80 xl:!w-[90%] xl:!h-[100%] md:my-auto md:ml-auto object-left" />
                   <div className="absolute inset-0 bg-gradient-radial from-black/60 to-transparent z-10 pointer-events-none" />
                 </div>
               </div>

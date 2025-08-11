@@ -29,7 +29,7 @@ export default function ZenVue() {
         <div className="block lg:hidden flex justify-center mt-[-5rem]">
           <div className="w-screen sm:w-[300px] md:w-[500px] h-auto">
             <Image
-              src="/Images/zenVueIMg.png"
+              src="/homePageImages/featureAccordionImages/feature2.png"
               alt="Mobile Device"
               width={1200}
               height={1200}

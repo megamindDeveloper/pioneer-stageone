@@ -55,10 +55,13 @@ const page = () => {
       <ZenVue />
       <ProductFeatureTable products={defaultProducts} priorityProductIndex={2} />
       <EverythingNeedToKnow faqData={faqData.set3} />
+      <div className='bg-black'>
+
       <DriveSmarter
         subText="Drive with confidence, capture every moment, & stay protected. Explore what the H320SC brings to every drive."
                image="/productPageImages/driveSmarterImages/h320sc.webp"
       />
+      </div>
       <Footer />
 
     </div>

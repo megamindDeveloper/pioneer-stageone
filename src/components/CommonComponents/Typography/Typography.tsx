@@ -23,15 +23,15 @@ const variantClasses: Record<string, string> = {
   "section-body":
     "text-[14px] leading-auto md:text-[13.6px] md:leading-auto lg:text-[20px] lg:leading-auto  xl:text-[24px] xl:leading-auto 2xl:text-[35.4px] 2xl:leading-auto",
     "section-card-heading":
-    "text-[20px] md:text-3xl !font-medium xl:text-4xl mb-3 whitespace-pre-line",
+    "text-[20px] lg2:text-3xl !font-medium xl:text-4xl mb-3 whitespace-pre-line",
     "section-card-body":
     "text-[12px] leading-auto md:text-[13.6px] md:leading-auto lg:text-[14px] lg:leading-auto lg2:text-[16px] lg2:leading-auto xl:text-[16.0px] xl:leading-auto 2xl:text-[35.4px] 2xl:leading-auto",
 
   // Grid View
   "grid-view-heading":
-    "text-[20.5px] leading-auto md:text-[12.6px] lg:text-[28px] md:leading-auto xl:text-[26.0px] xl:leading-auto 2xl:text-[32.9px] 2xl:leading-auto",
+    "text-[20.5px] leading-auto md:text-[12.6px] lg:text-[20px] lg2:text-[28px] md:leading-auto xl:text-[26.0px] xl:leading-auto 2xl:text-[32.9px] 2xl:leading-auto",
   "grid-view-body":
-    "text-[5.7px] leading-auto md:text-[6.8px] md:leading-auto lg:text-[16px] lg:leading-auto xl:text-[16.0px] xl:leading-auto 2xl:text-[17px] 2xl:leading-auto",
+    "text-[5.7px] leading-auto md:text-[6.8px] md:leading-auto lg:text-[12px] lg2:text-[16px] lg:leading-auto xl:text-[16.0px] xl:leading-auto 2xl:text-[17px] 2xl:leading-auto",
   "grid-view-body-hovered":
     "text-[4.9px] leading-auto md:text-[5.8px] md:leading-auto lg:text-[7.8px] lg:leading-auto lg2:text-[9.1px] lg2:leading-auto xl:text-[16.0px] xl:leading-auto 2xl:text-[15.2px] 2xl:leading-auto",
 

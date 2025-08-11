@@ -134,7 +134,7 @@ export default function ProductFeatureTable({
   const reorderedProducts = [products[safePriorityIndex], ...products.filter((_, i) => i !== safePriorityIndex)];
 
   return (
-    <section className="text-white bg-black px-4 md:px-8 py-20 max-w-6xl xl:max-w-[90%] mx-auto ">
+    <section className="text-white bg-black px-4 md:px-8 py-20 max-w-6xl xl:max-w-[80%] mx-auto ">
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h2 className="text-center text-[48px] font-medium tracking-wide mb-2">Which One’s Built for You?</h2>
         <p className="text-[#ABABAB]/80 text-sm md:text-base">Compare the key features across each model</p>

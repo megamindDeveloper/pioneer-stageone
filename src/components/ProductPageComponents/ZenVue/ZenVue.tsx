@@ -29,12 +29,13 @@ export default function ZenVue() {
         <div className="block lg:hidden flex justify-center mt-[-5rem]">
           <div className="w-screen sm:w-[300px] md:w-[500px] h-auto">
             <Image
-              src="/Images/zenVueIMg.png"
+              src="/homePageImages/featureAccordionImages/feature2.png"
               alt="Mobile Device"
               width={1200}
               height={1200}
               className="w-full h-auto object-contain drop-shadow-7xl"
             />
+             
           </div>
           
         </div>
@@ -61,7 +62,7 @@ export default function ZenVue() {
         </div>
 
         {/* Left Content (Desktop) */}
-        <div className="flex-1 space-y-6 text-center lg:text-left order-3 lg:order-none hidden lg:block">
+        <div className="flex-1 space-y-6 text-center lg:text-left order-3 lg:order-none hidden lg:block mt-40">
           <p className="text-[16px] text-white/70 lg:mx-8">Control at Your Fingertips</p>
           <h1 className="tracking-wider text-[180px] leading-none mt-[-14px] ms-5 pl-2 font-bold text-white">Zen</h1>
           <p className="text-white/80 text-[12px] max-w-md mx-auto lg:ml-9 mr-12 ">
@@ -72,7 +73,7 @@ export default function ZenVue() {
         </div>
 
         {/* Center Image for Desktop */}
-        <div className="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[52%] z-20 w-auto h-[700px] items-center justify-center">
+        <div className="hidden lg:flex absolute top-[80%] left-1/2 transform -translate-x-[50%] -translate-y-[52%] z-20 w-auto h-[700px] xl:h-[800px] items-center justify-center">
           <Image
             src="/homePageImages/featureAccordionImages/feature2.png"
             alt="Mobile Device"
@@ -80,10 +81,11 @@ export default function ZenVue() {
             height={1000}
             className="drop-shadow-3xl w-full h-full object-cover"
           />
+       <div className="w-[500px] absolute bottom-[-2.8rem] h-32 mx-auto bg-gradient-to-b from-transparent to-[#000000]  pointer-events-none" />
         </div>
 
         {/* Right Title & Store Buttons (Desktop) */}
-        <div className="hidden lg:flex flex-col items-end mt-[-3.5rem] flex-2 text-right space-y-4">
+        <div className="hidden lg:flex flex-col items-end mt-[3.5rem] flex-2 text-right space-y-4">
           <h1 className="text-[180px] tracking-wider ml-5 mt-[5.3rem] leading-none font-bold text-white">Vue</h1>
           <p className="text-sm text-white/70 mr-6">Available on</p>
           <div className="flex gap-3 space-x-2 mt-0 mr-6">

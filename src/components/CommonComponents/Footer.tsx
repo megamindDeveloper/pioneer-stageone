@@ -46,7 +46,7 @@ export default function Footer() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <footer className="bg-gradient-to-t from-[#AD2239] to-[#00000000] text-white">
+    <footer className="bg-gradient-to-t from-[#AD2239] to-transparent text-white">
       {/* ---------- DESKTOP / LAPTOP VERSION ---------- */}
       <div className="hidden md:block pt-20 pb-8">
         <div className="max-w-6xl xl:max-w-[90%] mx-auto w-full px-4 flex flex-col justify-center min-h-[300px]">

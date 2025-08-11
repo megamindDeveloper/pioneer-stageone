@@ -44,7 +44,7 @@ const features = [
 
 export default function ProductComparisonTable() {
   return (
-    <section className="b text-white px-4 md:px-8 py-20 max-w-7xl  xl:max-w-[90%] mx-auto mt-20">
+    <section className="b text-white px-4  py-20 max-w-[90%]  xl:max-w-[90%] mx-auto mt-20">
       <div className="max-w-7xl mx-auto text-center mb-20">
         <Typography variant="section-heading" className="!font-semibold ">
         Pick Your Level of Performance
@@ -53,12 +53,12 @@ export default function ProductComparisonTable() {
       </div>
 
       <div className="overflow-x-auto">
-        <div className="min-w-[800px] grid grid-cols-[200px_repeat(4,minmax(150px,1fr))] gap-x-6 text-left">
+        <div className="min-w-[800px] grid grid-cols-[200px_repeat(4,minmax(140px,1fr))] gap-x-6 text-left">
           {/* Product Images and Links */}
           <div />
           {products.map((product, i) => (
             <div key={i} className="text-center space-y-4">
-              <div className="relative w-40 h-28 mx-auto">
+              <div className="relative w-20 lg2:w-40 h-28 mx-auto">
                 {/* Gradient Overlay */}
             
 

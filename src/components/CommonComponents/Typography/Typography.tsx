@@ -23,7 +23,7 @@ const variantClasses: Record<string, string> = {
   "section-body":
     "text-[14px] leading-auto md:text-[13.6px] md:leading-auto lg:text-[20px] lg:leading-auto  xl:text-[24px] xl:leading-auto 2xl:text-[35.4px] 2xl:leading-auto",
     "section-card-heading":
-    "text-[20px] md:text-3xl !font-medium xl:text-4xl mb-3 whitespace-pre-line",
+    "text-[20px] lg2:text-3xl !font-medium xl:text-4xl mb-3 whitespace-pre-line",
     "section-card-body":
     "text-[12px] leading-auto md:text-[13.6px] md:leading-auto lg:text-[14px] lg:leading-auto lg2:text-[16px] lg2:leading-auto xl:text-[16.0px] xl:leading-auto 2xl:text-[35.4px] 2xl:leading-auto",
 

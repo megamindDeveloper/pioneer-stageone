@@ -125,7 +125,7 @@ export default function ProductDetails() {
   const isInView = useInView(sectionRef, { margin: "-10px", once: false });
 
   return (
-    <section className="relative min-h-screen py-12 px-4 text-white max-w-7xl xl:max-w-[90%] mt-20  mx-auto">
+    <section className="relative min-h-screen py-12 px-4 text-white max-w-[90%] xl:max-w-[90%] mt-20  mx-auto">
       <Typography variant="section-heading" className="!font-medium  text-center text-white  px-8">
         What Matters Most When You Drive?
       </Typography>

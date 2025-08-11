@@ -14,20 +14,15 @@ import Footer from '@/components/CommonComponents/Footer';
 import Model4TextOverlay from '@/components/Model4Components/Textoverlay/Textoverlay';
 import Model1TextOverlay from '@/components/Model1Components/Textoverlay/Textoverlay';
 import FadeLoader from '@/components/CommonComponents/Loader';
-const Blender2JSPage = dynamic(() => import("../../components/Model1Components/MobileBlender/MobileBlender"), {
-  ssr: false,
-});
+import Blender2JSPage from '../page4/page';
+
 
 const page = () => {
   const [modelReady, setModelReady] = useState(false);
   return (
     <div>
-      {!modelReady && (
-        <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
-          <FadeLoader isModelReady={false} />
-        </div>
-      )}
-      <Blender2JSPage onModelReady={() => setModelReady(true)}/>
+     
+      <Blender2JSPage/>
       <Model1TextOverlay />
       <Compare
         tabs={[

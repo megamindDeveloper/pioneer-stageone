@@ -58,7 +58,7 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
       </div>
 
       {/* Comparison / Image Section */}
-      <div className="w-full max-w-5xl xl:max-w-[80%] h-[500px] sm:h-[600px] md:h-[80vh] rounded-xl overflow-hidden relative mt-10">
+      <div className="w-full max-w-[80%] xl:max-w-[80%] h-[500px] sm:h-[600px] md:h-[80vh] rounded-xl overflow-hidden relative mt-10">
         {/* Image Comparison Mode */}
         {tabs[activeTab].compare === true ? (
           <div
@@ -141,9 +141,9 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
             <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
 
             {/* Headline/Subtext over image for desktop only */}
-            <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[60%]">
+            <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[90%]">
               <h3 className="text-white text-2xl font-semibold">{currentTab.compareHeading}</h3>
-              <p className="text-[#ABABAB] text-base mt-2">{currentTab.compareSubheading}</p>
+              <p className="text-[#DFDFDF] text-base mt-2">{currentTab.compareSubheading}</p>
             </div>
           </div>
         ) : (
@@ -156,18 +156,18 @@ export const Compare = ({ tabs }: { tabs: tabDataProps[] }) => {
               draggable={false}
             />
             {/* Gradient Overlay */}
-            <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/70 via-black/40 to-transparent z-30 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-black/100 via-black/40 to-transparent z-30 pointer-events-none" />
 
             <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-100 px-4 w-[90%]">
               <h3 className="text-white text-2xl font-semibold">{currentTab.compareHeading}</h3>
-              <p className="text-[#ABABAB] text-base mt-2">{currentTab.compareSubheading}</p>
+              <p className="text-[#DFDFDF] text-base mt-2">{currentTab.compareSubheading}</p>
             </div>
           </div>
         )}
       </div>
 
       {/* Tabs */}
-      <div className="w-full flex justify-center mt-12">
+      <div className="w-full flex justify-center mt-24">
         <div className="flex justify-center gap-8 sm:gap-6 md:gap-27 flex-wrap sm:flex-nowrap max-w-full">
           {tabs.map((tab, index) => (
             <button

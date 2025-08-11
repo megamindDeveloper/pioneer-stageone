@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { JSX, useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,16 +38,18 @@ export default function Model1TextOverlay() {
 
           // Map scroll progress to stages
           if (p === 0) setStage(null);
-          else if (p >= 0.0350 && p < 0.1) setStage("s1");
-          else if (p >= 0.110 && p < 0.1613) setStage("s2");
-          else if (p >= 0.2420 && p < 0.2982) setStage("s3");
-          else if (p >= 0.3547 && p < 0.4079) setStage("s4");
-          else if (p >= 0.469 && p < 0.5) setStage("s5");
-          else if (p >= 0.505 && p < 0.531) setStage("s6");
-          else if (p >= 0.6386 && p < 0.6559) setStage("s7");
-          else if (p >= 0.7592 && p < 0.8813) setStage("s8");
-          else if (p >= 0.9383 && p < 0.9529) setStage("s9");
-          else if (p >= 0.9779 && p < 1) setStage("s10");
+          else if (p >= 0.0350 && p < 0.0725) setStage("s1");
+          else if (p >= 0.0825 && p < 0.1310) setStage("s2");
+          else if (p >= 0.1956 && p < 0.2286) setStage("s3");
+          else if (p >= 0.2781 && p < 0.2987) setStage("s4");
+          else if (p >= 0.3462 && p < 0.36) setStage("s5");
+          else if (p >= 0.38 && p < 0.402
+          ) setStage("s6");
+          else if (p >= 0.5557 && p < 0.5859
+          ) setStage("s7");
+          else if (p >= 0.6674 && p < 0.8570) setStage("s8");
+          else if (p >= 0.9068 && p < 0.9340) setStage("s9");
+          else if (p >= 0.9528 && p < 1) setStage("s10");
           else setStage(null);
         },
       });
@@ -102,7 +104,7 @@ export default function Model1TextOverlay() {
     s5: (
       <div>
         <p className="text-cherryRed text-xl font-bold text-center">Adapts to Any Light</p>
-        <h2 className="text-[56px] text-white text-center font-medium">WDR & HDR Recording</h2>
+        <h2 className="lg:text-[42px] lg2:text-[56px] text-white text-center font-medium">WDR & HDR Recording</h2>
         <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto">
           It adjusts exposure in real time, preserving visibility and fine detail, so footage stays clear in both bright and low-light conditions.
         </p>

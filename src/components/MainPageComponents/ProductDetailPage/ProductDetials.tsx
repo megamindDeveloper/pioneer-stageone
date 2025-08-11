@@ -232,7 +232,7 @@ export default function ProductDetails() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed bottom-8 left-1/2 md:w-auto w-[100%] px-auto flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-[24px] pr-4 py-[15px] rounded-full shadow-xl  transition-all text-[18px] md:text-base lg:text-[14px] xl:text-[17px]"
+            className="fixed bottom-8 left-1/2 md:w-auto w-[100%] px-auto flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-[24px] pr-4 py-[15px] rounded-full shadow-xl  transition-all text-[14px] md:text-base lg:text-[14px] xl:text-[17px]"
            
           >
             <Link  href={currentContent.banner.buttonLink}>

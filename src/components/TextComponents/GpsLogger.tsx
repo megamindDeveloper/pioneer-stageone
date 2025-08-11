@@ -21,7 +21,7 @@ export default function GpsLogger({ highlightedText, heading, subheading, descri
 
         {/* Bottom Section (Always bottom) */}
         <div className="pb-8 sm:pb-12">
-          <p className="text-[16px] text-[#313131] max-w-4xl mx-auto">{description}</p>
+          <p className="text-[16px] text-[#313131]  max-w-4xl mx-auto">{description}</p>
         </div>
       </main>
     </>

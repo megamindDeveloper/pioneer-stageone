@@ -2,14 +2,15 @@
 
 import React, { Suspense, useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, useGLTF } from "@react-three/drei";
+import { Environment, useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { SRGBColorSpace } from "three";
 useGLTF.preload("/models/car.glb");
-
+useGLTF.preload("/models/VREC_H520DC.glb");
+useTexture.preload("/modelImages/CommonModelImages/aiNight.png");
 const animationData = [
   { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2 },
-  { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2.5 },
+  // { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2.5 },
   { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 3 },
   { time: 0.0417, position: [-0.11, 1.215, 0.44], quaternion: [0.03902204, -0.5, -0.0781377, 0.9276399], fov: 20 },
   { time: 0.0417, position: [-0.11, 1.215, 0.44], quaternion: [0.03902204, -0.5, -0.0781377, 0.9276399], fov: 20 },
@@ -467,7 +468,7 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
   useEffect(() => {
     // Load image texture
     const loader = new THREE.TextureLoader();
-    loader.load("/Images/ainight.png", (texture) => {
+    loader.load("/modelImages/CommonModelImages/aiNight.png", (texture) => {
       texture.flipY = false;
       texture.colorSpace = THREE.SRGBColorSpace;
      
@@ -1024,7 +1025,7 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
       </Typography>
       <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl">VREC‑H520DC captures sharp 2K video, even in low light and on the move.</p>
       <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
-        Explore the features
+        Scroll to explore
         <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
       </button>
     </div>
@@ -1276,7 +1277,7 @@ export default function Blender2JSPage() {
           },
         });
         gsap.ticker.add(() => {
-          setScrollProgress((prev) => THREE.MathUtils.lerp(prev, targetProgress, 0.1));
+          setScrollProgress((prev) => THREE.MathUtils.lerp(prev, targetProgress, 0.03));
         });
 
         cleanup = () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -1290,9 +1291,9 @@ export default function Blender2JSPage() {
   }, []);
 
   return (
-    <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "4000vh", scrollBehavior: "smooth" }}>
+    <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "2500vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
-      {/* <Timeline scrollProgress={scrollProgress} /> */}
+      <Timeline scrollProgress={scrollProgress} />
       <HeroTextFade scrollProgress={scrollProgress} />
       {/* <DummyBlack scrollProgress={scrollProgress} /> */}
       <Canvas

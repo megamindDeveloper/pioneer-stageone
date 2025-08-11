@@ -37,8 +37,8 @@ const page = () => {
             compareSubheading:
               "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
             tabtitle: "On The Road Daily?",
-            image1: "/productPageImages/comparisionImages/z820dc/NOISE_BEFORE.webp",
-            image2: "/productPageImages/comparisionImages/z820dc/NOISE_AFTER.webp",
+            image1: "/productPageImages/comparisionImages/z820dc/820_before.webp",
+            image2: "/productPageImages/comparisionImages/z820dc/820_After.webp",
                  beforeImageText:"Normal Dashcams",
             afterImageText:"With STARVIS image sensor",
             compare:true
@@ -46,12 +46,12 @@ const page = () => {
           {
             heading: "See What Most Cameras Miss",
             subheading: "Real footage in real conditions. The VREC-Z820DC doesn’t just record, it gives you clarity and context.",
-            compareHeading: "Clarity That Keeps Up With Your Commute",
+            compareHeading: "Coverage That Keeps Both Ends Clear",
             compareSubheading:
-              "From sharp sunlight to shadowy underpasses, the Sony STARVIS sensor adapts in real time — handling glare, contrast and light shifts with ease for clear and consistent footage in every driving condition.",
+              "The VREC-Z820DC captures ultra-sharp 4K footage from the front and Full HD from the rear. With dual cameras work ing together, you get full-scene clarity, whether you're on the move or parked.",
             tabtitle: "Prefer 4k Coverage?",
-            image2: "/productPageImages/comparisionImages/z820dc/Z820DC-3rd.webp",
-            image1: "/productPageImages/comparisionImages/z820dc/Z820DC-3rd.webp",
+            image2: "/productPageImages/comparisionImages/z820dc/820-3rd.webp",
+            image1: "/productPageImages/comparisionImages/z820dc/820-3rd.webp",
           },
         ]}
       />

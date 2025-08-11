@@ -33,9 +33,9 @@ export default function Model2textOverlay() {
           console.log("Scroll Progress:", p.toFixed(3));
 
           if (p === 0) setStage(null);
-          else if (p >= 0.0178 && p < 0.0675) setStage("s2");
-          else if (p >= 0.0877 && p < 0.1113) setStage("s3");
-          else if (p >= 0.2103 && p < 0.2432) setStage("s4");
+        
+          else if (p >= 0.0365 && p < 0.1113) setStage("s3");
+          else if (p >= 0.1783 && p < 0.2432) setStage("s4");
           else if (p >= 0.2433 && p < 0.2633) setStage("s13");
           else if (p >= 0.3327 && p < 0.3506) setStage("s5");
           else if (p >= 0.4507 && p < 0.46) setStage("s6");

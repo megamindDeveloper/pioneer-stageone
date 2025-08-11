@@ -8,7 +8,7 @@ export default function SharpVision({ highlightedText, heading, subheading }: Sh
   return (
     <>
       <section className="flex min-h-screen flex-col justify-end sm:justify-end items-center px-4 py-12 sm:p-1">
-        <div className="flex flex-col items-center justify-center text-center w-full max-w-xl gap-4">
+        <div className="flex flex-col items-center justify-center text-center w-full max-w-xl ">
           {/* Subtitle */}
           <p className="text-[#AD2239] text-[16px]  font-bold">{highlightedText}</p>
 

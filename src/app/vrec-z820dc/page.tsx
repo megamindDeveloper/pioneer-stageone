@@ -9,10 +9,14 @@ import EverythingNeedToKnow from "@/components/ProductPageComponents/EverythingN
 import { faqData } from "../utils/FaqData/FaqData";
 import DriveSmarter from "@/components/ProductPageComponents/DriveSmarter/DriveSmarter";
 import Footer from "@/components/CommonComponents/Footer";
+import MobileScrollScaleSection from "@/components/Model1Components/mobileComponent";
+import MobileScroll from "@/components/Model1Components/mobileComponent";
 const page = () => {
   return (
     <div className="bg-black">
-      <Blender2JSPage />
+      {/* <Blender2JSPage /> */}
+
+      <MobileScroll/>
       <Model1textOverlay />
       <Compare
         tabs={[

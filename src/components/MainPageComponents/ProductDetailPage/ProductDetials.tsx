@@ -104,7 +104,7 @@ const contentMap = {
       imageClassName: "md:w-[90%] xl:w-[77%]",
     },
     overlay: {
-      image: "/homePageImages/productDetailsImage/h120scImages/image3.png",
+      image: "/homePageImages/productDetailsImage/h120scImages/0057 3 (3).png",
       title: `Not a tech \nperson?`,
       description: `Quick setup and app-based \ncontrol make it beginner-friendly \nfrom day one.`,
       imageClassName: "w-[100%]  h-[100%] mt-2",

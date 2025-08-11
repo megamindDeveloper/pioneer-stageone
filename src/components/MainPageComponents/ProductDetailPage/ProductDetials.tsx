@@ -125,7 +125,7 @@ export default function ProductDetails() {
   const isInView = useInView(sectionRef, { margin: "-10px", once: false });
 
   return (
-    <section className="relative min-h-screen py-12 px-4 text-white max-w-[90%] xl:max-w-[90%] mt-20  mx-auto">
+    <section className="relative min-h-screen py-12 px-4 text-white max-w-[90%] xl:max-w-[90%] mdmt-20  mx-auto">
       <Typography variant="section-heading" className="!font-medium  text-center text-white  px-8">
         What Matters Most When You Drive?
       </Typography>
@@ -232,10 +232,10 @@ export default function ProductDetails() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed bottom-8 left-1/2 md:w-auto w-[100%] px-auto flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-[24px] pr-4 py-[15px] rounded-full shadow-xl  transition-all text-[14px] md:text-base lg:text-[14px] xl:text-[17px]"
+            className="fixed bottom-8 left-1/2 md:w-auto px-auto  flex items-center gap-5 transform -translate-x-1/2 z-50 bg-[#262626] text-white font-medium pl-[24px] pr-4 py-[15px] rounded-full shadow-xl  transition-all text-[12px] md:text-base lg:text-[14px] xl:text-[17px]"
            
           >
-            <Link  href={currentContent.banner.buttonLink}>
+            <Link  href={currentContent.banner.buttonLink} className="whitespace-nowrap">
             
             Explore the {tabs.find((t) => t.id === activeTab)?.model} Now{" "}
             </Link>

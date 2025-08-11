@@ -480,7 +480,7 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
       </Typography>
       <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl">The VREC‑H320SC combines real-time driver alerts with built-in G Sensor for emergency recording.</p>
       <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
-        Explore the features
+        Scroll to explore
         <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
       </button>
     </div>
@@ -813,7 +813,7 @@ function Blender2JSScene({
     }
     // Load image texture
     const loader = new THREE.TextureLoader();
-    loader.load("/Images/520 Screen.webp", (texture) => {
+    loader.load("/modelImages/CommonModelImages/520 Screen.webp", (texture) => {
       console.log("🎯 Image texture loaded successfully");
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.repeat.x = -1;
@@ -847,7 +847,7 @@ function Blender2JSScene({
 
       // Load video texture
       const video = document.createElement("video");
-      video.src = "/video/video.mp4";
+      video.src = "/video/video520.mp4";
       video.crossOrigin = "anonymous";
       video.loop = true;
       video.muted = true;

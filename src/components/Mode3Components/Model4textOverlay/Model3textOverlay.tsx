@@ -12,6 +12,7 @@ import FourKVideo from "@/components/TextComponents/FourKVideo";
 import SharpVision from "@/components/TextComponents/SharpVision";
 import DynamicContent from "@/components/TextComponents/DynamicContent";
 import FieldOfVision from "@/components/TextComponents/FieldOfVision";
+import DriveAlertH320 from "@/components/TextComponents/DriveAlertH320";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,18 +34,17 @@ export default function Model3textOverlay() {
           console.log("Scroll Progress:", p.toFixed(3));
 
           if (p === 0) setStage(null);
-          else if (p >= 0.0178 && p < 0.0675) setStage("s2");
-          else if (p >= 0.0877 && p < 0.1113) setStage("s3");
-          else if (p >= 0.2055 && p < 0.2432) setStage("s4");
-          else if (p >= 0.2433 && p < 0.2633) setStage("s13");
-          else if (p >= 0.2798 && p < 0.2944) setStage("s5");
-          else if (p >= 0.3546 && p < 0.3723) setStage("s6");
-          else if (p >= 0.3824 && p < 0.4) setStage("s7");
+          else if (p >= 0.0178 && p < 0.0275) setStage("s2");
+          else if (p >= 0.0359 && p < 0.0771) setStage("s3");
+          else if (p >= 0.2015 && p < 0.2476) setStage("s4");
+          else if (p >= 0.2650 && p < 0.2999) setStage("s5");
+          else if (p >= 0.3542 && p < 0.3723) setStage("s6");
+          else if (p >= 0.3824 && p < 0.4095) setStage("s7");
           else if (p >= 0.6590 && p < 0.6666) setStage("s8");
           else if (p >= 0.703 && p < 0.8423) setStage("s9");
           else if (p >= 0.942 && p < 0.9529) setStage("s10");
-          else if (p >= 0.9317 && p < 0.9492) setStage("s12");
-          else if (p >= 0.9777 && p < 1) setStage("s11");
+          else if (p >= 0.9218 && p < 0.9411) setStage("s12");
+          else if (p >= 0.9607 && p < 1) setStage("s11");
           else setStage(null);
         },
       });
@@ -95,15 +95,7 @@ export default function Model3textOverlay() {
         />
       </div>
     ),
-    s13: (
-      <div>
-        <SharpVision
-          highlightedText="Automatic Event Recording"
-          heading="Built-in G-Sensor"
-          subheading="Stay protected with built-in G-sensor technology that automatically locks important footage during emergencies."
-        />
-      </div>
-    ),
+
     s5: (
       <div>
         <DynamicContent
@@ -125,7 +117,7 @@ export default function Model3textOverlay() {
     ),
     s7: (
       <div>
-        <DriveAlert
+        <DriveAlertH320
           highlightedText="Timely Warnings When It Matters"
           heading="ADAS Alerts"
           subheading="Get audio cues for lane departure and forward collision so you can stay aware, avoid surprises and respond faster on busy roads."
@@ -186,7 +178,7 @@ export default function Model3textOverlay() {
     default: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s2: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s3: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s4: "top-1/2  right-32 z-[100]",
+    // s4: "top-1/2  right-32 z-[100]",
     s5: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s6: "bottom-1 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s7: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
@@ -194,7 +186,7 @@ export default function Model3textOverlay() {
     s9: "top-1/3 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s10: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s11: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s13: "top-0 left-2/3 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s4: "top-0 left-2/3 z-[100] -translate-x-1/2 -translate-y-1/2",
       s12: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
   };
 

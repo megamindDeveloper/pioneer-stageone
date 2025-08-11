@@ -40,7 +40,7 @@ export default function Model4TextOverlay() {
           // Map scroll progress to stages
           if (p === 0) setStage(null);
           else if (p >= 0.0350 && p < 0.1) setStage("s1");
-          else if (p >= 0.0777 && p < 0.1554) setStage("s2");
+          else if (p >= 0.0638 && p < 0.1554) setStage("s2");
           else if (p >= 0.2620 && p < 0.3079) setStage("s3");
           else if (p >= 0.3547 && p < 0.4079) setStage("s4");
           else if (p >= 0.5845 && p < 0.6901) setStage("s5");
@@ -125,7 +125,7 @@ export default function Model4TextOverlay() {
     //   </div>
     // ),
     s7: (
- <div className="w-[500px]">
+ <div className="w-[300px] md:w-500px">
   <p className="text-cherryRed text-lg sm:text-xl md:text-lg font-bold text-center">
     Store More Footage with Ease
   </p>
@@ -149,7 +149,7 @@ export default function Model4TextOverlay() {
       </div>
     ),
     s9: (
-       <div className="w-[100%] z-[-1]">
+       <div className="w-md md:w-[100%] z-[-1]">
         <FieldOfVision
           highlightedText="Stay Secure While Parked"
           heading="Optional Parking Mode"
@@ -174,13 +174,13 @@ export default function Model4TextOverlay() {
     default: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s1: "inset-0 flex  items-center justify-center z-[100] w-[100vw] h-[100%]",
     s2: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s3: "bottom-[18rem] right-32 z-[100]",
+    s3: "md:bottom-[18rem] md:right-32 bottom-[2rem] right-[-4rem] z-[100]",
     s4: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s5: "top-1/2 right-1 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s5: "md:top-1/2 md:right-1 top-1/2 right-[-13rem] z-[100] -translate-x-1/2 -translate-y-1/2",
     s6: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s7: "top-1/2 left-1/5 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s7: "md:top-1/2 md:left-1/5 bottom-1 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s8: "  left-1/2 top-[200px] z-[100] -translate-x-1/2 -translate-y-1/2",
-    s9: "top-1/2 left-[72vw] z-[100] -translate-x-1/2 -translate-y-1/2",
+    s9: "md:top-1/2 md:left-[72vw] bottom-1 left-[49vw] z-[100] -translate-x-1/2 -translate-y-1/2",
     s10: "top-1 right-1 z-[100] -translate-x-1/2 -translate-y-1/2",
   };
 

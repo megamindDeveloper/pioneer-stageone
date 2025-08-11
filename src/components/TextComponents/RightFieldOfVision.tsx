@@ -13,7 +13,7 @@ export default function RightFieldOfVision({
 }: RightFieldOfVisionProps) {
   return (
  <main className="relative h-full w-full overflow-hidden text-white px-4 flex items-center justify-center bg-none">
-  <div className="text-center max-w-2xl">
+  <div className="text-center max-w-sm md:max-w-2xl ">
     {/* Top Red Text */}
     {highlightedText && (
       <p className="text-[#AD2239] font-medium text-sm sm:text-base md:text-lg leading-snug mb-2">

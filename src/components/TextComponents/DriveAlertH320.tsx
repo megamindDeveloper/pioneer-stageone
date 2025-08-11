@@ -26,7 +26,7 @@ export default function DriveAlertH320({
   model,
 }: DriveAlertH320Props) {
   return (
-<section className="min-h-screen text-white flex flex-col justify-between px-4 sm:px-6 py-12 text-center">
+<section className="min-h-screen w-sm md-w-xl text-white flex flex-col justify-between px-4 sm:px-6 py-12 text-center">
   {/* Top Icon */}
   <div className="pt-52 sm:pt-42 mb-[-4rem] pl-6 animate-fastpulse">
     <Image

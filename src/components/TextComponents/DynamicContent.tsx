@@ -13,7 +13,7 @@ export default function DynamicContent({ highlightedText, heading, subheading, s
 <section
   className={`flex ${style} min-h-screen px-4 py-16 sm:px-6 sm:py-20 items-end sm:items-center justify-center`}
 >
-  <div className="flex flex-col w-full max-w-xl items-center justify-center text-center px-4 pb-4 sm:pb-0">
+  <div className="flex flex-col  w-md md:w-xl items-center justify-center text-center px-4 pb-4 sm:pb-0">
     {/* Subtitle */}
     <p className="text-[#AD2239] font-bold text-sm sm:text-base md:text-lg">
       {highlightedText}

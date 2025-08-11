@@ -8,7 +8,7 @@ type GpsLoggerProps = {
 export default function GpsLogger({ highlightedText, heading, subheading, description }: GpsLoggerProps) {
   return (
     <>
-<main className="flex flex-col justify-between min-h-screen px-4 text-center pt-10 sm:pt-0">
+<main className="flex flex-col justify-between w-sm md:w-xl min-h-screen px-4 text-center pt-10 sm:pt-0">
   {/* Top (Mobile: top center, Desktop: center) */}
   <div className="flex flex-col justify-start sm:justify-center items-center flex-grow space-y-4 sm:space-y-6">
     <p className="text-[#AD2239] font-bold tracking-wide text-sm sm:text-base md:text-lg">

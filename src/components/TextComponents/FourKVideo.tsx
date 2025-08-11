@@ -7,8 +7,8 @@ type FourKVideoProps = {
 export default function FourKVideo({ highlightedText, heading, subheading }: FourKVideoProps) {
   return (
     <>
-   <section className="relative min-h-screen text-white flex items-center justify-center px-4">
-  <div className="text-center max-w-4xl px-4">
+   <section className="relative min-h-screen text-white flex items-center justify-center px-12">
+  <div className="text-center min-w-xl sm:min-w-4xl px-22 sm:mt-1 mt-16 ">
     {/* Red Subheading */}
     <p className="text-[#AD2239] font-bold text-sm sm:text-base md:text-lg mb-3">
       {highlightedText}
@@ -20,7 +20,7 @@ export default function FourKVideo({ highlightedText, heading, subheading }: Fou
     </h2>
 
     {/* Description */}
-    <p className="text-[#ABABAB] text-sm sm:text-base md:text-md max-w-xl leading-relaxed">
+    <p className="text-[#ABABAB] text-sm sm:text-base md:text-md max-w-xl  leading-relaxed">
       {subheading}
     </p>
   </div>

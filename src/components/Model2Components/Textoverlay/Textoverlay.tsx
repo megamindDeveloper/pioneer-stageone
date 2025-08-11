@@ -116,7 +116,7 @@ export default function Model2textOverlay() {
       </div>
     ),
     s6: (
-      <div>
+      <div className="w-sm md-w-xl">
         <p className="text-cherryRed font-bold text-center text-lg sm:text-xl md:text-md">
           Clear Control with a Wider Screen
         </p>
@@ -125,7 +125,7 @@ export default function Model2textOverlay() {
           3" IPS Display
         </h2>
 
-        <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto text-sm sm:text-base md:text-md">
+        <p className="text-pretty text-[#ABABAB] text-center max-w-xl  mx-auto text-sm sm:text-base md:text-md">
           The built-in screen measures 7.6 cm across and offers a clear, responsive view for checking footage, adjusting settings or navigating menus
           without needing your phone.
         </p>
@@ -148,7 +148,7 @@ export default function Model2textOverlay() {
       </div>
     ),
     s8: (
-      <div>
+      <div className="w-sm md:w-xl">
         <p className="text-cherryRed font-bold text-center text-sm sm:text-base md:text-lg">
           Dual Camera Setup
         </p>
@@ -198,16 +198,16 @@ export default function Model2textOverlay() {
     default: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s2: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s3: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s4: "bottom-32 right-32 z-[100]",
-    s5: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s4: " sm:bottom-32 sm:right-32   bottom-32 left-[-70px] z-[100]",
+    s5: "    md:top-1/2 md:left-1/4  top-98 left-[205px] z-[100] -translate-x-1/2 -translate-y-1/2",
     s6: "bottom-1 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s7: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s8: "top-32 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s9: "top-1/3 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s10: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s11: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s13: "top-0 left-2/3 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s12: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s13: "sm:top-0 sm:left-2/3 z-[100]  top-98 left-[205px]   -translate-x-1/2 -translate-y-1/2",
+    s12: "sm:top-1/2 sm:left-1/4 z-[100] top-98 left-[205px]  -translate-x-1/2 -translate-y-1/2",
   };
 
   const currentOverlay = stage ? overlays[stage] : null;

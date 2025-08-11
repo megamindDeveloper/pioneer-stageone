@@ -39,8 +39,8 @@ export default function DriveAlertH520({
   </div>
 
   {/* Bottom Content */}
-  <div className="flex flex-col items-center space-y-12 sm:space-y-6 mt-[14rem] pb-8">
-    {/* Headings */}
+  <div className="flex flex-col w-sm md-w-2xl items-center space-y-12 sm:space-y-6 mt-[14rem] pb-8">
+    {/* Headings */} 
     <div>
       <p className="text-[#AD2239] font-bold mb-2 text-sm sm:text-base md:text-lg">
         {highlightedText}

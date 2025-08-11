@@ -475,11 +475,11 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
         transition: "transform 0.2s ease-out, opacity 0.2s ease-out",
       }}
     >
-      <Typography variant="hero-section-heading" className="text-xl !md:text-[62px] font-bold text-white text-center px-4 ">
+      <Typography variant="hero-section-headingg" className="text-[27px] !md:text-[62px] font-bold text-white text-center px-4 ">
       Every Drive Backed by Proof
       </Typography>
-      <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl">The VREC‑H320SC combines real-time driver alerts with built-in G Sensor for emergency recording.</p>
-      <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
+      <p className="text-[19px] md:text-[32px] text-[#ABABAB] mt-2 max-w-3xl">The VREC‑H320SC combines real-time driver alerts with built-in G Sensor for emergency recording.</p>
+      <button className="bg-[#262626] md:px-2 pl-4 md:py-2  px-1 py-1 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
         Scroll to explore
         <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />
       </button>

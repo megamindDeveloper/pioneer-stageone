@@ -5,13 +5,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import ReactDOM from "react-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import DriveAlert from "@/components/TextComponents/DriveAlert";
+// import DriveAlert from "@/components/TextComponents/DriveAlert";
 import OptionalParking from "@/components/TextComponents/OptionalParking";
 import GpsLogger from "@/components/TextComponents/GpsLogger";
 import FourKVideo from "@/components/TextComponents/FourKVideo";
 import SharpVision from "@/components/TextComponents/SharpVision";
 import DynamicContent from "@/components/TextComponents/DynamicContent";
 import FieldOfVision from "@/components/TextComponents/FieldOfVision";
+import DriveAlertH520 from "@/components/TextComponents/DriveAlertH520";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,16 +36,16 @@ export default function Model2textOverlay() {
           if (p === 0) setStage(null);
         
           else if (p >= 0.0365 && p < 0.1113) setStage("s3");
-          else if (p >= 0.1783 && p < 0.2432) setStage("s4");
+          else if (p >= 0.1741 && p < 0.2432) setStage("s4");
           else if (p >= 0.2433 && p < 0.2633) setStage("s13");
-          else if (p >= 0.3327 && p < 0.3506) setStage("s5");
-          else if (p >= 0.4507 && p < 0.46) setStage("s6");
-          else if (p >= 0.462 && p < 0.4838) setStage("s7");
-          else if (p >= 0.6590 && p < 0.6666) setStage("s8");
+          else if (p >= 0.2941 && p < 0.3506) setStage("s5");
+          else if (p >= 0.4118 && p < 0.4490) setStage("s6");
+          else if (p >= 0.4534 && p < 0.4838) setStage("s7");
+          else if (p >= 0.6413 && p < 0.6666) setStage("s8");
           else if (p >= 0.7833 && p < 0.8879) setStage("s9");
-          else if (p >= 0.942 && p < 0.9529) setStage("s10");
-          else if (p >= 0.9400 && p < 0.9600) setStage("s12");
-          else if (p >= 0.9777 && p < 1) setStage("s11");
+          else if (p >= 0.9508 && p < 0.9529) setStage("s10");
+          else if (p >= 0.8824 && p < 0.9529) setStage("s12");
+          else if (p >= 0.9712 && p < 1) setStage("s11");
           else setStage(null);
         },
       });
@@ -126,7 +127,7 @@ export default function Model2textOverlay() {
     ),
     s7: (
       <div>
-        <DriveAlert
+        <DriveAlertH520
           highlightedText="ADAS Enabled"
           heading="Smart Alerts for Safer Driving"
           subheading="Get audio alerts for lane departure, forward collision and stop-and-go alert so you stay aware of your surroundings and respond faster to sudden changes on the road."

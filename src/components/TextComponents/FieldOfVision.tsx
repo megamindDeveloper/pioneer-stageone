@@ -17,7 +17,7 @@ export default function FieldOfVision({
   <div className="absolute top-0 left-0 w-full h-full z-0" />
 
   {/* Content Wrapper */}
-  <div className="relative z-20 w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 mt-[-1rem] md:mt-1 lg:px-32 text-center lg:text-left">
+  <div className="relative z-20 w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between lg:items-center px-6 mt-[-1rem] md:mt-1 lg:px-32 text-center lg:text-left">
     {/* Top / Left Section */}
     <div className="max-w-sm space-y-2 mt-10 lg:mt-26">
       {highlightedText && (

@@ -8,7 +8,7 @@ export default function FourKVideo({ highlightedText, heading, subheading }: Fou
   return (
     <>
    <section className="relative min-h-screen text-white flex items-center justify-center px-12">
-  <div className="text-center min-w-xl sm:min-w-4xl px-22 sm:mt-1 mt-16 ">
+  <div className="text-center min-w-xl sm:min-w-3xl px-22 sm:mt-1 mt-16 ">
     {/* Red Subheading */}
     <p className="text-[#AD2239] font-bold text-sm sm:text-base md:text-lg mb-3">
       {highlightedText}

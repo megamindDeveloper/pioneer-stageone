@@ -23,7 +23,7 @@ export default function Home() {
       )}
       <div className="w-full h-full bg-gradient-to-b ">
         <CameraScene onModelReady={() => setModelReady(true)} />
-        <DashcamShowcase />
+        {/* <DashcamShowcase /> */}
         <ProductDetials />
         <ProductComparisonTable />
         <FeatureAccordion  />

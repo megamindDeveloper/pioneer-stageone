@@ -89,8 +89,8 @@ export default function Model3textOverlay() {
     s4: (
       <div>
         <SharpVision
-          highlightedText="Automatic Event Recording"
-          heading="Built-in G-Sensor"
+          highlightedText="Automatic Event Recording "
+          heading="Built-in G-Sensor "
           subheading="Stay protected with built-in G-sensor technology that automatically locks important footage during emergencies."
         />
       </div>
@@ -107,13 +107,18 @@ export default function Model3textOverlay() {
       </div>
     ),
     s6: (
-      <div>
-        <p className="text-cherryRed text-xl font-bold text-center">Clarity in Changing Light</p>
-        <h2 className="text-[56px] mx text-white text-center font-medium">Wide Dynamic Range (WDR)</h2>
-        <p className="text-pretty text-[#ABABAB]  text-center max-w-xl mx-auto">
-        From tunnels to tree cover, WDR balances bright and dark areas in real time so your footage stays detailed and easy to review.
-        </p>
-      </div>
+     <div className="w-sm md:w-xl">
+  <p className="text-cherryRed font-bold text-center text-lg sm:text-xl md:text-lg">
+    Clarity in Changing Light
+  </p>
+  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-white text-center font-medium">
+    Wide Dynamic Range (WDR)
+  </h2>
+  <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto text-sm sm:text-base md:text-md">
+    From tunnels to tree cover, WDR balances bright and dark areas in real time so your footage stays detailed and easy to review.
+  </p>
+</div>
+
     ),
     s7: (
       <div>
@@ -174,20 +179,21 @@ export default function Model3textOverlay() {
   };
 
   // Custom overlay divs
+
+  //  top-98 left-[205px]
   const overlayPosition = {
     default: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s2: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s3: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    // s4: "top-1/2  right-32 z-[100]",
-    s5: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s5: "md:top-1/2 md:left-1/4 top-98 left-[205px]  z-[100] -translate-x-1/2 -translate-y-1/2",
     s6: "bottom-1 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s7: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s8: "top-32 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s9: "top-1/3 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s10: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s11: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s4: "top-0 left-2/3 z-[100] -translate-x-1/2 -translate-y-1/2",
-      s12: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s4: "md:top-0 md:left-2/3  top-98 left-[205px] z-[100] -translate-x-1/2 -translate-y-1/2",
+      s12: "md:top-1/2 md:left-1/4 z-[100]  top-98 left-[205px]  -translate-x-1/2 -translate-y-1/2",
   };
 
   const currentOverlay = stage ? overlays[stage] : null;

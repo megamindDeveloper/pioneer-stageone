@@ -11,32 +11,34 @@ import { Html } from "@react-three/drei";
 
 const degToRad = (deg: number) => deg * (Math.PI / 180);
 
-function CameraModel({ onModelReady }: { onModelReady: () => void }) {
+function CameraModel({ onModelReady, onIntroComplete }: { onModelReady: () => void; onIntroComplete: () => void }) {
   const { scene } = useGLTF("/models/VREC-Z820DC.glb");
   const groupRef = useRef<THREE.Group>(null);
   const breakpoint = useBreakpoint();
+  const hasPlayedRef = useRef<boolean>(false);
 
   const getModelTransformByBreakpoint = (bp: string) => {
     switch (bp) {
       case "sm":
-        return { scale: 55, position: [0.3, 0.3, 0.7] };
+        return { scale: 55, position: [0.3, 0.3, 0.7] as [number, number, number] };
       case "md":
-        return { scale: 50, position: [-1.3, -1.8, 0.6] };
+        return { scale: 50, position: [-1.3, -1.8, 0.6] as [number, number, number] };
       case "lg":
-        return { scale: 100, position: [-0.5, -2.85, 0.5] };
+        return { scale: 100, position: [-0.5, -2.85, 0.5] as [number, number, number] };
       case "lg2":
-        return { scale: 100, position: [-1, -1.9, 0.5] };
+        return { scale: 100, position: [-1, -1.9, 0.5] as [number, number, number] };
       case "xl":
-        return { scale: 110, position: [-0.8, -1.95, 0.4] };
+        return { scale: 110, position: [-0.8, -1.95, 0.4] as [number, number, number] };
       case "2xl":
-        return { scale: 120, position: [-0.6, -2, 0.3] };
+        return { scale: 120, position: [-0.6, -2, 0.3] as [number, number, number] };
       default:
-        return { scale: 100, position: [-1, -1.9, 0.5] };
+        return { scale: 100, position: [-1, -1.9, 0.5] as [number, number, number] };
     }
   };
 
   useEffect(() => {
     if (!scene || !groupRef.current) return;
+    if (hasPlayedRef.current) return; // prevent re-run after first play
 
     groupRef.current.visible = true;
 
@@ -54,38 +56,34 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
 
     onModelReady();
 
+    let tl: gsap.core.Timeline | null = null;
     const timer = setTimeout(() => {
+      if (!groupRef.current) return;
+      if (hasPlayedRef.current) return;
       const { scale, position } = getModelTransformByBreakpoint(breakpoint);
 
-      gsap.to(groupRef.current!.position, {
-        x: position[0],
-        y: position[1],
-        z: position[2],
-        duration: 6,
-        ease: "slow(0.7, 0.7, false)",
-      });
+      tl = gsap.timeline({ defaults: { duration: 6, ease: "slow(0.7, 0.7, false)" }, onComplete: onIntroComplete });
 
-      gsap.to(groupRef.current!.scale, {
-        x: scale,
-        y: scale,
-        z: scale,
-        duration: 6,
-        ease: "slow(0.7, 0.7, false)",
-      });
+      tl.to(groupRef.current!.position, { x: position[0], y: position[1], z: position[2] }, 0)
+        .to(groupRef.current!.scale, { x: scale, y: scale, z: scale }, 0)
+        .to(
+          groupRef.current!.rotation,
+          {
+            x: degToRad(-15),
+            y: degToRad(-30),
+            z: breakpoint === "sm" ? degToRad(-20) : degToRad(0),
+          },
+          0
+        );
 
-      const zRotation = breakpoint === "sm" ? degToRad(-20) : degToRad(0);
-
-      gsap.to(groupRef.current!.rotation, {
-        x: degToRad(-15),
-        y: degToRad(-30),
-        z: zRotation,
-        duration: 6,
-        ease: "slow(0.7, 0.7, false)",
-      });
+      hasPlayedRef.current = true;
     }, 1800);
 
-    return () => clearTimeout(timer);
-  }, [scene, onModelReady]);
+    return () => {
+      clearTimeout(timer);
+      if (tl) tl.kill();
+    };
+  }, [scene, onModelReady, onIntroComplete, breakpoint]);
 
   return (
     <group ref={groupRef} visible={false}>
@@ -96,10 +94,25 @@ function CameraModel({ onModelReady }: { onModelReady: () => void }) {
 
 export default function CameraScene({ onModelReady }: { onModelReady: () => void }) {
   const [isModelReady, setIsModelReady] = useState(false);
+  const [introComplete, setIntroComplete] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subheadingRef = useRef<HTMLParagraphElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
+  const { active } = useProgress();
+
+  // Lock page scroll until intro animation completes
+  useEffect(() => {
+    const previous = document.body.style.overflow;
+    if (!introComplete) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = previous;
+    }
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [introComplete]);
 
   useEffect(() => {
     if (isModelReady) {
@@ -113,7 +126,7 @@ export default function CameraScene({ onModelReady }: { onModelReady: () => void
         "-=1.8"
       );
     }
-  }, [isModelReady]);
+  }, [isModelReady, onModelReady]);
 
   useEffect(() => {
     if (isModelReady && canvasRef.current) {
@@ -164,7 +177,7 @@ export default function CameraScene({ onModelReady }: { onModelReady: () => void
             shadows
           >
             <Suspense fallback={false}>
-              <CameraModel onModelReady={() => setIsModelReady(true)} />
+              <CameraModel onModelReady={() => setIsModelReady(true)} onIntroComplete={() => setIntroComplete(true)} />
               <Environment files="/hdri/07.hdr" background={false} />
               <Html fullscreen>
                 <div className="pointer-events-none w-full h-full bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent" />

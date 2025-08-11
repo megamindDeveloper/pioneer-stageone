@@ -29,9 +29,9 @@ const variantClasses: Record<string, string> = {
 
   // Grid View
   "grid-view-heading":
-    "text-[20.5px] leading-auto md:text-[12.6px] lg:text-[28px] md:leading-auto xl:text-[26.0px] xl:leading-auto 2xl:text-[32.9px] 2xl:leading-auto",
+    "text-[20.5px] leading-auto md:text-[12.6px] lg:text-[20px] lg2:text-[28px] md:leading-auto xl:text-[26.0px] xl:leading-auto 2xl:text-[32.9px] 2xl:leading-auto",
   "grid-view-body":
-    "text-[5.7px] leading-auto md:text-[6.8px] md:leading-auto lg:text-[16px] lg:leading-auto xl:text-[16.0px] xl:leading-auto 2xl:text-[17px] 2xl:leading-auto",
+    "text-[5.7px] leading-auto md:text-[6.8px] md:leading-auto lg:text-[12px] lg2:text-[16px] lg:leading-auto xl:text-[16.0px] xl:leading-auto 2xl:text-[17px] 2xl:leading-auto",
   "grid-view-body-hovered":
     "text-[4.9px] leading-auto md:text-[5.8px] md:leading-auto lg:text-[7.8px] lg:leading-auto lg2:text-[9.1px] lg2:leading-auto xl:text-[16.0px] xl:leading-auto 2xl:text-[15.2px] 2xl:leading-auto",
 

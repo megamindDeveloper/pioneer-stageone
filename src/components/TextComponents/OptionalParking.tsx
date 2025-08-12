@@ -13,10 +13,10 @@ export default function OptionalParking({ highlightedText, heading, subheading, 
         {/* Top Content Block */}
         <div className="w-full max-w-[400px] sm:mt-1 mt-[-28rem] text-center sm:max-w-[600px] sm:ml-[6%]">
           {/* Red Label */}
-          <p className="text-[#AD2239]  max-w-[500px] text-[13  px] text-center font-bold  mb-2 sm:mb-4">{highlightedText}</p>
+          <p className="text-[#AD2239]  max-w-[500px] text-[13  px] text-center font-bold  lg2:mb-4">{highlightedText}</p>
 
           {/* Heading */}
-          <h1 className="sm:text-3xl md:text-4xl lg2:text-5xl max-w-[500px] font-semibold leading-tight  sm:leading-[56px] text-white mb-4">
+          <h1 className="sm:text-3xl md:text-4xl lg2:text-5xl max-w-[500px] font-semibold leading-tight  sm:leading-[56px] text-white ">
             {heading}
             <span className="text-[#313131]">*</span>
           </h1>

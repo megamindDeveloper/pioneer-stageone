@@ -26,7 +26,7 @@ export default function DriveAlertH520({
   model,
 }: DriveAlertH520Props) {
   return (
-   <section className="min-h-screen text-white flex flex-col justify-between px-4 sm:px-6 py-12 text-center">
+   <section className="min-h-screen text-white flex flex-col items-center justify-between px-4 sm:px-6 py-12 text-center">
   {/* Top Icon */}
   <div className="pt-52 sm:pt-52 mb-[-4rem] animate-fastpulse">
     <Image
@@ -39,16 +39,16 @@ export default function DriveAlertH520({
   </div>
 
   {/* Bottom Content */}
-  <div className="flex flex-col w-sm md:w-xl items-center space-y-12 sm:space-y-4 mt-[14rem] pb-8">
+  <div className="flex flex-col w-[90%] lg2:w-3xl items-center space-y-12 sm:space-y-[15px] mt-[9rem] lg2:mt-[14rem] pb-8">
     {/* Headings */} 
     <div>
       <p className="text-[#AD2239] font-bold mb-2 text-sm sm:text-base md:text-lg">
         {highlightedText}
       </p>
-      <h2 className="font-medium leading-tight sm:leading-none mb-2 text-3xl sm:text-4xl md:text-[42px]">
+      <h2 className="font-medium leading-tight sm:leading-none mb-2 text-3xl sm:text-4xl md:text-4xl lg2:text-5xl">
         {heading}
       </h2>
-      <p className="text-[#ABABAB] max-w-xl mx-auto leading-snug sm:leading-relaxed text-sm sm:text-base md:text-md">
+      <p className="text-[#ABABAB] lg2:max-w-2xl max-w-[100%] mx-auto leading-snug sm:leading-relaxed text-sm sm:text-base md:text-md">
         {subheading}
       </p>
     </div>
@@ -57,7 +57,7 @@ export default function DriveAlertH520({
     <div className="flex flex-row sm:flex-row justify-center items-center gap-8 sm:gap-23 mt-6 sm:mt-0">
       {/* Lane Departure Alert */}
       <div className="flex flex-col items-center space-y-2">
-        <Image src={alert1Image} alt="Lane Departure" width={40} height={40} className="sm:w-[60px] sm:h-[60px]" />
+        <Image src={alert1Image} alt="Lane Departure" width={40} height={40} className="lg:w-[60px] sm:h-[60px]" />
         <p className="text-white font-medium text-[10px] sm:text-sm md:text-base">{alert1}</p>
       </div>
 

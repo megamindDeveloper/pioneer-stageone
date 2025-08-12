@@ -25,7 +25,7 @@ export default function DashcamShowcaseMobile() {
             cardIndex={0}
             title="VREC-Z820DC"
             image="/modelImages/VREC-Z820DC/main.png"
-            imageClassName="!w-[100%] !h-60"
+            imageClassName="!w-[90%] mx-auto !h-60"
             description={`4K Flagship Dual Channel
       Dash Cam with Night Vision AI`}
             features={["4K Resolution\nFront Camera", "Full HD\nRear Camera", "Intelligent\nNight Vision AI", "WDR & HDR\nRecording", "ADAS\nAlerts"]}

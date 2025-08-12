@@ -29,7 +29,7 @@ const mobileLinks = [
     ],
   },
   {
-    title: "More from Pioneer Global",
+    title: "More from Pioneer Middle East and Africa",
     links: [
       { label: "Our Products", href: "https://pioneer-mea.com/en/pioneer-operation-manual/" },
       { label: "Our History", href: "https://pioneer-mea.com/en/history/" },
@@ -163,7 +163,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-white/20 pt-3">
           <p className="text-[10px] text-white/60 leading-snug">© 2025 Pioneer Gulf FZE. All Rights Reserved</p>
-          <p className="text-[10px] text-white/60 leading-snug">Powered by Megamind Advertising Private Limited</p>
+          {/* <p className="text-[10px] text-white/60 leading-snug">Powered by Megamind Advertising Private Limited</p> */}
         </div>
       </div>
     </footer>

@@ -116,12 +116,12 @@ export default function Model2textOverlay() {
       </div>
     ),
     s6: (
-      <div className="w-sm md:w-lg space-y-4">
+      <div className="w-sm md:w-xl space-y-[15px]">
         <p className="text-cherryRed font-bold text-center text-lg sm:text-xl md:text-md">
           Clear Control with a Wider Screen
         </p>
 
-        <h2 className="text-white text-center font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+        <h2 className="text-white text-center font-medium text-3xl sm:text-4xl md:text-5xl lg2:text-6xl">
           3" IPS Display
         </h2>
 
@@ -198,10 +198,10 @@ export default function Model2textOverlay() {
     default: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s2: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s3: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s4: " sm:bottom-32 sm:left-[50rem]   bottom-12 left-[-70px] z-[100]",
+    s4: "  bottom-12 right-8 lg2:right-32 lg2:bottom-32 z-[100]",
     s5: "    md:top-1/2 md:left-1/4  top-98 left-[205px] z-[100] -translate-x-1/2 -translate-y-1/2",
-    s6: "bottom-1 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s7: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s6: "-bottom-8 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s7: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2 w-[100%] ",
     s8: "top-32 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s9: " z-[100] flex inset-0 w-[100%] !h-[100vh]",
     s10: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",

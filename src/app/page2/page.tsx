@@ -12,244 +12,33 @@ const animationData = [
   { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2 },
   // { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2.5 },
   { time: 0.0, position: [0.005, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 3 },
-  { time: 0.0417, position: [-0.11, 1.215, 0.44], quaternion: [0.03902204, -0.5, -0.0781377, 0.9276399], fov: 20 },
-  { time: 0.0417, position: [-0.11, 1.215, 0.44], quaternion: [0.03902204, -0.5, -0.0781377, 0.9276399], fov: 20 },
+  { time: 0.0417, position: [-0.11, 1.22, 0.44], quaternion: [0.03902204, -0.5, -0.0781377, 0.9276399], fov: 20 },
+  { time: 0.0417, position: [-0.11, 1.22, 0.44], quaternion: [0.03902204, -0.5, -0.0781377, 0.9276399], fov: 20 },
   { time: 0.122, position: [-0.08, 1.22, 0.275], quaternion: [0, -0.90010577, 0.00000004, 0.43567151], fov: 20 },
   { time: 0.122, position: [-0.08, 1.22, 0.275], quaternion: [0, -0.90010577, 0.00000004, 0.43567151], fov: 20 },
-  { time: 0.1667, position: [-0.000, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
+  { time: 0.1667, position: [-0.001, 1.214, 0.25], quaternion: [0, 1.0, 0, 0.0], fov: 20 },
 
-  { time: 0.1667, position: [-0.001, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 30 },
+  { time: 0.1667, position: [-0.001, 1.214, 0.25], quaternion: [0, 1.0, 0.0, 0.0], fov: 20 },
 
-  { time: 0.1667, position: [-0.002, 1.216, 0.3], quaternion: [0, 1.0, 0.0, 0.0], fov: 35 },
-  { time: 0.2083, position: [-0.0094, 1.2136, 0.0113], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 30.9915 },
+  { time: 0.1667, position: [-0.001, 1.214, 0.25], quaternion: [0, 1.0, 0.0, 0.0], fov: 20 },
+  { time: 0.2083, position: [-0.00, 1.214, 0.0113], quaternion: [0.0, 1.0, -0.00000004, 0.00000004], fov: 30.9915 },
 
-  { time: 0.25, position: [-0.0093, 1.1809, -2.2], quaternion: [0.00000002, 0.99999607, 0.00280268, 0.00000016], fov: 40 },
+  { time: 0.25, position: [-0.00, 1.1809, -2.2], quaternion: [0.00000002, 0.99999607, 0.00280268, 0.00000016], fov: 40 },
 
-  { time: 0.2917, position: [-0.0093, 3.9288, -3.2975], quaternion: [0.00000007, 0.9208445, 0.38993004, 0.00000008], fov: 26.9915 },
+  { time: 0.2917, position: [-0.00, 3.9288, -3.2975], quaternion: [0.00000007, 0.9208445, 0.38993004, 0.00000008], fov: 26.9915 },
 
-  { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
-  { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
-  { time: 0.3333, position: [-0.0093, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
-  { time: 0.375, position: [-0.0093, 6.6768, 3.1115], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 30.6028 },
-  { time: 0.375, position: [-0.0093, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 33.6028 },
+  { time: 0.3333, position: [-0.00, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
+  { time: 0.3333, position: [-0.00, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
+  { time: 0.3333, position: [-0.00, 6.6768, 0.0038], quaternion: [-0.0000001, 0.70092404, 0.71323591, 0.0000003], fov: 43.6028 },
+  { time: 0.375, position: [-0.00, 6.6768, 3.1115], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 30.6028 },
+  { time: 0.375, position: [-0.00, 6.6768, -9], quaternion: [-0.50217175, 0.49781877, 0.50217175, 0.49781883], fov: 33.6028 },
 
 ];
 
-import { OrbitControls, Stats, TransformControls } from "@react-three/drei";
-import { Html } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Typography } from "@/components/CommonComponents/Typography/Typography";
 
-function EditableCameraHelper({ setKeyframe }: { setKeyframe: Function }) {
-  const camGroupRef = useRef<THREE.Group>(null);
-  const { camera } = useThree();
-  const [currentTime, setCurrentTime] = useState(0);
-  const [capturedKeyframes, setCapturedKeyframes] = useState<any[]>([]);
-  const [isRecording, setIsRecording] = useState(false);
 
-  const handleCapture = () => {
-    if (!camGroupRef.current) return;
-    const pos = camGroupRef.current.position.toArray();
-    const quat = camGroupRef.current.quaternion.toArray();
-    const fov = camera.fov;
-
-    const newKeyframe = {
-      time: currentTime,
-      position: pos,
-      quaternion: quat,
-      fov,
-    };
-
-    setCapturedKeyframes((prev) => {
-      const filtered = prev.filter((kf) => Math.abs(kf.time - currentTime) > 0.001);
-      return [...filtered, newKeyframe].sort((a, b) => a.time - b.time);
-    });
-
-    const output = JSON.stringify(newKeyframe, null, 2);
-    navigator.clipboard.writeText(output);
-    console.log("Captured keyframe:", newKeyframe);
-  };
-
-  const handleExportAll = () => {
-    const sortedKeyframes = capturedKeyframes.sort((a, b) => a.time - b.time);
-    const output = JSON.stringify(sortedKeyframes, null, 2);
-    navigator.clipboard.writeText(output);
-    console.log("Exported all keyframes:", sortedKeyframes);
-  };
-
-  const handleClearAll = () => {
-    setCapturedKeyframes([]);
-  };
-
-  const handleDeleteKeyframe = (time: number) => {
-    setCapturedKeyframes((prev) => prev.filter((kf) => Math.abs(kf.time - time) > 0.001));
-  };
-
-  const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentTime(parseFloat(e.target.value));
-  };
-
-  const handleJumpToKeyframe = (keyframe: any) => {
-    setCurrentTime(keyframe.time);
-    if (camGroupRef.current) {
-      camGroupRef.current.position.set(keyframe.position[0], keyframe.position[1], keyframe.position[2]);
-      camGroupRef.current.quaternion.set(keyframe.quaternion[0], keyframe.quaternion[1], keyframe.quaternion[2], keyframe.quaternion[3]);
-    }
-    if (camera instanceof THREE.PerspectiveCamera) {
-      camera.fov = keyframe.fov;
-      camera.updateProjectionMatrix();
-    }
-  };
-
-  return (
-    <>
-      <group ref={camGroupRef} position={[0, 1, 5]}>
-        <mesh>
-          <boxGeometry args={[0.2, 0.2, 0.5]} />
-          <meshBasicMaterial color="orange" />
-        </mesh>
-        <Html position={[0, 0.5, 0]}>
-          <div
-            style={{
-              background: "rgba(0,0,0,0.9)",
-              color: "white",
-              padding: "15px",
-              borderRadius: "8px",
-              fontSize: "12px",
-              minWidth: "250px",
-              fontFamily: "monospace",
-            }}
-          >
-            <div style={{ marginBottom: "10px", fontWeight: "bold", textAlign: "center" }}>🎥 Camera Keyframe Tool</div>
-
-            {/* Time Control */}
-            <div style={{ marginBottom: "10px" }}>
-              <label style={{ display: "block", marginBottom: "5px" }}>Time: {currentTime.toFixed(4)}</label>
-              <input type="range" min="0" max="1" step="0.001" value={currentTime} onChange={handleTimeChange} style={{ width: "100%" }} />
-            </div>
-
-            {/* Capture Controls */}
-            <div style={{ marginBottom: "10px", display: "flex", gap: "5px" }}>
-              <button
-                onClick={handleCapture}
-                style={{
-                  padding: "5px 10px",
-                  background: "#4CAF50",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  flex: 1,
-                }}
-              >
-                📸 Capture
-              </button>
-              <button
-                onClick={handleExportAll}
-                style={{
-                  padding: "5px 10px",
-                  background: "#2196F3",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  flex: 1,
-                }}
-              >
-                📋 Export All
-              </button>
-            </div>
-
-            <button
-              onClick={handleClearAll}
-              style={{
-                padding: "5px 10px",
-                background: "#f44336",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                width: "100%",
-                marginBottom: "10px",
-              }}
-            >
-              🗑️ Clear All
-            </button>
-
-            {/* Keyframes List */}
-            <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-              <div style={{ fontWeight: "bold", marginBottom: "5px" }}>Keyframes ({capturedKeyframes.length}):</div>
-              {capturedKeyframes.length === 0 ? (
-                <div style={{ color: "#aaa", fontSize: "10px", textAlign: "center" }}>No keyframes captured yet</div>
-              ) : (
-                capturedKeyframes.map((keyframe, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      background: "rgba(255,255,255,0.1)",
-                      padding: "5px",
-                      marginBottom: "3px",
-                      borderRadius: "3px",
-                      fontSize: "10px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <span>{keyframe.time.toFixed(4)}</span>
-                    <div>
-                      <button
-                        onClick={() => handleJumpToKeyframe(keyframe)}
-                        style={{
-                          padding: "2px 5px",
-                          background: "#FF9800",
-                          color: "white",
-                          border: "none",
-                          borderRadius: "2px",
-                          cursor: "pointer",
-                          marginRight: "3px",
-                          fontSize: "8px",
-                        }}
-                      >
-                        Jump
-                      </button>
-                      <button
-                        onClick={() => handleDeleteKeyframe(keyframe.time)}
-                        style={{
-                          padding: "2px 5px",
-                          background: "#f44336",
-                          color: "white",
-                          border: "none",
-                          borderRadius: "2px",
-                          cursor: "pointer",
-                          fontSize: "8px",
-                        }}
-                      >
-                        Del
-                      </button>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-
-            {/* Camera Info */}
-            <div style={{ marginTop: "10px", fontSize: "10px", color: "#aaa" }}>
-              <div>
-                Position:{" "}
-                {camGroupRef.current?.position
-                  .toArray()
-                  .map((v) => v.toFixed(3))
-                  .join(", ")}
-              </div>
-              <div>FOV: {camera instanceof THREE.PerspectiveCamera ? camera.fov.toFixed(1) : "N/A"}°</div>
-            </div>
-          </div>
-        </Html>
-      </group>
-      <TransformControls object={camGroupRef.current} />
-    </>
-  );
-}
 const degToRad = (degrees) => degrees * (Math.PI / 180);
 // Axes Helper
 function DebugAxesHelper({ size = 2 }) {
@@ -264,41 +53,6 @@ function DebugAxesHelper({ size = 2 }) {
   return null;
 }
 
-// Grid Helper
-function DebugGridHelper({ size = 10, divisions = 10 }) {
-  const { scene } = useThree();
-  useEffect(() => {
-    const gridHelper = new THREE.GridHelper(size, divisions);
-    scene.add(gridHelper);
-    return () => {
-      scene.remove(gridHelper);
-    };
-  }, [scene, size, divisions]);
-  return null;
-}
-
-// Bounding Box Helper
-function BoundingBoxHelper({ objectRef }: { objectRef: React.RefObject<THREE.Object3D> }) {
-  const { scene } = useThree();
-  useEffect(() => {
-    if (!objectRef.current) return;
-    const boxHelper = new THREE.BoxHelper(objectRef.current, 0xffff00);
-    scene.add(boxHelper);
-    return () => scene.remove(boxHelper);
-  }, [scene, objectRef]);
-  return null;
-}
-
-// Log Position (every frame)
-function LogWorldPosition({ objectRef }: { objectRef: React.RefObject<THREE.Object3D> }) {
-  useFrame(() => {
-    if (objectRef.current) {
-      const pos = new THREE.Vector3();
-      objectRef.current.getWorldPosition(pos);
-    }
-  });
-  return null;
-}
 
 function useFadeModelOpacity(groupRef: React.RefObject<THREE.Group>, scrollProgress: number, rangeStart = 0, rangeEnd = 0.1) {
   useFrame(() => {
@@ -421,7 +175,7 @@ function useCameraAnimationSync(
   const cameraMountWorldMatrix = new THREE.Matrix4();
 
   useFrame(() => {
-    const inExplodeRange = scrollProgress >= 0.2104 && scrollProgress < 0.2432;
+    const inExplodeRange = scrollProgress >= 0.1768 && scrollProgress < 0.2131    ;
 
     // 🔓 Explode lens when entering the range
     if (inExplodeRange && !explodedRef.current) {
@@ -494,7 +248,7 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
     imagePlaneRef.current.scale.set(scale, scale, 1);
 
     // Rotation: 0 to 2π
-    const rotation = THREE.MathUtils.lerp(0, Math.PI * 1, progress);
+    const rotation = THREE.MathUtils.lerp(0, Math.PI * 2, progress);
     imagePlaneRef.current.rotation.z = rotation;
     const targetOpacity = THREE.MathUtils.lerp(1, 0, progress);
 
@@ -513,7 +267,7 @@ function IntroImageAnimation({ scrollProgress }: { scrollProgress: number }) {
   }, [scrollProgress]);
   depthWrite: false;
   return (
-    <mesh ref={imagePlaneRef} renderOrder={10} position={[0.004, 1.211, -4]} visible={true}>
+    <mesh ref={imagePlaneRef} renderOrder={10} position={[0.00, 1.21, -4]} visible={true}>
       <planeGeometry args={[1]} />
       <meshBasicMaterial
         ref={materialRef}

@@ -14,7 +14,7 @@ export default function GpsLogger({ highlightedText, heading, subheading, descri
     <p className="text-[#AD2239] font-bold tracking-wide text-sm sm:text-base md:text-lg">
       {highlightedText}
     </p>
-    <h1 className="text-[#FFFFFF] font-medium text-2xl sm:text-4xl md:text-[56px]">
+    <h1 className="text-[#FFFFFF] font-medium sm:text-3xl md:text-4xl lg2:text-5xl ">
       {heading}
       <span className="text-[#313131]">*</span>
     </h1>

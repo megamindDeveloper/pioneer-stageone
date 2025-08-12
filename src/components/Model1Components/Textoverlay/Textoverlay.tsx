@@ -104,7 +104,7 @@ export default function Model1TextOverlay() {
     s5: (
       <div>
         <p className="text-cherryRed text-xl font-bold text-center">Adapts to Any Light</p>
-        <h2 className="lg:text-[42px] lg2:text-[56px] text-white text-center font-medium">WDR & HDR Recording</h2>
+        <h2 className="lg:text-[32px] lg2:text-[56px] text-white text-center font-medium">WDR & HDR Recording</h2>
         <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto">
           It adjusts exposure in real time, preserving visibility and fine detail, so footage stays clear in both bright and low-light conditions.
         </p>
@@ -128,7 +128,7 @@ export default function Model1TextOverlay() {
     s7: (
       <div>
         <p className="text-cherryRed text-xl font-bold text-center">Every Angle Matters</p>
-        <h2 className="text-[56px] text-white text-center font-medium">Dual Camera setup</h2>
+        <h2 className="lg2:text-[56px] text-[32px] text-white text-center font-medium">Dual Camera setup</h2>
         <p className="text-pretty text-[#ABABAB] text-center max-w-xl mx-auto">
           The VREC-Z820DC pairs a 4K front and HD rear camera to record both directions at once, delivering clearer evidence and wider coverage.
         </p>
@@ -171,7 +171,7 @@ export default function Model1TextOverlay() {
     default: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s1: "inset-0 flex  items-center justify-center z-[100] w-[100vw] h-[100%]",
     s2: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s3: "bottom-32 right-32 z-[100]",
+    s3: "lg2:bottom-32 bottom-16 lg2:right-32 right-16 z-[100]",
     s4: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s5: "bottom-1 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s6: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",

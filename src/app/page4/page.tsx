@@ -2,7 +2,7 @@
 
 import React, { Suspense, useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, useGLTF, OrbitControls, Stats, TransformControls, Html, useTexture } from "@react-three/drei";
+import { Environment, useGLTF, OrbitControls, Stats, TransformControls, Html, useTexture, AdaptiveDpr } from "@react-three/drei";
 import * as THREE from "three";
 import { SRGBColorSpace } from "three";
 
@@ -69,7 +69,7 @@ const animationData = [
 
   {
     time: 0.2083,
-    position: [0.0, 1.217, 0.25],
+    position: [-0.002, 1.217, 0.25],
     quaternion: [0.0, 1.0, 0.0, 0.0],
     fov: 20,
   }, // behind
@@ -940,7 +940,33 @@ function Blender2JSScene({
     </>
   );
 }
+import { Color } from "three";
+function BackgroundFade({ scrollProgress }: { scrollProgress: number }) {
+  const { scene } = useThree();
 
+  useEffect(() => {
+    const start = 0;   // fade start
+    const end = 0.1;   // fade end
+    let t = 0;
+
+    if (scrollProgress < start) {
+      t = 0;
+    } else if (scrollProgress > end) {
+      t = 1;
+    } else {
+      t = (scrollProgress - start) / (end - start);
+    }
+
+    // Start color #0D0D0D
+    const startColor = new Color("#0D0D0D");
+    const endColor = new Color("#000000");
+
+    const mixed = startColor.clone().lerp(endColor, t);
+    scene.background = mixed;
+  }, [scrollProgress, scene]);
+
+  return null;
+}
 function CameraAnimation({
   scrollProgress,
   carScene,
@@ -1202,7 +1228,7 @@ export default function Blender2JSPage() {
   return (
     <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
-      {/* <Timeline scrollProgress={scrollProgress} /> */}
+      <Timeline scrollProgress={scrollProgress} />
       <HeroTextFade scrollProgress={scrollProgress} />
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}
@@ -1217,6 +1243,8 @@ export default function Blender2JSPage() {
           gl.setClearColor("#1a1a1a");
         }}
       >
+          <AdaptiveDpr pixelated />
+          <BackgroundFade scrollProgress={scrollProgress} />
         <Suspense fallback={null}>
           <CameraMover />
           <IntroImageAnimation scrollProgress={scrollProgress} />

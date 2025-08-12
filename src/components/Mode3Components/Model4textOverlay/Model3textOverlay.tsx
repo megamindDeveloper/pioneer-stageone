@@ -149,7 +149,7 @@ export default function Model3textOverlay() {
     s9: (
       // <div>asas</div>
 
-      <div>
+      <div className="w-[100%]">
         <FieldOfVision
           highlightedText="See More Than Just the Lane Ahead"
           heading="139° Wide-Angle Lens"
@@ -189,7 +189,7 @@ export default function Model3textOverlay() {
     s6: "bottom-1 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s7: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s8: "top-32 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
-    s9: "top-1/3 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
+    s9: "z-[100] flex inset-0 w-[100%] !h-[100vh]",
     s10: "top-1/2 left-1/4 z-[100] -translate-x-1/2 -translate-y-1/2",
     s11: "top-1/2 left-1/2 z-[100] -translate-x-1/2 -translate-y-1/2",
     s4: "md:top-0 md:left-2/3  top-98 left-[205px] z-[100] -translate-x-1/2 -translate-y-1/2",

@@ -25,7 +25,7 @@ const tabs: Tab[] = [
   { id: "capture", label: "Power Users", model: "VREC-Z820DC" },
   { id: "display", label: "Experienced Users", model: "VREC-H520DC" },
   { id: "gps", label: "Practical Users", model: "VREC-H320SC" },
-  { id: "compact", label: "First-Time Users", model: "VREC-H120SC" },
+  { id: "compact", label: "First-Time Users", model: "VREC-H120DC" },
 ];
 
 const contentMap = {
@@ -99,7 +99,7 @@ const contentMap = {
       description: `A sleek, minimal design that doesn’t take up\n space, perfect for discreet installs.`,
       imageSrc: model1Image4,
       buttonLabel: "Check It Out",
-      buttonLink: "/vrec-h120sc",
+      buttonLink: "/vrec-h120dc",
       imagePositionClass: "bottom-0 left-[40%]",
       imageClassName: "md:w-[90%] xl:w-[77%]",
     },
@@ -207,7 +207,7 @@ export default function ProductDetails() {
                   <OverlayCard {...currentContent.overlay} />
                 </>
               );
-            } else if (currentModel === "VREC-H120SC") {
+            } else if (currentModel === "VREC-H120C") {
               return (
                 <>
                   <SideImageCard {...currentContent.overlay} />

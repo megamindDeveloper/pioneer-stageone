@@ -15,8 +15,8 @@ import Model3textOverlay from '@/components/Mode3Components/Model4textOverlay/Mo
 const page = () => {
   return (
     <div className='bg-black'>
-      <Blender2JSPage/>
-      <Model3textOverlay />
+      {/* <Blender2JSPage/>
+      <Model3textOverlay /> */}
       <Compare
         tabs={[
           {
@@ -54,7 +54,7 @@ const page = () => {
       />
       <ZenVue />
       <ProductFeatureTable products={defaultProducts} priorityProductIndex={2} />
-      <EverythingNeedToKnow faqData={faqData.set3} />
+      <EverythingNeedToKnow collectionName="faq_detailed_specs_H320SC" />
       <div className='bg-black'>
 
       <DriveSmarter

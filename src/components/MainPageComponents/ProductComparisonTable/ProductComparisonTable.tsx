@@ -25,7 +25,7 @@ const products = [
     features: ["Full HD", "-", "Front \n+\n Rear (Optional)", "90mm x 34.8mm\n  x 54.25mm", "Yes", "Yes", "Up to 512GB"],
   },
   {
-    name: "VREC - H120SC",
+    name: "VREC - H120DC",
     image: "/modelImages/VREC-H120SC/thumb.png",
     link: "/vrec-h120dc",
     features: ["1.5K", "-", "Front", "31.12mm x 28.8mm\n  x 37.33mm", "-", "Yes", "Up to 128GB"],

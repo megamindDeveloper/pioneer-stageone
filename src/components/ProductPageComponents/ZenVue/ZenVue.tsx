@@ -44,14 +44,14 @@ export default function ZenVue() {
           <p className="text-[13px] text-white/70 mb-2 ">Available on</p>
           <div className="flex justify-center gap-6">
             <Image
-              src="/Images/googlePlay.png"
+              src="/productPageImages/zenVueImages/googlePlay.png"
               alt="Google Play"
               width={130}
               height={40}
               className="object-contain"
             />
             <Image
-              src="/Images/appStore.png"
+              src="/productPageImages/zenVueImages/appStore.png"
               alt="App Store"
               width={130}
               height={40}

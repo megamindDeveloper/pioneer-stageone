@@ -1020,10 +1020,10 @@ function HeroTextFade({ scrollProgress }: { scrollProgress: number }) {
         transition: "transform 0.2s ease-out, opacity 0.2s ease-out",
       }}
     >
-      <Typography variant="hero-section-heading" className="text-xl !md:text-[62px] font-bold text-white text-center px-4 ">
+      <Typography variant="hero-section-headingg" className="text-4xl md:text-[68px] font-bold text-white text-center px-4 ">
         When Detail Matters the Most
       </Typography>
-      <p className="text-[32px] text-[#ABABAB] mt-2 max-w-3xl">VREC‑H520DC captures sharp 2K video, even in low light and on the move.</p>
+      <p className="text-[19px] md:px-2 px-3 md:text-[32px] text-[#ABABAB] mt-2 max-w-3xl">VREC‑H520DC captures sharp 2K video, even in low light and on the move.</p>
       <button className="bg-[#262626] px-2 pl-4 py-2 rounded-full text-white mt-12 flex text-[16px] font-medium items-center mx-auto">
         Scroll to explore
         <img src="/icons/chevDownCircle.svg" width={24} height={24} alt="Arrow Down" className="ml-3" />

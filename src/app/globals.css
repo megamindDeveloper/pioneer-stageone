@@ -18,7 +18,10 @@
     --foreground: #0a0a0a;
   }
 }
-html, body, #__next {
+
+html,
+body,
+#__next {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -35,10 +38,14 @@ body {
 .helvetica-neue {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 @keyframes fast-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.4;
   }
@@ -48,16 +55,38 @@ body {
 .animate-fastpulse {
   animation: fast-pulse 0.5s ease-in-out infinite;
 }
+
 @theme {
   --breakpoint-*: initial;
-  --breakpoint-sm: 640px;
+  --breakpoint-xxs: 320px;
+  --breakpoint-xs: 375px;
+  --breakpoint-sm: 425px;
   --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-lg2: 1200px;
-  --breakpoint-xl: 1580px;
-  --breakpoint-2xl: 2000px;
+  --breakpoint-lg: 968px;
+  --breakpoint-lg2: 1024px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 2560px;
+
 }
+
+
+/*   '4xl': '2560px',  // Ultra-wide & 4K displays
+        '3xl': '1920px',  // Full HD large monitors
+        '2xl': '1536px',  // Large desktop
+        'xl': '1280px',   // MacBook Pro / Medium desktop
+        'lg': '1024px',   // Laptops
+        'md': '768px',    // Tablets
+        'sm': '640px',    // Large phones / small tablets
+        'xs': '480px',    // Medium phones
+        'xxs': '360px',   // Small phones */
 
 @theme {
   --color-cherryRed: #AD2239;
+
+  /* 
+   --font-fluid-sub: clamp(12px, 1vw + 10px, 16px);      /* Subheading */
+  /*  --font-fluid-heading: clamp(28px, 2.5vw + 16px, 62px); /* Main heading */
+  /*--font-fluid-desc: clamp(12px, 0.8vw + 8px, 18px);     /* Description */
+
+
 }

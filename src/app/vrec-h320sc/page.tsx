@@ -46,7 +46,7 @@ const page = () => {
             subheading: "The VREC-H320SC adds smart driving support, automatic event recording and clear video built for real road conditions.",
             compareHeading: "Built for Shifting Light Conditions",
             compareSubheading: "From harsh sunlight to shaded corners, WDR and Full HD work together to keep your video balanced and clear.",
-            image2: "/productPageImages/comparisionImages/h320sc/320_Before.webp",
+            image2: "/productPageImages/comparisionImages/h320sc/320_BEFORE.webp",
             image1: "/productPageImages/comparisionImages/h320sc/320 AFTER.webp",
             compare:true,
           },

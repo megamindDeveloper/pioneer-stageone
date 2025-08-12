@@ -15,8 +15,8 @@ import Model3textOverlay from '@/components/Mode3Components/Model4textOverlay/Mo
 const page = () => {
   return (
     <div className='bg-black'>
-      {/* <Blender2JSPage/>
-      <Model3textOverlay /> */}
+      <Blender2JSPage/>
+      <Model3textOverlay />
       <Compare
         tabs={[
           {

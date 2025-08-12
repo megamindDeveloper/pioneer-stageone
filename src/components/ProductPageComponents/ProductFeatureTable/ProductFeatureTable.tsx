@@ -103,7 +103,7 @@ import { ChevronRight } from "lucide-react";
 // import { SpecsModal } from "../SpecsModal/SpecsModal";
 import { defaultProducts } from "@/app/utils/ProductData/ProductData";
 import { db } from "../../../app/utils/Firestore/firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { SpecsModal } from "../modals/SpecsModal/SpecsModal";
 import { usePathname } from "next/navigation";
 
@@ -131,20 +131,25 @@ export default function ProductFeatureTable({
 
 
   // Fetch comparison chart data from Firestore
-  useEffect(() => {
-    const fetchData = async () => {
-      const snapshot = await getDocs(collection(db, "comparison_chart"));
-      const rows: any[] = [];
-      snapshot.forEach((doc) => {
-        const data = doc.data();
-        rows.push(data); // { feature: "ZenVue App Support", H120SC: "NPP", H320SC: "Yes", ... }
-      });
-      setFeatureRows(rows);
-    };
+useEffect(() => {
+  const fetchData = async () => {
+    const q = query(
+      collection(db, "comparison_chart"),
+      orderBy("priority", "asc") // smallest number appears first
+    );
 
-    fetchData();
-  }, []);
+    const snapshot = await getDocs(q);
+    const rows: any[] = [];
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      rows.push(data);
+    });
 
+    setFeatureRows(rows);
+  };
+
+  fetchData();
+}, []);
   // Reorder products to make the priority one first
   const reorderedProducts = [
     defaultProducts[priorityProductIndex],

@@ -2,12 +2,12 @@
 
 import React, { Suspense, useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { AdaptiveDpr, Environment, useGLTF, OrbitControls, Stats, TransformControls, Html, useProgress } from "@react-three/drei";
+import { AdaptiveDpr, Environment, useGLTF, OrbitControls, Stats, TransformControls, Html, useProgress, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { SRGBColorSpace } from "three";
 useGLTF.preload("/models/car.glb");
 useGLTF.preload("/models/VREC_H320SC.glb");
-
+useTexture.preload("/modelImages/CommonModelImages/aiNight.png");
 const animationData = [
   { time: 0.0, position: [-0.001, 1.222, 0.4968], quaternion: [0.0, 0.0, 0.0, 1.0], fov: 2 },
   { time: 0.0, position: [-0.001, 1.222, 0.4968],   quaternion: [0.0, 0.0, 0.0, 1.0], fov: 3 },
@@ -990,7 +990,7 @@ export default function Blender2JSPage() {
         <FadeLoader isModelReady={!active} />
       </div>
       {/* Timeline & hero only after assets are loaded */}
-      {!active && <Timeline scrollProgress={scrollProgress} />}
+      {/* {!active && <Timeline scrollProgress={scrollProgress} />} */}
       {!active && <HeroTextFade scrollProgress={scrollProgress} />}
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}

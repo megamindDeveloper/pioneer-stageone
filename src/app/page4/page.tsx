@@ -1202,7 +1202,7 @@ export default function Blender2JSPage() {
   return (
     <div id="blender2js-scroll-container" ref={containerRef} style={{ height: "1500vh", scrollBehavior: "smooth" }}>
       {/* Timeline Component - Outside Canvas */}
-      <Timeline scrollProgress={scrollProgress} />
+      {/* <Timeline scrollProgress={scrollProgress} /> */}
       <HeroTextFade scrollProgress={scrollProgress} />
       <Canvas
         camera={{ position: [0, 5, 15], fov: 20, near: 0.01, far: 1000 }}

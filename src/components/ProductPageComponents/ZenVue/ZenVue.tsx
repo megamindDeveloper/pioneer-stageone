@@ -72,15 +72,20 @@ export default function ZenVue() {
         </div>
 
         {/* Center Image for Desktop */}
-        <div className="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[52%] z-20 w-auto h-[700px] items-center justify-center">
+        <div className="  hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[46%] z-20 w-auto h-[700px] items-center justify-center">
           <Image
             src="/homePageImages/featureAccordionImages/feature2.png"
             alt="Mobile Device"
             width={1000}
             height={1000}
-            className="drop-shadow-3xl w-full h-full object-cover"
+            className="  drop-shadow-3xl w-full h-full object-cover"
+            
           />
+           {/* <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div> */}
+
+
         </div>
+
 
         {/* Right Title & Store Buttons (Desktop) */}
         <div className="hidden lg:flex flex-col items-end mt-[-3.5rem] flex-2 text-right space-y-4">

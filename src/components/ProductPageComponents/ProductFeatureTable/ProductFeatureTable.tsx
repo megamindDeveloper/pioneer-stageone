@@ -121,7 +121,7 @@ export default function ProductFeatureTable({
   // Map each page path to the priority product index
   const pageToIndexMap: Record<string, number> = {
     "/vrec-z820dc": 0, // index of Z820DC in defaultProducts
-    "/vrec-h120sc": 1,
+    "/vrec-h120dc": 1,
     "/vrec-h320sc": 2,
     "/vrec-h520dc": 3,
   };
@@ -137,12 +137,15 @@ useEffect(() => {
       collection(db, "comparison_chart"),
       orderBy("priority", "asc") // smallest number appears first
     );
+    
 
     const snapshot = await getDocs(q);
     const rows: any[] = [];
     snapshot.forEach((doc) => {
       const data = doc.data();
+        console.log(doc.id, doc.data(),"maa");
       rows.push(data);
+    console.log(snapshot,"add");
     });
 
     setFeatureRows(rows);
@@ -150,6 +153,10 @@ useEffect(() => {
 
   fetchData();
 }, []);
+
+
+
+
   // Reorder products to make the priority one first
   const reorderedProducts = [
     defaultProducts[priorityProductIndex],

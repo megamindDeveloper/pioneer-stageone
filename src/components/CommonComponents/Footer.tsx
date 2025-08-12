@@ -102,7 +102,7 @@ export default function Footer() {
             // Special case: "Contact Us" — no accordion
             if (group.title === "Contact Us") {
               return (
-                <div key={i} className="py-3 border-b border-white/20 text-[19px] font-medium">
+                <div key={i} className="py-3 border-b border-white/20 text-[13px] font-medium">
                   {group.links.length > 0 ? (
                     <Link href={group.links[0].href} target="_blank" className="block hover:text-white">
                       {group.title}
@@ -115,11 +115,11 @@ export default function Footer() {
             }
 
             return (
-              <div key={i}>
+              <div key={i} className="border-b border-white/20">
                 {/* Accordion Header */}
                 <button
                   onClick={() => setOpenIndex(openIndex === i ? null : i as any)}
-                  className="w-full flex justify-between items-center py-3 border-b border-white/20 text-[19px] font-medium"
+                  className="w-full flex justify-between items-center py-3  text-[13px] font-medium"
                 >
                   {group.title}
                   <span className={`transition-transform duration-300 text-[18px] font-light ${openIndex === i ? "rotate-180" : "rotate-0"}`}>
@@ -134,7 +134,7 @@ export default function Footer() {
                     maxHeight: openIndex === i ? `${group.links.length * 36}px` : "0",
                   }}
                 >
-                  <div className="pl-3 py-2 space-y-[6px] text-white/80 text-[16px]">
+                  <div className="p py-2 space-y-[6px] text-white/80 text-[12px] md:text-[16px]">
                     {group.links.map((link, idx) => (
                       <Link key={idx} href={link.href} target="_blank" className="block hover:text-white">
                         {link.label}
@@ -149,12 +149,12 @@ export default function Footer() {
 
         {/* Follow Us */}
         <div className="flex justify-between">
-          <p className="text-[18px] mb-3">Follow Us</p>
+          <p className="md:text-[18px] text-[12px] mb-3">Follow Us</p>
           <div className="flex gap-4 mb-5">
-            <Link href="#">
+            <Link href="https://www.instagram.com/pioneermea/">
               <Image src="/svgs/instagram.svg" alt="Instagram" width={20} height={20} />
             </Link>
-            <Link href="#">
+            <Link href="https://www.facebook.com/PioneerMEA/">
               <Image src="/svgs/meta.svg" alt="Meta" width={20} height={20} />
             </Link>
           </div>
@@ -162,7 +162,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-white/20 pt-3">
-          <p className="text-[10px] text-white/60 leading-snug">© 2025 Pioneer Gulf FZE. All Rights Reserved</p>
+          <p className="text-[10px] text-white  leading-snug text-center ">© 2025 Pioneer Gulf FZE. All Rights Reserved</p>
           {/* <p className="text-[10px] text-white/60 leading-snug">Powered by Megamind Advertising Private Limited</p> */}
         </div>
       </div>

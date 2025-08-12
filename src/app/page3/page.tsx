@@ -586,14 +586,14 @@ function Blender2JSScene({
 
       // Load video texture
       const video = document.createElement("video");
-      video.src = "/video/video520.mp4";
+      video.src = "/video/Video520.mp4";
       video.crossOrigin = "anonymous";
       video.loop = true;
       video.muted = true;
       video.playsInline = true;
       video.preload = "auto";
       video.load();
-
+      
       const videoTexture = new THREE.VideoTexture(video);
       videoTexture.minFilter = THREE.LinearFilter;
       videoTexture.magFilter = THREE.LinearFilter;
